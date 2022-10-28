@@ -2,7 +2,7 @@
 
 Character::Character()
 {
-    //ctor
+    HP = 10;
 }
 
 Character::~Character()
@@ -20,4 +20,10 @@ Character& Character::operator=(const Character& rhs)
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
     return *this;
+}
+
+string Character::str() const {
+    std::stringstream ss;
+    ss << HP;
+    return ss.str();
 }
