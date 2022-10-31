@@ -7,7 +7,7 @@ void Game::initializeViariable(){
 void Game::initWindow(){
     this->videoMode.height=600;
     this->videoMode.width=800;
-    this->window = new sf::RenderWindow(this->videoMode, "SwordQuest",sf::Style::Titlebar | sf::Style::Close);
+    this->window = new sf::RenderWindow(this->videoMode, "SwordQuest",sf::Style::Titlebar | sf::Style::Fullscreen);
 }
 
 
@@ -46,19 +46,7 @@ const bool Game::running()const{
 void Game::pollEvents(){
     while(this->window->pollEvent(this->ev))
     {
-//        switch(this->ev.type)
-//        {
-//        case sf::Event::Closed:
-//            this->window->close();
-//            break;
-//        case sf::Event::KeyPressed:
-//            if(this->ev.key.code==sf::Keyboard::Escape)
-//            {
-//                this->window->close();
-//            }
-//            break;
-//
-//        }
+
         if(this->ev.type==sf::Event::Closed)
             this->window->close();
 
@@ -73,7 +61,7 @@ void Game::update(){
 }
 
 void Game::render(){
-    this->window->clear(sf::Color(255,0,0,255));
+
 
     //Draw Game object
     this->window->display();

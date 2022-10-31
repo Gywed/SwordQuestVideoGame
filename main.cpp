@@ -223,6 +223,7 @@
 //    return 0;
 //}
 #include <iostream>
+#include "Game.h"
 #include "Character.h"
 
 using namespace std;
@@ -231,5 +232,15 @@ int main()
 {
     Character c;
     cout<<c.str();
+    Game game;
+
+    while(game.running())
+    {
+
+        game.update();
+
+        game.render();
+    }
+
     return 0;
 }
