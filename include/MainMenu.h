@@ -10,7 +10,7 @@ using namespace sf;
 class MainMenu
 {
     private:
-        int MainMenuSelected;
+        int MainMenuSelected=0;
         Font font;
         Text mainMenu[Max_main_menu];
 

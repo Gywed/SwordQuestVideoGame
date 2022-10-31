@@ -57,6 +57,7 @@ void MainMenu::draw(RenderWindow* window){
     for(int i=0;i<Max_main_menu;i++){
         window->draw(mainMenu[i]);
     }
+    mainMenu[MainMenuSelected].setFillColor(Color::Blue);
 }
 
 void MainMenu::MoveUp(){
@@ -64,9 +65,7 @@ void MainMenu::MoveUp(){
         mainMenu[MainMenuSelected].setFillColor(Color::White);
 
         MainMenuSelected--;
-        if(MainMenuSelected==-1){
-            MainMenuSelected=2;
-        }
+
         mainMenu[MainMenuSelected].setFillColor(Color::Blue);
     }
 }
@@ -74,10 +73,13 @@ void MainMenu::MoveUp(){
 void MainMenu::MoveDown(){
     if(MainMenuSelected+1<=Max_main_menu){
         mainMenu[MainMenuSelected].setFillColor(Color::White);
-        MainMenuSelected++;
-        if(MainMenuSelected==4){
-            MainMenuSelected=0;
+//        MainMenuSelected++;
+        if(MainMenuSelected<3){
+            MainMenuSelected++;
         }
+//        if(MainMenuSelected==4){
+//            MainMenuSelected=0;
+//        }
         mainMenu[MainMenuSelected].setFillColor(Color::Blue);
     }
 }

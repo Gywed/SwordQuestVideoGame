@@ -25,6 +25,7 @@ Game::~Game()
 {
     //dtor
     delete this->window;
+    delete this->mainMenu;
 }
 
 Game::Game(const Game& other)
@@ -42,6 +43,7 @@ Game& Game::operator=(const Game& rhs)
 // Accessors
 const bool Game::running()const{
     return this->window->isOpen();
+
 }
 
 
@@ -100,7 +102,7 @@ void Game::pollEvents(){
                     while(Options.isOpen())
                     {
                         Event aevent;
-                        while(Play.pollEvent(aevent)){
+                        while(Options.pollEvent(aevent)){
                             if(aevent.type==Event::Closed)
                             {
                                 Options.close();
