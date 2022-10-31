@@ -6,6 +6,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include "MainMenu.h"
 
 class Game
 {
@@ -16,6 +17,7 @@ class Game
         sf::RenderWindow* window;
         sf::VideoMode videoMode;
         sf::Event ev;
+        MainMenu* mainMenu;
 
 
         //Private Functions

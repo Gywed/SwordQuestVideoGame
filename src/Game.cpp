@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "MainMenu.h"
 
 void Game::initializeViariable(){
     this->window=nullptr;
@@ -16,6 +17,8 @@ Game::Game()
     //ctor
     this->initializeViariable();
     this->initWindow();
+    this->mainMenu = new MainMenu(this->window->getSize().x,this->window->getSize().y);
+//    this->mainMenu(this->window->getSize().x,this->window->getSize().y);
 }
 
 Game::~Game()
@@ -53,7 +56,103 @@ void Game::pollEvents(){
         if(this->ev.type==sf::Event::KeyPressed)
             if(this->ev.key.code==sf::Keyboard::Escape)
                 this->window->close();
+
+        if(this->ev.type==Event::KeyReleased)
+        {
+            if(this->ev.key.code==Keyboard::Up){
+                this->mainMenu->MoveUp();
+                break;
+            }
+            if(this->ev.key.code==Keyboard::Down){
+                this->mainMenu->MoveDown();
+                break;
+            }
+            if(this->ev.key.code==Keyboard::Return){
+                RenderWindow Play(this->videoMode,"SwordQuest");
+                RenderWindow Options(this->videoMode,"OPTIONS");
+                RenderWindow About(this->videoMode,"ABOUT");
+
+                int x = mainMenu->MainMenuPressed();
+                if(x==0){
+                    while(Play.isOpen())
+                    {
+                        Event aevent;
+                        while(Play.pollEvent(aevent)){
+                            if(aevent.type==Event::Closed)
+                            {
+                                Play.close();
+
+                            }
+                            if(aevent.type==Event::KeyPressed){
+                                if(aevent.key.code==Keyboard::Escape){
+                                    Play.close();
+                                }
+                            }
+                        }
+                        Options.close();
+                        About.close();
+                        Play.clear();
+                        Play.display();
+
+                    }
+                }
+                if(x==1){
+                    while(Options.isOpen())
+                    {
+                        Event aevent;
+                        while(Play.pollEvent(aevent)){
+                            if(aevent.type==Event::Closed)
+                            {
+                                Options.close();
+
+                            }
+                            if(aevent.type==Event::KeyPressed){
+                                if(aevent.key.code==Keyboard::Escape){
+                                    Options.close();
+                                }
+                            }
+                        }
+                        Play.close();
+                        About.close();
+                        Options.clear();
+                        Options.display();
+
+                    }
+                }
+                if(x==2){
+                    while(About.isOpen())
+                    {
+                        Event aevent;
+                        while(About.pollEvent(aevent)){
+                            if(aevent.type==Event::Closed)
+                            {
+                                About.close();
+
+                            }
+                            if(aevent.type==Event::KeyPressed){
+                                if(aevent.key.code==Keyboard::Escape){
+                                    About.close();
+                                }
+                            }
+                        }
+                        Options.close();
+                        Play.close();
+                        About.clear();
+                        About.display();
+
+                    }
+                }
+                if(x==3)
+                    this->window->close();
+                break;
+
+            }
+        }
+
     }
+    this->window->clear();
+    this->mainMenu->draw(this->window);
+    this->window->display();
 }
 
 void Game::update(){
@@ -61,7 +160,7 @@ void Game::update(){
 }
 
 void Game::render(){
-
+//    this->window->draw();
 
     //Draw Game object
     this->window->display();

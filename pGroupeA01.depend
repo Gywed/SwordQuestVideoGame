@@ -889,7 +889,7 @@
 1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Weapon.cpp
 	"Weapon.h"
 
-1667175295 source:/home/nathant/Bureau/ProjetC/pGroupeA01/main.cpp
+1667221855 source:/home/nathant/Bureau/ProjetC/pGroupeA01/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<math.h>
@@ -1306,12 +1306,13 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1667175662 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Game.h
+1667224489 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Audio.hpp>
 	<SFML/Network.hpp>
+	"MainMenu.h"
 
 1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio.hpp
 	<SFML/System.hpp>
@@ -1492,6 +1493,14 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1667221288 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Game.cpp
+1667224607 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Game.cpp
 	"Game.h"
+	"MainMenu.h"
+
+1667224600 /home/nathant/Bureau/ProjetC/pGroupeA01/include/MainMenu.h
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1667224598 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/MainMenu.cpp
+	"MainMenu.h"
 
