@@ -10,12 +10,19 @@ using namespace sf;
 class MainMenu
 {
     private:
+        //Variable
         int MainMenuSelected=0;
         Font font;
         Text mainMenu[Max_main_menu];
+        Sprite mMenu[Max_main_menu];
+        RectangleShape background;
+        Texture mainTexture;
+        Texture btnTexture[8];
+
 
 
     public:
+        //Constructors
         MainMenu(float width,float height);
         virtual ~MainMenu();
         MainMenu(const MainMenu& other);

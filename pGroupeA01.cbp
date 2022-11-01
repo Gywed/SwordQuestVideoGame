@@ -43,6 +43,7 @@
 		</Linker>
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/MainMenu.h" />
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/Sword.h" />
@@ -50,6 +51,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/MainMenu.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/Sword.cpp" />

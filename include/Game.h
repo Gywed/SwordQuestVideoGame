@@ -26,6 +26,7 @@ class Game
 
 
     public:
+        //Constructors
         Game();
         virtual ~Game();
         Game(const Game& other);

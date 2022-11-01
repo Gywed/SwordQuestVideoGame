@@ -6,6 +6,7 @@ void Game::initializeViariable(){
 }
 
 void Game::initWindow(){
+    //videoMode used if we are not in fullscreen
     this->videoMode.height=600;
     this->videoMode.width=800;
     this->window = new sf::RenderWindow(this->videoMode, "SwordQuest",sf::Style::Titlebar | sf::Style::Fullscreen);
@@ -18,7 +19,7 @@ Game::Game()
     this->initializeViariable();
     this->initWindow();
     this->mainMenu = new MainMenu(this->window->getSize().x,this->window->getSize().y);
-//    this->mainMenu(this->window->getSize().x,this->window->getSize().y);
+
 }
 
 Game::~Game()
@@ -49,18 +50,22 @@ const bool Game::running()const{
 
 // Function
 void Game::pollEvents(){
+    //Set up Event on key pressed
     while(this->window->pollEvent(this->ev))
     {
 
         if(this->ev.type==sf::Event::Closed)
             this->window->close();
 
+        //Escape to close the window
+        // Will be deleted later
         if(this->ev.type==sf::Event::KeyPressed)
             if(this->ev.key.code==sf::Keyboard::Escape)
                 this->window->close();
 
         if(this->ev.type==Event::KeyReleased)
         {
+            // Moving in the menu
             if(this->ev.key.code==Keyboard::Up){
                 this->mainMenu->MoveUp();
                 break;
@@ -70,6 +75,9 @@ void Game::pollEvents(){
                 break;
             }
             if(this->ev.key.code==Keyboard::Return){
+                // Creating window for each option in the menu
+                // Will be changed later in Frame
+                // Because window are not optimized
                 RenderWindow Play(this->videoMode,"SwordQuest");
                 RenderWindow Options(this->videoMode,"OPTIONS");
                 RenderWindow About(this->videoMode,"ABOUT");
