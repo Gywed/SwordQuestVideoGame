@@ -8,17 +8,34 @@ Character::Character()
 Character::~Character()
 {
     //dtor
+    for (Weapon* weapon : weapons)
+        delete weapon;
 }
 
 Character::Character(const Character& other)
 {
     //copy ctor
+    this->HP = other.HP;
+
+    for (Weapon* weapon : other.weapons)
+    {
+        this->weapons.push_back(new Weapon(*weapon));
+    }
 }
 
 Character& Character::operator=(const Character& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
+
+    this->HP = rhs.HP;
+
+    for (Weapon* weapon : weapons)
+        delete weapon;
+    for (Weapon* weapon : rhs.weapons)
+    {
+        this->weapons.push_back(new Weapon(*weapon));
+    }
+
     return *this;
 }
 
