@@ -14,6 +14,9 @@ class Sword : public Weapon
     protected:
 
     private:
+        int cooldown;
+        float range;
+
 };
 
 #endif // SWORD_H
