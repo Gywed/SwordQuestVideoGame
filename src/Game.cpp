@@ -175,3 +175,13 @@ void Game::render(){
     //Draw Game object
     this->window->display();
 }
+
+void Game::run(){
+    while(this->window->isOpen())
+    {
+
+        update();
+
+        render();
+    }
+}

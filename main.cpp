@@ -2,44 +2,23 @@
 //#include <SFML/Window.hpp>
 //#include <SFML/Audio.hpp>
 //#include <SFML/Network.hpp>
-//
-//
-//int main()
-//{
-//    // Create the main window
-//    sf::RenderWindow app(sf::VideoMode(800, 600), "SwordQuest");
-//
-//    // Load a sprite to display
-//    sf::Texture texture;
-////    if (!texture.loadFromFile("Link.png"))
-////        return EXIT_FAILURE;
-//    texture.loadFromFile("images/Link.png");
-//    sf::Sprite sprite(texture);
-//
-//	// Start the game loop
-//    while (app.isOpen())
-//    {
-//        // Process events
-//        sf::Event event;
-//        while (app.pollEvent(event))
-//        {
-//            // Close window : exit
-//            if (event.type == sf::Event::Closed)
-//                app.close();
-//        }
-//
-//        // Clear screen
-//        app.clear();
-//
-//        // Draw the sprite
-//        app.draw(sprite);
-//
-//        // Update the window
-//        app.display();
-//    }
-//
-//    return EXIT_SUCCESS;
-//}
+
+
+// Size of Sprite
+//#define Sprite_Width 96
+//#define Sprite_Height 104
+
+// Define not moving sprite for each position
+//#define Sprite_Right 312
+//#define Sprite_Left 104
+//#define Sprite_Back 208
+//#define Sprite_Front 0
+
+// Define moving sprite for each position
+//#define Sprite_Right_Moving 728
+//#define Sprite_Left_Moving 520
+//#define Sprite_Back_Moving 624
+//#define Sprite_Front_Moving 416
 
 // Demonstrate creating a spritesheet
 //#include "SFML/Graphics.hpp"
@@ -49,9 +28,9 @@
 //
 //  sf::Event event;
 //  sf::Texture texture;
-//  texture.loadFromFile("images/Link.png");
+//  texture.loadFromFile("images/SpriteSheet.png");
 //
-//  sf::IntRect rectSourceSprite(0, 0, 100, 100);
+//  sf::IntRect rectSourceSprite(0, 0, Sprite_Width, Sprite_Height);
 //  sf::Sprite sprite(texture,rectSourceSprite);
 //  sf::Clock clock;
 //
@@ -61,11 +40,11 @@
 //        renderWindow.close();
 //    }
 //
-//    if (clock.getElapsedTime().asSeconds() > 1.0f){
-//      if (rectSourceSprite.left == 600)
+//    if (clock.getElapsedTime().asSeconds() > 3.0f){
+//      if (rectSourceSprite.left == 192)
 //        rectSourceSprite.left = 0;
 //      else
-//        rectSourceSprite.left += 300;
+//        rectSourceSprite.left += 96;
 //
 //      sprite.setTextureRect(rectSourceSprite);
 //      clock.restart();
@@ -79,24 +58,16 @@
 //}
 
 
-//
-//
-///*!
-// * \file    main.cpp
-// * \brief   move a sprite with the keyboard (https://www.lucidarme.me/?p=6127)
-// * \author  Philippe Lucidarme
-// * \version 1.0
-// * \date    12/18/2016
-// */
+
 
 // SFML libraries
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <math.h>
-
-// Sprite speed (high values = high speed)
-#define         SPRITE_SPEED        5
-
+//#include <SFML/Graphics.hpp>
+//#include <iostream>
+//#include <math.h>
+//
+//// Sprite speed (high values = high speed)
+//#define         SPRITE_SPEED        5
+//
 //int main()
 //{
 //    // _____________________
@@ -122,7 +93,7 @@
 //
 //    // Create texture from PNG file
 //    sf::Texture texture;
-//    if (!texture.loadFromFile("images/Link.png"))
+//    if (!texture.loadFromFile("images/SpriteSheet.png"))
 //    {
 //        std::cerr << "Error while loading texture" << std::endl;
 //        return -1;
@@ -135,8 +106,10 @@
 //    // ::: Create sprite and apply texture :::
 //
 //    // Create the sprite and apply the texture
-//    sf::Sprite sprite;
-//    sprite.setTexture(texture);
+//    sf::IntRect rectSourceSprite(0, Sprite_Front, Sprite_Width, Sprite_Height);
+//    sf::Sprite sprite(texture,rectSourceSprite);
+////    sf::Sprite sprite;
+////    sprite.setTexture(texture);
 //    sprite.setScale(.8,.8);
 //    sf::FloatRect spriteSize=sprite.getGlobalBounds();
 //
@@ -156,6 +129,7 @@
 //    bool rightFlag=false;
 //
 //    sf::Clock timer;
+////    int left;
 //    while (window.isOpen())
 //    {
 //        // Process events
@@ -174,12 +148,36 @@
 //                case  sf::Keyboard::Escape : window.close(); break;
 //
 //                // Process the up, down, left and right keys
-//                case sf::Keyboard::Up :     upFlag=true; break;
+////                case sf::Keyboard::Up :     upFlag=true; break;
+//                case sf::Keyboard::Up:
+//                    upFlag=true;
+//                    rectSourceSprite.top = Sprite_Back_Moving;
+//                    sprite.setTextureRect(rectSourceSprite);
+////                    while(event.type == sf::Event::KeyPressed){
+////                        if (timer.getElapsedTime().asSeconds() > 1.0f){
+////
+////                          if (rectSourceSprite.left == 864)
+////                            rectSourceSprite.left=0;
+////                          else
+////                            rectSourceSprite.left+=96;
+////
+////                          sprite.setTextureRect(rectSourceSprite);
+////                          timer.restart();
+////                        }
+////                    }
+//
+//
+//                    break;
+//
+//
+//
 //                case sf::Keyboard::Down:    downFlag=true; break;
 //                case sf::Keyboard::Left:    leftFlag=true; break;
 //                case sf::Keyboard::Right:   rightFlag=true; break;
 //                default : break;
 //                }
+//
+//
 //            }
 //
 //            // If a key is released
@@ -188,20 +186,36 @@
 //                switch (event.key.code)
 //                {
 //                // Process the up, down, left and right keys
-//                case sf::Keyboard::Up :     upFlag=false; break;
-//                case sf::Keyboard::Down:    downFlag=false; break;
-//                case sf::Keyboard::Left:    leftFlag=false; break;
-//                case sf::Keyboard::Right:   rightFlag=false; break;
+//                case sf::Keyboard::Up :     upFlag=false; rectSourceSprite.top=Sprite_Back; break;
+//                case sf::Keyboard::Down:    downFlag=false; rectSourceSprite.top=Sprite_Front; break;
+//                case sf::Keyboard::Left:    leftFlag=false; rectSourceSprite.top=Sprite_Left;break;
+//                case sf::Keyboard::Right:   rightFlag=false; rectSourceSprite.top=Sprite_Right;break;
 //                default : break;
 //                }
+//                sprite.setTextureRect(rectSourceSprite);
 //            }
 //        }
 //
 //        // Update coordinates
-//        if (leftFlag) x-=SPRITE_SPEED;
-//        if (rightFlag) x+=SPRITE_SPEED;
-//        if (upFlag) y-=SPRITE_SPEED;
-//        if (downFlag) y+=SPRITE_SPEED;
+//        if (leftFlag){
+//            x-=SPRITE_SPEED;
+////            sprite.setTextureRect(sf::IntRect(0, Sprite_Left, Sprite_Width, Sprite_Height));
+//
+//        }
+//        if (rightFlag){
+//            x+=SPRITE_SPEED;
+////            sprite.setTextureRect(sf::IntRect(0, Sprite_Right, Sprite_Width, Sprite_Height));
+//        }
+//        if (upFlag){
+//            y-=SPRITE_SPEED;
+////            sprite.setTextureRect(sf::IntRect(0, Sprite_Back, Sprite_Width, Sprite_Height));
+//
+//
+//        }
+//        if (downFlag){
+//            y+=SPRITE_SPEED;
+////            sprite.setTextureRect(sf::IntRect(0, Sprite_Front, Sprite_Width, Sprite_Height));
+//        }
 //
 //        // Check screen boundaries
 //        if (x<0) x=0;
@@ -222,6 +236,12 @@
 //    }
 //    return 0;
 //}
+
+
+
+
+
+
 #include <iostream>
 #include "Game.h"
 #include "Character.h"
@@ -233,14 +253,8 @@ int main()
     Character c;
     cout<<c.str();
     Game game;
+    game.run();
 
-    while(game.running())
-    {
-
-        game.update();
-
-        game.render();
-    }
 
     return 0;
 }
