@@ -4,7 +4,7 @@
 class Weapon
 {
     public:
-        Weapon(int cooldown = 500, float range = 1.0);
+        Weapon(int cooldown = 0, float range = 0.0);
         virtual ~Weapon();
         Weapon(const Weapon& other);
         Weapon& operator=(const Weapon& other);

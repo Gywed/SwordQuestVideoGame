@@ -6,16 +6,14 @@
 class Sword : public Weapon
 {
     public:
-        Sword();
+        Sword(int cooldown = 500, float range = 1.0);
         virtual ~Sword();
         Sword(const Sword& other);
         Sword& operator=(const Sword& other);
 
-    protected:
+        int attack();
 
     private:
-        int cooldown;
-        float range;
 
 };
 
