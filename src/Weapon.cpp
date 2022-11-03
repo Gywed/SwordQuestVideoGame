@@ -33,7 +33,7 @@ Weapon& Weapon::operator=(const Weapon& rhs)
 }
 
 
-Weapon::attack(){}
+void Weapon::attack(){}
 
 int Weapon::getCompteur()
 {

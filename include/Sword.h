@@ -11,7 +11,7 @@ class Sword : public Weapon
         Sword(const Sword& other);
         Sword& operator=(const Sword& other);
 
-        int attack();
+        void attack();
 
     private:
 

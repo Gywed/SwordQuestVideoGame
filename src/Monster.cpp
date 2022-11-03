@@ -30,7 +30,7 @@ Monster& Monster::operator=(const Monster& rhs)
     return *this;
 }
 
-Monster::attack(){}
+void Monster::attack(){}
 
 int Monster::getCompteur()
 {

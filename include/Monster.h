@@ -10,7 +10,7 @@ class Monster
         Monster(const Monster& other);
         Monster& operator=(const Monster& other);
 
-        virtual attack();
+        virtual void attack();
 
         static int getCompteur();
 

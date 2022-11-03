@@ -23,7 +23,7 @@ Sword& Sword::operator=(const Sword& rhs)
     return *this;
 }
 
-int Sword::attack()
+void Sword::attack()
 {
-    return 666;
+
 }
