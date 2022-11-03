@@ -7,6 +7,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include "MainMenu.h"
+#include "PlayScreen.h"
+#include "cScreen.h"
 
 class Game
 {
@@ -17,7 +19,10 @@ class Game
         sf::RenderWindow* window;
         sf::VideoMode videoMode;
         sf::Event ev;
-        MainMenu* mainMenu;
+        MainMenu mainMenu;
+        PlayScreen playScreen;
+        std::vector<cScreen*> Screens;
+        int screen = 0;
 
 
         //Private Functions

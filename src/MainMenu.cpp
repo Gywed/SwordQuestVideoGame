@@ -1,73 +1,11 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(float width,float height)
+MainMenu::MainMenu(void)
 {
-    //ctor
-    // Set Font
-    if(!font.loadFromFile("Fonts/GrinchedRegular.otf")){
-        cout << "No Font is here";
-    }
-
-    //Set the background
-    this->background.setSize(Vector2f(1920,1080));
-    this->mainTexture.loadFromFile("images/MainMenu/background.png");
-    this->background.setTexture(&mainTexture);
-
-
-    //Set all images for each Button
-    btnTexture[0].loadFromFile("images/MainMenu/btnPlay.png");
-    btnTexture[1].loadFromFile("images/MainMenu/btnOption.png");
-    btnTexture[2].loadFromFile("images/MainMenu/btnAbout.png");
-    btnTexture[3].loadFromFile("images/MainMenu/btnExit.png");
-    btnTexture[4].loadFromFile("images/MainMenu/btnPlayHover.png");
-    btnTexture[5].loadFromFile("images/MainMenu/btnOptionHover.png");
-    btnTexture[6].loadFromFile("images/MainMenu/btnAboutHover.png");
-    btnTexture[7].loadFromFile("images/MainMenu/btnExitHover.png");
-
-    //Button Play
-    mMenu[0].setTexture(btnTexture[0]);
-    mMenu[0].setPosition(750,400);
-
-    //Button Option
-    mMenu[1].setTexture(btnTexture[1]);
-    mMenu[1].setPosition(750,500);
-
-    //Button About
-    mMenu[2].setTexture(btnTexture[2]);
-    mMenu[2].setPosition(750,600);
-
-    //Button Exit
-    mMenu[3].setTexture(btnTexture[3]);
-    mMenu[3].setPosition(750,700);
-
-    //Old Menu Text
-    //Play
-//    mainMenu[0].setFont(font);
-//    mainMenu[0].setFillColor(Color::Black);
-//    mainMenu[0].setString("Play");
-//    mainMenu[0].setCharacterSize(70);
-//    mainMenu[0].setPosition(800,400);
-
-    //Options
-//    mainMenu[1].setFont(font);
-//    mainMenu[1].setFillColor(Color::Black);
-//    mainMenu[1].setString("Options");
-//    mainMenu[1].setCharacterSize(70);
-//    mainMenu[1].setPosition(800,500);
-
-    //About
-//    mainMenu[2].setFont(font);
-//    mainMenu[2].setFillColor(Color::Black);
-//    mainMenu[2].setString("About");
-//    mainMenu[2].setCharacterSize(70);
-//    mainMenu[2].setPosition(800,600);
-
-    //Exit
-//    mainMenu[3].setFont(font);
-//    mainMenu[3].setFillColor(Color::Black);
-//    mainMenu[3].setString("Exit");
-//    mainMenu[3].setCharacterSize(70);
-//    mainMenu[3].setPosition(800,700);
+    isPlay=false;
+    isOption=false;
+    isAbout=false;
+    isQuit=false;
 }
 
 MainMenu::~MainMenu()
@@ -105,6 +43,10 @@ void MainMenu::draw(RenderWindow* window){
 //    window->draw(mMenu);
 }
 
+void MainMenu::clear(RenderWindow* window){
+    window->clear();
+}
+
 //Move up in Menu
 void MainMenu::MoveUp(){
     if(MainMenuSelected-1>=0){
@@ -129,5 +71,112 @@ void MainMenu::MoveDown(){
 //        mainMenu[MainMenuSelected].setFillColor(Color::Yellow);
         mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected]);
     }
+}
+
+int MainMenu::Run(sf::RenderWindow *App){
+
+    sf::Event ev;
+    bool Running = true;
+
+    // Set Font
+    if(!font.loadFromFile("Fonts/GrinchedRegular.otf")){
+        cout << "No Font is here";
+    }
+
+    //Set the background
+    this->background.setSize(Vector2f(1920,1080));
+    this->mainTexture.loadFromFile("images/MainMenu/background.png");
+    this->background.setTexture(&mainTexture);
+
+
+    //Set all images for each Button
+    btnTexture[0].loadFromFile("images/MainMenu/btnPlay.png");
+    btnTexture[1].loadFromFile("images/MainMenu/btnOption.png");
+    btnTexture[2].loadFromFile("images/MainMenu/btnAbout.png");
+    btnTexture[3].loadFromFile("images/MainMenu/btnExit.png");
+    btnTexture[4].loadFromFile("images/MainMenu/btnPlayHover.png");
+    btnTexture[5].loadFromFile("images/MainMenu/btnOptionHover.png");
+    btnTexture[6].loadFromFile("images/MainMenu/btnAboutHover.png");
+    btnTexture[7].loadFromFile("images/MainMenu/btnExitHover.png");
+
+    //Button Play
+    mMenu[0].setTexture(btnTexture[0]);
+    mMenu[0].setPosition(750,400);
+
+    //Button Option
+    mMenu[1].setTexture(btnTexture[1]);
+    mMenu[1].setPosition(750,500);
+
+    //Button About
+    mMenu[2].setTexture(btnTexture[2]);
+    mMenu[2].setPosition(750,600);
+
+    //Button Exit
+    mMenu[3].setTexture(btnTexture[3]);
+    mMenu[3].setPosition(750,700);
+
+
+
+    while(Running){
+        //Verifying events
+        while(App->pollEvent(ev)){
+
+            //Window closed
+            if(ev.type==sf::Event::Closed) return -1;
+
+
+            //Escape to close the window
+            // Will be deleted later
+            if(ev.type==sf::Event::KeyPressed)
+                if(ev.key.code==sf::Keyboard::Escape){
+                        App->close();
+                        return (-1);
+                }
+
+
+
+
+            if(ev.type==sf::Event::KeyReleased)
+            {
+                // Moving in the menu
+                if(ev.key.code==sf::Keyboard::Up){
+                    MoveUp();
+                    break;
+                }
+                if(ev.key.code==sf::Keyboard::Down){
+                    MoveDown();
+                    break;
+                }
+
+                if(ev.key.code==sf::Keyboard::Return){
+                    int menu = MainMenuPressed();
+                    cout<<menu<<endl;
+                    if(menu==0){
+                        isPlay=true;
+                        return (1);
+                    }
+                    else if(menu==1){
+                        isOption=true;
+                        return (2);
+                    }
+                    else if(menu==2){
+                        isAbout=true;
+                        return (3);
+                    }
+                    else{
+                        App->close();
+                        return (-1);
+                    }
+                    break;
+                }
+
+            }
+        }
+
+        App->clear();
+        draw(App);
+        App->display();
+    }
+    return (-1);
 }
 

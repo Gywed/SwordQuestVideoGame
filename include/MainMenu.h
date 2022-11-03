@@ -4,10 +4,11 @@
 #include <iostream>
 using namespace std;
 using namespace sf;
+#include "cScreen.h"
 
 #define Max_main_menu 4
 
-class MainMenu
+class MainMenu:public cScreen
 {
     private:
         //Variable
@@ -19,17 +20,24 @@ class MainMenu
         Texture mainTexture;
         Texture btnTexture[8];
 
+        bool isPlay;
+        bool isOption;
+        bool isAbout;
+        bool isQuit;
+
 
 
     public:
         //Constructors
-        MainMenu(float width,float height);
+        MainMenu(void);
         virtual ~MainMenu();
         MainMenu(const MainMenu& other);
         MainMenu& operator=(const MainMenu& other);
+        virtual int Run(sf::RenderWindow *App);
 
         //Public Functions
         void draw(RenderWindow* window);
+        void clear(RenderWindow* window);
         void MoveUp();
         void MoveDown();
 

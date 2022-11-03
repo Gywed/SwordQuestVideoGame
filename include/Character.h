@@ -17,6 +17,11 @@ class Character
         Character& operator=(const Character& other);
         string str() const;
 
+        void getDamaged(int damage);
+
+        void setHP(int newHP);
+        int getHP() const;
+
     protected:
 
     private:

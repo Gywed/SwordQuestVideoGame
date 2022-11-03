@@ -45,17 +45,21 @@
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/MainMenu.h" />
 		<Unit filename="include/Monster.h" />
+		<Unit filename="include/PlayScreen.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/Sword.h" />
 		<Unit filename="include/Weapon.h" />
+		<Unit filename="include/cScreen.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/MainMenu.cpp" />
 		<Unit filename="src/Monster.cpp" />
+		<Unit filename="src/PlayScreen.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/Sword.cpp" />
 		<Unit filename="src/Weapon.cpp" />
+		<Unit filename="src/cScreen.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
