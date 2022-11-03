@@ -828,17 +828,15 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-<<<<<<< HEAD
-1666946592 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/Character.cpp
-	"Character.h"
+1539888612 D
 
-1666946592 /home/kiryujin/CodeBlocks/pGroupeA01/include/Character.h
-=======
 1667491605 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/Character.cpp
+	"Character.h"
 	"Character.h"
 
 1667491180 /home/kiryujin/CodeBlocks/pGroupeA01/include/Character.h
->>>>>>> origin/dev
+
+1667491180 gin/dev
 	<vector>
 	<Weapon.h>
 	<string>
@@ -878,34 +876,40 @@
 1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Character.cpp
 	"Character.h"
 
-1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Character.h
+1667497332 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Character.h
 	<vector>
 	<Weapon.h>
 	<string>
 	<sstream>
 
-1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Weapon.h
+1667497648 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Weapon.h
+	<vector>
+	<Monster.h>
 
-1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Monster.cpp
+1667497332 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Monster.cpp
 	"Monster.h"
+	<Character.h>
 
-1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Monster.h
+1667497332 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Monster.h
 
-1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Room.cpp
+1667497332 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Room.cpp
 	"Room.h"
 
-1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Room.h
+1667497332 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Room.h
+	<vector>
+	<Character.h>
+	<Monster.h>
 
-1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Sword.cpp
+1667497704 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Sword.cpp
 	"Sword.h"
 
-1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Sword.h
+1667497659 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Sword.h
 	<Weapon.h>
 
-1667173897 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Weapon.cpp
+1667497687 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Weapon.cpp
 	"Weapon.h"
 
-1667414642 source:/home/nathant/Bureau/ProjetC/pGroupeA01/main.cpp
+1667421630 source:/home/nathant/Bureau/ProjetC/pGroupeA01/main.cpp
 	<iostream>
 	"Game.h"
 	"Character.h"
@@ -1319,13 +1323,15 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1667414693 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Game.h
+1667497016 /home/nathant/Bureau/ProjetC/pGroupeA01/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Audio.hpp>
 	<SFML/Network.hpp>
 	"MainMenu.h"
+	"PlayScreen.h"
+	"cScreen.h"
 
 1667173897 /home/nathant/Bureau/ProjetC/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio.hpp
 	<SFML/System.hpp>
@@ -1506,18 +1512,31 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1667312004 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Game.cpp
+1667497016 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/Game.cpp
 	"Game.h"
 	"MainMenu.h"
 
-1667312004 /home/nathant/Bureau/ProjetC/pGroupeA01/include/MainMenu.h
+1667497016 /home/nathant/Bureau/ProjetC/pGroupeA01/include/MainMenu.h
 	<SFML/Graphics.hpp>
 	<iostream>
+	"cScreen.h"
 
-1667312004 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/MainMenu.cpp
+1667497016 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/MainMenu.cpp
 	"MainMenu.h"
 
 1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/Game.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Network.hpp>
+	"MainMenu.h"
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Network.hpp>
+	"MainMenu.h"
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
@@ -1540,190 +1559,20 @@
 	<SFML/Audio/SoundRecorder.hpp>
 	<SFML/Audio/SoundSource.hpp>
 	<SFML/Audio/SoundStream.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/InputSoundFile.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<algorithm>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Export.hpp
-	<SFML/Config.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Listener.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/System/Vector3.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Music.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundStream.hpp>
+	<SFML/System.hpp>
 	<SFML/Audio/InputSoundFile.hpp>
-	<SFML/System/Mutex.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundStream.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundSource.hpp>
-	<SFML/System/Thread.hpp>
-	<SFML/System/Time.hpp>
-	<SFML/System/Mutex.hpp>
-	<cstdlib>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundSource.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
-	<SFML/System/Vector3.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/AlResource.hpp
-	<SFML/Audio/Export.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/OutputSoundFile.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Sound.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundSource.hpp>
-	<SFML/System/Time.hpp>
-	<cstdlib>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundBuffer.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<vector>
-	<set>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundBufferRecorder.hpp
-	<SFML/Audio/Export.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
 	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
 	<SFML/Audio/SoundRecorder.hpp>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundRecorder.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
-	<SFML/System/Thread.hpp>
-	<SFML/System/Time.hpp>
-	<vector>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-	<vector>
-	<SFML/Audio/SoundFileFactory.inl>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.inl
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileReader.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network.hpp
-	<SFML/System.hpp>
-	<SFML/Network/Ftp.hpp>
-	<SFML/Network/Http.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<SFML/Network/Packet.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/SocketHandle.hpp>
-	<SFML/Network/SocketSelector.hpp>
-	<SFML/Network/TcpListener.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/Network/UdpSocket.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Ftp.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Export.hpp
-	<SFML/Config.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpSocket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/System/Time.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Socket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/SocketHandle.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketHandle.hpp
-	<SFML/Config.hpp>
-	<basetsd.h>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Http.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<SFML/System/Time.hpp>
-	<map>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/IpAddress.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/System/Time.hpp>
-	<istream>
-	<ostream>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Packet.hpp
-	<SFML/Network/Export.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketSelector.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/System/Time.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpListener.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/IpAddress.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/UdpSocket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<vector>
-
-1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/MainMenu.h
-	<SFML/Graphics.hpp>
-	<iostream>
-
-1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/Game.cpp
-	"Game.h"
-	"MainMenu.h"
-
-1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/MainMenu.cpp
-	"MainMenu.h"
-
-1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/Game.h
-	<SFML/Graphics.hpp>
-	<SFML/System.hpp>
-	<SFML/Window.hpp>
-	<SFML/Audio.hpp>
-	<SFML/Network.hpp>
-	"MainMenu.h"
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio.hpp
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
 	<SFML/System.hpp>
 	<SFML/Audio/InputSoundFile.hpp>
 	<SFML/Audio/Listener.hpp>
@@ -1745,199 +1594,11 @@
 	<SFML/System/Time.hpp>
 	<string>
 	<algorithm>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Export.hpp
-	<SFML/Config.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Listener.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/System/Vector3.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Music.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundStream.hpp>
-	<SFML/Audio/InputSoundFile.hpp>
-	<SFML/System/Mutex.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundStream.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundSource.hpp>
-	<SFML/System/Thread.hpp>
-	<SFML/System/Time.hpp>
-	<SFML/System/Mutex.hpp>
-	<cstdlib>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundSource.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
-	<SFML/System/Vector3.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/AlResource.hpp
-	<SFML/Audio/Export.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/OutputSoundFile.hpp
 	<SFML/Audio/Export.hpp>
 	<SFML/System/NonCopyable.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Sound.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundSource.hpp>
-	<SFML/System/Time.hpp>
-	<cstdlib>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundBuffer.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
 	<SFML/System/Time.hpp>
 	<string>
-	<vector>
-	<set>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundBufferRecorder.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/SoundBuffer.hpp>
-	<SFML/Audio/SoundRecorder.hpp>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundRecorder.hpp
-	<SFML/Audio/Export.hpp>
-	<SFML/Audio/AlResource.hpp>
-	<SFML/System/Thread.hpp>
-	<SFML/System/Time.hpp>
-	<vector>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-	<vector>
-	<SFML/Audio/SoundFileFactory.inl>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.inl
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileReader.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp
-	<SFML/Audio/Export.hpp>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network.hpp
-	<SFML/System.hpp>
-	<SFML/Network/Ftp.hpp>
-	<SFML/Network/Http.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<SFML/Network/Packet.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/SocketHandle.hpp>
-	<SFML/Network/SocketSelector.hpp>
-	<SFML/Network/TcpListener.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/Network/UdpSocket.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Ftp.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<SFML/System/Time.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Export.hpp
-	<SFML/Config.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpSocket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/System/Time.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Socket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/SocketHandle.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketHandle.hpp
-	<SFML/Config.hpp>
-	<basetsd.h>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Http.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<SFML/Network/TcpSocket.hpp>
-	<SFML/System/NonCopyable.hpp>
-	<SFML/System/Time.hpp>
-	<map>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/IpAddress.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/System/Time.hpp>
-	<istream>
-	<ostream>
-	<string>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Packet.hpp
-	<SFML/Network/Export.hpp>
-	<string>
-	<vector>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketSelector.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/System/Time.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpListener.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/IpAddress.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/UdpSocket.hpp
-	<SFML/Network/Export.hpp>
-	<SFML/Network/Socket.hpp>
-	<SFML/Network/IpAddress.hpp>
-	<vector>
-
-1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/MainMenu.h
-	<SFML/Graphics.hpp>
-	<iostream>
-
-1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/Game.cpp
-	"Game.h"
-	"MainMenu.h"
-
-1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/MainMenu.cpp
-	"MainMenu.h"
-
-1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/Game.h
-	<SFML/Graphics.hpp>
-	<SFML/System.hpp>
-	<SFML/Window.hpp>
-	<SFML/Audio.hpp>
-	<SFML/Network.hpp>
-	"MainMenu.h"
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio.hpp
-	<SFML/System.hpp>
-	<SFML/Audio/InputSoundFile.hpp>
-	<SFML/Audio/Listener.hpp>
-	<SFML/Audio/Music.hpp>
-	<SFML/Audio/OutputSoundFile.hpp>
-	<SFML/Audio/Sound.hpp>
-	<SFML/Audio/SoundBuffer.hpp>
-	<SFML/Audio/SoundBufferRecorder.hpp>
-	<SFML/Audio/SoundFileFactory.hpp>
-	<SFML/Audio/SoundFileReader.hpp>
-	<SFML/Audio/SoundFileWriter.hpp>
-	<SFML/Audio/SoundRecorder.hpp>
-	<SFML/Audio/SoundSource.hpp>
-	<SFML/Audio/SoundStream.hpp>
-
-1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/InputSoundFile.hpp
+	<algorithm>
 	<SFML/Audio/Export.hpp>
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
@@ -1946,12 +1607,32 @@
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Export.hpp
 	<SFML/Config.hpp>
+	<SFML/Config.hpp>
+	<SFML/Config.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Listener.hpp
 	<SFML/Audio/Export.hpp>
 	<SFML/System/Vector3.hpp>
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
 	<SFML/Audio/Export.hpp>
 	<SFML/Audio/SoundStream.hpp>
 	<SFML/Audio/InputSoundFile.hpp>
@@ -1967,21 +1648,55 @@
 	<SFML/System/Time.hpp>
 	<SFML/System/Mutex.hpp>
 	<cstdlib>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundSource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
 	<SFML/Audio/Export.hpp>
 	<SFML/Audio/AlResource.hpp>
 	<SFML/System/Vector3.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/AlResource.hpp
 	<SFML/Audio/Export.hpp>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/Export.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/OutputSoundFile.hpp
 	<SFML/Audio/Export.hpp>
 	<SFML/System/NonCopyable.hpp>
 	<string>
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/Sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
 	<SFML/Audio/Export.hpp>
 	<SFML/Audio/SoundSource.hpp>
 	<SFML/System/Time.hpp>
@@ -1994,8 +1709,28 @@
 	<string>
 	<vector>
 	<set>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundBufferRecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
 	<SFML/Audio/Export.hpp>
 	<SFML/Audio/SoundBuffer.hpp>
 	<SFML/Audio/SoundRecorder.hpp>
@@ -2008,8 +1743,28 @@
 	<SFML/System/Time.hpp>
 	<vector>
 	<string>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
 	<SFML/Audio/Export.hpp>
 	<string>
 	<vector>
@@ -2020,12 +1775,42 @@
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileReader.hpp
 	<SFML/Audio/Export.hpp>
 	<string>
+	<SFML/Audio/Export.hpp>
+	<string>
+	<SFML/Audio/Export.hpp>
+	<string>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp
 	<SFML/Audio/Export.hpp>
 	<string>
+	<SFML/Audio/Export.hpp>
+	<string>
+	<SFML/Audio/Export.hpp>
+	<string>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network.hpp
+	<SFML/System.hpp>
+	<SFML/Network/Ftp.hpp>
+	<SFML/Network/Http.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<SFML/Network/Packet.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/SocketHandle.hpp>
+	<SFML/Network/SocketSelector.hpp>
+	<SFML/Network/TcpListener.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/Network/UdpSocket.hpp>
+	<SFML/System.hpp>
+	<SFML/Network/Ftp.hpp>
+	<SFML/Network/Http.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<SFML/Network/Packet.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/SocketHandle.hpp>
+	<SFML/Network/SocketSelector.hpp>
+	<SFML/Network/TcpListener.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/Network/UdpSocket.hpp>
 	<SFML/System.hpp>
 	<SFML/Network/Ftp.hpp>
 	<SFML/Network/Http.hpp>
@@ -2045,11 +1830,31 @@
 	<SFML/System/Time.hpp>
 	<string>
 	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Export.hpp
 	<SFML/Config.hpp>
+	<SFML/Config.hpp>
+	<SFML/Config.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpSocket.hpp
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/System/Time.hpp>
 	<SFML/Network/Export.hpp>
 	<SFML/Network/Socket.hpp>
 	<SFML/System/Time.hpp>
@@ -2059,12 +1864,38 @@
 	<SFML/Network/SocketHandle.hpp>
 	<SFML/System/NonCopyable.hpp>
 	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/SocketHandle.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/SocketHandle.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<vector>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketHandle.hpp
 	<SFML/Config.hpp>
 	<basetsd.h>
+	<SFML/Config.hpp>
+	<basetsd.h>
+	<SFML/Config.hpp>
+	<basetsd.h>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Http.hpp
+	<SFML/Network/Export.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<map>
+	<string>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<SFML/Network/TcpSocket.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<map>
+	<string>
 	<SFML/Network/Export.hpp>
 	<SFML/Network/IpAddress.hpp>
 	<SFML/Network/TcpSocket.hpp>
@@ -2079,8 +1910,24 @@
 	<istream>
 	<ostream>
 	<string>
+	<SFML/Network/Export.hpp>
+	<SFML/System/Time.hpp>
+	<istream>
+	<ostream>
+	<string>
+	<SFML/Network/Export.hpp>
+	<SFML/System/Time.hpp>
+	<istream>
+	<ostream>
+	<string>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/Packet.hpp
+	<SFML/Network/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Network/Export.hpp>
+	<string>
+	<vector>
 	<SFML/Network/Export.hpp>
 	<string>
 	<vector>
@@ -2088,8 +1935,18 @@
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/SocketSelector.hpp
 	<SFML/Network/Export.hpp>
 	<SFML/System/Time.hpp>
+	<SFML/Network/Export.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Network/Export.hpp>
+	<SFML/System/Time.hpp>
 
 1539888612 /home/kiryujin/CodeBlocks/pGroupeA01/lib/SFML-2.5.1/include/SFML/Network/TcpListener.hpp
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/IpAddress.hpp>
 	<SFML/Network/Export.hpp>
 	<SFML/Network/Socket.hpp>
 	<SFML/Network/IpAddress.hpp>
@@ -2099,15 +1956,51 @@
 	<SFML/Network/Socket.hpp>
 	<SFML/Network/IpAddress.hpp>
 	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<vector>
+	<SFML/Network/Export.hpp>
+	<SFML/Network/Socket.hpp>
+	<SFML/Network/IpAddress.hpp>
+	<vector>
 
 1667403162 /home/kiryujin/CodeBlocks/pGroupeA01/include/MainMenu.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<SFML/Graphics.hpp>
+	<iostream>
 	<SFML/Graphics.hpp>
 	<iostream>
 
 1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/Game.cpp
 	"Game.h"
 	"MainMenu.h"
+	"Game.h"
+	"MainMenu.h"
+	"Game.h"
+	"MainMenu.h"
 
 1667403162 source:/home/kiryujin/CodeBlocks/pGroupeA01/src/MainMenu.cpp
 	"MainMenu.h"
+	"MainMenu.h"
+	"MainMenu.h"
+
+1667497569 /home/nathant/Bureau/ProjetC/pGroupeA01/include/cScreen.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Network.hpp>
+
+1667497569 /home/nathant/Bureau/ProjetC/pGroupeA01/include/PlayScreen.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"cScreen.h"
+
+1667497569 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/cScreen.cpp
+	"cScreen.h"
+
+1667497569 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/PlayScreen.cpp
+	"PlayScreen.h"
 

@@ -17,10 +17,6 @@ Character::Character(const Character& other)
     //copy ctor
     this->HP = other.HP;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
     for (Weapon* weapon : other.weapons)
     {
         this->weapons.push_back(new Weapon(*weapon));
