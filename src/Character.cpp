@@ -40,6 +40,28 @@ Character& Character::operator=(const Character& rhs)
     return *this;
 }
 
+void Character::getDamaged(int damage)
+{
+    int newHP = getHP() - damage;
+
+    if (newHP <= 0)
+    {
+        setHP(0);
+    }
+    else
+        setHP(newHP);
+}
+
+void Character::setHP(int newHP)
+{
+    this->HP = newHP;
+}
+
+int Character::getHP() const
+{
+    return this->HP;
+}
+
 string Character::str() const {
     std::stringstream ss;
     ss << HP;

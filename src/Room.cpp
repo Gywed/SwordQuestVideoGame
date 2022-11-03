@@ -46,3 +46,8 @@ int Room::getCompteur()
 {
     return compteur;
 }
+
+int Room::getId()const
+{
+    return *id;
+}

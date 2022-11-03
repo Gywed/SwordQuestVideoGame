@@ -15,6 +15,7 @@ class Room
         Room& operator=(const Room& other);
 
         static int getCompteur();
+        int getId()const;
 
     protected:
 

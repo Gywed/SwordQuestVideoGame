@@ -1,6 +1,6 @@
 #include "Sword.h"
 
-Sword::Sword(int cooldown, float range): Weapon(cooldown,range)
+Sword::Sword(int cooldown, float range, int damage): Weapon(cooldown,range,damage)
 {
     //ctor
 }
@@ -23,7 +23,10 @@ Sword& Sword::operator=(const Sword& rhs)
     return *this;
 }
 
-void Sword::attack()
+void Sword::attack(vector<Monster*> monsters)
 {
-
+    for (Monster* monster : monsters)
+    {
+        monster->getDamaged(getDamage());
+    }
 }

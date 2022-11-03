@@ -1,9 +1,11 @@
 #include "Monster.h"
+#include <Character.h>
 
-Monster::Monster(int HP): HP(HP)
+Monster::Monster(int HP, int damage): HP(HP), damage(damage)
 {
     //ctor
     id = new int(++compteur);
+    dead = false;
 }
 
 Monster::~Monster()
@@ -30,9 +32,50 @@ Monster& Monster::operator=(const Monster& rhs)
     return *this;
 }
 
-void Monster::attack(){}
+void Monster::attack(Character* character)
+{
+
+}
+
+void Monster::getDamaged(int damage)
+{
+    int newHP = getHP() - damage;
+
+    if (newHP <= 0)
+    {
+        this->dead = true;
+        setHP(0);
+    }
+    else
+        setHP(newHP);
+}
+
+void Monster::setDamage(int newDamage)
+{
+    this->damage = newDamage;
+}
+
+int Monster::getDamage()const
+{
+    return this->damage;
+}
 
 int Monster::getCompteur()
 {
     return compteur;
+}
+
+int Monster::getId()const
+{
+    return *id;
+}
+
+void Monster::setHP(int newHP)
+{
+    this->HP = newHP;
+}
+
+int Monster::getHP() const
+{
+    return this->HP;
 }
