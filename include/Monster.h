@@ -5,14 +5,24 @@
 class Monster
 {
     public:
-        Monster();
+        Monster(int HP = 0);
         virtual ~Monster();
         Monster(const Monster& other);
         Monster& operator=(const Monster& other);
 
+        virtual attack();
+
+        static int getCompteur();
+
+
     protected:
 
     private:
+        int HP;
+
+        int* id;
+
+        inline static int compteur;
 };
 
 #endif // MONSTER_H

@@ -9,7 +9,7 @@ class Weapon
         Weapon(const Weapon& other);
         Weapon& operator=(const Weapon& other);
 
-        virtual int attack();
+        virtual attack();
 
         static int getCompteur();
 

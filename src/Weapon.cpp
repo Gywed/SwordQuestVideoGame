@@ -33,4 +33,9 @@ Weapon& Weapon::operator=(const Weapon& rhs)
 }
 
 
-int Weapon::attack(){}
+Weapon::attack(){}
+
+int Weapon::getCompteur()
+{
+    return compteur;
+}
