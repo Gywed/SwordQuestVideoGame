@@ -1,7 +1,7 @@
 #include "PlayScreen.h"
 
 //Sprite speed
-#define SPRITE_SPEED 0.2
+#define SPRITE_SPEED 0.1
 
 // Size of Sprite
 #define Sprite_Width 96
@@ -14,10 +14,10 @@
 #define Sprite_Front 0
 //
 //// Define moving sprite for each position
-//#define Sprite_Right_Moving 728
-//#define Sprite_Left_Moving 520
-//#define Sprite_Back_Moving 624
-//#define Sprite_Front_Moving 416
+#define Sprite_Right_Moving 728
+#define Sprite_Left_Moving 520
+#define Sprite_Back_Moving 624
+#define Sprite_Front_Moving 416
 PlayScreen::PlayScreen(void)
 {
     //ctor
@@ -100,13 +100,76 @@ int PlayScreen::Run(sf::RenderWindow *App){
 				switch (ev.key.code)
                 {
                 // If escape is pressed, close the application
-                case  sf::Keyboard::Escape : App->close(); return (-1);break;
+                case  sf::Keyboard::Escape :  App->close();return (-1);break;
 
                 // Process the up, down, left and right keys
-                case sf::Keyboard::Up :     upFlag=true; break;
-                case sf::Keyboard::Down:    downFlag=true; break;
-                case sf::Keyboard::Left:    leftFlag=true; break;
-                case sf::Keyboard::Right:   rightFlag=true; break;
+//                case sf::Keyboard::Up :     upFlag=true; break;
+                case sf::Keyboard::Up:
+                    upFlag=true;
+                    rectSourceSprite.top = Sprite_Back_Moving;
+
+                    if (timer.getElapsedTime().asSeconds() > 0.06f){
+
+                      if (rectSourceSprite.left == 864)
+                        rectSourceSprite.left=0;
+                      else
+                        rectSourceSprite.left+=96;
+
+                      sprite.setTextureRect(rectSourceSprite);
+                      timer.restart();
+                    }
+
+                    break;
+
+
+//                case sf::Keyboard::Down:    downFlag=true; break;
+                case sf::Keyboard::Down:
+                    downFlag=true;
+                    rectSourceSprite.top = Sprite_Front_Moving;
+                    if (timer.getElapsedTime().asSeconds() > 0.06f){
+
+                      if (rectSourceSprite.left == 864)
+                        rectSourceSprite.left=0;
+                      else
+                        rectSourceSprite.left+=96;
+
+                      sprite.setTextureRect(rectSourceSprite);
+                      timer.restart();
+                    }
+                    break;
+
+
+//                case sf::Keyboard::Left:    leftFlag=true; break;
+                case sf::Keyboard::Left:
+                    leftFlag=true;
+                    rectSourceSprite.top = Sprite_Left_Moving;
+                    if (timer.getElapsedTime().asSeconds() > 0.06f){
+
+                      if (rectSourceSprite.left == 864)
+                        rectSourceSprite.left=0;
+                      else
+                        rectSourceSprite.left+=96;
+
+                      sprite.setTextureRect(rectSourceSprite);
+                      timer.restart();
+                    }
+                    break;
+//                case sf::Keyboard::Right:   rightFlag=true; break;
+
+                case sf::Keyboard::Right:
+                    rightFlag=true;
+                    rectSourceSprite.top = Sprite_Right_Moving;
+                    if (timer.getElapsedTime().asSeconds() > 0.06f){
+
+                      if (rectSourceSprite.left == 864)
+                        rectSourceSprite.left=0;
+                      else
+                        rectSourceSprite.left+=96;
+
+                      sprite.setTextureRect(rectSourceSprite);
+                      timer.restart();
+                    }
+                    break;
                 default : break;
                 }
 			}
@@ -116,10 +179,10 @@ int PlayScreen::Run(sf::RenderWindow *App){
                 switch (ev.key.code)
                 {
                 // Process the up, down, left and right keys
-                case sf::Keyboard::Up :     upFlag=false; rectSourceSprite.top=Sprite_Back; break;
-                case sf::Keyboard::Down:    downFlag=false; rectSourceSprite.top=Sprite_Front; break;
-                case sf::Keyboard::Left:    leftFlag=false; rectSourceSprite.top=Sprite_Left;break;
-                case sf::Keyboard::Right:   rightFlag=false; rectSourceSprite.top=Sprite_Right;break;
+                case sf::Keyboard::Up :     upFlag=false; rectSourceSprite.left=0;rectSourceSprite.top=Sprite_Back; break;
+                case sf::Keyboard::Down:    downFlag=false; rectSourceSprite.left=0;rectSourceSprite.top=Sprite_Front; break;
+                case sf::Keyboard::Left:    leftFlag=false; rectSourceSprite.left=0;rectSourceSprite.top=Sprite_Left;break;
+                case sf::Keyboard::Right:   rightFlag=false; rectSourceSprite.left=0;rectSourceSprite.top=Sprite_Right;break;
                 default : break;
                 }
                 sprite.setTextureRect(rectSourceSprite);
