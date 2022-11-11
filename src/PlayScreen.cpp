@@ -195,8 +195,6 @@ void PlayScreen::startSpriteMovementAnimation(sf::Sprite& sprite, int startingSp
 {
     sf::IntRect rectSourceSprite = sprite.getTextureRect();
     rectSourceSprite.top = startingSpriteTop;
-    std::cout<<std::to_string(rectSourceSprite.top)<<std::endl;
-    std::cout<<std::to_string(rectSourceSprite.left)<<std::endl;
     if (timer.getElapsedTime().asSeconds() > 0.09f){
 
         if (rectSourceSprite.left == Sprite_Changing_Left_Max)
