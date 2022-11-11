@@ -18,6 +18,9 @@
 #define Sprite_Left_Moving 520
 #define Sprite_Back_Moving 624
 #define Sprite_Front_Moving 416
+#define Sprite_Changing_Step 96
+#define Sprite_Changing_Left_Max 864
+
 PlayScreen::PlayScreen(void)
 {
     //ctor
@@ -88,68 +91,27 @@ int PlayScreen::Run(sf::RenderWindow *App){
 	    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             rightFlag=true;
-            rectSourceSprite.top = Sprite_Right_Moving;
-            if (timer.getElapsedTime().asSeconds() > 0.09f){
+            startSpriteMovementAnimation(sprite, Sprite_Right_Moving, timer);
 
-                if (rectSourceSprite.left == 864)
-                    rectSourceSprite.left=0;
-                else
-                    rectSourceSprite.left+=96;
-
-                sprite.setTextureRect(rectSourceSprite);
-                timer.restart();
-            }
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             upFlag=true;
-            rectSourceSprite.top = Sprite_Back_Moving;
-
-            if (timer.getElapsedTime().asSeconds() > 0.06f){
-
-                if (rectSourceSprite.left == 864)
-                    rectSourceSprite.left=0;
-                else
-                    rectSourceSprite.left+=96;
-
-                sprite.setTextureRect(rectSourceSprite);
-                timer.restart();
-            }
+            startSpriteMovementAnimation(sprite, Sprite_Back_Moving, timer);
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             leftFlag=true;
-            rectSourceSprite.top = Sprite_Left_Moving;
-
-            if (timer.getElapsedTime().asSeconds() > 0.06f){
-
-                if (rectSourceSprite.left == 864)
-                    rectSourceSprite.left=0;
-                else
-                    rectSourceSprite.left+=96;
-
-                sprite.setTextureRect(rectSourceSprite);
-                timer.restart();
-            }
+            startSpriteMovementAnimation(sprite, Sprite_Left_Moving, timer);
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
             downFlag=true;
-            rectSourceSprite.top = Sprite_Front_Moving;
+            startSpriteMovementAnimation(sprite, Sprite_Front_Moving, timer);
 
-            if (timer.getElapsedTime().asSeconds() > 0.06f){
-
-                if (rectSourceSprite.left == 864)
-                    rectSourceSprite.left=0;
-                else
-                    rectSourceSprite.left+=96;
-
-                sprite.setTextureRect(rectSourceSprite);
-                timer.restart();
-            }
         }
 		//Verifying events
 		while (App->pollEvent(ev))
@@ -227,4 +189,23 @@ int PlayScreen::Run(sf::RenderWindow *App){
 
 	//Never reaching this point normally, but just in case, exit the application
 	return -1;
+}
+
+void PlayScreen::startSpriteMovementAnimation(sf::Sprite& sprite, int startingSpriteTop, sf::Clock& timer)
+{
+    sf::IntRect rectSourceSprite = sprite.getTextureRect();
+    rectSourceSprite.top = startingSpriteTop;
+    std::cout<<std::to_string(rectSourceSprite.top)<<std::endl;
+    std::cout<<std::to_string(rectSourceSprite.left)<<std::endl;
+    if (timer.getElapsedTime().asSeconds() > 0.09f){
+
+        if (rectSourceSprite.left == Sprite_Changing_Left_Max)
+            rectSourceSprite.left=0;
+        else
+            rectSourceSprite.left+=Sprite_Changing_Step;
+
+        sprite.setTextureRect(rectSourceSprite);
+        timer.restart();
+    }
+
 }

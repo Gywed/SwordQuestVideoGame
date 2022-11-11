@@ -15,6 +15,7 @@ class PlayScreen:public cScreen
         PlayScreen& operator=(const PlayScreen& other);
 
         virtual int Run(sf::RenderWindow *App);
+        void startSpriteMovementAnimation(sf::Sprite& sprite, int startingSpriteTop, sf::Clock& timer);
 
     protected:
 
