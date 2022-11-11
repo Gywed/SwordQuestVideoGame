@@ -78,10 +78,7 @@ int MainMenu::Run(sf::RenderWindow *App){
     sf::Event ev;
     bool Running = true;
 
-    // Set Font
-    if(!font.loadFromFile("Fonts/GrinchedRegular.otf")){
-        cout << "No Font is here";
-    }
+
 
     //Set the background
     this->background.setSize(Vector2f(1920,1080));

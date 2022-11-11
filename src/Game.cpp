@@ -21,6 +21,8 @@ Game::Game()
 
     this->Screens.push_back(&mainMenu);
     this->Screens.push_back(&playScreen);
+    this->Screens.push_back(&optionScreen);
+    this->Screens.push_back(&aboutScreen);
     while(screen>=0){
         screen=Screens[screen]->Run(window);
     }

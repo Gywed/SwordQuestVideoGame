@@ -8,6 +8,8 @@
 #include <SFML/Network.hpp>
 #include "MainMenu.h"
 #include "PlayScreen.h"
+#include "AboutScreen.h"
+#include "OptionScreen.h"
 #include "cScreen.h"
 
 class Game
@@ -21,6 +23,8 @@ class Game
         sf::Event ev;
         MainMenu mainMenu;
         PlayScreen playScreen;
+        OptionScreen optionScreen;
+        AboutScreen aboutScreen;
         std::vector<cScreen*> Screens;
         int screen = 0;
 

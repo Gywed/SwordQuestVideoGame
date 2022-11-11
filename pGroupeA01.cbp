@@ -41,6 +41,7 @@
 			<Add library="sfml-window" />
 			<Add directory="lib/SFML-2.5.1/lib" />
 		</Linker>
+		<Unit filename="include/AboutScreen.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/MainMenu.h" />
@@ -51,6 +52,7 @@
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/cScreen.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/AboutScreen.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/MainMenu.cpp" />

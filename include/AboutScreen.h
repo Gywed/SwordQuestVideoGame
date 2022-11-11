@@ -15,9 +15,9 @@ class AboutScreen:public cScreen
         AboutScreen& operator=(const AboutScreen& other);
 
         virtual int Run(sf::RenderWindow *App);
-    protected:
 
     private:
+        sf::Text credits[4];
 };
 
 #endif // ABOUTSCREEN_H
