@@ -1,6 +1,11 @@
 #ifndef GAMEMANAGERVIEW_H
 #define GAMEMANAGERVIEW_H
+#include <SFML/Graphics.hpp>
 
+using namespace std;
+
+#include "State.h"
+#include "EnumState.h"
 
 class GameManagerView
 {
