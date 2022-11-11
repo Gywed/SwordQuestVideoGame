@@ -2011,7 +2011,7 @@
 	"Game.h"
 	"Character.h"
 
-1667902751 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/Game.h
+1668171198 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
@@ -2019,6 +2019,8 @@
 	<SFML/Network.hpp>
 	"MainMenu.h"
 	"PlayScreen.h"
+	"AboutScreen.h"
+	"OptionScreen.h"
 	"cScreen.h"
 
 1667305465 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/lib/SFML-2.5.1/include/SFML/Graphics.hpp
@@ -2644,18 +2646,18 @@
 1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/cScreen.cpp
 	"cScreen.h"
 
-1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Game.cpp
+1668171198 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Game.cpp
 	"Game.h"
 	"MainMenu.h"
 
-1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/MainMenu.cpp
+1668180132 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/MainMenu.cpp
 	"MainMenu.h"
 
 1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Monster.cpp
 	"Monster.h"
 	<Character.h>
 
-1668166359 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/PlayScreen.cpp
+1668167171 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/PlayScreen.cpp
 	"PlayScreen.h"
 
 1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Room.cpp
@@ -2690,4 +2692,17 @@
 
 1667659022 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/OptionScreen.cpp
 	"OptionScreen.h"
+
+1668171198 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/AboutScreen.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"cScreen.h"
+
+1667902751 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/OptionScreen.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"cScreen.h"
+
+1668171198 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/AboutScreen.cpp
+	"AboutScreen.h"
 

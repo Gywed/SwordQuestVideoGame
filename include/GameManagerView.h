@@ -21,7 +21,7 @@ class GameManagerView
         void setWindow(sf::RenderWindow* window);
         void setState(const EnumState st);
         /*  Method  */
-        void update();
+        void run();
         void render();
 
     protected:
