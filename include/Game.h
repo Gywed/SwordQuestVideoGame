@@ -23,8 +23,8 @@ class Game
         sf::Event ev;
         MainMenu mainMenu;
         PlayScreen playScreen;
-        OptionScreen optionScreen;
-        AboutScreen aboutScreen;
+//        OptionScreen optionScreen;
+//        AboutScreen aboutScreen;
         std::vector<cScreen*> Screens;
         int screen = 0;
 

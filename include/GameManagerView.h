@@ -4,16 +4,17 @@
 
 using namespace std;
 
-#include "State.h"
+#include "StateView.h"
 #include "EnumState.h"
+
 
 class GameManagerView
 {
     private:
         // Window game
-        sf::RenderWindow* window;
-        // State(GameState,MenuState,etc..)
-        State* state;
+        sf::RenderWindow* window; //AEP
+        // State(PlayState,MenuState,etc..)
+        StateView* state;
 
     public:
         GameManagerView();
@@ -22,7 +23,7 @@ class GameManagerView
         GameManagerView& operator=(const GameManagerView& other);
         /* Getters and setters */
         sf::RenderWindow* getWindow() const;
-        State* getState() const;
+        StateView* getState() const;
         void setWindow(sf::RenderWindow* window);
         void setState(const EnumState st);
         /*  Method  */

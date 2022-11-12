@@ -245,16 +245,37 @@
 #include <iostream>
 #include "Game.h"
 #include "Character.h"
+#include "GameManagerView.h"
 
 using namespace std;
 
 int main()
 {
-    Character c;
-    cout<<c.str();
-    Game game;
-    game.run();
+//    Character c;
+//    cout<<c.str();
+//    Game game;
+//    game.run();
+    sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1900, 1080), "SwordQuest",sf::Style::Titlebar | sf::Style::Fullscreen);
+    GameManagerView *gm = new GameManagerView();
+    gm->setWindow(window);
+    gm->setState(EnumState::MENUSTATE);
 
+    while (window->isOpen())
+    {
+        sf::Event event;
+        while (window->pollEvent(event))
+        {
+            switch(event.type) {
+              case sf::Event::Closed:  window->close();  break;
+              default: break;
+            }
+        }
+        window->clear();
+        gm->run();
+        gm->render();
+        window->display();
+
+    }
 
     return 0;
 }

@@ -2006,12 +2006,13 @@
 1668170195 source:/home/nathant/Bureau/ProjetC/pGroupeA01/src/PlayScreen.cpp
 	"PlayScreen.h"
 
-1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/main.cpp
+1668246570 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/main.cpp
 	<iostream>
 	"Game.h"
 	"Character.h"
+	"GameManagerView.h"
 
-1668171198 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/Game.h
+1668202649 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
@@ -2611,10 +2612,11 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1667902751 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/MainMenu.h
+1668203086 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/MainMenu.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"cScreen.h"
+	"PlayScreen.h"
 
 1667902751 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/cScreen.h
 	<SFML/Graphics.hpp>
@@ -2646,11 +2648,11 @@
 1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/cScreen.cpp
 	"cScreen.h"
 
-1668171198 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Game.cpp
+1668203313 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Game.cpp
 	"Game.h"
 	"MainMenu.h"
 
-1668180132 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/MainMenu.cpp
+1668202650 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/MainMenu.cpp
 	"MainMenu.h"
 
 1667902751 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/Monster.cpp
@@ -2705,4 +2707,62 @@
 
 1668171198 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/AboutScreen.cpp
 	"AboutScreen.h"
+
+1668183854 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/EnumState.cpp
+	"EnumState.h"
+
+1668185540 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/EnumState.h
+
+1668185769 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/PlayStateView.cpp
+	"PlayStateView.h"
+
+1668185768 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/PlayStateView.h
+
+1668185349 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/AboutStateView.cpp
+	"AboutStateView.h"
+
+1668185519 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/AboutStateView.h
+	"StateView.h"
+
+1668188353 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/StateView.h
+	"SFML/Graphics.hpp"
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Network.hpp>
+
+1668187774 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/OptionStateView.cpp
+	"OptionStateView.h"
+
+1668185461 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/OptionStateView.h
+	"StateView.h"
+
+1668181028 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/StateView.cpp
+	"StateView.h"
+
+1668188291 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/GameManagerView.cpp
+	"GameManagerView.h"
+	"OptionStateView.h"
+	"AboutStateView.h"
+	"PlayStateView.h"
+	"MenuStateView.h"
+
+1668188292 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/GameManagerView.h
+	<SFML/Graphics.hpp>
+	"StateView.h"
+	"EnumState.h"
+
+1668203183 /home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/include/MenuStateView.h
+	<SFML/Graphics.hpp>
+	"StateView.h"
+	<GameManagerView.h>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Network.hpp>
+	"PlayScreen.h"
+
+1668247200 source:/home/dujacquier/Desktop/Helha/Bac3/DevJeux/Project/pGroupeA01/src/MenuStateView.cpp
+	"MenuStateView.h"
+	<iostream>
 

@@ -5,6 +5,7 @@
 using namespace std;
 using namespace sf;
 #include "cScreen.h"
+#include "PlayScreen.h"
 
 #define Max_main_menu 4
 
@@ -24,6 +25,8 @@ class MainMenu:public cScreen
         bool isOption;
         bool isAbout;
         bool isQuit;
+
+
 
 
 
