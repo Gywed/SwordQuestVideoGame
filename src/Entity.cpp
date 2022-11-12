@@ -35,6 +35,7 @@ void Entity::loadTexture(const string filename)
         std::cerr << "Error while loading texture" << std::endl;
     }
     texture->setSmooth(true);
+    this->setTexture(*this->texture);
 }
 
 void Entity::updatePosition()
