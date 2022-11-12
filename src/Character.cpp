@@ -1,6 +1,6 @@
 #include "Character.h"
 
-Character::Character()
+Character::Character(int posX, int posY): posX(posX), posY(posY)
 {
     HP = 10;
 }
@@ -60,6 +60,11 @@ int Character::getHP() const
 {
     return this->HP;
 }
+
+int Character::getPosX()const { return posX; }
+void Character::setPosX(int posX) { this->posX = posX; }
+int Character::getPosY()const { return posY; }
+void Character::setPosY(int posY) { this->posY = posY; }
 
 string Character::str() const {
     std::stringstream ss;

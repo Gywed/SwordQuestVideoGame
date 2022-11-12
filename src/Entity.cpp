@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include <iostream>
 
 Entity::Entity()
 {
@@ -29,12 +30,11 @@ void Entity::setMovement(const sf::Vector2f movement) { this->movement = movemen
 /* Method */
 void Entity::loadTexture(const string filename)
 {
-    if (!texture.loadFromFile(filename))
+    if (!texture->loadFromFile(filename))
     {
         std::cerr << "Error while loading texture" << std::endl;
-        return -1;
     }
-    texture.setSmooth(true);
+    texture->setSmooth(true);
 }
 
 void Entity::updatePosition()

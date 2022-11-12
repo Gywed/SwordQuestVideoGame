@@ -2,7 +2,7 @@
 #define PLAYSTATEVIEW_H
 #include "StateView.h"
 
-class PlayStateView; public StateView
+class PlayStateView: public StateView
 {
     public:
         PlayStateView();

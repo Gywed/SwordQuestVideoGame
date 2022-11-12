@@ -10,8 +10,12 @@ using std::vector;
 
 class Character
 {
+    private:
+        int HP;
+        int posX, posY, speed=0.1;
+        vector<Weapon*> weapons;
     public:
-        Character();
+        Character(int posX, int posY);
         virtual ~Character();
         Character(const Character& other);
         Character& operator=(const Character& other);
@@ -21,12 +25,15 @@ class Character
 
         void setHP(int newHP);
         int getHP() const;
+        int getPosX()const;
+        void setPosX(int posX);
+        int getPosY()const;
+        void setPosY(int posY);
+
 
     protected:
 
-    private:
-        int HP;
-        vector<Weapon*> weapons;
+
 
 };
 
