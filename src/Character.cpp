@@ -66,6 +66,12 @@ void Character::setPosX(int posX) { this->posX = posX; }
 int Character::getPosY()const { return posY; }
 void Character::setPosY(int posY) { this->posY = posY; }
 
+//Moving methods
+void Character::moveUp() { posY--; }
+void Character::moveLeft() { posX--; };
+void Character::moveDown() { posY++; };
+void Character::moveRight() { posX++; };
+
 string Character::str() const {
     std::stringstream ss;
     ss << HP;

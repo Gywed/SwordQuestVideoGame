@@ -30,6 +30,11 @@ class Character
         int getPosY()const;
         void setPosY(int posY);
 
+        void moveUp();
+        void moveLeft();
+        void moveDown();
+        void moveRight();
+
 
     protected:
 
