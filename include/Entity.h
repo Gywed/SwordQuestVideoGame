@@ -7,7 +7,7 @@ using std::string;
 
 class Entity: public sf::Sprite
 {
-    private:
+    protected:
         // Movement (offset) of the entity
         sf::Vector2f movement;
         // Texture of the entity
@@ -30,7 +30,7 @@ class Entity: public sf::Sprite
 
 
 
-    protected:
+
 
 
 };

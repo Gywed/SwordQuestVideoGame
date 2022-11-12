@@ -30,7 +30,7 @@ void PlayStateView::init(sf::RenderWindow* window)
 
 void PlayStateView::run(sf::RenderWindow* window)
 {
-
+    this->characterV->moveAnyDirection(window);
 }
 void PlayStateView::render(sf::RenderWindow* window)
 {

@@ -41,7 +41,96 @@ void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite)
 //Method
 void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            this->movement.x = this->character->moveRight();
+            this->movement.y = 0;
+            if(this->character->getPosX() > window->getSize().x)
+            {
+                this->character->setPosX(window->getSize().x);
+                this->movement.x = 0;
+            }
+            startSpriteMovementAnimation(Sprite_Right_Moving);
 
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            this->movement.y = this->character->moveUp();
+            this->movement.x = 0;
+            if(this->character->getPosY() < 0)
+            {
+                this->character->setPosY(0);
+                this->movement.y = 0;
+            }
+            startSpriteMovementAnimation(Sprite_Back_Moving);
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            this->movement.x = this->character->moveLeft();
+            this->movement.y = 0;
+            if(this->character->getPosX() < 0)
+            {
+                this->character->setPosX(0);
+                this->movement.x = 0;
+            }
+            startSpriteMovementAnimation(Sprite_Left_Moving);
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            this->movement.y = this->character->moveDown();
+            this->movement.x = 0;
+            if(this->character->getPosY() > window->getSize().y)
+            {
+                this->character->setPosY(window->getSize().y);
+                this->movement.y = 0;
+            }
+            startSpriteMovementAnimation(Sprite_Front_Moving);
+
+        }
+
+        //Verifying events
+        sf::Event ev;
+		while (window->pollEvent(ev))
+		{
+			// Window closed
+			if (ev.type == sf::Event::Closed)
+			{
+			    window->close();
+			}
+			//Key pressed
+			if (ev.type == sf::Event::KeyPressed)
+			{
+				switch (ev.key.code)
+                {
+                // If escape is pressed, close the application
+                case  sf::Keyboard::Escape :  window->close();break;
+
+
+                default : break;
+                }
+			}
+			// If a key is released
+            if (ev.type == sf::Event::KeyReleased)
+            {
+                switch (ev.key.code)
+                {
+                // Process the up, down, left and right keys
+                case sf::Keyboard::Up :     rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Back; break;
+                case sf::Keyboard::Down:    rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Front; break;
+                case sf::Keyboard::Left:    rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Left;break;
+                case sf::Keyboard::Right:   rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Right;break;
+                default : break;
+                }
+                this->setTextureRect(*rectSourceSprite);
+                this->movement.x=0;
+                this->movement.y=0;
+            }
+		}
+
+        this->updatePosition();
 }
 
 void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)

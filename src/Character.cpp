@@ -1,6 +1,7 @@
 #include "Character.h"
+#include <iostream>
 
-Character::Character(int posX, int posY): posX(posX), posY(posY)
+Character::Character(float posX, float posY): posX(posX), posY(posY)
 {
     HP = 10;
 }
@@ -61,16 +62,16 @@ int Character::getHP() const
     return this->HP;
 }
 
-int Character::getPosX()const { return posX; }
-void Character::setPosX(int posX) { this->posX = posX; }
-int Character::getPosY()const { return posY; }
-void Character::setPosY(int posY) { this->posY = posY; }
+float Character::getPosX()const { return posX; }
+void Character::setPosX(float posX) { this->posX = posX; }
+float Character::getPosY()const { return posY; }
+void Character::setPosY(float posY) { this->posY = posY; }
 
 //Moving methods
-void Character::moveUp() { posY--; }
-void Character::moveLeft() { posX--; };
-void Character::moveDown() { posY++; };
-void Character::moveRight() { posX++; };
+float Character::moveUp() { posY-=speed; return -speed; }
+float Character::moveLeft() { posX-=speed; return -speed; };
+float Character::moveDown() { posY+=speed; return speed; };
+float Character::moveRight() { posX+=speed; return speed; };
 
 string Character::str() const {
     std::stringstream ss;

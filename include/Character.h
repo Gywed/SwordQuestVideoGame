@@ -12,10 +12,10 @@ class Character
 {
     private:
         int HP;
-        int posX, posY, speed=0.1;
+        float posX, posY, speed=0.1;
         vector<Weapon*> weapons;
     public:
-        Character(int posX, int posY);
+        Character(float posX, float posY);
         virtual ~Character();
         Character(const Character& other);
         Character& operator=(const Character& other);
@@ -25,15 +25,16 @@ class Character
 
         void setHP(int newHP);
         int getHP() const;
-        int getPosX()const;
-        void setPosX(int posX);
-        int getPosY()const;
-        void setPosY(int posY);
+        float getPosX()const;
+        void setPosX(float posX);
+        float getPosY()const;
+        void setPosY(float posY);
 
-        void moveUp();
-        void moveLeft();
-        void moveDown();
-        void moveRight();
+        //Return the step
+        float moveUp();
+        float moveLeft();
+        float moveDown();
+        float moveRight();
 
 
     protected:
