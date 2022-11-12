@@ -6,9 +6,9 @@ CharacterView::CharacterView(Character *character)
     this->setPosition(character->getPosX(), character->getPosY());
     this->loadTexture("images/SpriteSheet.png");
     this->rectSourceSprite = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
-    this->setTextureRect(rectSourceSprite);
+    this->setTextureRect(*rectSourceSprite);
     this->setScale(.8, .8);
-    this.setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
+    this->setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
 }
 
 CharacterView::~CharacterView()
@@ -29,10 +29,14 @@ CharacterView& CharacterView::operator=(const CharacterView& rhs)
 }
 
 //Setters Getters
-Character* CharacterView::getCharacter()const;
-void CharacterView::setCharacter(int *Character);
-sf::IntRect* CharacterView::getRectSourceSprite()const;
-void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite);
+Character* CharacterView::getCharacter()const { return character; }
+void CharacterView::setCharacter(Character* character) { this->character = character; }
+sf::IntRect* CharacterView::getRectSourceSprite()const { return rectSourceSprite; }
+void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite)
+{
+    delete this->rectSourceSprite;
+    this->rectSourceSprite = new sf::IntRect(rectSourceSprite->left, rectSourceSprite->top, rectSourceSprite->width, rectSourceSprite->height);
+}
 
 //Method
 void CharacterView::moveAnyDirection(sf::RenderWindow* window);
