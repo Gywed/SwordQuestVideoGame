@@ -108,7 +108,7 @@ void MenuStateView::run(sf::RenderWindow* window)
     {
         switch(MainMenuSelected)
         {
-            case 0 : play->Run(this->gm->getWindow());
+            case 0 : this->gm->setState(EnumState::PLAYSTATE);
         }
     }
 

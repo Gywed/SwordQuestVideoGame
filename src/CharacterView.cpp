@@ -52,9 +52,9 @@ void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)
         if (rectSourceSprite->left == Sprite_Changing_Left_Max)
             rectSourceSprite->left=0;
         else
-            rectSourceSprite.left+=Sprite_Changing_Step;
+            rectSourceSprite->left+=Sprite_Changing_Step;
 
-        sprite.setTextureRect(rectSourceSprite);
+        this->setTextureRect(*rectSourceSprite);
         timer.restart();
     }
 
