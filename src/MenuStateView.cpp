@@ -25,6 +25,11 @@ MenuStateView& MenuStateView::operator=(const MenuStateView& rhs)
 }
 
 /* Method (DP "State") */
+// Method init: this method from State allow initialize menustate with all graphics component and logic variable
+/*
+Assertion :
+window : window game (AEP)
+*/
 void MenuStateView::init(sf::RenderWindow* window)
 {
     isPlay=false;
@@ -62,6 +67,11 @@ void MenuStateView::init(sf::RenderWindow* window)
 
 }
 
+// Method run: this method from State allow run menustate with all graphics component and logic variable
+/*
+Assertion :
+window : window game (AEP)
+*/
 void MenuStateView::run(sf::RenderWindow* window)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -87,13 +97,9 @@ void MenuStateView::run(sf::RenderWindow* window)
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)  && !this->downKey) {
         mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected]);
          if(MainMenuSelected+1>=Max_main_menu)
-//        mainMenu[MainMenuSelected].setFillColor(Color::Black);
             MainMenuSelected=0;
-//        MainMenuSelected++;
         else if(MainMenuSelected<3)
             MainMenuSelected++;
-
-//        mainMenu[MainMenuSelected].setFillColor(Color::Yellow);
         mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected]);
 
     }
@@ -112,6 +118,12 @@ void MenuStateView::run(sf::RenderWindow* window)
     this->enterKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
 
 }
+
+// Method render: this method from State allow draw menustate with all graphics component(title,etc..)
+/*
+Assertion :
+window : window game (AEP)
+*/
 void MenuStateView::render(sf::RenderWindow* window)
 {
     //Set the background Texture

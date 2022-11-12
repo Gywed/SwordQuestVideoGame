@@ -1,8 +1,8 @@
 #ifndef PLAYSTATEVIEW_H
 #define PLAYSTATEVIEW_H
+#include "StateView.h"
 
-
-class PlayStateView
+class PlayStateView; public StateView
 {
     public:
         PlayStateView();
