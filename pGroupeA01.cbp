@@ -46,13 +46,10 @@
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/EnumState" />
 		<Unit filename="include/EnumState.h" />
-		<Unit filename="include/Game.h" />
 		<Unit filename="include/GameManagerView.h" />
-		<Unit filename="include/MainMenu.h" />
 		<Unit filename="include/MenuStateView.h" />
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/OptionStateView.h" />
-		<Unit filename="include/PlayScreen.h" />
 		<Unit filename="include/PlayStateView.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/StateView.h" />
@@ -64,13 +61,10 @@
 		<Unit filename="src/AboutStateView.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/EnumState.cpp" />
-		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameManagerView.cpp" />
-		<Unit filename="src/MainMenu.cpp" />
 		<Unit filename="src/MenuStateView.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/OptionStateView.cpp" />
-		<Unit filename="src/PlayScreen.cpp" />
 		<Unit filename="src/PlayStateView.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/StateView.cpp" />
