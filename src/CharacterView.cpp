@@ -1,13 +1,19 @@
 #include "CharacterView.h"
 
-CharacterView::CharacterView()
+CharacterView::CharacterView(Character *character)
 {
-    //ctor
+    this->character = character;
+    this->setPosition(character->getPosX(), character->getPosY());
+    this->loadTexture("images/SpriteSheet.png");
+    this->rectSourceSprite = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->setTextureRect(rectSourceSprite);
+    this->setScale(.8, .8);
+    this.setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
 }
 
 CharacterView::~CharacterView()
 {
-    //dtor
+    delete rectSourceSprite;
 }
 
 CharacterView::CharacterView(const CharacterView& other)
@@ -21,3 +27,12 @@ CharacterView& CharacterView::operator=(const CharacterView& rhs)
     //assignment operator
     return *this;
 }
+
+//Setters Getters
+Character* CharacterView::getCharacter()const;
+void CharacterView::setCharacter(int *Character);
+sf::IntRect* CharacterView::getRectSourceSprite()const;
+void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite);
+
+//Method
+void CharacterView::moveAnyDirection(sf::RenderWindow* window);
