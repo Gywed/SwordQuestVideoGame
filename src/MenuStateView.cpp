@@ -1,8 +1,10 @@
 #include "MenuStateView.h"
+#include <iostream>
 
 MenuStateView::MenuStateView(GameManagerView* gm)
 {
     this->gm = gm;
+    this->play = new PlayScreen();
 }
 
 MenuStateView::~MenuStateView()

@@ -3,8 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include "StateView.h"
 #include <GameManagerView.h>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
+#define Max_main_menu 4
+using namespace sf;
 
+#include "PlayScreen.h"
 
 class MenuStateView: public StateView
 {
@@ -24,6 +31,10 @@ class MenuStateView: public StateView
         bool isOption;
         bool isAbout;
         bool isQuit;
+
+        bool upKey,downKey, enterKey;
+
+        PlayScreen* play;
 
     public:
         MenuStateView(GameManagerView* gm);
