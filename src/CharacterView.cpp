@@ -39,4 +39,23 @@ void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite)
 }
 
 //Method
-void CharacterView::moveAnyDirection(sf::RenderWindow* window);
+void CharacterView::moveAnyDirection(sf::RenderWindow* window)
+{
+
+}
+
+void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)
+{
+    rectSourceSprite->top = startingSpriteTop;
+    if (timer.getElapsedTime().asSeconds() > 0.09f){
+
+        if (rectSourceSprite->left == Sprite_Changing_Left_Max)
+            rectSourceSprite->left=0;
+        else
+            rectSourceSprite.left+=Sprite_Changing_Step;
+
+        sprite.setTextureRect(rectSourceSprite);
+        timer.restart();
+    }
+
+}

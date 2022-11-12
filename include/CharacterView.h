@@ -4,6 +4,20 @@
 #define Sprite_Width 96
 #define Sprite_Height 104
 
+// Define not moving sprite for each position
+#define Sprite_Right 312
+#define Sprite_Left 104
+#define Sprite_Back 208
+#define Sprite_Front 0
+
+// Define moving sprite for each position
+#define Sprite_Right_Moving 728
+#define Sprite_Left_Moving 520
+#define Sprite_Back_Moving 624
+#define Sprite_Front_Moving 416
+#define Sprite_Changing_Step 96
+#define Sprite_Changing_Left_Max 864
+
 #include "SFML/Graphics.hpp"
 #include "Character.h"
 #include "Entity.h"
@@ -15,6 +29,7 @@ class CharacterView: public Entity
         Character* character;
 
         sf::IntRect* rectSourceSprite;
+        sf::Clock timer;
 
     public:
         CharacterView(Character *character);
@@ -30,6 +45,7 @@ class CharacterView: public Entity
 
         //Method
         void moveAnyDirection(sf::RenderWindow* window);
+        void startSpriteMovementAnimation(int startingSpriteTop);
 
 
 };
