@@ -243,7 +243,6 @@
 
 
 #include <iostream>
-#include "Game.h"
 #include "Character.h"
 #include "GameManagerView.h"
 
@@ -276,6 +275,10 @@ int main()
         window->display();
 
     }
+
+
+    delete window;
+    delete gm;
 
     return 0;
 }

@@ -11,8 +11,6 @@
 #define Max_main_menu 4
 using namespace sf;
 
-#include "PlayScreen.h"
-
 class MenuStateView: public StateView
 {
     private:
@@ -33,8 +31,6 @@ class MenuStateView: public StateView
         bool isQuit;
 
         bool upKey,downKey, enterKey;
-
-        PlayScreen* play;
 
     public:
         MenuStateView(GameManagerView* gm);
