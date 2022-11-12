@@ -6,7 +6,8 @@ enum class EnumState
 {
     MENUSTATE,
     PLAYSTATE,
-    OPTIONSTATE
+    OPTIONSTATE,
+    ABOUTSTATE
 };
 
 #endif // ENUMSTATE_H
