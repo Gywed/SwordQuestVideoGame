@@ -31,6 +31,8 @@ class CharacterView: public Entity
         sf::IntRect* rectSourceSprite;
         sf::Clock timer;
 
+        bool upKey,downKey, leftKey, rightKey;
+
     public:
         CharacterView(Character *character);
         virtual ~CharacterView();

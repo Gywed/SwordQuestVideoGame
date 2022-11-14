@@ -1,5 +1,5 @@
 #include "CharacterView.h"
-
+#include <iostream>
 CharacterView::CharacterView(Character *character)
 {
     this->character = character;
@@ -43,12 +43,12 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            this->movement.x = this->character->moveRight();
-            this->movement.y = 0;
+            this->movement.x += this->character->moveRight();
+            this->movement.y += 0.;
             if(this->character->getPosX() > window->getSize().x)
             {
                 this->character->setPosX(window->getSize().x);
-                this->movement.x = 0;
+                this->movement.x = 0.;
             }
             startSpriteMovementAnimation(Sprite_Right_Moving);
 
@@ -56,36 +56,36 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            this->movement.y = this->character->moveUp();
-            this->movement.x = 0;
-            if(this->character->getPosY() < 0)
+            this->movement.y += this->character->moveUp();
+            this->movement.x += 0.;
+            if(this->character->getPosY() < 0.)
             {
-                this->character->setPosY(0);
-                this->movement.y = 0;
+                this->character->setPosY(0.);
+                this->movement.y = 0.;
             }
             startSpriteMovementAnimation(Sprite_Back_Moving);
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            this->movement.x = this->character->moveLeft();
-            this->movement.y = 0;
-            if(this->character->getPosX() < 0)
+            this->movement.x += this->character->moveLeft();
+            this->movement.y += 0.;
+            if(this->character->getPosX() < 0.)
             {
-                this->character->setPosX(0);
-                this->movement.x = 0;
+                this->character->setPosX(0.);
+                this->movement.x = 0.;
             }
             startSpriteMovementAnimation(Sprite_Left_Moving);
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            this->movement.y = this->character->moveDown();
-            this->movement.x = 0;
+            this->movement.y += this->character->moveDown();
+            this->movement.x += 0.;
             if(this->character->getPosY() > window->getSize().y)
             {
                 this->character->setPosY(window->getSize().y);
-                this->movement.y = 0;
+                this->movement.y = 0.;
             }
             startSpriteMovementAnimation(Sprite_Front_Moving);
 
@@ -109,8 +109,7 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
                 default : break;
                 }
                 this->setTextureRect(*rectSourceSprite);
-                this->movement.x=0;
-                this->movement.y=0;
+
             }
 		}
 

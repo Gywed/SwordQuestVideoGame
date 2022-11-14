@@ -41,4 +41,6 @@ void Entity::loadTexture(const string filename)
 void Entity::updatePosition()
 {
     this->move(this->movement);
+    this->movement.x=0.;
+    this->movement.y=0.;
 }
