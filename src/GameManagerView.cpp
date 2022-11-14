@@ -40,8 +40,9 @@ void GameManagerView::setState(const EnumState st)
     {
         case EnumState::MENUSTATE: this->state = new MenuStateView(this);break;
         case EnumState::PLAYSTATE: this->state = new PlayStateView(this);break;
-//        case EnumState::OPTIONSTATE: this->state = new OptionStateView(this);
-        case EnumState::ABOUTSTATE: this->state = new AboutStateView(this);
+//        case EnumState::OPTIONSTATE: this->state = new OptionStateView(this);break;
+        case EnumState::ABOUTSTATE: this->state = new AboutStateView(this);break;
+        default:break;
     }
 
     if(this->state!=NULL)

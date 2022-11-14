@@ -30,6 +30,28 @@ void PlayStateView::init(sf::RenderWindow* window)
 
 void PlayStateView::run(sf::RenderWindow* window)
 {
+    sf::Event ev;
+    while (window->pollEvent(ev))
+    {
+    // Window closed
+			if (ev.type == sf::Event::Closed)
+			{
+			    window->close();
+			}
+			//Key pressed
+			if (ev.type == sf::Event::KeyPressed)
+			{
+				switch (ev.key.code)
+                {
+                // If escape is pressed, close the application
+                case  sf::Keyboard::Escape :  window->close();break;
+
+
+                default : break;
+                }
+			}
+
+    }
     this->characterV->moveAnyDirection(window);
 }
 void PlayStateView::render(sf::RenderWindow* window)

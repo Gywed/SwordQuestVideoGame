@@ -95,23 +95,7 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
         sf::Event ev;
 		while (window->pollEvent(ev))
 		{
-			// Window closed
-			if (ev.type == sf::Event::Closed)
-			{
-			    window->close();
-			}
-			//Key pressed
-			if (ev.type == sf::Event::KeyPressed)
-			{
-				switch (ev.key.code)
-                {
-                // If escape is pressed, close the application
-                case  sf::Keyboard::Escape :  window->close();break;
 
-
-                default : break;
-                }
-			}
 			// If a key is released
             if (ev.type == sf::Event::KeyReleased)
             {

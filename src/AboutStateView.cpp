@@ -50,6 +50,10 @@ void AboutStateView::init(sf::RenderWindow* window)
 void AboutStateView::run(sf::RenderWindow* window)
 {
     sf::Event ev;
+//    bool Running = true;
+//    while(Running){
+
+
     while (window->pollEvent(ev))
     {
         // Window closed
@@ -66,9 +70,11 @@ void AboutStateView::run(sf::RenderWindow* window)
             // If escape is pressed, close the application
 //               case  sf::Keyboard::Escape : App->close(); return (-1);break;
                 case  sf::Keyboard::Escape : window->close();break;
+//                case  sf::Keyboard::Escape : this->gm->setState(EnumState::MENUSTATE);break;
                 default : break;
             }
         }
+//    }
     }
 }
 

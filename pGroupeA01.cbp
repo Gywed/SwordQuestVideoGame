@@ -41,7 +41,6 @@
 			<Add library="sfml-window" />
 			<Add directory="lib/SFML-2.5.1/lib" />
 		</Linker>
-		<Unit filename="include/AboutScreen.h" />
 		<Unit filename="include/AboutStateView.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/CharacterView.h" />
@@ -50,16 +49,13 @@
 		<Unit filename="include/GameManagerView.h" />
 		<Unit filename="include/MenuStateView.h" />
 		<Unit filename="include/Monster.h" />
-		<Unit filename="include/OptionScreen.h" />
 		<Unit filename="include/OptionStateView.h" />
 		<Unit filename="include/PlayStateView.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/StateView.h" />
 		<Unit filename="include/Sword.h" />
 		<Unit filename="include/Weapon.h" />
-		<Unit filename="include/cScreen.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/AboutScreen.cpp" />
 		<Unit filename="src/AboutStateView.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/CharacterView.cpp" />
@@ -68,14 +64,12 @@
 		<Unit filename="src/GameManagerView.cpp" />
 		<Unit filename="src/MenuStateView.cpp" />
 		<Unit filename="src/Monster.cpp" />
-		<Unit filename="src/OptionScreen.cpp" />
 		<Unit filename="src/OptionStateView.cpp" />
 		<Unit filename="src/PlayStateView.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/StateView.cpp" />
 		<Unit filename="src/Sword.cpp" />
 		<Unit filename="src/Weapon.cpp" />
-		<Unit filename="src/cScreen.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
