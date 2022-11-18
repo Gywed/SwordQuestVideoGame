@@ -4,6 +4,7 @@
 #include "GameManagerView.h"
 #include "Character.h"
 #include "CharacterView.h"
+#include "BasicRoomView.h"
 
 class PlayStateView: public StateView
 {
@@ -16,6 +17,8 @@ class PlayStateView: public StateView
 
         //View
         CharacterView* characterV;
+        BasicRoomView* roomV;
+
 
     public:
         PlayStateView(GameManagerView* gm);
