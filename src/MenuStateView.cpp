@@ -31,38 +31,37 @@ window : window game (AEP)
 */
 void MenuStateView::init(sf::RenderWindow* window)
 {
-    isPlay=false;
-    isOption=false;
-    isAbout=false;
-    isQuit=false;
-
     //Set the background
     this->background.setSize(Vector2f(1920,1080));
-    this->mainTexture.loadFromFile("images/MainMenu/background.png");
+    this->mainTexture.loadFromFile("images/MainMenu/swordQuestMenuTitle.png");
 
 
 
     //Set all images for each Button
-    btnTexture[0].loadFromFile("images/MainMenu/btnPlay.png");
-    btnTexture[1].loadFromFile("images/MainMenu/btnOption.png");
-    btnTexture[2].loadFromFile("images/MainMenu/btnAbout.png");
-    btnTexture[3].loadFromFile("images/MainMenu/btnExit.png");
-    btnTexture[4].loadFromFile("images/MainMenu/btnPlayHover.png");
-    btnTexture[5].loadFromFile("images/MainMenu/btnOptionHover.png");
-    btnTexture[6].loadFromFile("images/MainMenu/btnAboutHover.png");
-    btnTexture[7].loadFromFile("images/MainMenu/btnExitHover.png");
+    btnTexture[0].loadFromFile("images/MainMenu/PLAY.png");
+    btnTexture[1].loadFromFile("images/MainMenu/OPTIONS.png");
+    btnTexture[2].loadFromFile("images/MainMenu/ABOUT.png");
+    btnTexture[3].loadFromFile("images/MainMenu/EXIT.png");
+    btnTexture[4].loadFromFile("images/MainMenu/PLAY_Hovered.png");
+    btnTexture[5].loadFromFile("images/MainMenu/OPTIONS_Hovered.png");
+    btnTexture[6].loadFromFile("images/MainMenu/ABOUT_Hovered.png");
+    btnTexture[7].loadFromFile("images/MainMenu/EXIT_Hovered.png");
 
     //Button Play
-    mMenu[0].setPosition(750,400);
+    mMenu[0].setPosition(window->getSize().x/2. - 20.,350);
+    mMenu[0].setScale(.8, .8);
 
     //Button Option
-    mMenu[1].setPosition(750,500);
+    mMenu[1].setPosition(window->getSize().x/2. - 20.,500);
+    mMenu[1].setScale(.8, .8);
 
     //Button About
-    mMenu[2].setPosition(750,600);
+    mMenu[2].setPosition(window->getSize().x/2. - 20.,650);
+    mMenu[2].setScale(.8, .8);
 
     //Button Exit
-    mMenu[3].setPosition(750,700);
+    mMenu[3].setPosition(window->getSize().x/2. - 20.,800);
+    mMenu[3].setScale(.8, .8);
 
 }
 
@@ -79,7 +78,7 @@ void MenuStateView::run(sf::RenderWindow* window)
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up )&& !this->upKey) {
-        mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected]);
+        mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected], true);
         if(MainMenuSelected-1>=0){
 //        mainMenu[MainMenuSelected].setFillColor(Color::Black);
             MainMenuSelected--;
@@ -89,17 +88,17 @@ void MenuStateView::run(sf::RenderWindow* window)
 
 
 //        mainMenu[MainMenuSelected].setFillColor(Color::Yellow);
-        mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected]);
+        mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected], true);
 
     }
 
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)  && !this->downKey) {
-        mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected]);
+        mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected], true);
          if(MainMenuSelected+1>=Max_main_menu)
             MainMenuSelected=0;
         else if(MainMenuSelected<3)
             MainMenuSelected++;
-        mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected]);
+        mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected], true);
 
     }
 
@@ -135,7 +134,11 @@ void MenuStateView::render(sf::RenderWindow* window)
     mMenu[1].setTexture(btnTexture[1]);
     mMenu[2].setTexture(btnTexture[2]);
     mMenu[3].setTexture(btnTexture[3]);
-    mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected]);
+    mMenu[0].setOrigin(mMenu[0].getGlobalBounds().width/2., mMenu[0].getGlobalBounds().height/2.);
+    mMenu[1].setOrigin(mMenu[1].getGlobalBounds().width/2., mMenu[1].getGlobalBounds().height/2.);
+    mMenu[2].setOrigin(mMenu[2].getGlobalBounds().width/2., mMenu[2].getGlobalBounds().height/2.);
+    mMenu[3].setOrigin(mMenu[3].getGlobalBounds().width/2., mMenu[3].getGlobalBounds().height/2.);
+    mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected], true);
 
     //Draw the graphics elements
     window->draw(this->background);

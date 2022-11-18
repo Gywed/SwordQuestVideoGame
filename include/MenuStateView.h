@@ -23,12 +23,7 @@ class MenuStateView: public StateView
         Sprite mMenu[Max_main_menu];
         RectangleShape background;
         Texture mainTexture;
-        Texture btnTexture[8];
-
-        bool isPlay;
-        bool isOption;
-        bool isAbout;
-        bool isQuit;
+        Texture btnTexture[12];
 
         bool upKey,downKey, enterKey;
 

@@ -42,9 +42,6 @@ void AboutStateView::init(sf::RenderWindow* window)
     credits[2].setCharacterSize(70);
     credits[2].setPosition(700,475);
 
-    credits[3].setString("Pierre Gillebert");
-    credits[3].setCharacterSize(70);
-    credits[3].setPosition(600,625);
 }
 
 void AboutStateView::run(sf::RenderWindow* window)

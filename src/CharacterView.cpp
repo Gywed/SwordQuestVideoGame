@@ -8,6 +8,7 @@ CharacterView::CharacterView(Character *character)
     this->rectSourceSprite = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
     this->setTextureRect(*rectSourceSprite);
     this->setScale(2., 2.);
+    this->getTexture()->setSmooth(true);
     this->setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
 }
 
