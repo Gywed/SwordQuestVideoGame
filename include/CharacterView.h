@@ -1,8 +1,8 @@
 #ifndef CHARACTERVIEW_H
 #define CHARACTERVIEW_H
 // Size of Sprite
-#define Sprite_Width 96
-#define Sprite_Height 104
+#define Sprite_Width 45
+#define Sprite_Height 48
 
 // Define not moving sprite for each position
 #define Sprite_Right 312
@@ -48,6 +48,7 @@ class CharacterView: public Entity
         //Method
         void moveAnyDirection(sf::RenderWindow* window);
         void startSpriteMovementAnimation(int startingSpriteTop);
+        void startSpriteIdleAnimation();
 
 
 };

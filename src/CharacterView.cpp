@@ -4,10 +4,10 @@ CharacterView::CharacterView(Character *character)
 {
     this->character = character;
     this->setPosition(character->getPosX(), character->getPosY());
-    this->loadTexture("images/SpriteSheet.png");
+    this->loadTexture("images/Animation/MainHero/Idle.png");
     this->rectSourceSprite = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
     this->setTextureRect(*rectSourceSprite);
-    this->setScale(.8, .8);
+    this->setScale(2., 2.);
     this->setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
 }
 
@@ -121,13 +121,27 @@ void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)
     rectSourceSprite->top = startingSpriteTop;
     if (timer.getElapsedTime().asSeconds() > 0.09f){
 
-        if (rectSourceSprite->left == Sprite_Changing_Left_Max)
+        if (rectSourceSprite->left == 135)
             rectSourceSprite->left=0;
         else
-            rectSourceSprite->left+=Sprite_Changing_Step;
+            rectSourceSprite->left+=45;
 
         this->setTextureRect(*rectSourceSprite);
         timer.restart();
     }
 
+}
+
+void CharacterView::startSpriteIdleAnimation()
+{
+    if (timer.getElapsedTime().asSeconds() > 0.35f){
+
+        if (rectSourceSprite->left == 135)
+            rectSourceSprite->left=0;
+        else
+            rectSourceSprite->left+=45;
+
+        this->setTextureRect(*rectSourceSprite);
+        timer.restart();
+    }
 }
