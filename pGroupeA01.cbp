@@ -42,6 +42,7 @@
 			<Add directory="lib/SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="include/AboutStateView.h" />
+		<Unit filename="include/BasicRoomView.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/CharacterView.h" />
 		<Unit filename="include/Entity.h" />
@@ -54,9 +55,11 @@
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/StateView.h" />
 		<Unit filename="include/Sword.h" />
+		<Unit filename="include/TileMap.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AboutStateView.cpp" />
+		<Unit filename="src/BasicRoomView.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/CharacterView.cpp" />
 		<Unit filename="src/Entity.cpp" />
@@ -69,6 +72,7 @@
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/StateView.cpp" />
 		<Unit filename="src/Sword.cpp" />
+		<Unit filename="src/TileMap.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Extensions />
 	</Project>

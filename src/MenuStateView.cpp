@@ -47,6 +47,16 @@ void MenuStateView::init(sf::RenderWindow* window)
     btnTexture[6].loadFromFile("images/MainMenu/ABOUT_Hovered.png");
     btnTexture[7].loadFromFile("images/MainMenu/EXIT_Hovered.png");
 
+    //Smoothing textures
+    btnTexture[0].setSmooth(true);
+    btnTexture[1].setSmooth(true);
+    btnTexture[2].setSmooth(true);
+    btnTexture[3].setSmooth(true);
+    btnTexture[4].setSmooth(true);
+    btnTexture[5].setSmooth(true);
+    btnTexture[6].setSmooth(true);
+    btnTexture[7].setSmooth(true);
+
     //Button Play
     mMenu[0].setPosition(window->getSize().x/2. - 20.,350);
     mMenu[0].setScale(.8, .8);
