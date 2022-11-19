@@ -49,9 +49,9 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 
             this->movement.x += this->character->moveRight();
             this->movement.y += 0.;
-            if(this->character->getPosX() > window->getSize().x)
+            if(this->character->getPosX() > window->getSize().x - 64)
             {
-                this->character->setPosX(window->getSize().x);
+                this->character->setPosX(window->getSize().x - 64);
                 this->movement.x = 0.;
             }
             startSpriteMovementAnimation();
@@ -77,9 +77,9 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
             this->setScale(-2., 2.);
             this->movement.x += this->character->moveLeft();
             this->movement.y += 0.;
-            if(this->character->getPosX() < 0.)
+            if(this->character->getPosX() < 64.)
             {
-                this->character->setPosX(0.);
+                this->character->setPosX(64);
                 this->movement.x = 0.;
             }
             startSpriteMovementAnimation();
@@ -88,11 +88,13 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
             idleFlag=false;
+
             this->movement.y += this->character->moveDown();
             this->movement.x += 0.;
-            if(this->character->getPosY() > window->getSize().y)
+            if(this->character->getPosY() > window->getSize().y - 112)
             {
-                this->character->setPosY(window->getSize().y);
+                this->rectSourceSprite->top += this->movement.y;
+                this->character->setPosY(window->getSize().y - 112);
                 this->movement.y = 0.;
             }
             startSpriteMovementAnimation();
