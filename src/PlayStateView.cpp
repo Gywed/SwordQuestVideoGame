@@ -39,8 +39,7 @@ void PlayStateView::run(sf::RenderWindow* window)
         this->gm->setState(EnumState::MENUSTATE);
     }else
     {
-//        this->characterV->moveAnyDirection(window);
-        this->characterV->startSpriteIdleAnimation();
+        this->characterV->moveAnyDirection(window);
     }
 
 }

@@ -12,7 +12,7 @@ class Character
 {
     private:
         int HP;
-        float posX, posY, speed=0.1;
+        float posX, posY, speed=0.4;
         vector<Weapon*> weapons;
     public:
         Character(float posX, float posY);

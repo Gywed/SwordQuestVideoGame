@@ -9,7 +9,7 @@ CharacterView::CharacterView(Character *character)
     this->setTextureRect(*rectSourceSprite);
     this->setScale(2., 2.);
     this->getTexture()->setSmooth(true);
-    this->setOrigin(this->getGlobalBounds().width/2., this->getGlobalBounds().height/2.);
+    this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
 }
 
 CharacterView::~CharacterView()
@@ -44,6 +44,9 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
+            idleFlag=false;
+            this->setScale(2., 2.);
+
             this->movement.x += this->character->moveRight();
             this->movement.y += 0.;
             if(this->character->getPosX() > window->getSize().x)
@@ -51,24 +54,27 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
                 this->character->setPosX(window->getSize().x);
                 this->movement.x = 0.;
             }
-            startSpriteMovementAnimation(Sprite_Right_Moving);
+            startSpriteMovementAnimation();
 
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
+            idleFlag=false;
             this->movement.y += this->character->moveUp();
             this->movement.x += 0.;
-            if(this->character->getPosY() < 0.)
+            if(this->character->getPosY() < 192)
             {
-                this->character->setPosY(0.);
+                this->character->setPosY(192);
                 this->movement.y = 0.;
             }
-            startSpriteMovementAnimation(Sprite_Back_Moving);
+            startSpriteMovementAnimation();
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
+            idleFlag=false;
+            this->setScale(-2., 2.);
             this->movement.x += this->character->moveLeft();
             this->movement.y += 0.;
             if(this->character->getPosX() < 0.)
@@ -76,11 +82,12 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
                 this->character->setPosX(0.);
                 this->movement.x = 0.;
             }
-            startSpriteMovementAnimation(Sprite_Left_Moving);
+            startSpriteMovementAnimation();
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
+            idleFlag=false;
             this->movement.y += this->character->moveDown();
             this->movement.x += 0.;
             if(this->character->getPosY() > window->getSize().y)
@@ -88,7 +95,7 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
                 this->character->setPosY(window->getSize().y);
                 this->movement.y = 0.;
             }
-            startSpriteMovementAnimation(Sprite_Front_Moving);
+            startSpriteMovementAnimation();
 
         }
 
@@ -103,10 +110,10 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
                 switch (ev.key.code)
                 {
                 // Process the up, down, left and right keys
-                case sf::Keyboard::Up :     rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Back; break;
-                case sf::Keyboard::Down:    rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Front; break;
-                case sf::Keyboard::Left:    rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Left;break;
-                case sf::Keyboard::Right:   rectSourceSprite->left=0;rectSourceSprite->top=Sprite_Right;break;
+                case sf::Keyboard::Up :     idleFlag=true; rectSourceSprite->left=0; break;
+                case sf::Keyboard::Down:    idleFlag=true; rectSourceSprite->left=0; break;
+                case sf::Keyboard::Left:    idleFlag=true; rectSourceSprite->left=0; break;
+                case sf::Keyboard::Right:   idleFlag=true; rectSourceSprite->left=0; break;
                 default : break;
                 }
                 this->setTextureRect(*rectSourceSprite);
@@ -115,14 +122,17 @@ void CharacterView::moveAnyDirection(sf::RenderWindow* window)
 		}
 
         this->updatePosition();
+
+        if(idleFlag)
+            startSpriteIdleAnimation();
 }
 
-void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)
+void CharacterView::startSpriteMovementAnimation()
 {
-    rectSourceSprite->top = startingSpriteTop;
-    if (timer.getElapsedTime().asSeconds() > 0.09f){
+    this->loadTexture("images/Animation/MainHero/Movement.png");
+    if (timer.getElapsedTime().asSeconds() > 0.15f){
 
-        if (rectSourceSprite->left == 135)
+        if (rectSourceSprite->left == 225)
             rectSourceSprite->left=0;
         else
             rectSourceSprite->left+=45;
@@ -135,6 +145,7 @@ void CharacterView::startSpriteMovementAnimation(int startingSpriteTop)
 
 void CharacterView::startSpriteIdleAnimation()
 {
+    this->loadTexture("images/Animation/MainHero/Idle.png");
     if (timer.getElapsedTime().asSeconds() > 0.35f){
 
         if (rectSourceSprite->left == 135)

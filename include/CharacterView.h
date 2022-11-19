@@ -2,7 +2,7 @@
 #define CHARACTERVIEW_H
 // Size of Sprite
 #define Sprite_Width 45
-#define Sprite_Height 48
+#define Sprite_Height 47
 
 // Define not moving sprite for each position
 #define Sprite_Right 312
@@ -31,6 +31,7 @@ class CharacterView: public Entity
         sf::IntRect* rectSourceSprite;
         sf::Clock timer;
 
+        bool idleFlag = true;
         bool upKey,downKey, leftKey, rightKey;
 
     public:
@@ -47,7 +48,7 @@ class CharacterView: public Entity
 
         //Method
         void moveAnyDirection(sf::RenderWindow* window);
-        void startSpriteMovementAnimation(int startingSpriteTop);
+        void startSpriteMovementAnimation();
         void startSpriteIdleAnimation();
 
 
