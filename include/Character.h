@@ -30,7 +30,7 @@ class Character
         float getPosY()const;
         void setPosY(float posY);
 
-        //Return the step
+        //Return the speed
         float moveUp();
         float moveLeft();
         float moveDown();
