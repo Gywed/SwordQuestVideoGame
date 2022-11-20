@@ -28,7 +28,9 @@ class CharacterView: public Entity
     private:
         Character* character;
 
-        sf::IntRect* rectSourceSprite;
+        sf::IntRect* defaultTextureRect;
+        sf::IntRect* simpleAttackTextureRect;
+        sf::IntRect* deathTextureRect;
         sf::Clock timer;
 
         bool idleFlag = true, attackFlag=false, deathFlag = false;

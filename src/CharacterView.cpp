@@ -5,8 +5,10 @@ CharacterView::CharacterView(Character *character)
     this->character = character;
     this->setPosition(character->getPosX(), character->getPosY());
     this->loadTexture("images/Animation/MainHero/Idle.png");
-    this->rectSourceSprite = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
-    this->setTextureRect(*rectSourceSprite);
+    this->defaultTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->simpleAttackTextureRect = new sf::IntRect(0, 0, 71, 63);
+    this->deathTextureRect = new sf::IntRect(0, 0, 75, 59);
+    this->setTextureRect(*defaultTextureRect);
     this->setScale(2., 2.);
     this->getTexture()->setSmooth(true);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
@@ -14,7 +16,9 @@ CharacterView::CharacterView(Character *character)
 
 CharacterView::~CharacterView()
 {
-    delete rectSourceSprite;
+    delete defaultTextureRect;
+    delete simpleAttackTextureRect;
+    delete deathTextureRect;
 }
 
 CharacterView::CharacterView(const CharacterView& other)
@@ -32,11 +36,11 @@ CharacterView& CharacterView::operator=(const CharacterView& rhs)
 //Setters Getters
 Character* CharacterView::getCharacter()const { return character; }
 void CharacterView::setCharacter(Character* character) { this->character = character; }
-sf::IntRect* CharacterView::getRectSourceSprite()const { return rectSourceSprite; }
-void CharacterView::setRectSourceSprite(sf::IntRect* rectSourceSprite)
+sf::IntRect* CharacterView::getRectSourceSprite()const { return defaultTextureRect; }
+void CharacterView::setRectSourceSprite(sf::IntRect* textureRect)
 {
-    delete this->rectSourceSprite;
-    this->rectSourceSprite = new sf::IntRect(rectSourceSprite->left, rectSourceSprite->top, rectSourceSprite->width, rectSourceSprite->height);
+    delete this->defaultTextureRect;
+    this->defaultTextureRect = new sf::IntRect(textureRect->left, textureRect->top, textureRect->width, textureRect->height);
 }
 
 //Method
@@ -121,7 +125,6 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             //Manage the boundaries collisions
             if(this->character->getPosY() > window->getSize().y - 112)
             {
-                this->rectSourceSprite->top += this->movement.y;
                 this->character->setPosY(window->getSize().y - 112);
                 this->movement.y = 0.;
             }
@@ -140,10 +143,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             //Enable attack
             attackFlag=true;
             //Adapt texture rect to the texture dimensions of Attack1.png
-            rectSourceSprite->width=71;
-            rectSourceSprite->height=63;
-            rectSourceSprite->left=0;
-            this->setTextureRect(*rectSourceSprite);
+            this->setTextureRect(*simpleAttackTextureRect);
             //determine the value of the position modifier for the attack because of the texture size differences
             if(this->getScale().x < 0)
                 spritePosXModifierWhenAttacking = -26;
@@ -164,10 +164,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
         attackFlag=false;
         deathFlag=true;
 
-        rectSourceSprite->width=75;
-        rectSourceSprite->height=59;
-        rectSourceSprite->left=0;
-        this->setTextureRect(*rectSourceSprite);
+        this->setTextureRect(*deathTextureRect);
         //determine the value of the position modifier for the attack because of the texture size differences
         if(this->getScale().x < 0)
             spritePosXModifierWhenAttacking = -30;
@@ -194,33 +191,33 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        rectSourceSprite->left=0;
+                        defaultTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Down:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        rectSourceSprite->left=0;
+                        defaultTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Left:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        rectSourceSprite->left=0;
+                        defaultTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Right:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        rectSourceSprite->left=0;
+                        defaultTextureRect->left=0;
                         break;
                     }
                 default : break;
             }
-            this->setTextureRect(*rectSourceSprite);
+            this->setTextureRect(*defaultTextureRect);
 
         }
     }
@@ -243,9 +240,8 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             //Put back the correct position to match the model
             this->setPosition(this->character->getPosX(), this->character->getPosY());
             //Adapt textureRect to the dimensions of Idle.png and Movement.png
-            rectSourceSprite->width=Sprite_Width;
-            rectSourceSprite->height=Sprite_Height;
-            this->setTextureRect(*rectSourceSprite);
+            this->defaultTextureRect->left=0;
+            this->setTextureRect(*defaultTextureRect);
             //Enable idle state
             idleFlag=true;
         }
@@ -271,12 +267,12 @@ void CharacterView::updateSpriteMovementAnimation()
     //Shift textureRect every time given
     if (timer.getElapsedTime().asSeconds() > 0.15f){
 
-        if (rectSourceSprite->left == 225)
-            rectSourceSprite->left=0;
+        if (defaultTextureRect->left == 225)
+            defaultTextureRect->left=0;
         else
-            rectSourceSprite->left+=45;
+            defaultTextureRect->left+=45;
 
-        this->setTextureRect(*rectSourceSprite);
+        this->setTextureRect(*defaultTextureRect);
         timer.restart();
     }
 
@@ -288,12 +284,12 @@ void CharacterView::updateSpriteIdleAnimation()
     //Shift textureRect every time given
     if (timer.getElapsedTime().asSeconds() > 0.35f){
 
-        if (rectSourceSprite->left == 135)
-            rectSourceSprite->left=0;
+        if (defaultTextureRect->left == 135)
+            defaultTextureRect->left=0;
         else
-            rectSourceSprite->left+=45;
+            defaultTextureRect->left+=45;
 
-        this->setTextureRect(*rectSourceSprite);
+        this->setTextureRect(*defaultTextureRect);
         timer.restart();
     }
 
@@ -304,16 +300,16 @@ void CharacterView::updateSpriteSimpleAttackAnimation()
     this->loadTexture("images/Animation/MainHero/Attack1.png");
     if (timer.getElapsedTime().asSeconds() > 0.13f){
 
-        if (rectSourceSprite->left == 284)
+        if (simpleAttackTextureRect->left == 284)
         {
-            rectSourceSprite->left=0;
+            simpleAttackTextureRect->left=0;
             //When we reach the end of Attack1.png sprite sheet, we notify the end of the attack
             attackFlag=false;
         }
         else
-            rectSourceSprite->left+=71;
+            simpleAttackTextureRect->left+=71;
 
-        this->setTextureRect(*rectSourceSprite);
+        this->setTextureRect(*simpleAttackTextureRect);
         timer.restart();
     }
 }
@@ -323,15 +319,15 @@ void CharacterView::updateSpriteDeathAnimation()
     this->loadTexture("images/Animation/MainHero/Death.png");
     if (timer.getElapsedTime().asSeconds() > 0.3f){
 
-        if (rectSourceSprite->left == 300)
+        if (deathTextureRect->left == 300)
         {
             //When we reach the end of Death.png sprite sheet, we notify the end of the death animation
             deathFlag=false;
         }
         else
-            rectSourceSprite->left+=75;
+            deathTextureRect->left+=75;
 
-        this->setTextureRect(*rectSourceSprite);
+        this->setTextureRect(*deathTextureRect);
         timer.restart();
     }
 }
