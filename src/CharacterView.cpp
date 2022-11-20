@@ -157,6 +157,27 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
         }
     }
 
+    //Temporary event to test the death event
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        idleFlag=false;
+        attackFlag=false;
+        deathFlag=true;
+
+        rectSourceSprite->width=75;
+        rectSourceSprite->height=59;
+        rectSourceSprite->left=0;
+        this->setTextureRect(*rectSourceSprite);
+        //determine the value of the position modifier for the attack because of the texture size differences
+        if(this->getScale().x < 0)
+            spritePosXModifierWhenAttacking = -30;
+        else
+            spritePosXModifierWhenAttacking = 30;
+        spritePosYModifierWhenAttacking = 27;
+        //Apply the position modifiers
+        this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+    }
+
     //Verifying events
     sf::Event ev;
     while (window->pollEvent(ev))
@@ -229,6 +250,13 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             idleFlag=true;
         }
     }
+
+    //Death event
+    if(deathFlag)
+    {
+        //Animation
+        updateSpriteDeathAnimation();
+    }
 }
 
 void CharacterView::attack()
@@ -284,6 +312,24 @@ void CharacterView::updateSpriteSimpleAttackAnimation()
         }
         else
             rectSourceSprite->left+=71;
+
+        this->setTextureRect(*rectSourceSprite);
+        timer.restart();
+    }
+}
+
+void CharacterView::updateSpriteDeathAnimation()
+{
+    this->loadTexture("images/Animation/MainHero/Death.png");
+    if (timer.getElapsedTime().asSeconds() > 0.3f){
+
+        if (rectSourceSprite->left == 300)
+        {
+            //When we reach the end of Death.png sprite sheet, we notify the end of the death animation
+            deathFlag=false;
+        }
+        else
+            rectSourceSprite->left+=75;
 
         this->setTextureRect(*rectSourceSprite);
         timer.restart();

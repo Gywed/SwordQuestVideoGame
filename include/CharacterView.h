@@ -31,7 +31,7 @@ class CharacterView: public Entity
         sf::IntRect* rectSourceSprite;
         sf::Clock timer;
 
-        bool idleFlag = true, attackFlag=false;
+        bool idleFlag = true, attackFlag=false, deathFlag = false;
         bool upKey,downKey, leftKey, rightKey;
 
         int spritePosXModifierWhenAttacking;
@@ -52,9 +52,12 @@ class CharacterView: public Entity
         //Method
         void spriteEvents(sf::RenderWindow* window);
         void attack();
+
+        //Animation
         void updateSpriteMovementAnimation();
         void updateSpriteIdleAnimation();
         void updateSpriteSimpleAttackAnimation();
+        void updateSpriteDeathAnimation();
 
 
 };
