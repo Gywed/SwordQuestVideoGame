@@ -30,14 +30,16 @@ class CharacterView: public Entity
 
         sf::IntRect* defaultTextureRect;
         sf::IntRect* simpleAttackTextureRect;
+        sf::IntRect* heavyAttackTextureRect;
         sf::IntRect* deathTextureRect;
         sf::Clock timer;
+        sf::Clock simpleAttackCoolDownTimer;
+        sf::Clock heavyAttackCoolDownTimer;
 
-        bool idleFlag = true, attackFlag=false, deathFlag = false;
-        bool upKey,downKey, leftKey, rightKey;
+        bool idleFlag = true, attackFlag=false, heavyAttackFlag= false, simpleAttackFlag = true, deathFlag = false;
 
         int spritePosXModifierWhenAttacking;
-        int spritePosYModifierWhenAttacking = 31;
+        int spritePosYModifierWhenAttacking;
 
     public:
         CharacterView(Character *character);
@@ -59,6 +61,7 @@ class CharacterView: public Entity
         void updateSpriteMovementAnimation();
         void updateSpriteIdleAnimation();
         void updateSpriteSimpleAttackAnimation();
+        void updateSpriteHeavyAttackAnimation();
         void updateSpriteDeathAnimation();
 
 

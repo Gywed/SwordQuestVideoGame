@@ -7,6 +7,7 @@ CharacterView::CharacterView(Character *character)
     this->loadTexture("images/Animation/MainHero/Idle.png");
     this->defaultTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 71, 63);
+    this->heavyAttackTextureRect = new sf::IntRect(0, 0, 102, 62);
     this->deathTextureRect = new sf::IntRect(0, 0, 75, 59);
     this->setTextureRect(*defaultTextureRect);
     this->setScale(2., 2.);
@@ -18,6 +19,7 @@ CharacterView::~CharacterView()
 {
     delete defaultTextureRect;
     delete simpleAttackTextureRect;
+    delete heavyAttackTextureRect;
     delete deathTextureRect;
 }
 
@@ -133,27 +135,67 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
         }
     }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         //Sprite can't initiate an attack if it's already attacking
         if(!attackFlag)
         {
-            //Stop the idle animation
-            idleFlag=false;
-            //Enable attack
-            attackFlag=true;
-            //Adapt texture rect to the texture dimensions of Attack1.png
-            this->setTextureRect(*simpleAttackTextureRect);
-            //determine the value of the position modifier for the attack because of the texture size differences
-            if(this->getScale().x < 0)
-                spritePosXModifierWhenAttacking = -26;
-            else
-                spritePosXModifierWhenAttacking = 26;
-            //Apply the position modifiers
-            this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+            if(simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 0.5f)
+            {
+                //Stop the idle animation
+                idleFlag=false;
+                //Enable attack
+                attackFlag=true;
+                //Notify the type of attack
+                simpleAttackFlag=true;
+                //Adapt texture rect to the texture dimensions of Attack1.png
+                this->setTextureRect(*simpleAttackTextureRect);
+                //determine the value of the position modifier for the attack because of the texture size differences
+                if(this->getScale().x < 0)
+                    spritePosXModifierWhenAttacking = -26;
+                else
+                    spritePosXModifierWhenAttacking = 26;
+                spritePosYModifierWhenAttacking = 31;
+                //Apply the position modifiers
+                this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
 
-            //Attack method
-            attack();
+                //Attack method
+                attack();
+                simpleAttackCoolDownTimer.restart();
+            }
+
+        }
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    {
+        //Sprite can't initiate an attack if it's already attacking
+        if(!attackFlag)
+        {
+            if(heavyAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
+            {
+                //Stop the idle animation
+                idleFlag=false;
+                //Enable attack
+                attackFlag=true;
+                //Notify the type of attack
+                heavyAttackFlag=true;
+                //Adapt texture rect to the texture dimensions of Attack1.png
+                this->setTextureRect(*heavyAttackTextureRect);
+                //determine the value of the position modifier for the attack because of the texture size differences
+                if(this->getScale().x < 0)
+                    spritePosXModifierWhenAttacking = -45;
+                else
+                    spritePosXModifierWhenAttacking = 45;
+                spritePosYModifierWhenAttacking = 25;
+                //Apply the position modifiers
+                this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+
+                //Attack method
+                attack();
+                heavyAttackCoolDownTimer.restart();
+            }
+
         }
     }
 
@@ -233,7 +275,10 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
     if(attackFlag)
     {
         //Animation
-        updateSpriteSimpleAttackAnimation();
+        if(simpleAttackFlag)
+            updateSpriteSimpleAttackAnimation();
+        else
+            updateSpriteHeavyAttackAnimation();
         //Check if the animation is finished
         if(!attackFlag)
         {
@@ -298,6 +343,7 @@ void CharacterView::updateSpriteIdleAnimation()
 void CharacterView::updateSpriteSimpleAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack1.png");
+    this->setTextureRect(*simpleAttackTextureRect);
     if (timer.getElapsedTime().asSeconds() > 0.13f){
 
         if (simpleAttackTextureRect->left == 284)
@@ -305,11 +351,32 @@ void CharacterView::updateSpriteSimpleAttackAnimation()
             simpleAttackTextureRect->left=0;
             //When we reach the end of Attack1.png sprite sheet, we notify the end of the attack
             attackFlag=false;
+            simpleAttackFlag=false;
         }
         else
             simpleAttackTextureRect->left+=71;
 
         this->setTextureRect(*simpleAttackTextureRect);
+        timer.restart();
+    }
+}
+
+void CharacterView::updateSpriteHeavyAttackAnimation()
+{
+    this->loadTexture("images/Animation/MainHero/Attack2.png");
+    this->setTextureRect(*heavyAttackTextureRect);
+    if (timer.getElapsedTime().asSeconds() > 0.20f){
+        if (heavyAttackTextureRect->left == 612)
+        {
+            heavyAttackTextureRect->left=0;
+            //When we reach the end of Attack1.png sprite sheet, we notify the end of the attack
+            attackFlag=false;
+            heavyAttackFlag=false;
+        }
+        else
+            heavyAttackTextureRect->left+=102;
+
+        this->setTextureRect(*heavyAttackTextureRect);
         timer.restart();
     }
 }
