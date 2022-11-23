@@ -1,9 +1,11 @@
 #include "Character.h"
 #include <iostream>
+#include <ctime>
 
 Character::Character(float posX, float posY): posX(posX), posY(posY)
 {
     HP = 10;
+    attackable = true;
 }
 
 Character::~Character()
@@ -42,6 +44,10 @@ Character& Character::operator=(const Character& rhs)
 
 void Character::getDamaged(int damage)
 {
+    if (!isAttackable())
+        return
+
+    setAttackable(false);
     int newHP = getHP() - damage;
 
     if (newHP <= 0)
@@ -50,6 +56,31 @@ void Character::getDamaged(int damage)
     }
     else
         setHP(newHP);
+}
+
+void Character::stopInvunaribilityFrame()
+{
+    setAttackable(true);
+}
+
+void Character::setInvTime(float invTime)
+{
+    this->invTime = invTime;
+}
+
+float Character::getInvTime()const
+{
+    return this->invTime;
+}
+
+bool Character::isAttackable()const
+{
+    return this->attackable;
+}
+
+void Character::setAttackable(bool attackable)
+{
+    this->attackable = attackable;
 }
 
 void Character::setHP(int newHP)

@@ -250,8 +250,6 @@ using namespace std;
 
 int main()
 {
-//    Character c;
-//    cout<<c.str();
 //    Game game;
 //    game.run();
     sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "SwordQuest",sf::Style::Titlebar | sf::Style::Fullscreen);

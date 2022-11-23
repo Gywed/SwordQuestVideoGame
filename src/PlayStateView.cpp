@@ -1,4 +1,11 @@
 #include "PlayStateView.h"
+#include <iostream>
+#include <thread>
+
+void doPause()
+{
+    std::cout << "Paused" << std::endl;
+}
 
 PlayStateView::PlayStateView(GameManagerView* gm)
 {
@@ -34,6 +41,12 @@ void PlayStateView::init(sf::RenderWindow* window)
 
 void PlayStateView::run(sf::RenderWindow* window)
 {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+    {
+        std::thread pauseThread(doPause);
+        while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+        pauseThread.join();
+    }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->gm->setState(EnumState::MENUSTATE);

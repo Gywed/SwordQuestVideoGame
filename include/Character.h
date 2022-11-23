@@ -14,21 +14,29 @@ class Character
         int HP;
         float posX, posY, speed=0.4;
         vector<Weapon*> weapons;
+        bool attackable;
+        float invTime = 1.0f;
+
     public:
-        Character(float posX, float posY);
+        Character(float posX = 0.0, float posY = 0.0);
         virtual ~Character();
         Character(const Character& other);
         Character& operator=(const Character& other);
         string str() const;
 
         void getDamaged(int damage);
+        void stopInvunaribilityFrame();
 
         void setHP(int newHP);
         int getHP() const;
         float getPosX()const;
         void setPosX(float posX);
         float getPosY()const;
+        void setInvTime(float invTime);
+        float getInvTime()const;
         void setPosY(float posY);
+        bool isAttackable()const;
+        void setAttackable(bool attackable);
 
         //Return the speed
         float moveUp();
