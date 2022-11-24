@@ -4,7 +4,6 @@
 
 void doPause()
 {
-    std::cout << "Paused" << std::endl;
 }
 
 PlayStateView::PlayStateView(GameManagerView* gm)
@@ -17,6 +16,7 @@ PlayStateView::~PlayStateView()
     delete characterV;
     delete characterM;
     delete roomV;
+    delete pauseV;
 }
 
 PlayStateView::PlayStateView(const PlayStateView& other)
@@ -37,15 +37,21 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->characterV = new CharacterView(characterM);
 
     this->roomV = new BasicRoomView();
+    this->pauseV = new pauseView(this->gm->getWindow());
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
     {
+
         std::thread pauseThread(doPause);
+        this->pauseFlag = true;
+        render(window);
+        window->display();
         while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
         pauseThread.join();
+        this->pauseFlag = false;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
@@ -56,11 +62,14 @@ void PlayStateView::run(sf::RenderWindow* window)
     }
 
 }
+
 void PlayStateView::render(sf::RenderWindow* window)
 {
     window->clear();
     window->draw(this->roomV->getTileMap());
     window->draw(*this->characterV);
+    if (this->pauseFlag)
+        pauseV->render();
 }
 void PlayStateView::destroy()
 {

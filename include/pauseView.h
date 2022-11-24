@@ -5,14 +5,20 @@
 class pauseView
 {
     public:
-        pauseView();
+        pauseView(sf::RenderWindow* window = nullptr);
         virtual ~pauseView();
         pauseView(const pauseView& other);
         pauseView& operator=(const pauseView& other);
+        sf::Sprite* getSpriteBackground() const;
+
+        void render();
+
 
     protected:
 
     private:
+        sf::Sprite* spriteBackground;
+        sf::RenderWindow* window;
 };
 
 #endif // PAUSEVIEW_H
