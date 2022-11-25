@@ -7,8 +7,6 @@ using namespace std;
 
 int main()
 {
-    Game game;
-    game.run();
     sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "SwordQuest",sf::Style::Titlebar | sf::Style::Fullscreen);
     GameManagerView *gm = new GameManagerView();
     gm->setWindow(window);
