@@ -19,6 +19,7 @@ class pauseView
     private:
         sf::Sprite* spriteBackground;
         sf::RenderWindow* window;
+        sf::Sprite* spriteRectPauseMenu;
 };
 
 #endif // PAUSEVIEW_H

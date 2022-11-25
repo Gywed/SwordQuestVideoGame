@@ -44,6 +44,7 @@ pauseView& pauseView::operator=(const pauseView& rhs)
 void pauseView::render()
 {
     window->draw(*spriteBackground);
+//    spriteRectPauseMenu->setTextureRect(sf::IntRect())
 }
 
 sf::Sprite* pauseView::getSpriteBackground() const
