@@ -1,11 +1,20 @@
 #include "Character.h"
 #include <iostream>
 #include <ctime>
+#include <sys/mman.h>
+#include <unistd.h>
+#define _GNU_SOURCE
 
 Character::Character(float posX, float posY): posX(posX), posY(posY)
 {
     HP = 10;
-    attackable = true;
+    attackable_file.open("attackable",std::ios::out);
+    attackable_file<<true;
+    attackable_file.close();
+
+    attackable_file.open("attackable",std::ios::in);
+    attackable_file >> attackable;
+    attackable_file.close();
 }
 
 Character::~Character()
@@ -45,9 +54,14 @@ Character& Character::operator=(const Character& rhs)
 void Character::getDamaged(int damage)
 {
     if (!isAttackable())
-        return
-
+        return;
     setAttackable(false);
+
+    if (fork() == 0)
+    {
+        stopInvunaribilityFrame();
+        exit(0);
+    }
     int newHP = getHP() - damage;
 
     if (newHP <= 0)
@@ -60,6 +74,7 @@ void Character::getDamaged(int damage)
 
 void Character::stopInvunaribilityFrame()
 {
+    usleep(this->invTime*1000000);
     setAttackable(true);
 }
 
@@ -73,14 +88,20 @@ float Character::getInvTime()const
     return this->invTime;
 }
 
-bool Character::isAttackable()const
+bool Character::isAttackable()
 {
-    return this->attackable;
+    attackable_file.open("attackable",std::ios::in);
+    attackable_file >> attackable;
+    attackable_file.close();
+    return attackable;
 }
 
-void Character::setAttackable(bool attackable)
+void Character::setAttackable(bool newAttackable)
 {
-    this->attackable = attackable;
+    attackable_file.open("attackable",std::ios::out);
+    attackable_file<<newAttackable;
+    attackable_file.close();
+    this->attackable = newAttackable;
 }
 
 void Character::setHP(int newHP)

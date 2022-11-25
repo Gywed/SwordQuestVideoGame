@@ -4,6 +4,7 @@
 #include <Weapon.h>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 using std::string;
 using std::vector;
@@ -16,6 +17,7 @@ class Character
         vector<Weapon*> weapons;
         bool attackable;
         float invTime = 1.0f;
+        std::fstream attackable_file;
 
     public:
         Character(float posX = 0.0, float posY = 0.0);
@@ -35,8 +37,8 @@ class Character
         void setInvTime(float invTime);
         float getInvTime()const;
         void setPosY(float posY);
-        bool isAttackable()const;
-        void setAttackable(bool attackable);
+        bool isAttackable();
+        void setAttackable(bool newAttackable);
 
         //Return the speed
         float moveUp();
