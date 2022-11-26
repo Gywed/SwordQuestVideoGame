@@ -32,7 +32,7 @@ Monster& Monster::operator=(const Monster& rhs)
     return *this;
 }
 
-void Monster::attack(Character* character)
+void Monster::attack(MainHero* mainHero)
 {
 
 }

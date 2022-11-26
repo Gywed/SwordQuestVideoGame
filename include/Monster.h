@@ -1,8 +1,8 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
-// include <Character.h> dans Monster.cpp, sinon ça fait des déclaration ciruclaire (Character include Weapon, Weapon include Monster, Monster include Character ... Boucled)
-class Character;
+// include <MainHero.h> dans Monster.cpp, sinon ça fait des déclaration ciruclaire (MainHero include Weapon, Weapon include Monster, Monster include MainHero ... Boucled)
+class MainHero;
 
 class Monster
 {
@@ -12,7 +12,7 @@ class Monster
         Monster(const Monster& other);
         Monster& operator=(const Monster& other);
 
-        virtual void attack(Character* character);
+        virtual void attack(MainHero* character);
 
         void getDamaged(int damage);
 

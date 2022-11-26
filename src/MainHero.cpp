@@ -5,9 +5,11 @@
 #include <unistd.h>
 #define _GNU_SOURCE
 
-MainHero::MainHero(float posX, float posY): posX(posX), posY(posY)
+MainHero::MainHero(float posX, float posY): Character(posX, posY)
 {
-    HP = 10;
+    this->setHP(10);
+    this->setSpeed(0.4);
+
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<true;
     attackable_file.close();
@@ -27,7 +29,7 @@ MainHero::~MainHero()
 MainHero::MainHero(const MainHero& other)
 {
     //copy ctor
-    this->HP = other.HP;
+    this->setHP(other.getHP());
 
     for (Weapon* weapon : other.weapons)
     {
@@ -39,7 +41,7 @@ MainHero& MainHero::operator=(const MainHero& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
 
-    this->HP = rhs.HP;
+    this->setHP(rhs.getHP());
 
     for (Weapon* weapon : weapons)
         delete weapon;
@@ -104,29 +106,5 @@ void MainHero::setAttackable(bool newAttackable)
     this->attackable = newAttackable;
 }
 
-void MainHero::setHP(int newHP)
-{
-    this->HP = newHP;
-}
 
-int MainHero::getHP() const
-{
-    return this->HP;
-}
 
-float MainHero::getPosX()const { return posX; }
-void MainHero::setPosX(float posX) { this->posX = posX; }
-float MainHero::getPosY()const { return posY; }
-void MainHero::setPosY(float posY) { this->posY = posY; }
-
-//Moving methods
-float MainHero::moveUp() { posY-=speed; return -speed; }
-float MainHero::moveLeft() { posX-=speed; return -speed; };
-float MainHero::moveDown() { posY+=speed; return speed; };
-float MainHero::moveRight() { posX+=speed; return speed; };
-
-string MainHero::str() const {
-    std::stringstream ss;
-    ss << HP;
-    return ss.str();
-}
