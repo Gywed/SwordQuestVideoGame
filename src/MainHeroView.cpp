@@ -1,9 +1,9 @@
-#include "CharacterView.h"
+#include "MainHeroView.h"
 #include <iostream>
-CharacterView::CharacterView(Character *character)
+MainHeroView::MainHeroView(MainHero *mainHero)
 {
-    this->character = character;
-    this->setPosition(character->getPosX(), character->getPosY());
+    this->mainHero = mainHero;
+    this->setPosition(mainHero->getPosX(), mainHero->getPosY());
     this->loadTexture("images/Animation/MainHero/Idle.png");
     this->defaultTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 71, 63);
@@ -15,7 +15,7 @@ CharacterView::CharacterView(Character *character)
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
 }
 
-CharacterView::~CharacterView()
+MainHeroView::~MainHeroView()
 {
     delete defaultTextureRect;
     delete simpleAttackTextureRect;
@@ -23,12 +23,12 @@ CharacterView::~CharacterView()
     delete deathTextureRect;
 }
 
-CharacterView::CharacterView(const CharacterView& other)
+MainHeroView::MainHeroView(const MainHeroView& other)
 {
     //copy ctor
 }
 
-CharacterView& CharacterView::operator=(const CharacterView& rhs)
+MainHeroView& MainHeroView::operator=(const MainHeroView& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
@@ -36,17 +36,17 @@ CharacterView& CharacterView::operator=(const CharacterView& rhs)
 }
 
 //Setters Getters
-Character* CharacterView::getCharacter()const { return character; }
-void CharacterView::setCharacter(Character* character) { this->character = character; }
-sf::IntRect* CharacterView::getRectSourceSprite()const { return defaultTextureRect; }
-void CharacterView::setRectSourceSprite(sf::IntRect* textureRect)
+MainHero* MainHeroView::getMainHero()const { return mainHero; }
+void MainHeroView::setMainHero(MainHero* mainHero) { this->mainHero = mainHero; }
+sf::IntRect* MainHeroView::getRectSourceSprite()const { return defaultTextureRect; }
+void MainHeroView::setRectSourceSprite(sf::IntRect* textureRect)
 {
     delete this->defaultTextureRect;
     this->defaultTextureRect = new sf::IntRect(textureRect->left, textureRect->top, textureRect->width, textureRect->height);
 }
 
 //Method
-void CharacterView::spriteEvents(sf::RenderWindow* window)
+void MainHeroView::spriteEvents(sf::RenderWindow* window)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
@@ -58,12 +58,12 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             this->setScale(2., 2.);
 
             //Modify the position of the modele and return the value of the movement in the sf::Vector
-            this->movement.x += this->character->moveRight();
+            this->movement.x += this->mainHero->moveRight();
             this->movement.y += 0.;
             //Manage the boundaries collisions
-            if(this->character->getPosX() > window->getSize().x - 64)
+            if(this->mainHero->getPosX() > window->getSize().x - 64)
             {
-                this->character->setPosX(window->getSize().x - 64);
+                this->mainHero->setPosX(window->getSize().x - 64);
                 this->movement.x = 0.;
             }
 
@@ -80,12 +80,12 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             idleFlag=false;
 
             //Modify the position of the modele and return the value of the movement in the sf::Vector
-            this->movement.y += this->character->moveUp();
+            this->movement.y += this->mainHero->moveUp();
             this->movement.x += 0.;
             //Manage the boundaries collisions
-            if(this->character->getPosY() < 192)
+            if(this->mainHero->getPosY() < 192)
             {
-                this->character->setPosY(192);
+                this->mainHero->setPosY(192);
                 this->movement.y = 0.;
             }
             //Animation
@@ -103,12 +103,12 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             //symmetry on X axis using setScale so the sprite face the right direction
             this->setScale(-2., 2.);
             //Modify the position of the modele and return the value of the movement in the sf::Vector
-            this->movement.x += this->character->moveLeft();
+            this->movement.x += this->mainHero->moveLeft();
             this->movement.y += 0.;
             //Manage the boundaries collisions
-            if(this->character->getPosX() < 64.)
+            if(this->mainHero->getPosX() < 64.)
             {
-                this->character->setPosX(64);
+                this->mainHero->setPosX(64);
                 this->movement.x = 0.;
             }
             //Animation
@@ -122,12 +122,12 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
         {
             idleFlag=false;
             //Modify the position of the modele and return the value of the movement in the sf::Vector
-            this->movement.y += this->character->moveDown();
+            this->movement.y += this->mainHero->moveDown();
             this->movement.x += 0.;
             //Manage the boundaries collisions
-            if(this->character->getPosY() > window->getSize().y - 112)
+            if(this->mainHero->getPosY() > window->getSize().y - 112)
             {
-                this->character->setPosY(window->getSize().y - 112);
+                this->mainHero->setPosY(window->getSize().y - 112);
                 this->movement.y = 0.;
             }
             //Animation
@@ -157,7 +157,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
                     spritePosXModifierWhenAttacking = 26;
                 spritePosYModifierWhenAttacking = 31;
                 //Apply the position modifiers
-                this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+                this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
 
                 //Attack method
                 attack();
@@ -189,7 +189,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
                     spritePosXModifierWhenAttacking = 45;
                 spritePosYModifierWhenAttacking = 25;
                 //Apply the position modifiers
-                this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+                this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
 
                 //Attack method
                 attack();
@@ -214,7 +214,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
             spritePosXModifierWhenAttacking = 30;
         spritePosYModifierWhenAttacking = 27;
         //Apply the position modifiers
-        this->setPosition(this->character->getPosX() - spritePosXModifierWhenAttacking, this->character->getPosY() - spritePosYModifierWhenAttacking);
+        this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
     }
 
     //Verifying events
@@ -283,7 +283,7 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
         if(!attackFlag)
         {
             //Put back the correct position to match the model
-            this->setPosition(this->character->getPosX(), this->character->getPosY());
+            this->setPosition(this->mainHero->getPosX(), this->mainHero->getPosY());
             //Adapt textureRect to the dimensions of Idle.png and Movement.png
             this->defaultTextureRect->left=0;
             this->setTextureRect(*defaultTextureRect);
@@ -300,13 +300,13 @@ void CharacterView::spriteEvents(sf::RenderWindow* window)
     }
 }
 
-void CharacterView::attack()
+void MainHeroView::attack()
 {
     //Attack from model will be called here
     //Instruction for the view to manage collision with a monster
 }
 
-void CharacterView::updateSpriteMovementAnimation()
+void MainHeroView::updateSpriteMovementAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Movement.png");
     //Shift textureRect every time given
@@ -323,7 +323,7 @@ void CharacterView::updateSpriteMovementAnimation()
 
 }
 
-void CharacterView::updateSpriteIdleAnimation()
+void MainHeroView::updateSpriteIdleAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Idle.png");
     //Shift textureRect every time given
@@ -340,7 +340,7 @@ void CharacterView::updateSpriteIdleAnimation()
 
 }
 
-void CharacterView::updateSpriteSimpleAttackAnimation()
+void MainHeroView::updateSpriteSimpleAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack1.png");
     this->setTextureRect(*simpleAttackTextureRect);
@@ -361,7 +361,7 @@ void CharacterView::updateSpriteSimpleAttackAnimation()
     }
 }
 
-void CharacterView::updateSpriteHeavyAttackAnimation()
+void MainHeroView::updateSpriteHeavyAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack2.png");
     this->setTextureRect(*heavyAttackTextureRect);
@@ -381,9 +381,10 @@ void CharacterView::updateSpriteHeavyAttackAnimation()
     }
 }
 
-void CharacterView::updateSpriteDeathAnimation()
+void MainHeroView::updateSpriteDeathAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Death.png");
+    this->setTextureRect(*deathTextureRect);
     if (timer.getElapsedTime().asSeconds() > 0.3f){
 
         if (deathTextureRect->left == 300)

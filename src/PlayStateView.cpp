@@ -13,8 +13,8 @@ PlayStateView::PlayStateView(GameManagerView* gm)
 
 PlayStateView::~PlayStateView()
 {
-    delete characterV;
-    delete characterM;
+    delete mainHeroV;
+    delete mainHeroM;
     delete roomV;
     delete pauseV;
 }
@@ -33,8 +33,8 @@ PlayStateView& PlayStateView::operator=(const PlayStateView& rhs)
 
 void PlayStateView::init(sf::RenderWindow* window)
 {
-    this->characterM = new Character(window->getSize().x/2., window->getSize().y/2.);
-    this->characterV = new CharacterView(characterM);
+    this->mainHeroM = new MainHero(window->getSize().x/2., window->getSize().y/2.);
+    this->mainHeroV = new MainHeroView(mainHeroM);
 
     this->roomV = new BasicRoomView();
     this->pauseV = new pauseView(this->gm->getWindow());
@@ -58,7 +58,7 @@ void PlayStateView::run(sf::RenderWindow* window)
         this->gm->setState(EnumState::MENUSTATE);
     }else
     {
-        this->characterV->spriteEvents(window);
+        this->mainHeroV->spriteEvents(window);
     }
 
 }
@@ -67,7 +67,7 @@ void PlayStateView::render(sf::RenderWindow* window)
 {
     window->clear();
     window->draw(this->roomV->getTileMap());
-    window->draw(*this->characterV);
+    window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();
 }

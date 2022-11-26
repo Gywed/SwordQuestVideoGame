@@ -1,11 +1,11 @@
-#include "Character.h"
+#include "MainHero.h"
 #include <iostream>
 #include <ctime>
 #include <sys/mman.h>
 #include <unistd.h>
 #define _GNU_SOURCE
 
-Character::Character(float posX, float posY): posX(posX), posY(posY)
+MainHero::MainHero(float posX, float posY): posX(posX), posY(posY)
 {
     HP = 10;
     attackable_file.open("attackable",std::ios::out);
@@ -17,14 +17,14 @@ Character::Character(float posX, float posY): posX(posX), posY(posY)
     attackable_file.close();
 }
 
-Character::~Character()
+MainHero::~MainHero()
 {
     //dtor
     for (Weapon* weapon : weapons)
         delete weapon;
 }
 
-Character::Character(const Character& other)
+MainHero::MainHero(const MainHero& other)
 {
     //copy ctor
     this->HP = other.HP;
@@ -35,7 +35,7 @@ Character::Character(const Character& other)
     }
 }
 
-Character& Character::operator=(const Character& rhs)
+MainHero& MainHero::operator=(const MainHero& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
 
@@ -51,7 +51,7 @@ Character& Character::operator=(const Character& rhs)
     return *this;
 }
 
-void Character::getDamaged(int damage)
+void MainHero::getDamaged(int damage)
 {
     if (!isAttackable())
         return;
@@ -72,23 +72,23 @@ void Character::getDamaged(int damage)
         setHP(newHP);
 }
 
-void Character::stopInvunaribilityFrame()
+void MainHero::stopInvunaribilityFrame()
 {
     usleep(this->invTime*1000000);
     setAttackable(true);
 }
 
-void Character::setInvTime(float invTime)
+void MainHero::setInvTime(float invTime)
 {
     this->invTime = invTime;
 }
 
-float Character::getInvTime()const
+float MainHero::getInvTime()const
 {
     return this->invTime;
 }
 
-bool Character::isAttackable()
+bool MainHero::isAttackable()
 {
     attackable_file.open("attackable",std::ios::in);
     attackable_file >> attackable;
@@ -96,7 +96,7 @@ bool Character::isAttackable()
     return attackable;
 }
 
-void Character::setAttackable(bool newAttackable)
+void MainHero::setAttackable(bool newAttackable)
 {
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<newAttackable;
@@ -104,28 +104,28 @@ void Character::setAttackable(bool newAttackable)
     this->attackable = newAttackable;
 }
 
-void Character::setHP(int newHP)
+void MainHero::setHP(int newHP)
 {
     this->HP = newHP;
 }
 
-int Character::getHP() const
+int MainHero::getHP() const
 {
     return this->HP;
 }
 
-float Character::getPosX()const { return posX; }
-void Character::setPosX(float posX) { this->posX = posX; }
-float Character::getPosY()const { return posY; }
-void Character::setPosY(float posY) { this->posY = posY; }
+float MainHero::getPosX()const { return posX; }
+void MainHero::setPosX(float posX) { this->posX = posX; }
+float MainHero::getPosY()const { return posY; }
+void MainHero::setPosY(float posY) { this->posY = posY; }
 
 //Moving methods
-float Character::moveUp() { posY-=speed; return -speed; }
-float Character::moveLeft() { posX-=speed; return -speed; };
-float Character::moveDown() { posY+=speed; return speed; };
-float Character::moveRight() { posX+=speed; return speed; };
+float MainHero::moveUp() { posY-=speed; return -speed; }
+float MainHero::moveLeft() { posX-=speed; return -speed; };
+float MainHero::moveDown() { posY+=speed; return speed; };
+float MainHero::moveRight() { posX+=speed; return speed; };
 
-string Character::str() const {
+string MainHero::str() const {
     std::stringstream ss;
     ss << HP;
     return ss.str();

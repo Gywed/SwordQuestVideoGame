@@ -2,8 +2,8 @@
 #define PLAYSTATEVIEW_H
 #include "StateView.h"
 #include "GameManagerView.h"
-#include "Character.h"
-#include "CharacterView.h"
+#include "MainHero.h"
+#include "MainHeroView.h"
 #include "BasicRoomView.h"
 #include <pauseView.h>
 
@@ -14,10 +14,10 @@ class PlayStateView: public StateView
         GameManagerView* gm;
 
         //Model
-        Character* characterM;
+        MainHero* mainHeroM;
 
         //View
-        CharacterView* characterV;
+        MainHeroView* mainHeroV;
         BasicRoomView* roomV;
         pauseView* pauseV;
 

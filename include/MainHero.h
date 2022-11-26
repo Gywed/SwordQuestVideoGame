@@ -9,7 +9,7 @@
 using std::string;
 using std::vector;
 
-class Character
+class MainHero
 {
     private:
         int HP;
@@ -20,10 +20,10 @@ class Character
         std::fstream attackable_file;
 
     public:
-        Character(float posX = 0.0, float posY = 0.0);
-        virtual ~Character();
-        Character(const Character& other);
-        Character& operator=(const Character& other);
+        MainHero(float posX = 0.0, float posY = 0.0);
+        virtual ~MainHero();
+        MainHero(const MainHero& other);
+        MainHero& operator=(const MainHero& other);
         string str() const;
 
         void getDamaged(int damage);

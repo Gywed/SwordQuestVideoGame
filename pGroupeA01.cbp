@@ -43,11 +43,11 @@
 		</Linker>
 		<Unit filename="include/AboutStateView.h" />
 		<Unit filename="include/BasicRoomView.h" />
-		<Unit filename="include/Character.h" />
-		<Unit filename="include/CharacterView.h" />
 		<Unit filename="include/Entity.h" />
 		<Unit filename="include/EnumState.h" />
 		<Unit filename="include/GameManagerView.h" />
+		<Unit filename="include/MainHero.h" />
+		<Unit filename="include/MainHeroView.h" />
 		<Unit filename="include/MenuStateView.h" />
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/OptionStateView.h" />
@@ -61,11 +61,11 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AboutStateView.cpp" />
 		<Unit filename="src/BasicRoomView.cpp" />
-		<Unit filename="src/Character.cpp" />
-		<Unit filename="src/CharacterView.cpp" />
 		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/EnumState.cpp" />
 		<Unit filename="src/GameManagerView.cpp" />
+		<Unit filename="src/MainHero.cpp" />
+		<Unit filename="src/MainHeroView.cpp" />
 		<Unit filename="src/MenuStateView.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/OptionStateView.cpp" />

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Character.h"
+#include "MainHero.h"
 #include "GameManagerView.h"
 #include <unistd.h>
 

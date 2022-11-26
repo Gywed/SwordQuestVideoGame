@@ -1,5 +1,5 @@
-#ifndef CHARACTERVIEW_H
-#define CHARACTERVIEW_H
+#ifndef MainHeroVIEW_H
+#define MainHeroVIEW_H
 // Size of Sprite
 #define Sprite_Width 45
 #define Sprite_Height 47
@@ -19,14 +19,14 @@
 #define Sprite_Changing_Left_Max 864
 
 #include "SFML/Graphics.hpp"
-#include "Character.h"
+#include "MainHero.h"
 #include "Entity.h"
 
 
-class CharacterView: public Entity
+class MainHeroView: public Entity
 {
     private:
-        Character* character;
+        MainHero* mainHero;
 
         sf::IntRect* defaultTextureRect;
         sf::IntRect* simpleAttackTextureRect;
@@ -42,14 +42,14 @@ class CharacterView: public Entity
         int spritePosYModifierWhenAttacking;
 
     public:
-        CharacterView(Character *character);
-        virtual ~CharacterView();
-        CharacterView(const CharacterView& other);
-        CharacterView& operator=(const CharacterView& other);
+        MainHeroView(MainHero *character);
+        virtual ~MainHeroView();
+        MainHeroView(const MainHeroView& other);
+        MainHeroView& operator=(const MainHeroView& other);
 
         //Setters Getters
-        Character* getCharacter()const;
-        void setCharacter(Character* Character);
+        MainHero* getMainHero()const;
+        void setMainHero(MainHero* mainHero);
         sf::IntRect* getRectSourceSprite()const;
         void setRectSourceSprite(sf::IntRect* rectSourceSprite);
 
@@ -67,4 +67,4 @@ class CharacterView: public Entity
 
 };
 
-#endif // CHARACTERVIEW_H
+#endif // MainHeroVIEW_H

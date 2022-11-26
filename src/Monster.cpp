@@ -1,5 +1,5 @@
 #include "Monster.h"
-#include <Character.h>
+#include <MainHero.h>
 
 Monster::Monster(int HP, int damage): HP(HP), damage(damage)
 {

@@ -1,7 +1,7 @@
 #ifndef ROOM_H
 #define ROOM_H
 #include <vector>
-#include <Character.h>
+#include <MainHero.h>
 #include <Monster.h>
 
 using std::vector;
