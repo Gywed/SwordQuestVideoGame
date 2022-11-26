@@ -8,7 +8,7 @@ using namespace std;
 class Character
 {
     private:
-        int HP;
+        int HP, damage;
         float posX, posY, speed;
 
     public:

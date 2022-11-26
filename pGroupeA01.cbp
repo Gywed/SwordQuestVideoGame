@@ -43,6 +43,7 @@
 		</Linker>
 		<Unit filename="include/AboutStateView.h" />
 		<Unit filename="include/BasicRoomView.h" />
+		<Unit filename="include/Character.h" />
 		<Unit filename="include/Entity.h" />
 		<Unit filename="include/EnumState.h" />
 		<Unit filename="include/GameManagerView.h" />
@@ -61,6 +62,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AboutStateView.cpp" />
 		<Unit filename="src/BasicRoomView.cpp" />
+		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/EnumState.cpp" />
 		<Unit filename="src/GameManagerView.cpp" />

@@ -21,9 +21,7 @@ MainHero::MainHero(float posX, float posY): Character(posX, posY)
 
 MainHero::~MainHero()
 {
-    //dtor
-    for (Weapon* weapon : weapons)
-        delete weapon;
+
 }
 
 MainHero::MainHero(const MainHero& other)
@@ -31,10 +29,6 @@ MainHero::MainHero(const MainHero& other)
     //copy ctor
     this->setHP(other.getHP());
 
-    for (Weapon* weapon : other.weapons)
-    {
-        this->weapons.push_back(new Weapon(*weapon));
-    }
 }
 
 MainHero& MainHero::operator=(const MainHero& rhs)
@@ -42,13 +36,6 @@ MainHero& MainHero::operator=(const MainHero& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     this->setHP(rhs.getHP());
-
-    for (Weapon* weapon : weapons)
-        delete weapon;
-    for (Weapon* weapon : rhs.weapons)
-    {
-        this->weapons.push_back(new Weapon(*weapon));
-    }
 
     return *this;
 }

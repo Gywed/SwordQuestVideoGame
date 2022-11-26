@@ -1,17 +1,13 @@
 #ifndef MAINHERO_H
 #define MAINHERO_H
 #include "Character.h"
-#include <vector>
-#include <Weapon.h>
 #include <fstream>
 
 using std::string;
-using std::vector;
 
 class MainHero: public Character
 {
     private:
-        vector<Weapon*> weapons;
         bool attackable;
         float invTime = 1.0f;
         std::fstream attackable_file;
