@@ -20,6 +20,8 @@ class Character
 
         void setHP(int newHP);
         int getHP() const;
+        void setDamage(int newDamage);
+        int getDamage()const;
         float getPosX()const;
         void setPosX(float posX);
         float getPosY()const;

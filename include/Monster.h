@@ -1,40 +1,35 @@
 #ifndef MONSTER_H
 #define MONSTER_H
+#include "Character.h"
 
 // include <MainHero.h> dans Monster.cpp, sinon ça fait des déclaration ciruclaire (MainHero include Weapon, Weapon include Monster, Monster include MainHero ... Boucled)
 class MainHero;
 
-class Monster
+class Monster: public Character
 {
+    private:
+        bool dead;
+
+//        int* id;
+//
+//        inline static int compteur;
+
     public:
-        Monster(int HP = 0, int damage = 0);
+        Monster(float posX, float posY);
         virtual ~Monster();
         Monster(const Monster& other);
         Monster& operator=(const Monster& other);
 
-        virtual void attack(MainHero* character);
+        virtual void attack(MainHero* mainHero);
 
         void getDamaged(int damage);
 
-        void setDamage(int newDamage);
-        int getDamage()const;
-
-        static int getCompteur();
-        int getId() const;
-
-        void setHP(int newHP);
-        int getHP() const;
+//        static int getCompteur();
+//        int getId() const;
 
     protected:
 
-    private:
-        int HP;
-        int damage;
-        bool dead;
 
-        int* id;
-
-        inline static int compteur;
 };
 
 #endif // MONSTER_H

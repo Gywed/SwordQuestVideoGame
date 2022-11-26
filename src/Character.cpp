@@ -31,6 +31,8 @@ void Character::setHP(int newHP) { this->HP = newHP; }
 int Character::getHP() const { return this->HP; }
 float Character::getSpeed()const { return speed; }
 void Character::setSpeed(float speed) { this->speed = speed; }
+void Character::setDamage(int newDamage) { this->damage = newDamage; }
+int Character::getDamage()const { return damage; }
 
 //Moving methods
 float Character::moveUp() { posY-=speed; return -speed; }

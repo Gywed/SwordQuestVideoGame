@@ -55,9 +55,7 @@
 		<Unit filename="include/PlayStateView.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="include/StateView.h" />
-		<Unit filename="include/Sword.h" />
 		<Unit filename="include/TileMap.h" />
-		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/pauseView.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AboutStateView.cpp" />
@@ -74,9 +72,7 @@
 		<Unit filename="src/PlayStateView.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/StateView.cpp" />
-		<Unit filename="src/Sword.cpp" />
 		<Unit filename="src/TileMap.cpp" />
-		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/pauseView.cpp" />
 		<Extensions />
 	</Project>
