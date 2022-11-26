@@ -23,6 +23,10 @@ class PlayStateView: public StateView
 
         bool pauseFlag = false;
 
+        int state = -1;
+
+        bool pKey,escapeKey;
+
 
     public:
         PlayStateView(GameManagerView* gm);

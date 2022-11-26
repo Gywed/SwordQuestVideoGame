@@ -32,7 +32,7 @@ window : window game (AEP)
 void MenuStateView::init(sf::RenderWindow* window)
 {
     //Set the background
-    this->background.setSize(Vector2f(1920,1080));
+    this->background.setSize(Vector2f(window->getSize().x,window->getSize().y));
     this->mainTexture.loadFromFile("images/MainMenu/swordQuestMenuTitle.png");
 
 
