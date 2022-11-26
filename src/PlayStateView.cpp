@@ -37,7 +37,7 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->mainHeroV = new MainHeroView(mainHeroM);
 
     this->roomV = new BasicRoomView();
-    this->pauseV = new pauseView(this->gm->getWindow());
+    this->pauseV = new pauseView(this->gm);
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
@@ -49,18 +49,25 @@ void PlayStateView::run(sf::RenderWindow* window)
         this->pauseFlag = true;
         render(window);
         window->display();
-        while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+
+        state = pauseV->run(window);
+
+        std::cout<<state<<endl;
         pauseThread.join();
         this->pauseFlag = false;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        state = 1;
+        if (state == 0)
+            this->characterV->spriteEvents(window);
+        if (state == 1)
+            this->gm->setState(EnumState::MENUSTATE);
+
+    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->gm->setState(EnumState::MENUSTATE);
     }else
     {
         this->mainHeroV->spriteEvents(window);
     }
-
 }
 
 void PlayStateView::render(sf::RenderWindow* window)
