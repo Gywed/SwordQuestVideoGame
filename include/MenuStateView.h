@@ -23,7 +23,7 @@ class MenuStateView: public StateView
         Sprite mMenu[Max_main_menu];
         RectangleShape background;
         Texture mainTexture;
-        Texture btnTexture[Max_main_menu*2];
+        Texture btnTexture[Max_main_menu*3];
 
         bool upKey,downKey, enterKey;
 
