@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include <MainHero.h>
+#include <cmath>
 
 Monster::Monster(float posX, float posY): Character(posX, posY)
 {
@@ -59,3 +60,14 @@ void Monster::getDamaged(int damage)
 //{
 //    return *id;
 //}
+
+float Monster::distanceFromMainHero(MainHero mainHero)
+{
+    return sqrt((mainHero.getPosX() - this->posX) + (mainHero.getPosY() - this->posY));
+}
+
+//return a tuple containing offsetX and offsetY for the monster's position
+std::tuple<float, float> moveToMainHero(MainHero mainHero)const
+{
+
+}

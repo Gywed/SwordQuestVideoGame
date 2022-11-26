@@ -1,14 +1,12 @@
 #ifndef MONSTER_H
 #define MONSTER_H
-#include "Character.h"
-
-// include <MainHero.h> dans Monster.cpp, sinon ça fait des déclaration ciruclaire (MainHero include Weapon, Weapon include Monster, Monster include MainHero ... Boucled)
-class MainHero;
+#include "MainHero.h"
 
 class Monster: public Character
 {
-    private:
-        bool dead;
+    protected:
+        float aggroDistance;
+        bool dead, aggroed = false;
 
 //        int* id;
 //
@@ -27,7 +25,10 @@ class Monster: public Character
 //        static int getCompteur();
 //        int getId() const;
 
-    protected:
+        float distanceFromMainHero(MainHero mainHero);
+        //return a tuple containing offsetX and offsetY for the monster's position
+        std::tuple<float, float> moveToMainHero(MainHero mainHero)const;
+
 
 
 };

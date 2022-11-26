@@ -7,8 +7,8 @@
 
 MainHero::MainHero(float posX, float posY): Character(posX, posY)
 {
-    this->setHP(10);
-    this->setSpeed(0.4);
+    this->HP = 10;
+    this->speed = 0.4;
 
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<true;
@@ -27,7 +27,7 @@ MainHero::~MainHero()
 MainHero::MainHero(const MainHero& other)
 {
     //copy ctor
-    this->setHP(other.getHP());
+    this->HP = other.HP;
 
 }
 
