@@ -1,17 +1,17 @@
-#include "PauseStateView.h"
+#include "PauseView.h"
 
-PauseStateView::PauseStateView(GameManagerView* gm):gm(gm)
+PauseView::PauseView(GameManagerView* gm):gm(gm)
 {
     //ctor
     init(gm->getWindow());
 }
 
-PauseStateView::~PauseStateView()
+PauseView::~PauseView()
 {
     //dtor
 }
 
-PauseStateView::PauseStateView(const PauseStateView& other)
+PauseView::PauseView(const PauseView& other)
 {
     //copy ctor
     this->gm = other.gm;
@@ -21,14 +21,14 @@ PauseStateView::PauseStateView(const PauseStateView& other)
 
 }
 
-PauseStateView& PauseStateView::operator=(const PauseStateView& rhs)
+PauseView& PauseView::operator=(const PauseView& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
     return *this;
 }
 
-void PauseStateView::init(sf::RenderWindow* window)
+void PauseView::init(sf::RenderWindow* window)
 {
     spriteBackground.setTextureRect(IntRect(0,0,window->getSize().x,window->getSize().y));
     backgroundTexture.loadFromFile("images/PauseMenu/WhiteBG.png");
@@ -65,7 +65,7 @@ void PauseStateView::init(sf::RenderWindow* window)
     mMenu[1].setScale(.65, .65);
 }
 
-int PauseStateView::run(sf::RenderWindow* window)
+int PauseView::run(sf::RenderWindow* window)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKey) {
     mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
@@ -101,7 +101,7 @@ int PauseStateView::run(sf::RenderWindow* window)
     return -1;
 }
 
-void PauseStateView::render()
+void PauseView::render()
 {
     this->gm->getWindow()->draw(spriteBackground);
     this->gm->getWindow()->draw(spritePauseMenu);
@@ -117,9 +117,3 @@ void PauseStateView::render()
     }
 
 }
-
-
-
-
-
-

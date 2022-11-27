@@ -1,5 +1,5 @@
-#ifndef PAUSESTATEVIEW_H
-#define PAUSESTATEVIEW_H
+#ifndef PAUSEVIEW_H
+#define PAUSEVIEW_H
 #include <SFML/Graphics.hpp>
 #include <GameManagerView.h>
 
@@ -7,7 +7,7 @@
 
 using namespace sf;
 
-class PauseStateView
+class PauseView
 {
     private:
         GameManagerView* gm;
@@ -25,10 +25,10 @@ class PauseStateView
         bool rightKey,leftKey, enterKey;
 
     public:
-        PauseStateView(GameManagerView* gm = nullptr);
-        virtual ~PauseStateView();
-        PauseStateView(const PauseStateView& other);
-        PauseStateView& operator=(const PauseStateView& other);
+        PauseView(GameManagerView* gm = nullptr);
+        virtual ~PauseView();
+        PauseView(const PauseView& other);
+        PauseView& operator=(const PauseView& other);
 
         void init(sf::RenderWindow* window);
 
@@ -37,4 +37,4 @@ class PauseStateView
         void render();
 };
 
-#endif // PAUSESTATEVIEW_H
+#endif // PAUSEVIEW_H

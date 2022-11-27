@@ -5,7 +5,7 @@
 #include "MainHero.h"
 #include "MainHeroView.h"
 #include "BasicRoomView.h"
-#include <PauseStateView.h>
+#include <PauseView.h>
 
 class PlayStateView: public StateView
 {
@@ -19,7 +19,7 @@ class PlayStateView: public StateView
         //View
         MainHeroView* mainHeroV;
         BasicRoomView* roomV;
-        PauseStateView* pauseV;
+        PauseView* pauseV;
 
         bool pauseFlag = false;
 

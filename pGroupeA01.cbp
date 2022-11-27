@@ -52,9 +52,11 @@
 		<Unit filename="include/MenuStateView.h" />
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/OptionStateView.h" />
-		<Unit filename="include/PauseStateView.h" />
+		<Unit filename="include/PauseView.h" />
 		<Unit filename="include/PlayStateView.h" />
 		<Unit filename="include/Room.h" />
+		<Unit filename="include/Skeleton.h" />
+		<Unit filename="include/SkeletonView.h" />
 		<Unit filename="include/StateView.h" />
 		<Unit filename="include/TileMap.h" />
 		<Unit filename="main.cpp" />
@@ -69,9 +71,11 @@
 		<Unit filename="src/MenuStateView.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/OptionStateView.cpp" />
-		<Unit filename="src/PauseStateView.cpp" />
+		<Unit filename="src/PauseView.cpp" />
 		<Unit filename="src/PlayStateView.cpp" />
 		<Unit filename="src/Room.cpp" />
+		<Unit filename="src/Skeleton.cpp" />
+		<Unit filename="src/SkeletonView.cpp" />
 		<Unit filename="src/StateView.cpp" />
 		<Unit filename="src/TileMap.cpp" />
 		<Extensions />

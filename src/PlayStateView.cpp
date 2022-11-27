@@ -37,7 +37,7 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->mainHeroV = new MainHeroView(mainHeroM);
 
     this->roomV = new BasicRoomView();
-    this->pauseV = new PauseStateView(this->gm);
+    this->pauseV = new PauseView(this->gm);
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
