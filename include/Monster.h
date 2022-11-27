@@ -28,7 +28,7 @@ class Monster: public Character
 
         float distanceFromMainHero(MainHero mainHero);
         //return a tuple containing offsetX and offsetY for the monster's position
-        std::tuple<float, float> moveToMainHero(MainHero mainHero)const;
+        std::tuple<float, float> moveToMainHero(MainHero mainHero);
 
 
 
