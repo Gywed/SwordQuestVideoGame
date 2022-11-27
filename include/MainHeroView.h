@@ -28,18 +28,9 @@ class MainHeroView: public Entity
     private:
         MainHero* mainHero;
 
-        sf::IntRect* defaultTextureRect;
-        sf::IntRect* simpleAttackTextureRect;
-        sf::IntRect* heavyAttackTextureRect;
-        sf::IntRect* deathTextureRect;
-        sf::Clock timer;
-        sf::Clock simpleAttackCoolDownTimer;
         sf::Clock heavyAttackCoolDownTimer;
 
-        bool idleFlag = true, attackFlag=false, heavyAttackFlag= false, simpleAttackFlag = true, deathFlag = false;
-
-        int spritePosXModifierWhenAttacking;
-        int spritePosYModifierWhenAttacking;
+        bool  heavyAttackFlag= false, simpleAttackFlag = true;
 
     public:
         MainHeroView(MainHero *character);

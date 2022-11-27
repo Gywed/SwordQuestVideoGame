@@ -152,12 +152,12 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 this->setTextureRect(*simpleAttackTextureRect);
                 //determine the value of the position modifier for the attack because of the texture size differences
                 if(this->getScale().x < 0)
-                    spritePosXModifierWhenAttacking = -26;
+                    spritePosModifier.x = -26;
                 else
-                    spritePosXModifierWhenAttacking = 26;
-                spritePosYModifierWhenAttacking = 31;
+                    spritePosModifier.x = 26;
+                spritePosModifier.y = 31;
                 //Apply the position modifiers
-                this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
+                this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
 
                 //Attack method
                 attack();
@@ -184,12 +184,12 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 this->setTextureRect(*heavyAttackTextureRect);
                 //determine the value of the position modifier for the attack because of the texture size differences
                 if(this->getScale().x < 0)
-                    spritePosXModifierWhenAttacking = -45;
+                    spritePosModifier.x = -45;
                 else
-                    spritePosXModifierWhenAttacking = 45;
-                spritePosYModifierWhenAttacking = 25;
+                    spritePosModifier.x = 45;
+                spritePosModifier.y = 25;
                 //Apply the position modifiers
-                this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
+                this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
 
                 //Attack method
                 attack();
@@ -209,12 +209,12 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         this->setTextureRect(*deathTextureRect);
         //determine the value of the position modifier for the attack because of the texture size differences
         if(this->getScale().x < 0)
-            spritePosXModifierWhenAttacking = -30;
+            spritePosModifier.x = -30;
         else
-            spritePosXModifierWhenAttacking = 30;
-        spritePosYModifierWhenAttacking = 27;
+            spritePosModifier.x = 30;
+        spritePosModifier.y = 27;
         //Apply the position modifiers
-        this->setPosition(this->mainHero->getPosX() - spritePosXModifierWhenAttacking, this->mainHero->getPosY() - spritePosYModifierWhenAttacking);
+        this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
     }
 
     //Verifying events
@@ -310,7 +310,7 @@ void MainHeroView::updateSpriteMovementAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Movement.png");
     //Shift textureRect every time given
-    if (timer.getElapsedTime().asSeconds() > 0.15f){
+    if (animationTimer.getElapsedTime().asSeconds() > 0.15f){
 
         if (defaultTextureRect->left == 225)
             defaultTextureRect->left=0;
@@ -318,7 +318,7 @@ void MainHeroView::updateSpriteMovementAnimation()
             defaultTextureRect->left+=45;
 
         this->setTextureRect(*defaultTextureRect);
-        timer.restart();
+        animationTimer.restart();
     }
 
 }
@@ -327,7 +327,7 @@ void MainHeroView::updateSpriteIdleAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Idle.png");
     //Shift textureRect every time given
-    if (timer.getElapsedTime().asSeconds() > 0.35f){
+    if (animationTimer.getElapsedTime().asSeconds() > 0.35f){
 
         if (defaultTextureRect->left == 135)
             defaultTextureRect->left=0;
@@ -335,7 +335,7 @@ void MainHeroView::updateSpriteIdleAnimation()
             defaultTextureRect->left+=45;
 
         this->setTextureRect(*defaultTextureRect);
-        timer.restart();
+        animationTimer.restart();
     }
 
 }
@@ -344,7 +344,7 @@ void MainHeroView::updateSpriteSimpleAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack1.png");
     this->setTextureRect(*simpleAttackTextureRect);
-    if (timer.getElapsedTime().asSeconds() > 0.13f){
+    if (animationTimer.getElapsedTime().asSeconds() > 0.13f){
 
         if (simpleAttackTextureRect->left == 284)
         {
@@ -357,7 +357,7 @@ void MainHeroView::updateSpriteSimpleAttackAnimation()
             simpleAttackTextureRect->left+=71;
 
         this->setTextureRect(*simpleAttackTextureRect);
-        timer.restart();
+        animationTimer.restart();
     }
 }
 
@@ -365,7 +365,7 @@ void MainHeroView::updateSpriteHeavyAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack2.png");
     this->setTextureRect(*heavyAttackTextureRect);
-    if (timer.getElapsedTime().asSeconds() > 0.20f){
+    if (animationTimer.getElapsedTime().asSeconds() > 0.20f){
         if (heavyAttackTextureRect->left == 612)
         {
             heavyAttackTextureRect->left=0;
@@ -377,7 +377,7 @@ void MainHeroView::updateSpriteHeavyAttackAnimation()
             heavyAttackTextureRect->left+=102;
 
         this->setTextureRect(*heavyAttackTextureRect);
-        timer.restart();
+        animationTimer.restart();
     }
 }
 
@@ -385,7 +385,7 @@ void MainHeroView::updateSpriteDeathAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Death.png");
     this->setTextureRect(*deathTextureRect);
-    if (timer.getElapsedTime().asSeconds() > 0.3f){
+    if (animationTimer.getElapsedTime().asSeconds() > 0.3f){
 
         if (deathTextureRect->left == 300)
         {
@@ -396,7 +396,7 @@ void MainHeroView::updateSpriteDeathAnimation()
             deathTextureRect->left+=75;
 
         this->setTextureRect(*deathTextureRect);
-        timer.restart();
+        animationTimer.restart();
     }
 }
 

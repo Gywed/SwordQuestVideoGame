@@ -13,6 +13,17 @@ class Entity: public sf::Sprite
         // Texture of the entity
         sf::Texture* texture;
 
+        sf::IntRect* defaultTextureRect;
+        sf::IntRect* simpleAttackTextureRect;
+        sf::IntRect* heavyAttackTextureRect;
+        sf::IntRect* deathTextureRect;
+        sf::Clock animationTimer;
+        sf::Clock simpleAttackCoolDownTimer;
+
+        bool idleFlag = true, attackFlag=false, deathFlag = false;
+
+        sf::Vector2<int> spritePosModifier;
+
     public:
         Entity();
         virtual ~Entity();
@@ -26,7 +37,13 @@ class Entity: public sf::Sprite
 
         /* Method */
         void loadTexture(const string filename);
-        virtual void updatePosition();
+        void updatePosition();
+
+        //Animation
+        virtual void updateSpriteMovementAnimation() {}
+        virtual void updateSpriteIdleAnimation() {}
+        virtual void updateSpriteSimpleAttackAnimation() {}
+        virtual void updateSpriteDeathAnimation() {}
 
 
 
