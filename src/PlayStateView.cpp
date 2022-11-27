@@ -17,6 +17,9 @@ PlayStateView::~PlayStateView()
     delete mainHeroM;
     delete roomV;
     delete pauseV;
+
+    delete sound;
+    delete buffer;
 }
 
 PlayStateView::PlayStateView(const PlayStateView& other)
@@ -33,6 +36,16 @@ PlayStateView& PlayStateView::operator=(const PlayStateView& rhs)
 
 void PlayStateView::init(sf::RenderWindow* window)
 {
+    // Sound
+    buffer = new sf::SoundBuffer();
+    buffer->loadFromFile("Sound/LE_DONJONNNNN.wav");
+
+    sound = new sf::Sound(*buffer);
+    sound->setVolume(50.);
+    sound->play();
+
+    // Main hero
+
     this->mainHeroM = new MainHero(window->getSize().x/2., window->getSize().y/2.);
     this->mainHeroV = new MainHeroView(mainHeroM);
 
@@ -62,11 +75,14 @@ void PlayStateView::run(sf::RenderWindow* window)
         if (state == 0)
             this->mainHeroV->spriteEvents(window);
         if (state == 1)
+        {
+            sound->stop();
             this->gm->setState(EnumState::MENUSTATE);
-
+        }
     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->gm->setState(EnumState::MENUSTATE);
+        sound->stop();
     }else
     {
         this->mainHeroV->spriteEvents(window);

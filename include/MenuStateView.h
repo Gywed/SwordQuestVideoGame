@@ -25,6 +25,10 @@ class MenuStateView: public StateView
         Texture mainTexture;
         Texture btnTexture[Max_main_menu*3];
 
+        // Sound
+        sf::SoundBuffer* buffer;
+        sf::Sound* sound;
+
         bool upKey,downKey, enterKey;
 
     public:

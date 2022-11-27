@@ -21,6 +21,10 @@ class PlayStateView: public StateView
         BasicRoomView* roomV;
         PauseView* pauseV;
 
+        // Sound
+        sf::SoundBuffer* buffer;
+        sf::Sound* sound;
+
         bool pauseFlag = false;
 
         int state = -1;
