@@ -22,7 +22,7 @@ class PauseStateView
         Sprite mMenu[Nb_Btn];
         Texture btnTexture[Nb_Btn*3];
 
-        bool upKey,downKey, enterKey;
+        bool rightKey,leftKey, enterKey;
 
     public:
         PauseStateView(GameManagerView* gm = nullptr);

@@ -35,15 +35,15 @@ void PauseStateView::init(sf::RenderWindow* window)
     spriteBackground.setTexture(backgroundTexture);
     spriteBackground.setColor(Color(128,128,128,128));
 
-    signTexture.loadFromFile("images/PauseMenu/sign.png");
+    signTexture.loadFromFile("images/PauseMenu/Sword.png");
     signTexture.setSmooth(true);
     spritePauseMenu.setTexture(signTexture);
     spritePauseMenu.setTextureRect(IntRect(0,0,signTexture.getSize().x,signTexture.getSize().y));
-    float scaleX = 2.;
-    float scaleY = 2.;
+    float scaleX = 2.1;
+    float scaleY = 2.1;
     spritePauseMenu.setScale(scaleX,scaleY);
     float signPosX = (window->getSize().x-signTexture.getSize().x*scaleX)/2;
-    float signPosY = window->getSize().y-signTexture.getSize().y*scaleY;
+    float signPosY = (window->getSize().y-signTexture.getSize().y*scaleY)/2;
     spritePauseMenu.setPosition(signPosX,signPosY);
 
     btnTexture[0].loadFromFile("images/PauseMenu/Button/RESUME.png");
@@ -57,17 +57,17 @@ void PauseStateView::init(sf::RenderWindow* window)
     btnTexture[3].setSmooth(true);
 
     // Button resume
-    mMenu[0].setPosition(window->getSize().x/2. -35.,350);
-    mMenu[0].setScale(.7, .7);
+    mMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
+    mMenu[0].setScale(.65, .65);
 
     // Button exit
-    mMenu[1].setPosition(window->getSize().x/2. -35.,window->getSize().y*0.65);
-    mMenu[1].setScale(.7, .7);
+    mMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
+    mMenu[1].setScale(.65, .65);
 }
 
 int PauseStateView::run(sf::RenderWindow* window)
 {
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && !this->upKey) {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKey) {
     mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
     if(PauseMenuSelected-1>=0){
         PauseMenuSelected--;
@@ -79,7 +79,7 @@ int PauseStateView::run(sf::RenderWindow* window)
     mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
 
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && !this->downKey) {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKey) {
         mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
         if(PauseMenuSelected+1>=Nb_Btn)
             PauseMenuSelected=0;
@@ -94,8 +94,8 @@ int PauseStateView::run(sf::RenderWindow* window)
         return PauseMenuSelected;
     }
 
-    this->upKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
-    this->downKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down);
+    this->rightKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
+    this->leftKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
     this->enterKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
 
     return -1;
