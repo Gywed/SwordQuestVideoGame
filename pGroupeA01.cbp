@@ -33,6 +33,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-DSFML_STATIC" />
 			<Add directory="lib/SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
