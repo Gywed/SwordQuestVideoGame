@@ -67,7 +67,21 @@ float Monster::distanceFromMainHero(MainHero mainHero)
 }
 
 //return a tuple containing offsetX and offsetY for the monster's position
-std::tuple<float, float> moveToMainHero(MainHero mainHero)const
+std::tuple<float, float> Monster::moveToMainHero(MainHero mainHero)const
 {
+    float offsetX;
+    float offsetY;
+    if(posX == mainHero.getPosX())
+    {
+        offsetX = 0;
+    }else
+        posX > mainHero.getPosX()? offsetX = moveUp() : offsetX = moveDown();
 
+    if(posY == mainHero.getPosY())
+    {
+        offsetY = 0;
+    }else
+        posY > mainHero.getPosX()? offsetY = moveLeft() : offsetY = moveRight();
+
+    return std::make_tuple(offsetX, offsetY);
 }
