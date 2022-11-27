@@ -1,24 +1,25 @@
 #include "Monster.h"
 #include <MainHero.h>
+#include <cmath>
 
-Monster::Monster(int HP, int damage): HP(HP), damage(damage)
+Monster::Monster(float posX, float posY): Character(posX, posY)
 {
     //ctor
-    id = new int(++compteur);
-    dead = false;
+//    id = new int(++compteur);
+//    dead = false;
 }
 
 Monster::~Monster()
 {
     //dtor
-    delete id;
+//    delete id;
 }
 
 Monster::Monster(const Monster& other)
 {
     //copy ctor
-    this->HP = other.HP;
-    id = new int(*(other.id));
+    this->setHP(other.getHP());
+//    id = new int(*(other.id));
 }
 
 Monster& Monster::operator=(const Monster& rhs)
@@ -26,9 +27,9 @@ Monster& Monster::operator=(const Monster& rhs)
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
 
-    delete id;
-    this->HP = rhs.HP;
-    this->id = new int(*rhs.id);
+//    delete id;
+    this->setHP(rhs.getHP());
+//    this->id = new int(*rhs.id);
     return *this;
 }
 
@@ -50,32 +51,37 @@ void Monster::getDamaged(int damage)
         setHP(newHP);
 }
 
-void Monster::setDamage(int newDamage)
+//int Monster::getCompteur()
+//{
+//    return compteur;
+//}
+//
+//int Monster::getId()const
+//{
+//    return *id;
+//}
+
+float Monster::distanceFromMainHero(MainHero mainHero)
 {
-    this->damage = newDamage;
+    return sqrt((mainHero.getPosX() - this->posX) + (mainHero.getPosY() - this->posY));
 }
 
-int Monster::getDamage()const
+//return a tuple containing offsetX and offsetY for the monster's position
+std::tuple<float, float> Monster::moveToMainHero(MainHero mainHero)const
 {
-    return this->damage;
-}
+    float offsetX;
+    float offsetY;
+    if(posX == mainHero.getPosX())
+    {
+        offsetX = 0;
+    }else
+        posX > mainHero.getPosX()? offsetX = moveUp() : offsetX = moveDown();
 
-int Monster::getCompteur()
-{
-    return compteur;
-}
+    if(posY == mainHero.getPosY())
+    {
+        offsetY = 0;
+    }else
+        posY > mainHero.getPosX()? offsetY = moveLeft() : offsetY = moveRight();
 
-int Monster::getId()const
-{
-    return *id;
-}
-
-void Monster::setHP(int newHP)
-{
-    this->HP = newHP;
-}
-
-int Monster::getHP() const
-{
-    return this->HP;
+    return std::make_tuple(offsetX, offsetY);
 }

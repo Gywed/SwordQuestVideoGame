@@ -140,7 +140,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         //Sprite can't initiate an attack if it's already attacking
         if(!attackFlag)
         {
-            if(simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 0.5f)
+            if(simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 0.8f)
             {
                 //Stop the idle animation
                 idleFlag=false;
