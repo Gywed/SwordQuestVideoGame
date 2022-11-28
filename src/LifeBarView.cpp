@@ -6,7 +6,7 @@ LifeBarView::LifeBarView()
     this->lifebarSprite= new sf::Sprite();
     this->texture=new sf::Texture();
     texture->loadFromFile("images/lifebar.png");
-    this->intrect = new sf::IntRect(16,0,620,53);
+    this->intrect = new sf::IntRect(0,0,270,50);
     this->lifebarSprite->setTextureRect(*intrect);
     this->lifebarSprite->setTexture(*texture);
     this->lifebarSprite->setPosition(0.0,0.0);
@@ -34,10 +34,10 @@ LifeBarView& LifeBarView::operator=(const LifeBarView& rhs)
 void LifeBarView::getDamaged(int hp){
     int res = 10-hp;
     this->intrect->top=0;
-    if(this->intrect->top<530)
-        this->intrect->top+=(53*res);
+    if(this->intrect->top<450)
+        this->intrect->top+=(50*res);
     else{
-        this->intrect->top=530;
+        this->intrect->top=450;
     }
     this->lifebarSprite->setTextureRect(*intrect);
 }
