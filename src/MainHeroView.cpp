@@ -218,6 +218,11 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         //Apply the position modifiers
         this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
     }
+    //Temporary event to test the getDamaged event
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        getDamaged(1);
+    }
 
 
 
@@ -261,11 +266,6 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                         defaultTextureRect->left=0;
                         break;
                     }
-                //Temporary event to test the getDamaged event
-                case sf::Keyboard::S:
-                    getDamaged(1);
-                    break;
-
 
                 default : break;
             }
