@@ -46,14 +46,13 @@ void MainHero::getDamaged(int damage)
     if (!isAttackable())
         return;
     setAttackable(false);
-//    int pid = fork();
-//    if (pid == 0)
-//    {
-//        stopInvulnaribilityFrame();
-//        exit(0);
-////        kill(pid,SIGTERM);
-//
-//    } else if (pid > 0) {
+    pid_t pid = fork();
+    if (pid == 0)
+    {
+        stopInvulnaribilityFrame();
+        kill(getpid(),SIGTERM);
+
+    } else if (pid > 0) {
         int newHP = getHP() - damage;
 
         if (newHP <= 0)
@@ -62,8 +61,8 @@ void MainHero::getDamaged(int damage)
         }
         else
             setHP(newHP);
-    setAttackable(true);
-//    }
+
+    }
 }
 
 void MainHero::stopInvulnaribilityFrame()

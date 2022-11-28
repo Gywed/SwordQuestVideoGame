@@ -414,6 +414,23 @@ void MainHeroView::getDamaged(int dmg)
 {
     this->mainHero->getDamaged(dmg);
     int hp = this->mainHero->getHP();
+    if(hp==0)
+    {
+        idleFlag=false;
+        attackFlag=false;
+        deathFlag=true;
+
+        this->setTextureRect(*deathTextureRect);
+        //determine the value of the position modifier for the attack because of the texture size differences
+        if(this->getScale().x < 0)
+            spritePosModifier.x = -30;
+        else
+            spritePosModifier.x = 30;
+        spritePosModifier.y = 27;
+        //Apply the position modifiers
+        this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
+    }
+
     std::cout<<std::to_string(hp)<<std::endl;
     this->lifebarV->getDamaged(hp);
 
