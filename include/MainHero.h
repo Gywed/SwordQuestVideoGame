@@ -19,7 +19,7 @@ class MainHero: public Character
         MainHero& operator=(const MainHero& other);
 
         void getDamaged(int damage);
-        void stopInvunaribilityFrame();
+        void stopInvulnaribilityFrame();
 
         void setInvTime(float invTime);
         float getInvTime()const;

@@ -33,7 +33,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add option="-DSFML_STATIC" />
 			<Add directory="lib/SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
@@ -49,6 +48,7 @@
 		<Unit filename="include/Entity.h" />
 		<Unit filename="include/EnumState.h" />
 		<Unit filename="include/GameManagerView.h" />
+		<Unit filename="include/LifeBarView.h" />
 		<Unit filename="include/MainHero.h" />
 		<Unit filename="include/MainHeroView.h" />
 		<Unit filename="include/MenuStateView.h" />
@@ -68,6 +68,7 @@
 		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/EnumState.cpp" />
 		<Unit filename="src/GameManagerView.cpp" />
+		<Unit filename="src/LifeBarView.cpp" />
 		<Unit filename="src/MainHero.cpp" />
 		<Unit filename="src/MainHeroView.cpp" />
 		<Unit filename="src/MenuStateView.cpp" />

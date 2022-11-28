@@ -13,6 +13,7 @@ MainHeroView::MainHeroView(MainHero *mainHero)
     this->setScale(2., 2.);
     this->getTexture()->setSmooth(true);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
+    this->lifebarV = new LifeBarView();
 }
 
 MainHeroView::~MainHeroView()
@@ -21,6 +22,7 @@ MainHeroView::~MainHeroView()
     delete simpleAttackTextureRect;
     delete heavyAttackTextureRect;
     delete deathTextureRect;
+    delete lifebarV;
 }
 
 MainHeroView::MainHeroView(const MainHeroView& other)
@@ -217,6 +219,8 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
     }
 
+
+
     //Verifying events
     sf::Event ev;
     while (window->pollEvent(ev))
@@ -257,6 +261,12 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                         defaultTextureRect->left=0;
                         break;
                     }
+                //Temporary event to test the getDamaged event
+                case sf::Keyboard::S:
+                    getDamaged(1);
+                    break;
+
+
                 default : break;
             }
             this->setTextureRect(*defaultTextureRect);
@@ -398,6 +408,15 @@ void MainHeroView::updateSpriteDeathAnimation()
         this->setTextureRect(*deathTextureRect);
         animationTimer.restart();
     }
+}
+
+void MainHeroView::getDamaged(int dmg)
+{
+    this->mainHero->getDamaged(dmg);
+    int hp = this->mainHero->getHP();
+    std::cout<<std::to_string(hp)<<std::endl;
+    this->lifebarV->getDamaged(hp);
+
 }
 
 

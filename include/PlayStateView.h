@@ -6,6 +6,7 @@
 #include "MainHeroView.h"
 #include "BasicRoomView.h"
 #include <PauseView.h>
+#include "LifeBarView.h"
 
 class PlayStateView: public StateView
 {
@@ -19,6 +20,7 @@ class PlayStateView: public StateView
         //View
         MainHeroView* mainHeroV;
         BasicRoomView* roomV;
+
         PauseView* pauseV;
 
         // Sound

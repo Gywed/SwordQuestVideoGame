@@ -51,6 +51,7 @@ void PlayStateView::init(sf::RenderWindow* window)
 
     this->roomV = new BasicRoomView();
     this->pauseV = new PauseView(this->gm);
+
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
@@ -83,7 +84,8 @@ void PlayStateView::run(sf::RenderWindow* window)
     {
         this->gm->setState(EnumState::MENUSTATE);
         sound->stop();
-    }else
+    }
+    else
     {
         this->mainHeroV->spriteEvents(window);
     }
@@ -93,6 +95,7 @@ void PlayStateView::render(sf::RenderWindow* window)
 {
     window->clear();
     window->draw(this->roomV->getTileMap());
+    window->draw(*this->mainHeroV->lifebarV->getSprite());
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();

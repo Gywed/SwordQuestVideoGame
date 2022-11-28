@@ -21,6 +21,7 @@
 #include "SFML/Graphics.hpp"
 #include "MainHero.h"
 #include "Entity.h"
+#include "LifeBarView.h"
 
 
 class MainHeroView: public Entity
@@ -47,6 +48,7 @@ class MainHeroView: public Entity
         //Method
         void spriteEvents(sf::RenderWindow* window);
         void attack();
+        void getDamaged(int dmg);
 
         //Animation
         void updateSpriteMovementAnimation();
@@ -55,6 +57,7 @@ class MainHeroView: public Entity
         void updateSpriteHeavyAttackAnimation();
         void updateSpriteDeathAnimation();
 
+        LifeBarView* lifebarV;
 
 };
 

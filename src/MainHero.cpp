@@ -3,7 +3,8 @@
 #include <ctime>
 #include <sys/mman.h>
 #include <unistd.h>
-#define _GNU_SOURCE
+#include <signal.h>
+
 
 MainHero::MainHero(float posX, float posY): Character(posX, posY)
 {
@@ -45,23 +46,27 @@ void MainHero::getDamaged(int damage)
     if (!isAttackable())
         return;
     setAttackable(false);
+//    int pid = fork();
+//    if (pid == 0)
+//    {
+//        stopInvulnaribilityFrame();
+//        exit(0);
+////        kill(pid,SIGTERM);
+//
+//    } else if (pid > 0) {
+        int newHP = getHP() - damage;
 
-    if (fork() == 0)
-    {
-        stopInvunaribilityFrame();
-        exit(0);
-    }
-    int newHP = getHP() - damage;
-
-    if (newHP <= 0)
-    {
-        setHP(0);
-    }
-    else
-        setHP(newHP);
+        if (newHP <= 0)
+        {
+            setHP(0);
+        }
+        else
+            setHP(newHP);
+    setAttackable(true);
+//    }
 }
 
-void MainHero::stopInvunaribilityFrame()
+void MainHero::stopInvulnaribilityFrame()
 {
     usleep(this->invTime*1000000);
     setAttackable(true);
