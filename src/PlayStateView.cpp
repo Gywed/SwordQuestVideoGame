@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 
+// For Pause Thread
 void doPause()
 {
 }

@@ -1,5 +1,13 @@
 #include "MainHeroView.h"
 #include <iostream>
+#include <thread>
+
+// For death thread
+void doDeath()
+{
+    std::cout<<"Dead"<<std::endl;
+}
+
 MainHeroView::MainHeroView(MainHero *mainHero)
 {
     this->mainHero = mainHero;
@@ -305,8 +313,15 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
     //Death event
     if(deathFlag)
     {
+        std::thread deathThread(doDeath);
         //Animation
-        updateSpriteDeathAnimation();
+        while (deathFlag)
+        {
+            updateSpriteDeathAnimation();
+        }
+
+        while(!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+        deathThread.join();
     }
 }
 
@@ -408,6 +423,7 @@ void MainHeroView::updateSpriteDeathAnimation()
         this->setTextureRect(*deathTextureRect);
         animationTimer.restart();
     }
+
 }
 
 void MainHeroView::getDamaged(int dmg)
@@ -430,8 +446,6 @@ void MainHeroView::getDamaged(int dmg)
         //Apply the position modifiers
         this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
     }
-
-    std::cout<<std::to_string(hp)<<std::endl;
     this->lifebarV->getDamaged(hp);
 
 }
