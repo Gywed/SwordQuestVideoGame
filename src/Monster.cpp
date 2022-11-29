@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include <MainHero.h>
 #include <cmath>
+#include <iostream>
 
 Monster::Monster(float posX, float posY): Character(posX, posY)
 {
@@ -61,13 +62,19 @@ void Monster::getDamaged(int damage)
 //    return *id;
 //}
 
-float Monster::distanceFromMainHero(MainHero mainHero)
+//Getters/Setters
+float Monster::getAggroDistance()const { return aggroDistance; }
+void Monster::setAggroDistance(float aggroDistance) { this->aggroDistance = aggroDistance; }
+bool Monster::isAggroed()const { return aggroed; }
+void Monster::setAggroed(bool aggroed) { this->aggroed = aggroed; }
+
+float Monster::distanceFromMainHero(MainHero &mainHero)
 {
-    return sqrt((mainHero.getPosX() - this->posX) + (mainHero.getPosY() - this->posY));
+    return sqrt(pow((mainHero.getPosX() - this->posX), 2.) + pow((mainHero.getPosY() - this->posY), 2.));
 }
 
 //return a tuple containing offsetX and offsetY for the monster's position
-std::tuple<float, float> Monster::moveToMainHero(MainHero mainHero)
+std::tuple<float, float> Monster::moveToMainHero(MainHero &mainHero)
 {
     float offsetX;
     float offsetY;
@@ -75,13 +82,13 @@ std::tuple<float, float> Monster::moveToMainHero(MainHero mainHero)
     {
         offsetX = 0;
     }else
-        posX > mainHero.getPosX()? offsetX = moveUp() : offsetX = moveDown();
+        posX > mainHero.getPosX()? offsetX = moveLeft() : offsetX = moveRight();
 
     if(posY == mainHero.getPosY())
     {
         offsetY = 0;
     }else
-        posY > mainHero.getPosX()? offsetY = moveLeft() : offsetY = moveRight();
+        posY > mainHero.getPosY()? offsetY = moveUp() : offsetY = moveDown();
 
     return std::make_tuple(offsetX, offsetY);
 }

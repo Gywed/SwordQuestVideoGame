@@ -13,7 +13,8 @@ class Entity: public sf::Sprite
         // Texture of the entity
         sf::Texture* texture;
 
-        sf::IntRect* defaultTextureRect;
+        sf::IntRect* idleTextureRect;
+        sf::IntRect* movementTextureRect;
         sf::IntRect* simpleAttackTextureRect;
         sf::IntRect* heavyAttackTextureRect;
         sf::IntRect* deathTextureRect;
