@@ -78,11 +78,18 @@ std::tuple<float, float> Monster::moveToMainHero(MainHero &mainHero)
 {
     float offsetX;
     float offsetY;
-    if(posX == mainHero.getPosX())
+    if(posX == mainHero.getPosX()-20 || posX == mainHero.getPosX()+20)
     {
         offsetX = 0;
     }else
-        posX > mainHero.getPosX()? offsetX = moveLeft() : offsetX = moveRight();
+    {
+        if(posX > mainHero.getPosX()+20)
+            offsetX = moveLeft();
+
+        if(posX < mainHero.getPosX()-20)
+            offsetX = moveRight();
+
+    }
 
     if(posY == mainHero.getPosY())
     {

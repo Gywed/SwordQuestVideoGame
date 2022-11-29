@@ -34,20 +34,35 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 Skeleton* SkeletonView::getSkeleton()const { return skeleton; }
 void SkeletonView::setSkeleton(Skeleton* skeleton) { this->skeleton = skeleton;}
 
-//Method
-void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHero* mainHero)
-{
-    this->skeleton->getPosX()<mainHero->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);
 
-    if(this->skeleton->distanceFromMainHero(*mainHero) <= this->skeleton->getAggroDistance())
+//Method
+//###################################################################################################
+void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV)
+{
+    this->skeleton->getPosX()<mainHeroV->getMainHero()->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);
+
+    if(this->skeleton->distanceFromMainHero(*mainHeroV->getMainHero()) <= this->skeleton->getAggroDistance())
         this->skeleton->setAggroed(true);
 
     //Movement
-    if(this->skeleton->isAggroed())
+    if(this->skeleton->isAggroed() && !attackFlag)
     {
-        std::tie(this->movement.x, this->movement.y) = this->skeleton->moveToMainHero(*mainHero);
+        std::tie(this->movement.x, this->movement.y) = this->skeleton->moveToMainHero(*mainHeroV->getMainHero());
         idleFlag=false;
         updateSpriteMovementAnimation();
+    }
+
+    //Attack
+    if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
+    {
+        idleFlag = false;
+        if(this->simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
+        {
+            attackFlag=true;
+            mainHeroV->getDamaged(this->skeleton->getDamage());
+            simpleAttackCoolDownTimer.restart();
+        }
+
     }
 
 
@@ -56,9 +71,30 @@ void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHero* mainHero)
     //Action if the sprite is in idle state
     if(idleFlag)
         updateSpriteIdleAnimation();
+
+    //Actions if the sprite is attacking
+    if(attackFlag)
+    {
+        //Animation
+        updateSpriteSimpleAttackAnimation();
+
+        //Check if the animation is finished
+        if(!attackFlag)
+        {
+            //Put back the correct position to match the model
+            this->setPosition(this->skeleton->getPosX(), this->skeleton->getPosY());
+            //Adapt textureRect to the dimensions of Idle.png and Movement.png
+            this->idleTextureRect->left=0;
+            this->movementTextureRect->left=0;
+            this->setTextureRect(*idleTextureRect);
+            //Enable idle state
+            idleFlag=true;
+        }
+    }
 }
 
 //Animation
+//###################################################################################################
 void SkeletonView::updateSpriteIdleAnimation()
 {
     this->loadTexture("images/Animation/Skeleton/Idle.png");
@@ -94,7 +130,22 @@ void SkeletonView::updateSpriteMovementAnimation()
 
 void SkeletonView::updateSpriteSimpleAttackAnimation()
 {
+    this->loadTexture("images/Animation/Skeleton/Attack1.png");
+    this->setTextureRect(*simpleAttackTextureRect);
+    if (animationTimer.getElapsedTime().asSeconds() > 0.13f){
 
+        if (simpleAttackTextureRect->left == 220)
+        {
+            simpleAttackTextureRect->left=0;
+            //When we reach the end of Attack1.png sprite sheet, we notify the end of the attack
+            attackFlag=false;
+        }
+        else
+            simpleAttackTextureRect->left+=44;
+
+        this->setTextureRect(*simpleAttackTextureRect);
+        animationTimer.restart();
+    }
 }
 
 void SkeletonView::updateSpriteDeathAnimation()

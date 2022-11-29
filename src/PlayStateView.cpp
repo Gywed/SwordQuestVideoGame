@@ -119,7 +119,7 @@ void PlayStateView::run(sf::RenderWindow* window)
     else
     {
         this->mainHeroV->spriteEvents(window);
-        this->skeletonV->spriteEvents(window, this->mainHeroM);
+        this->skeletonV->spriteEvents(window, this->mainHeroV);
     }
 }
 
