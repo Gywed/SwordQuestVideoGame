@@ -83,7 +83,11 @@ void PlayStateView::run(sf::RenderWindow* window)
 
     // Block Event here if MainHero is dying
     if (mainHeroV->getDeathFlag())
+    {
         this->mainHeroV->spriteEvents(window);
+        return;
+    }
+
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
     {
