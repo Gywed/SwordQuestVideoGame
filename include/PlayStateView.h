@@ -7,6 +7,8 @@
 #include "BasicRoomView.h"
 #include <PauseView.h>
 #include "LifeBarView.h"
+#include "Skeleton.h"
+#include "SkeletonView.h"
 
 class PlayStateView: public StateView
 {
@@ -16,9 +18,11 @@ class PlayStateView: public StateView
 
         //Model
         MainHero* mainHeroM;
+        Skeleton* skeletonM;
 
         //View
         MainHeroView* mainHeroV;
+        SkeletonView* skeletonV;
         BasicRoomView* roomV;
 
         PauseView* pauseV;

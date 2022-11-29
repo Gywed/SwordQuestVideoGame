@@ -49,6 +49,9 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->mainHeroM = new MainHero(window->getSize().x/2., window->getSize().y/2.);
     this->mainHeroV = new MainHeroView(mainHeroM);
 
+    this->skeletonM = new Skeleton(1400., 500.);
+    this->skeletonV = new SkeletonView(skeletonM);
+
     this->roomV = new BasicRoomView();
     this->pauseV = new PauseView(this->gm);
 
@@ -88,6 +91,7 @@ void PlayStateView::run(sf::RenderWindow* window)
     else
     {
         this->mainHeroV->spriteEvents(window);
+        this->skeletonV->spriteEvents(window, this->mainHeroM);
     }
 }
 
@@ -96,6 +100,7 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->clear();
     window->draw(this->roomV->getTileMap());
     window->draw(*this->mainHeroV->lifebarV->getSprite());
+    window->draw(*this->skeletonV);
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();
