@@ -5,11 +5,12 @@ MainHeroView::MainHeroView(MainHero *mainHero)
     this->mainHero = mainHero;
     this->setPosition(mainHero->getPosX(), mainHero->getPosY());
     this->loadTexture("images/Animation/MainHero/Idle.png");
-    this->defaultTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->idleTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->movementTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 71, 63);
     this->heavyAttackTextureRect = new sf::IntRect(0, 0, 102, 62);
     this->deathTextureRect = new sf::IntRect(0, 0, 75, 59);
-    this->setTextureRect(*defaultTextureRect);
+    this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
     this->getTexture()->setSmooth(true);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
@@ -18,10 +19,7 @@ MainHeroView::MainHeroView(MainHero *mainHero)
 
 MainHeroView::~MainHeroView()
 {
-    delete defaultTextureRect;
-    delete simpleAttackTextureRect;
     delete heavyAttackTextureRect;
-    delete deathTextureRect;
     delete lifebarV;
 }
 
@@ -40,11 +38,11 @@ MainHeroView& MainHeroView::operator=(const MainHeroView& rhs)
 //Setters Getters
 MainHero* MainHeroView::getMainHero()const { return mainHero; }
 void MainHeroView::setMainHero(MainHero* mainHero) { this->mainHero = mainHero; }
-sf::IntRect* MainHeroView::getRectSourceSprite()const { return defaultTextureRect; }
+sf::IntRect* MainHeroView::getRectSourceSprite()const { return idleTextureRect; }
 void MainHeroView::setRectSourceSprite(sf::IntRect* textureRect)
 {
-    delete this->defaultTextureRect;
-    this->defaultTextureRect = new sf::IntRect(textureRect->left, textureRect->top, textureRect->width, textureRect->height);
+    delete this->idleTextureRect;
+    this->idleTextureRect = new sf::IntRect(textureRect->left, textureRect->top, textureRect->width, textureRect->height);
 }
 
 //Method
@@ -242,34 +240,38 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        defaultTextureRect->left=0;
+                        idleTextureRect->left=0;
+                        movementTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Down:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        defaultTextureRect->left=0;
+                        idleTextureRect->left=0;
+                        movementTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Left:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        defaultTextureRect->left=0;
+                        idleTextureRect->left=0;
+                        movementTextureRect->left=0;
                         break;
                     }
                 case sf::Keyboard::Right:
                     if(!attackFlag)
                     {
                         idleFlag=true;
-                        defaultTextureRect->left=0;
+                        idleTextureRect->left=0;
+                        movementTextureRect->left=0;
                         break;
                     }
 
                 default : break;
             }
-            this->setTextureRect(*defaultTextureRect);
+            this->setTextureRect(*idleTextureRect);
 
         }
     }
@@ -294,9 +296,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             //Put back the correct position to match the model
             this->setPosition(this->mainHero->getPosX(), this->mainHero->getPosY());
-            //Adapt textureRect to the dimensions of Idle.png and Movement.png
-            this->defaultTextureRect->left=0;
-            this->setTextureRect(*defaultTextureRect);
+            //Adapt textureRect to the dimensions of Idle.png
+            this->idleTextureRect->left=0;
+            this->movementTextureRect->left=0;
+            this->setTextureRect(*idleTextureRect);
             //Enable idle state
             idleFlag=true;
         }
@@ -322,12 +325,12 @@ void MainHeroView::updateSpriteMovementAnimation()
     //Shift textureRect every time given
     if (animationTimer.getElapsedTime().asSeconds() > 0.15f){
 
-        if (defaultTextureRect->left == 225)
-            defaultTextureRect->left=0;
+        if (movementTextureRect->left == 225)
+            movementTextureRect->left=0;
         else
-            defaultTextureRect->left+=45;
+            movementTextureRect->left+=45;
 
-        this->setTextureRect(*defaultTextureRect);
+        this->setTextureRect(*movementTextureRect);
         animationTimer.restart();
     }
 
@@ -339,12 +342,12 @@ void MainHeroView::updateSpriteIdleAnimation()
     //Shift textureRect every time given
     if (animationTimer.getElapsedTime().asSeconds() > 0.35f){
 
-        if (defaultTextureRect->left == 135)
-            defaultTextureRect->left=0;
+        if (idleTextureRect->left == 135)
+            idleTextureRect->left=0;
         else
-            defaultTextureRect->left+=45;
+            idleTextureRect->left+=45;
 
-        this->setTextureRect(*defaultTextureRect);
+        this->setTextureRect(*idleTextureRect);
         animationTimer.restart();
     }
 
