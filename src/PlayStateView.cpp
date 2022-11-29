@@ -4,7 +4,12 @@
 
 // For Pause Thread
 void doPause()
+{}
+
+// For Dead thread
+void doDead()
 {
+    std::cout<<"Dead"<<std::endl;
 }
 
 PlayStateView::PlayStateView(GameManagerView* gm)
@@ -57,6 +62,19 @@ void PlayStateView::init(sf::RenderWindow* window)
 
 void PlayStateView::run(sf::RenderWindow* window)
 {
+    // Thread for the dead menu
+    if (mainHeroV->getDeadFlag())
+    {
+        std::thread deadThread(doDead);
+        while(!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+        mainHeroV->setDeadFlag(false);
+        deadThread.join();
+    }
+
+    // Block Event here if MainHero is dying
+    if (mainHeroV->getDeathFlag())
+        this->mainHeroV->spriteEvents(window);
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
     {
 

@@ -20,7 +20,7 @@ class Entity: public sf::Sprite
         sf::Clock animationTimer;
         sf::Clock simpleAttackCoolDownTimer;
 
-        bool idleFlag = true, attackFlag=false, deathFlag = false;
+        bool idleFlag = true, attackFlag=false, deathFlag = false, deadFlag = false;
 
         sf::Vector2<int> spritePosModifier;
 
@@ -38,6 +38,9 @@ class Entity: public sf::Sprite
         /* Method */
         void loadTexture(const string filename);
         void updatePosition();
+        bool getDeathFlag()const;
+        bool getDeadFlag()const;
+        void setDeadFlag(bool newDeadFlag);
 
         //Animation
         virtual void updateSpriteMovementAnimation() {}

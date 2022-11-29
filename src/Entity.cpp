@@ -44,3 +44,18 @@ void Entity::updatePosition()
     this->movement.x=0.;
     this->movement.y=0.;
 }
+
+bool Entity::getDeathFlag()const
+{
+    return this->deathFlag;
+}
+
+bool Entity::getDeadFlag()const
+{
+    return this->deadFlag;
+}
+
+void Entity::setDeadFlag(bool newDeadFlag)
+{
+    this->deadFlag = newDeadFlag;
+}
