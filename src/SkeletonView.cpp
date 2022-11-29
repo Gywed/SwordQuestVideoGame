@@ -1,4 +1,5 @@
 #include "SkeletonView.h"
+#include <iostream>
 
 SkeletonView::SkeletonView(Skeleton* skeleton): skeleton(skeleton)
 {
@@ -34,8 +35,24 @@ Skeleton* SkeletonView::getSkeleton()const { return skeleton; }
 void SkeletonView::setSkeleton(Skeleton* skeleton) { this->skeleton = skeleton;}
 
 //Method
-void SkeletonView::spriteEvents(sf::RenderWindow* window)
+void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHero* mainHero)
 {
+    this->skeleton->getPosX()<mainHero->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);
+
+    if(this->skeleton->distanceFromMainHero(*mainHero) <= this->skeleton->getAggroDistance())
+        this->skeleton->setAggroed(true);
+
+    //Movement
+    if(this->skeleton->isAggroed())
+    {
+        std::tie(this->movement.x, this->movement.y) = this->skeleton->moveToMainHero(*mainHero);
+        idleFlag=false;
+        updateSpriteMovementAnimation();
+    }
+
+
+    this->updatePosition();
+
     //Action if the sprite is in idle state
     if(idleFlag)
         updateSpriteIdleAnimation();
@@ -60,7 +77,19 @@ void SkeletonView::updateSpriteIdleAnimation()
 
 void SkeletonView::updateSpriteMovementAnimation()
 {
+    this->loadTexture("images/Animation/Skeleton/Movement.png");
+    this->setTextureRect(*movementTextureRect);
+    //Shift textureRect every time given
+    if (animationTimer.getElapsedTime().asSeconds() > 0.15f){
 
+        if (movementTextureRect->left == 112)
+            movementTextureRect->left=0;
+        else
+            movementTextureRect->left+=28;
+
+        this->setTextureRect(*movementTextureRect);
+        animationTimer.restart();
+    }
 }
 
 void SkeletonView::updateSpriteSimpleAttackAnimation()

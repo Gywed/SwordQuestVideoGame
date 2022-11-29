@@ -2,6 +2,7 @@
 #define SKELETONVIEW_H
 #include "Entity.h"
 #include "Skeleton.h"
+#include "MainHero.h"
 
 
 class SkeletonView: public Entity
@@ -19,7 +20,7 @@ class SkeletonView: public Entity
         void setSkeleton(Skeleton* skeleton);
 
         //Method
-        void spriteEvents(sf::RenderWindow* window);
+        void spriteEvents(sf::RenderWindow* window, MainHero* mainHero);
 
         //Animation
         virtual void updateSpriteMovementAnimation();
