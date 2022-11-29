@@ -131,7 +131,7 @@ void PlayStateView::render(sf::RenderWindow* window)
 {
     window->clear();
     window->draw(this->roomV->getTileMap());
-    window->draw(*this->mainHeroV->lifebarV->getSprite());
+    window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();

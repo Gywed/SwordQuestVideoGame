@@ -441,4 +441,6 @@ void MainHeroView::getDamaged(int dmg)
 
 }
 
-
+LifeBarView* MainHeroView::getLifeBarView()const{
+    return this->lifebarV;
+}

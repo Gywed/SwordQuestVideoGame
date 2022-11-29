@@ -28,6 +28,7 @@ class MainHeroView: public Entity
 {
     private:
         MainHero* mainHero;
+        LifeBarView* lifebarV;
 
         sf::Clock heavyAttackCoolDownTimer;
 
@@ -44,6 +45,7 @@ class MainHeroView: public Entity
         void setMainHero(MainHero* mainHero);
         sf::IntRect* getRectSourceSprite()const;
         void setRectSourceSprite(sf::IntRect* rectSourceSprite);
+        LifeBarView* getLifeBarView()const;
 
         //Method
         void spriteEvents(sf::RenderWindow* window);
@@ -57,7 +59,7 @@ class MainHeroView: public Entity
         void updateSpriteHeavyAttackAnimation();
         void updateSpriteDeathAnimation();
 
-        LifeBarView* lifebarV;
+
 
 };
 
