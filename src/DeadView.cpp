@@ -68,7 +68,6 @@ void DeadView::init(sf::RenderWindow* window)
     // Button Main Menu
     dMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
     dMenu[1].setScale(.65, .65);
-
 }
 
 int DeadView::run(sf::RenderWindow* window)
