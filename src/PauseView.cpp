@@ -61,35 +61,35 @@ void PauseView::init(sf::RenderWindow* window)
     btnTexture[3].setSmooth(true);
 
     // Button resume
-    mMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
-    mMenu[0].setScale(.65, .65);
+    pMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
+    pMenu[0].setScale(.65, .65);
 
-    // Button exit
-    mMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
-    mMenu[1].setScale(.65, .65);
+    // Button Main Menu
+    pMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
+    pMenu[1].setScale(.65, .65);
 }
 
 int PauseView::run(sf::RenderWindow* window)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKey) {
-    mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
-    if(PauseMenuSelected-1>=0){
-        PauseMenuSelected--;
-    }
-    else
-        PauseMenuSelected=1;
+    pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
+        if(PauseMenuSelected-1>=0){
+            PauseMenuSelected--;
+        }
+        else
+            PauseMenuSelected=1;
 
 
-    mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
+        pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKey) {
-        mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
+        pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected], true);
         if(PauseMenuSelected+1>=Nb_Btn)
             PauseMenuSelected=0;
         else
             PauseMenuSelected++;
-        mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
+        pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
 
     }
 
@@ -110,14 +110,14 @@ void PauseView::render()
     this->gm->getWindow()->draw(spriteBackground);
     this->gm->getWindow()->draw(spritePauseMenu);
 
-    mMenu[0].setTexture(btnTexture[0]);
-    mMenu[1].setTexture(btnTexture[1]);
-    mMenu[0].setOrigin(mMenu[0].getGlobalBounds().width/2., mMenu[0].getGlobalBounds().height/2.);
-    mMenu[1].setOrigin(mMenu[1].getGlobalBounds().width/2., mMenu[1].getGlobalBounds().height/2.);
-    mMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
+    pMenu[0].setTexture(btnTexture[0]);
+    pMenu[1].setTexture(btnTexture[1]);
+    pMenu[0].setOrigin(pMenu[0].getGlobalBounds().width/2., pMenu[0].getGlobalBounds().height/2.);
+    pMenu[1].setOrigin(pMenu[1].getGlobalBounds().width/2., pMenu[1].getGlobalBounds().height/2.);
+    pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
 
     for(int i=0;i<Nb_Btn;i++){
-        this->gm->getWindow()->draw(mMenu[i]);
+        this->gm->getWindow()->draw(pMenu[i]);
     }
 
 }

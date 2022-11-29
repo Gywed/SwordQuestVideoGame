@@ -19,10 +19,10 @@ class PauseView
         Texture signTexture;
 
         int PauseMenuSelected=0;
-        Sprite mMenu[Nb_Btn];
+        Sprite pMenu[Nb_Btn];
         Texture btnTexture[Nb_Btn*3];
 
-        bool rightKey,leftKey, enterKey;
+        bool rightKey, leftKey, enterKey;
 
     public:
         PauseView(GameManagerView* gm = nullptr);

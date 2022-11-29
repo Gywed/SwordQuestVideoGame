@@ -47,7 +47,9 @@ void PlayStateView::init(sf::RenderWindow* window)
 
     sound = new sf::Sound(*buffer);
     sound->setVolume(50.);
-    sound->play();
+    sound->setLoop(true);
+    if (sound->getStatus() != sf::Music::Status::Playing)
+        sound->play();
 
     // Main hero
 
@@ -81,6 +83,8 @@ void PlayStateView::run(sf::RenderWindow* window)
         mainHeroV->setDeadFlag(false);
         deadThread.join();
         if (state == 0)
+            this->gm->setState(EnumState::PLAYSTATE);
+        if (state == 1)
         {
             sound->stop();
             this->gm->setState(EnumState::MENUSTATE);
