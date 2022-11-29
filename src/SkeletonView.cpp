@@ -99,7 +99,22 @@ void SkeletonView::updateSpriteSimpleAttackAnimation()
 
 void SkeletonView::updateSpriteDeathAnimation()
 {
+    this->loadTexture("images/Animation/Skeleton/Death.png");
+    this->setTextureRect(*deathTextureRect);
+    if (animationTimer.getElapsedTime().asSeconds() > 0.3f){
 
+        if (deathTextureRect->left == 190)
+        {
+            //When we reach the end of Death.png sprite sheet, we notify the end of the death animation
+            deathFlag=false;
+            deadFlag = true;
+        }
+        else
+            deathTextureRect->left+=38;
+
+        this->setTextureRect(*deathTextureRect);
+        animationTimer.restart();
+    }
 }
 
 
