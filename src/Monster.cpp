@@ -70,7 +70,7 @@ void Monster::setAggroed(bool aggroed) { this->aggroed = aggroed; }
 
 float Monster::distanceFromMainHero(MainHero &mainHero)
 {
-    return sqrt((mainHero.getPosX() - this->posX) + (mainHero.getPosY() - this->posY));
+    return sqrt(pow((mainHero.getPosX() - this->posX), 2.) + pow((mainHero.getPosY() - this->posY), 2.));
 }
 
 //return a tuple containing offsetX and offsetY for the monster's position
