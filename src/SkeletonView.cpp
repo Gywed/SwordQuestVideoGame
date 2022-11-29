@@ -5,8 +5,8 @@ SkeletonView::SkeletonView(Skeleton* skeleton): skeleton(skeleton)
 {
     this->setPosition(skeleton->getPosX(), skeleton->getPosY());
     this->loadTexture("images/Animation/Skeleton/Idle.png");
-    this->idleTextureRect = new sf::IntRect(0, 0, 28, 40);
-    this->movementTextureRect = new sf::IntRect(0, 0, 32, 42);
+    this->idleTextureRect = new sf::IntRect(0, 0, 32, 40);
+    this->movementTextureRect = new sf::IntRect(0, 0, 28, 42);
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 44, 41);
     this->deathTextureRect = new sf::IntRect(0, 0, 38, 56);
     this->setTextureRect(*idleTextureRect);
