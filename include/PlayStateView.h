@@ -23,15 +23,9 @@ class PlayStateView: public StateView
         BasicRoomView* roomV;
 
         PauseView* pauseV;
-
         DeadView* deadV;
 
-        // Sound
-        sf::SoundBuffer* buffer;
-        sf::Sound* sound;
-
         bool pauseFlag = false;
-
         bool pKey,escapeKey;
 
 

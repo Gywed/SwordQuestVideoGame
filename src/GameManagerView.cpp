@@ -7,6 +7,16 @@
 GameManagerView::GameManagerView()
 {
     this->state = NULL;
+
+    bufferMainMenu = new sf::SoundBuffer();
+    bufferMainMenu->loadFromFile("Sound/LE_TITRE.wav");
+
+    bufferPlaying = new sf::SoundBuffer();
+    bufferPlaying->loadFromFile("Sound/LE_DONJONNNNN.wav");
+
+    sound = new sf::Sound();
+    sound->setVolume(50.);
+    sound->setLoop(true);
 }
 
 GameManagerView::~GameManagerView()
@@ -16,6 +26,10 @@ GameManagerView::~GameManagerView()
         delete this->state;
         this->state = NULL;
     }
+    delete sound;
+
+    delete bufferMainMenu;
+    delete bufferPlaying;
 }
 
 GameManagerView::GameManagerView(const GameManagerView& other)
@@ -38,10 +52,33 @@ void GameManagerView::setState(const EnumState st)
 {
     switch(st)
     {
-        case EnumState::MENUSTATE: this->state = new MenuStateView(this);break;
-        case EnumState::PLAYSTATE: this->state = new PlayStateView(this);break;
+        case EnumState::MENUSTATE:
+            this->state = new MenuStateView(this);
+            if (sound->getBuffer() != bufferMainMenu)
+            {
+                sound->setBuffer(*bufferMainMenu);
+                sound->play();
+            }
+            break;
+
+        case EnumState::PLAYSTATE:
+            this->state = new PlayStateView(this);
+            if (sound->getBuffer() != bufferPlaying)
+            {
+                sound->setBuffer(*bufferPlaying);
+                sound->play();
+            }
+            break;
+
 //        case EnumState::OPTIONSTATE: this->state = new OptionStateView(this);break;
-        case EnumState::ABOUTSTATE: this->state = new AboutStateView(this);break;
+        case EnumState::ABOUTSTATE:
+            this->state = new AboutStateView(this);
+            if (sound->getBuffer() != bufferMainMenu)
+            {
+                sound->setBuffer(*bufferMainMenu);
+                sound->play();
+            }
+            break;
         default:break;
     }
 

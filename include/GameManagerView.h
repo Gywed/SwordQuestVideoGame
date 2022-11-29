@@ -1,6 +1,7 @@
 #ifndef GAMEMANAGERVIEW_H
 #define GAMEMANAGERVIEW_H
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -15,6 +16,11 @@ class GameManagerView
         sf::RenderWindow* window; //AEP
         // State(PlayState,MenuState,etc..)
         StateView* state;
+
+        // Sound
+        sf::SoundBuffer* bufferMainMenu;
+        sf::SoundBuffer* bufferPlaying;
+        sf::Sound* sound;
 
     public:
         GameManagerView();

@@ -9,9 +9,6 @@ MenuStateView::MenuStateView(GameManagerView* gm)
 MenuStateView::~MenuStateView()
 {
     //dtor
-    delete sound;
-    delete buffer;
-
 }
 
 MenuStateView::MenuStateView(const MenuStateView& other)
@@ -34,13 +31,6 @@ window : window game (AEP)
 */
 void MenuStateView::init(sf::RenderWindow* window)
 {
-    // Sound
-    buffer = new sf::SoundBuffer();
-    buffer->loadFromFile("Sound/LE_TITRE.wav");
-
-    sound = new sf::Sound(*buffer);
-    sound->setVolume(50.);
-    sound->play();
 
     //Set the background
     this->background.setSize(Vector2f(window->getSize().x,window->getSize().y));
@@ -95,7 +85,6 @@ void MenuStateView::run(sf::RenderWindow* window)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
-        sound->stop();
         window->close();
     }
 
@@ -128,7 +117,7 @@ void MenuStateView::run(sf::RenderWindow* window)
     {
         switch(MainMenuSelected)
         {
-            case 0 : this->gm->setState(EnumState::PLAYSTATE);sound->stop();break;
+            case 0 : this->gm->setState(EnumState::PLAYSTATE);break;
             case 2 : this->gm->setState(EnumState::ABOUTSTATE);break;
             case 3 : window->close();break;
         }
