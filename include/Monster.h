@@ -19,6 +19,12 @@ class Monster: public Character
         Monster(const Monster& other);
         Monster& operator=(const Monster& other);
 
+        //Getters/Setters
+        float getAggroDistance()const;
+        void setAggroDistance(float aggroDistance);
+        bool isAggroed()const;
+        void setAggroed(bool aggroed);
+
         virtual void attack(MainHero* mainHero);
 
         void getDamaged(int damage);
@@ -26,9 +32,9 @@ class Monster: public Character
 //        static int getCompteur();
 //        int getId() const;
 
-        float distanceFromMainHero(MainHero mainHero);
+        float distanceFromMainHero(MainHero &mainHero);
         //return a tuple containing offsetX and offsetY for the monster's position
-        std::tuple<float, float> moveToMainHero(MainHero mainHero);
+        std::tuple<float, float> moveToMainHero(MainHero &mainHero);
 
 
 
