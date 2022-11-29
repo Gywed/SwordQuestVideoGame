@@ -8,9 +8,7 @@ void doPause()
 
 // For Dead thread
 void doDead()
-{
-    std::cout<<"Dead"<<std::endl;
-}
+{}
 
 PlayStateView::PlayStateView(GameManagerView* gm)
 {
@@ -23,6 +21,7 @@ PlayStateView::~PlayStateView()
     delete mainHeroM;
     delete roomV;
     delete pauseV;
+    delete deadV;
 
     delete sound;
     delete buffer;
@@ -55,8 +54,12 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->mainHeroM = new MainHero(window->getSize().x/2., window->getSize().y/2.);
     this->mainHeroV = new MainHeroView(mainHeroM);
 
+    // Room
     this->roomV = new BasicRoomView();
+
+    // Menu
     this->pauseV = new PauseView(this->gm);
+    this->deadV = new DeadView(this->gm);
 
 }
 
@@ -66,9 +69,23 @@ void PlayStateView::run(sf::RenderWindow* window)
     if (mainHeroV->getDeadFlag())
     {
         std::thread deadThread(doDead);
-        while(!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+        render(window);
+        window->display();
+        int state = -1;
+        while(state == -1)
+        {
+            state = deadV->run(window);
+            render(window);
+            window->display();
+        }
         mainHeroV->setDeadFlag(false);
         deadThread.join();
+        if (state == 0)
+        {
+            sound->stop();
+            this->gm->setState(EnumState::MENUSTATE);
+        }
+
     }
 
     // Block Event here if MainHero is dying
@@ -82,7 +99,7 @@ void PlayStateView::run(sf::RenderWindow* window)
         this->pauseFlag = true;
         render(window);
         window->display();
-        state = -1;
+        int state = -1;
         while(state == -1)
         {
             state = pauseV->run(window);
@@ -118,6 +135,8 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();
+    if (mainHeroV->getDeadFlag())
+        deadV->render();
 }
 void PlayStateView::destroy()
 {

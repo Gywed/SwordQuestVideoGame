@@ -10,7 +10,7 @@ using namespace sf;
 class PauseView
 {
     private:
-        GameManagerView* gm;
+        GameManagerView* gm; // AEP
 
         Sprite spriteBackground;
         Sprite spritePauseMenu;

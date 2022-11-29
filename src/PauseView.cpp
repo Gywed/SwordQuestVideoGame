@@ -25,6 +25,10 @@ PauseView& PauseView::operator=(const PauseView& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->gm = rhs.gm;
+
+    this->spriteBackground = rhs.spriteBackground;
+    this->spritePauseMenu = rhs.spritePauseMenu;
     return *this;
 }
 

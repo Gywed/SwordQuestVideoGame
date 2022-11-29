@@ -6,6 +6,7 @@
 #include "MainHeroView.h"
 #include "BasicRoomView.h"
 #include <PauseView.h>
+#include <DeadView.h>
 #include "LifeBarView.h"
 
 class PlayStateView: public StateView
@@ -23,13 +24,13 @@ class PlayStateView: public StateView
 
         PauseView* pauseV;
 
+        DeadView* deadV;
+
         // Sound
         sf::SoundBuffer* buffer;
         sf::Sound* sound;
 
         bool pauseFlag = false;
-
-        int state = -1;
 
         bool pKey,escapeKey;
 
