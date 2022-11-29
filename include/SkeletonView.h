@@ -18,6 +18,9 @@ class SkeletonView: public Entity
         Skeleton* getSkeleton()const;
         void setSkeleton(Skeleton* skeleton);
 
+        //Method
+        void spriteEvents(sf::RenderWindow* window);
+
         //Animation
         virtual void updateSpriteMovementAnimation();
         virtual void updateSpriteIdleAnimation();

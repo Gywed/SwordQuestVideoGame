@@ -33,6 +33,14 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 Skeleton* SkeletonView::getSkeleton()const { return skeleton; }
 void SkeletonView::setSkeleton(Skeleton* skeleton) { this->skeleton = skeleton;}
 
+//Method
+void SkeletonView::spriteEvents(sf::RenderWindow* window)
+{
+    //Action if the sprite is in idle state
+    if(idleFlag)
+        updateSpriteIdleAnimation();
+}
+
 //Animation
 void SkeletonView::updateSpriteIdleAnimation()
 {
@@ -50,8 +58,19 @@ void SkeletonView::updateSpriteIdleAnimation()
     }
 }
 
-void SkeletonView::updateSpriteMovementAnimation();
-void SkeletonView::updateSpriteSimpleAttackAnimation();
-void SkeletonView::updateSpriteDeathAnimation();
+void SkeletonView::updateSpriteMovementAnimation()
+{
+
+}
+
+void SkeletonView::updateSpriteSimpleAttackAnimation()
+{
+
+}
+
+void SkeletonView::updateSpriteDeathAnimation()
+{
+
+}
 
 
