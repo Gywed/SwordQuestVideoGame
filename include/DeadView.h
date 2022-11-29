@@ -1,17 +1,15 @@
 #ifndef DEADVIEW_H
 #define DEADVIEW_H
-
 #include <SFML/Graphics.hpp>
 #include <GameManagerView.h>
 
-#define Nb_Btn 1
+#define Nb_Btn 2
 
 using namespace sf;
 
 class DeadView
 {
     private:
-
         GameManagerView* gm; // AEP
 
         Sprite spriteBackground;
@@ -21,10 +19,10 @@ class DeadView
         Texture signTexture;
 
         int DeadMenuSelected=0;
-        Sprite mMenu;
-        Texture btnTexture;
+        Sprite dMenu[Nb_Btn];
+        Texture btnTexture[Nb_Btn*3];
 
-        bool enterKey;
+        bool rightKey, leftKey, enterKey;
 
     public:
         DeadView(GameManagerView* gm = nullptr);

@@ -51,23 +51,57 @@ void DeadView::init(sf::RenderWindow* window)
     float signPosY = (window->getSize().y-signTexture.getSize().y*scaleY)/2;
     spriteDeadMenu.setPosition(signPosX,signPosY);
 
-    btnTexture.loadFromFile("images/DeadMenu/Button/MAIN_MENU_Hovered.png");
+    btnTexture[0].loadFromFile("images/DeadMenu/Button/RESUME.png");
+    btnTexture[1].loadFromFile("images/DeadMenu/Button/MAIN_MENU.png");
+    btnTexture[2].loadFromFile("images/DeadMenu/Button/RESUME_Hovered.png");
+    btnTexture[3].loadFromFile("images/DeadMenu/Button/MAIN_MENU_Hovered.png");
 
-    btnTexture.setSmooth(true);
+    btnTexture[0].setSmooth(true);
+    btnTexture[1].setSmooth(true);
+    btnTexture[2].setSmooth(true);
+    btnTexture[3].setSmooth(true);
 
     // Button resume
-    mMenu.setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
-    mMenu.setScale(.65, .65);
+    dMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
+    dMenu[0].setScale(.65, .65);
 
+    // Button Main Menu
+    dMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
+    dMenu[1].setScale(.65, .65);
 }
 
 int DeadView::run(sf::RenderWindow* window)
 {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKey) {
+    dMenu[DeadMenuSelected].setTexture(btnTexture[DeadMenuSelected], true);
+        if(DeadMenuSelected-1>=0){
+            DeadMenuSelected--;
+        }
+        else
+            DeadMenuSelected=1;
+
+
+        dMenu[DeadMenuSelected].setTexture(btnTexture[DeadMenuSelected+2], true);
+
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKey) {
+        dMenu[DeadMenuSelected].setTexture(btnTexture[DeadMenuSelected], true);
+        if(DeadMenuSelected+1>=Nb_Btn)
+            DeadMenuSelected=0;
+        else
+            DeadMenuSelected++;
+
+        dMenu[DeadMenuSelected].setTexture(btnTexture[DeadMenuSelected+2], true);
+
+    }
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter) && !this->enterKey)
     {
         return DeadMenuSelected;
     }
 
+    this->rightKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
+    this->leftKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
     this->enterKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
 
     return -1;
@@ -78,8 +112,13 @@ void DeadView::render()
     this->gm->getWindow()->draw(spriteBackground);
     this->gm->getWindow()->draw(spriteDeadMenu);
 
-    mMenu.setTexture(btnTexture);
-    mMenu.setOrigin(mMenu.getGlobalBounds().width/2., mMenu.getGlobalBounds().height/2.);
+    dMenu[0].setTexture(btnTexture[0]);
+    dMenu[1].setTexture(btnTexture[1]);
+    dMenu[0].setOrigin(dMenu[0].getGlobalBounds().width/2., dMenu[0].getGlobalBounds().height/2.);
+    dMenu[1].setOrigin(dMenu[1].getGlobalBounds().width/2., dMenu[1].getGlobalBounds().height/2.);
+    dMenu[DeadMenuSelected].setTexture(btnTexture[DeadMenuSelected+2], true);
 
-    this->gm->getWindow()->draw(mMenu);
+    for(int i=0;i<Nb_Btn;i++){
+        this->gm->getWindow()->draw(dMenu[i]);
+    }
 }
