@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 
+
 MainHeroView::MainHeroView(MainHero *mainHero)
 {
     this->mainHero = mainHero;
@@ -17,6 +18,7 @@ MainHeroView::MainHeroView(MainHero *mainHero)
     this->getTexture()->setSmooth(true);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
     this->lifebarV = new LifeBarView();
+    this->mainHeroColor = new sf::Color(this->getColor());
 }
 
 MainHeroView::~MainHeroView()
@@ -233,6 +235,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
             getDamaged(1);
         }
 
+        if(this->mainHero->isAttackable())
+        {
+            this->setColor(*this->mainHeroColor);
+        }
 
 
         //Verifying events
@@ -425,6 +431,7 @@ void MainHeroView::getDamaged(int dmg)
 {
     this->mainHero->getDamaged(dmg);
     int hp = this->mainHero->getHP();
+    this->setColor(sf::Color::Red);
     if(hp==0)
     {
         idleFlag=false;
@@ -441,7 +448,9 @@ void MainHeroView::getDamaged(int dmg)
         //Apply the position modifiers
         this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
     }
+
     this->lifebarV->getDamaged(hp);
+
 
 }
 

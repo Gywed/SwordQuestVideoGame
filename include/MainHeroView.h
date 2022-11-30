@@ -32,6 +32,7 @@ class MainHeroView: public Entity
 
         sf::Clock heavyAttackCoolDownTimer;
 
+        sf::Color* mainHeroColor;
         bool heavyAttackFlag= false, simpleAttackFlag = true;
 
     public:
