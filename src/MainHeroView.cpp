@@ -56,6 +56,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
     if(deathFlag)
     {
         //Animation
+        setColor(*mainHeroColor);
         updateSpriteDeathAnimation();
     }
     else
