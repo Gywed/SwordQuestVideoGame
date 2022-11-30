@@ -32,6 +32,7 @@ class GameManagerView
         StateView* getState() const;
         void setWindow(sf::RenderWindow* window);
         void setState(const EnumState st);
+        sf::Sound* getSound()const;
         /*  Method  */
         void run();
         void render();

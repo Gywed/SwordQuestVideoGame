@@ -22,6 +22,9 @@ PlayStateView::~PlayStateView()
     delete roomV;
     delete pauseV;
     delete deadV;
+
+    delete playStateMenuSound;
+    delete buffer;
 }
 
 PlayStateView::PlayStateView(const PlayStateView& other)
@@ -53,6 +56,12 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->pauseV = new PauseView(this->gm);
     this->deadV = new DeadView(this->gm);
 
+    // Sound
+    this->playStateMenuSound = new sf::Sound();
+    this->playStateMenuSound->setVolume(50.);
+    this->playStateMenuSound->setLoop(true);
+    this->buffer = new sf::SoundBuffer();
+    this->buffer->loadFromFile("Sound/NoooOoodabedeedabeda.wav");
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
@@ -60,9 +69,10 @@ void PlayStateView::run(sf::RenderWindow* window)
     // Thread for the dead menu
     if (mainHeroV->getDeadFlag())
     {
+        this->gm->getSound()->pause();
+        this->playStateMenuSound->setBuffer(*buffer);
+        this->playStateMenuSound->play();
         std::thread deadThread(doDead);
-        render(window);
-        window->display();
         int state = -1;
         while(state == -1)
         {
@@ -72,16 +82,22 @@ void PlayStateView::run(sf::RenderWindow* window)
         }
         deadThread.join();
         mainHeroV->setDeadFlag(false);
+        this->playStateMenuSound->stop();
+        this->gm->getSound()->play();
+        // restart a game
         if (state == 0)
+        {
             this->gm->setState(EnumState::PLAYSTATE);
+            // This is used to block the rest of the run function (same for all return after a setState)
+            return;
+        }
+        // return to main menu
         if (state == 1)
         {
             this->gm->setState(EnumState::MENUSTATE);
-            // This is used to block the rest of the run function (same for all next return after setState)
             return;
         }
     }
-
     // Block Event here if MainHero is dying
     if (mainHeroV->getDeathFlag())
     {
@@ -94,8 +110,6 @@ void PlayStateView::run(sf::RenderWindow* window)
 
         std::thread pauseThread(doPause);
         this->pauseFlag = true;
-        render(window);
-        window->display();
         int state = -1;
         while(state == -1)
         {

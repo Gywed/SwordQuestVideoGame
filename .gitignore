@@ -2,5 +2,7 @@ pGroupeA01.layout
 pGroupeA01.depend
 obj/Debug
 bin/Debug
+obj/Release
+bin/Release
 ValgrindOut.xml
 attackable

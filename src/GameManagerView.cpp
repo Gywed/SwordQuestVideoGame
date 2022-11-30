@@ -44,6 +44,7 @@ GameManagerView& GameManagerView::operator=(const GameManagerView& rhs)
 
 /* Getters and setters */
 sf::RenderWindow* GameManagerView::getWindow() const { return window; }
+sf::Sound* GameManagerView::getSound()const {return sound; }
 StateView* GameManagerView::getState() const { return state; }
 void GameManagerView::setWindow(sf::RenderWindow* window) {this->window = window;}
 void GameManagerView::setState(const EnumState st)

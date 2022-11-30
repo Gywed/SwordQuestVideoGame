@@ -29,6 +29,10 @@ class PlayStateView: public StateView
         PauseView* pauseV;
         DeadView* deadV;
 
+        // Sound
+        sf::SoundBuffer* buffer;
+        sf::Sound* playStateMenuSound;
+
         bool pauseFlag = false;
         bool pKey,escapeKey;
 
