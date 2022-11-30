@@ -69,9 +69,7 @@ void PlayStateView::run(sf::RenderWindow* window)
     // Thread for the dead menu
     if (mainHeroV->getDeadFlag())
     {
-        this->gm->getSound()->pause();
-        this->playStateMenuSound->setBuffer(*buffer);
-        this->playStateMenuSound->play();
+
         std::thread deadThread(doDead);
         int state = -1;
         while(state == -1)
@@ -101,8 +99,20 @@ void PlayStateView::run(sf::RenderWindow* window)
     // Block Event here if MainHero is dying
     if (mainHeroV->getDeathFlag())
     {
+        if (this->playStateMenuSound->getStatus() != sf::Sound::Playing)
+        {
+            this->gm->getSound()->pause();
+            this->gm->getSound()->setPitch(1.);
+            this->playStateMenuSound->setBuffer(*buffer);
+            this->playStateMenuSound->play();
+        }
         this->mainHeroV->spriteEvents(window);
         return;
+    }
+
+    if (mainHeroV->getMainHero()->getHP()<= 2)
+    {
+        this->gm->getSound()->setPitch(1.20);
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
