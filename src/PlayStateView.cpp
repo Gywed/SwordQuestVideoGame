@@ -70,15 +70,16 @@ void PlayStateView::run(sf::RenderWindow* window)
             render(window);
             window->display();
         }
-        mainHeroV->setDeadFlag(false);
         deadThread.join();
+        mainHeroV->setDeadFlag(false);
         if (state == 0)
             this->gm->setState(EnumState::PLAYSTATE);
         if (state == 1)
         {
             this->gm->setState(EnumState::MENUSTATE);
+            // This is used to block the rest of the run function (same for all next return after setState)
+            return;
         }
-
     }
 
     // Block Event here if MainHero is dying
@@ -88,8 +89,7 @@ void PlayStateView::run(sf::RenderWindow* window)
         return;
     }
 
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
 
         std::thread pauseThread(doPause);
@@ -111,12 +111,9 @@ void PlayStateView::run(sf::RenderWindow* window)
         if (state == 1)
         {
             this->gm->setState(EnumState::MENUSTATE);
+            return;
         }
-    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        this->gm->setState(EnumState::MENUSTATE);
-    }
-    else
+    } else
     {
         this->mainHeroV->spriteEvents(window);
         this->skeletonV->spriteEvents(window, this->mainHeroV);

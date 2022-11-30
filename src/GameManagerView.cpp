@@ -22,10 +22,8 @@ GameManagerView::GameManagerView()
 GameManagerView::~GameManagerView()
 {
     //Destroy state pointer
-    if(this->state!=NULL){
-        delete this->state;
-        this->state = NULL;
-    }
+    delete this->state;
+
     delete sound;
 
     delete bufferMainMenu;
@@ -50,6 +48,7 @@ StateView* GameManagerView::getState() const { return state; }
 void GameManagerView::setWindow(sf::RenderWindow* window) {this->window = window;}
 void GameManagerView::setState(const EnumState st)
 {
+    delete state;
     switch(st)
     {
         case EnumState::MENUSTATE:
