@@ -22,6 +22,8 @@ PlayStateView::~PlayStateView()
     delete roomV;
     delete pauseV;
     delete deadV;
+    delete skeletonM;
+    delete skeletonV;
 
     delete playStateMenuSound;
     delete buffer;
