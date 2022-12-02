@@ -7,16 +7,47 @@ MainHeroView::MainHeroView(MainHero *mainHero)
 {
     this->mainHero = mainHero;
     this->setPosition(mainHero->getPosX(), mainHero->getPosY());
-    this->loadTexture("images/Animation/MainHero/Idle.png");
+
+    //Idle animation
     this->idleTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->idleTextureSource = "images/Animation/MainHero/Idle.png";
+    this->idleAnimationStep = 45;
+    this->idleTextureRectMaxLeft = 135;
+    this->idleAnimationTimeBetweenEachFrame = 0.35;
+
+    //Movement animation
     this->movementTextureRect = new sf::IntRect(0, 0, Sprite_Width, Sprite_Height);
+    this->movementTextureSource = "images/Animation/MainHero/Movement.png";
+    this->movementAnimationStep = 45;
+    this->movementTextureRectMaxLeft = 225;
+    this->movementAnimationTimeBetweenEachFrame = 0.15;
+
+    //Simple attack animation
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 71, 63);
+    this->simpleAttackTextureSource = "images/Animation/MainHero/Attack1.png";
+    this->simpleAttackAnimationStep = 71;
+    this->simpleAttackTextureRectMaxLeft = 284;
+    this->simpleAttackAnimationTimeBetweenEachFrame = 0.13;
+
+    //Heavy attack animation
     this->heavyAttackTextureRect = new sf::IntRect(0, 0, 102, 62);
+    this->heavyAttackTextureSource = "images/Animation/MainHero/Attack2.png";
+    this->heavyAttackAnimationStep = 102;
+    this->heavyAttackTextureRectMaxLeft = 612;
+    this->heavyAttackAnimationTimeBetweenEachFrame = 0.2;
+
+    //Death animation
     this->deathTextureRect = new sf::IntRect(0, 0, 75, 59);
+    this->deathTextureSource = "images/Animation/MainHero/Death.png";
+    this->deathAnimationStep = 75;
+    this->deathTextureRectMaxLeft = 300;
+    this->deathAnimationTimeBetweenEachFrame = 0.3;
+
+    this->loadTexture(idleTextureSource);
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
-    this->getTexture()->setSmooth(true);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
+
     this->lifebarV = new LifeBarView();
     this->mainHeroColor = new sf::Color(this->getColor());
 }
@@ -335,41 +366,6 @@ void MainHeroView::attack()
     //Instruction for the view to manage collision with a monster
 }
 
-void MainHeroView::updateSpriteMovementAnimation()
-{
-    this->loadTexture("images/Animation/MainHero/Movement.png");
-    this->setTextureRect(*movementTextureRect);
-    //Shift textureRect every time given
-    if (animationTimer.getElapsedTime().asSeconds() > 0.15f){
-
-        if (movementTextureRect->left == 225)
-            movementTextureRect->left=0;
-        else
-            movementTextureRect->left+=45;
-
-        this->setTextureRect(*movementTextureRect);
-        animationTimer.restart();
-    }
-
-}
-
-void MainHeroView::updateSpriteIdleAnimation()
-{
-    this->loadTexture("images/Animation/MainHero/Idle.png");
-    //Shift textureRect every time given
-    if (animationTimer.getElapsedTime().asSeconds() > 0.35f){
-
-        if (idleTextureRect->left == 135)
-            idleTextureRect->left=0;
-        else
-            idleTextureRect->left+=45;
-
-        this->setTextureRect(*idleTextureRect);
-        animationTimer.restart();
-    }
-
-}
-
 void MainHeroView::updateSpriteSimpleAttackAnimation()
 {
     this->loadTexture("images/Animation/MainHero/Attack1.png");
@@ -409,27 +405,6 @@ void MainHeroView::updateSpriteHeavyAttackAnimation()
         this->setTextureRect(*heavyAttackTextureRect);
         animationTimer.restart();
     }
-}
-
-void MainHeroView::updateSpriteDeathAnimation()
-{
-    this->loadTexture("images/Animation/MainHero/Death.png");
-    this->setTextureRect(*deathTextureRect);
-    if (animationTimer.getElapsedTime().asSeconds() > 0.3f){
-
-        if (deathTextureRect->left == 300)
-        {
-            //When we reach the end of Death.png sprite sheet, we notify the end of the death animation
-            deathFlag=false;
-            deadFlag = true;
-        }
-        else
-            deathTextureRect->left+=75;
-
-        this->setTextureRect(*deathTextureRect);
-        animationTimer.restart();
-    }
-
 }
 
 void MainHeroView::getDamaged(int dmg)

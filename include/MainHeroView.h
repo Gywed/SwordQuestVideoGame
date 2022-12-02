@@ -32,6 +32,12 @@ class MainHeroView: public Entity
 
         sf::Clock heavyAttackCoolDownTimer;
 
+        //Heavy attack animation
+        sf::IntRect* heavyAttackTextureRect;
+        string heavyAttackTextureSource;
+        int heavyAttackAnimationStep;
+        int heavyAttackTextureRectMaxLeft;
+        float heavyAttackAnimationTimeBetweenEachFrame;
 
         bool heavyAttackFlag= false, simpleAttackFlag = false;
 
@@ -56,11 +62,8 @@ class MainHeroView: public Entity
         void getDamaged(int dmg);
 
         //Animation
-        void updateSpriteMovementAnimation();
-        void updateSpriteIdleAnimation();
         void updateSpriteSimpleAttackAnimation();
         void updateSpriteHeavyAttackAnimation();
-        void updateSpriteDeathAnimation();
 
 
 

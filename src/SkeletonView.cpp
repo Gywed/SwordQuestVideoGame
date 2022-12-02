@@ -4,11 +4,36 @@
 SkeletonView::SkeletonView(Skeleton* skeleton): skeleton(skeleton)
 {
     this->setPosition(skeleton->getPosX(), skeleton->getPosY());
-    this->loadTexture("images/Animation/Skeleton/Idle.png");
+
+    //Idle animation
     this->idleTextureRect = new sf::IntRect(0, 0, 32, 40);
+    this->idleTextureSource = "images/Animation/Skeleton/Idle.png";
+    this->idleAnimationStep = 32;
+    this->idleTextureRectMaxLeft = 96;
+    this->idleAnimationTimeBetweenEachFrame = 0.35;
+
+    //Movement animation
     this->movementTextureRect = new sf::IntRect(0, 0, 28, 42);
+    this->movementTextureSource = "images/Animation/Skeleton/Movement.png";
+    this->movementAnimationStep = 28;
+    this->movementTextureRectMaxLeft = 112;
+    this->movementAnimationTimeBetweenEachFrame = 0.15;
+
+    //Simple attack animation
     this->simpleAttackTextureRect = new sf::IntRect(0, 0, 44, 41);
+    this->simpleAttackTextureSource = "images/Animation/Skeleton/Attack1.png";
+    this->simpleAttackAnimationStep = 44;
+    this->simpleAttackTextureRectMaxLeft = 220;
+    this->simpleAttackAnimationTimeBetweenEachFrame = 0.13;
+
+    //Death animation
     this->deathTextureRect = new sf::IntRect(0, 0, 38, 56);
+    this->deathTextureSource = "images/Animation/Skeleton/Death.png";
+    this->deathAnimationStep = 38;
+    this->deathTextureRectMaxLeft = 190;
+    this->deathAnimationTimeBetweenEachFrame = 0.3;
+
+    this->loadTexture(idleTextureSource);
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
@@ -90,81 +115,6 @@ bool SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHero
             //Enable idle state
             idleFlag=true;
         }
-    }
-}
-
-//Animation
-//###################################################################################################
-void SkeletonView::updateSpriteIdleAnimation()
-{
-    this->loadTexture("images/Animation/Skeleton/Idle.png");
-    //Shift textureRect every time given
-    if (animationTimer.getElapsedTime().asSeconds() > 0.35f){
-
-        if (idleTextureRect->left == 96)
-            idleTextureRect->left=0;
-        else
-            idleTextureRect->left+=32;
-
-        this->setTextureRect(*idleTextureRect);
-        animationTimer.restart();
-    }
-}
-
-void SkeletonView::updateSpriteMovementAnimation()
-{
-    this->loadTexture("images/Animation/Skeleton/Movement.png");
-    this->setTextureRect(*movementTextureRect);
-    //Shift textureRect every time given
-    if (animationTimer.getElapsedTime().asSeconds() > 0.15f){
-
-        if (movementTextureRect->left == 112)
-            movementTextureRect->left=0;
-        else
-            movementTextureRect->left+=28;
-
-        this->setTextureRect(*movementTextureRect);
-        animationTimer.restart();
-    }
-}
-
-void SkeletonView::updateSpriteSimpleAttackAnimation()
-{
-    this->loadTexture("images/Animation/Skeleton/Attack1.png");
-    this->setTextureRect(*simpleAttackTextureRect);
-    if (animationTimer.getElapsedTime().asSeconds() > 0.13f){
-
-        if (simpleAttackTextureRect->left == 220)
-        {
-            simpleAttackTextureRect->left=0;
-            //When we reach the end of Attack1.png sprite sheet, we notify the end of the attack
-            attackFlag=false;
-        }
-        else
-            simpleAttackTextureRect->left+=44;
-
-        this->setTextureRect(*simpleAttackTextureRect);
-        animationTimer.restart();
-    }
-}
-
-void SkeletonView::updateSpriteDeathAnimation()
-{
-    this->loadTexture("images/Animation/Skeleton/Death.png");
-    this->setTextureRect(*deathTextureRect);
-    if (animationTimer.getElapsedTime().asSeconds() > 0.3f){
-
-        if (deathTextureRect->left == 190)
-        {
-            //When we reach the end of Death.png sprite sheet, we notify the end of the death animation
-            deathFlag=false;
-            deadFlag = true;
-        }
-        else
-            deathTextureRect->left+=38;
-
-        this->setTextureRect(*deathTextureRect);
-        animationTimer.restart();
     }
 }
 

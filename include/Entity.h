@@ -17,11 +17,34 @@ class Entity: public sf::Sprite
         // Texture of the entity
         sf::Texture* texture;
 
+        //Idle animation
         sf::IntRect* idleTextureRect;
+        string idleTextureSource;
+        int idleAnimationStep;
+        int idleTextureRectMaxLeft;
+        float idleAnimationTimeBetweenEachFrame;
+
+        //Movement animation
         sf::IntRect* movementTextureRect;
+        string movementTextureSource;
+        int movementAnimationStep;
+        int movementTextureRectMaxLeft;
+        float movementAnimationTimeBetweenEachFrame;
+
+        //Simple attack animation
         sf::IntRect* simpleAttackTextureRect;
-        sf::IntRect* heavyAttackTextureRect;
+        string simpleAttackTextureSource;
+        int simpleAttackAnimationStep;
+        int simpleAttackTextureRectMaxLeft;
+        float simpleAttackAnimationTimeBetweenEachFrame;
+
+        //Death animation
         sf::IntRect* deathTextureRect;
+        string deathTextureSource;
+        int deathAnimationStep;
+        int deathTextureRectMaxLeft;
+        float deathAnimationTimeBetweenEachFrame;
+
         sf::Clock animationTimer;
         sf::Clock simpleAttackCoolDownTimer;
 
@@ -49,10 +72,10 @@ class Entity: public sf::Sprite
         void setDeadFlag(bool newDeadFlag);
 
         //Animation
-        virtual void updateSpriteMovementAnimation() {}
-        virtual void updateSpriteIdleAnimation() {}
-        virtual void updateSpriteSimpleAttackAnimation() {}
-        virtual void updateSpriteDeathAnimation() {}
+        virtual void updateSpriteMovementAnimation();
+        virtual void updateSpriteIdleAnimation();
+        virtual void updateSpriteSimpleAttackAnimation();
+        virtual void updateSpriteDeathAnimation();
 
 
 
