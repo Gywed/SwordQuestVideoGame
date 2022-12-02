@@ -35,11 +35,13 @@ DeadView& DeadView::operator=(const DeadView& rhs)
 
 void DeadView::init(sf::RenderWindow* window)
 {
+    // Background
     spriteBackground.setTextureRect(IntRect(0,0,window->getSize().x,window->getSize().y));
     backgroundTexture.loadFromFile("images/DeadMenu/WhiteBG.png");
     spriteBackground.setTexture(backgroundTexture);
     spriteBackground.setColor(Color(128,128,128,128));
 
+    // Menu image
     signTexture.loadFromFile("images/DeadMenu/Sword.png");
     signTexture.setSmooth(true);
     spriteDeadMenu.setTexture(signTexture);
@@ -51,6 +53,8 @@ void DeadView::init(sf::RenderWindow* window)
     float signPosY = (window->getSize().y-signTexture.getSize().y*scaleY)/2;
     spriteDeadMenu.setPosition(signPosX,signPosY);
 
+
+    // Buttons
     btnTexture[0].loadFromFile("images/DeadMenu/Button/RESTART.png");
     btnTexture[1].loadFromFile("images/DeadMenu/Button/MAIN_MENU.png");
     btnTexture[2].loadFromFile("images/DeadMenu/Button/RESTART_Hovered.png");
@@ -68,6 +72,23 @@ void DeadView::init(sf::RenderWindow* window)
     // Button Main Menu
     dMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
     dMenu[1].setScale(.65, .65);
+
+    // Global Text
+    globalFont.loadFromFile("Fonts/Typography.otf");
+
+    // Game over
+    gameOverText.setFont(globalFont);
+    gameOverText.setString("Game Over");
+    gameOverText.setStyle(Text::Bold);
+    gameOverText.setCharacterSize(150);
+    gameOverText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.15);
+
+    // Score
+    scoreText.setFont(globalFont);
+    scoreText.setString("Score : "+std::to_string(score));
+    scoreText.setStyle(Text::Bold);
+    scoreText.setCharacterSize(150);
+    scoreText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.75);
 }
 
 int DeadView::run(sf::RenderWindow* window)
@@ -111,6 +132,8 @@ void DeadView::render()
 {
     this->gm->getWindow()->draw(spriteBackground);
     this->gm->getWindow()->draw(spriteDeadMenu);
+    this->gm->getWindow()->draw(gameOverText);
+    this->gm->getWindow()->draw(scoreText);
 
     dMenu[0].setTexture(btnTexture[0]);
     dMenu[1].setTexture(btnTexture[1]);

@@ -12,15 +12,30 @@ class DeadView
     private:
         GameManagerView* gm; // AEP
 
+        // Global design
         Sprite spriteBackground;
         Sprite spriteDeadMenu;
 
         Texture backgroundTexture;
         Texture signTexture;
 
+        // Menu button
         int DeadMenuSelected=0;
         Sprite dMenu[Nb_Btn];
         Texture btnTexture[Nb_Btn*2];
+
+
+        // Text
+        Font globalFont;
+
+        // Game over text
+        Text gameOverText;
+
+        // Score text
+        Text scoreText;
+
+        // Score
+        int score = 0;
 
         bool rightKey, leftKey, enterKey;
 
