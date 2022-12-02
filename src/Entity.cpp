@@ -4,6 +4,7 @@
 Entity::Entity()
 {
     this->texture = new sf::Texture();
+    this->last_frame = clock.getElapsedTime().asSeconds();
 }
 
 Entity::~Entity()

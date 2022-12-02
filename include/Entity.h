@@ -2,6 +2,7 @@
 #define ENTITY_H
 #include "SFML/Graphics.hpp"
 #include <string>
+#include <ctime>
 
 using std::string;
 
@@ -10,6 +11,9 @@ class Entity: public sf::Sprite
     protected:
         // Movement (offset) of the entity
         sf::Vector2f movement;
+        sf::Clock clock;
+        float last_frame;
+
         // Texture of the entity
         sf::Texture* texture;
 
@@ -20,6 +24,7 @@ class Entity: public sf::Sprite
         sf::IntRect* deathTextureRect;
         sf::Clock animationTimer;
         sf::Clock simpleAttackCoolDownTimer;
+
 
         bool idleFlag = true, attackFlag=false, deathFlag = false, deadFlag = false;
 

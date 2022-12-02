@@ -9,7 +9,7 @@
 MainHero::MainHero(float posX, float posY): Character(posX, posY)
 {
     this->HP = 10;
-    this->speed = 0.4;
+    this->speed = 0.1;
 
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<true;

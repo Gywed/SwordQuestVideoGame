@@ -67,6 +67,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
             //The sprite can't move if it's attacking
             if(!attackFlag)
             {
+                this->mainHero->setMovementClock(std::clock());
                 idleFlag=false;
                 //symmetry on X axis using setScale so the sprite face the right direction
                 this->setScale(2., 2.);
@@ -91,6 +92,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
+                this->mainHero->setMovementClock(std::clock());
                 idleFlag=false;
 
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
@@ -113,6 +115,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
+                this->mainHero->setMovementClock(std::clock());
                 idleFlag=false;
                 //symmetry on X axis using setScale so the sprite face the right direction
                 this->setScale(-2., 2.);
@@ -134,6 +137,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
+                this->mainHero->setMovementClock(std::clock());
                 idleFlag=false;
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
                 this->movement.y += this->mainHero->moveDown();

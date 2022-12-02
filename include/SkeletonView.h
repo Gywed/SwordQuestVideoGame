@@ -20,7 +20,8 @@ class SkeletonView: public Entity
         void setSkeleton(Skeleton* skeleton);
 
         //Method
-        void spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV);
+        bool spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV);
+        void getDamaged(int dmg);
 
         //Animation
         virtual void updateSpriteMovementAnimation();

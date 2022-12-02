@@ -2,11 +2,16 @@
 #define CHARACTER_H
 #include <string>
 #include <sstream>
+#include <ctime>
+#include <iostream>
 
 using namespace std;
 
 class Character
 {
+    private:
+        clock_t startClock;
+
     protected:
         int HP, damage;
         float posX, posY, speed;
@@ -18,6 +23,8 @@ class Character
         Character& operator=(const Character& other);
         string str() const;
 
+        // Get/Set
+        void setMovementClock(clock_t clock);
         void setHP(int newHP);
         int getHP() const;
         void setDamage(int newDamage);

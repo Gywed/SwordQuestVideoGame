@@ -33,6 +33,9 @@ class PlayStateView: public StateView
         sf::SoundBuffer* buffer;
         sf::Sound* playStateMenuSound;
 
+        // Score
+        int score = 0;
+
         bool pauseFlag = false;
         bool pKey,escapeKey;
 

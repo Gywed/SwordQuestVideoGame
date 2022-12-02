@@ -37,7 +37,7 @@ void SkeletonView::setSkeleton(Skeleton* skeleton) { this->skeleton = skeleton;}
 
 //Method
 //###################################################################################################
-void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV)
+bool SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV)
 {
     this->skeleton->getPosX()<mainHeroV->getMainHero()->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);
 
@@ -47,6 +47,7 @@ void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHero
     //Movement
     if(this->skeleton->isAggroed() && !attackFlag)
     {
+        this->skeleton->setMovementClock(std::clock());
         std::tie(this->movement.x, this->movement.y) = this->skeleton->moveToMainHero(*mainHeroV->getMainHero());
         idleFlag=false;
         updateSpriteMovementAnimation();
@@ -62,7 +63,6 @@ void SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHero
             mainHeroV->getDamaged(this->skeleton->getDamage());
             simpleAttackCoolDownTimer.restart();
         }
-
     }
 
 
@@ -165,6 +165,28 @@ void SkeletonView::updateSpriteDeathAnimation()
 
         this->setTextureRect(*deathTextureRect);
         animationTimer.restart();
+    }
+}
+
+void SkeletonView::getDamaged(int dmg)
+{
+    this->skeleton->getDamaged(dmg);
+    int hp = this->skeleton->getHP();
+    if(hp==0)
+    {
+        idleFlag=false;
+        attackFlag=false;
+        deathFlag=true;
+
+        this->setTextureRect(*deathTextureRect);
+        //determine the value of the position modifier for the attack because of the texture size differences
+        if(this->getScale().x < 0)
+            spritePosModifier.x = -30;
+        else
+            spritePosModifier.x = 30;
+        spritePosModifier.y = 27;
+        //Apply the position modifiers
+        this->setPosition(this->skeleton->getPosX() - spritePosModifier.x, this->skeleton->getPosY() - spritePosModifier.y);
     }
 }
 
