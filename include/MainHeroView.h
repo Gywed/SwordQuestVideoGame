@@ -62,11 +62,8 @@ class MainHeroView: public Entity
         void getDamaged(int dmg);
 
         //Animation
-        void updateSpriteMovementAnimation();
-        void updateSpriteIdleAnimation();
         void updateSpriteSimpleAttackAnimation();
         void updateSpriteHeavyAttackAnimation();
-        void updateSpriteDeathAnimation();
 
 
 

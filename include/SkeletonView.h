@@ -23,12 +23,6 @@ class SkeletonView: public Entity
         bool spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV);
         void getDamaged(int dmg);
 
-        //Animation
-        virtual void updateSpriteMovementAnimation();
-        virtual void updateSpriteIdleAnimation();
-        virtual void updateSpriteSimpleAttackAnimation();
-        virtual void updateSpriteDeathAnimation();
-
     protected:
 
 

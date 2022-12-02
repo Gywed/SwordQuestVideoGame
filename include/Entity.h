@@ -72,10 +72,10 @@ class Entity: public sf::Sprite
         void setDeadFlag(bool newDeadFlag);
 
         //Animation
-        virtual void updateSpriteMovementAnimation() {}
-        virtual void updateSpriteIdleAnimation() {}
-        virtual void updateSpriteSimpleAttackAnimation() {}
-        virtual void updateSpriteDeathAnimation() {}
+        virtual void updateSpriteMovementAnimation();
+        virtual void updateSpriteIdleAnimation();
+        virtual void updateSpriteSimpleAttackAnimation();
+        virtual void updateSpriteDeathAnimation();
 
 
 
