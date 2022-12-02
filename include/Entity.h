@@ -17,11 +17,30 @@ class Entity: public sf::Sprite
         // Texture of the entity
         sf::Texture* texture;
 
+        //Idle animation
         sf::IntRect* idleTextureRect;
+        string idleTextureSource;
+        int idleAnimationStep;
+        int idleTextureRectMaxLeft;
+
+        //Movement animation
         sf::IntRect* movementTextureRect;
+        string movementTextureSource;
+        int movementAnimationStep;
+        int movementTextureRectMaxLeft;
+
+        //Simple attack animation
         sf::IntRect* simpleAttackTextureRect;
-        sf::IntRect* heavyAttackTextureRect;
+        string simpleAttackTextureSource;
+        int simpleAttackAnimationStep;
+        int simpleAttackTextureRectMaxLeft;
+
+        //Death animation
         sf::IntRect* deathTextureRect;
+        string deathTextureSource;
+        int deathAnimationStep;
+        int deathTextureRectMaxLeft;
+
         sf::Clock animationTimer;
         sf::Clock simpleAttackCoolDownTimer;
 
