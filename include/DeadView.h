@@ -20,7 +20,7 @@ class DeadView
 
         int DeadMenuSelected=0;
         Sprite dMenu[Nb_Btn];
-        Texture btnTexture[Nb_Btn*3];
+        Texture btnTexture[Nb_Btn*2];
 
         bool rightKey, leftKey, enterKey;
 

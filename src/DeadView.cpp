@@ -51,9 +51,9 @@ void DeadView::init(sf::RenderWindow* window)
     float signPosY = (window->getSize().y-signTexture.getSize().y*scaleY)/2;
     spriteDeadMenu.setPosition(signPosX,signPosY);
 
-    btnTexture[0].loadFromFile("images/DeadMenu/Button/RESUME.png");
+    btnTexture[0].loadFromFile("images/DeadMenu/Button/RESTART.png");
     btnTexture[1].loadFromFile("images/DeadMenu/Button/MAIN_MENU.png");
-    btnTexture[2].loadFromFile("images/DeadMenu/Button/RESUME_Hovered.png");
+    btnTexture[2].loadFromFile("images/DeadMenu/Button/RESTART_Hovered.png");
     btnTexture[3].loadFromFile("images/DeadMenu/Button/MAIN_MENU_Hovered.png");
 
     btnTexture[0].setSmooth(true);
@@ -61,8 +61,8 @@ void DeadView::init(sf::RenderWindow* window)
     btnTexture[2].setSmooth(true);
     btnTexture[3].setSmooth(true);
 
-    // Button resume
-    dMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
+    // Button restart
+    dMenu[0].setPosition(window->getSize().x*0.17,window->getSize().y/2.1);
     dMenu[0].setScale(.65, .65);
 
     // Button Main Menu
