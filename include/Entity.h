@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include <string>
 #include <ctime>
+#include <chrono>
 
 using std::string;
 
@@ -11,8 +12,6 @@ class Entity: public sf::Sprite
     protected:
         // Movement (offset) of the entity
         sf::Vector2f movement;
-        sf::Clock clock;
-        float last_frame;
 
         // Texture of the entity
         sf::Texture* texture;

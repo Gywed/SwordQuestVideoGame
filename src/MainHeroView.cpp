@@ -98,7 +98,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
             //The sprite can't move if it's attacking
             if(!attackFlag)
             {
-                this->mainHero->setMovementClock(std::clock());
+                this->mainHero->setRightClock(std::chrono::high_resolution_clock::now());
                 idleFlag=false;
                 //symmetry on X axis using setScale so the sprite face the right direction
                 this->setScale(2., 2.);
@@ -123,7 +123,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
-                this->mainHero->setMovementClock(std::clock());
+                this->mainHero->setUpClock(std::chrono::high_resolution_clock::now());
                 idleFlag=false;
 
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
@@ -146,7 +146,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
-                this->mainHero->setMovementClock(std::clock());
+                this->mainHero->setLeftClock(std::chrono::high_resolution_clock::now());
                 idleFlag=false;
                 //symmetry on X axis using setScale so the sprite face the right direction
                 this->setScale(-2., 2.);
@@ -168,7 +168,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             if(!attackFlag)
             {
-                this->mainHero->setMovementClock(std::clock());
+                this->mainHero->setDownClock(std::chrono::high_resolution_clock::now());
                 idleFlag=false;
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
                 this->movement.y += this->mainHero->moveDown();
@@ -294,15 +294,15 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                         {
                             idleFlag=true;
                             idleTextureRect->left=0;
-			    movementTextureRect->left=0;
+                            movementTextureRect->left=0;
                             break;
                         }
                     case sf::Keyboard::Down:
                         if(!attackFlag)
                         {
                             idleFlag=true;
-			    idleTextureRect->left=0;
-			    movementTextureRect->left=0;
+                            idleTextureRect->left=0;
+                            movementTextureRect->left=0;
                             break;
                         }
                     case sf::Keyboard::Left:
@@ -310,7 +310,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                         {
                             idleFlag=true;
                             idleTextureRect->left=0;
-			    movementTextureRect->left=0;
+                            movementTextureRect->left=0;
                             break;
                         }
                     case sf::Keyboard::Right:
@@ -318,7 +318,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                         {
                             idleFlag=true;
                             idleTextureRect->left=0;
-			    movementTextureRect->left=0;
+                            movementTextureRect->left=0;
                             break;
                         }
 

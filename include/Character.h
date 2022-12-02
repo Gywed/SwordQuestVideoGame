@@ -3,14 +3,25 @@
 #include <string>
 #include <sstream>
 #include <ctime>
+#include <chrono>
 #include <iostream>
 
 using namespace std;
+using namespace std::chrono;
 
 class Character
 {
     private:
-        clock_t startClock;
+        // Clock for harmonized movement
+        std::chrono::_V2::system_clock::time_point upClock;
+        std::chrono::_V2::system_clock::time_point downClock;
+        std::chrono::_V2::system_clock::time_point leftClock;
+        std::chrono::_V2::system_clock::time_point rightClock;
+
+        static int nbClock;
+        static float clockAvrg;
+
+        static void newClockavrg(int newClock);
 
     protected:
         int HP, damage;
@@ -21,10 +32,13 @@ class Character
         virtual ~Character();
         Character(const Character& other);
         Character& operator=(const Character& other);
-        string str() const;
 
         // Get/Set
-        void setMovementClock(clock_t clock);
+        void setUpClock(std::chrono::_V2::system_clock::time_point clock);
+        void setDownClock(std::chrono::_V2::system_clock::time_point clock);
+        void setLeftClock(std::chrono::_V2::system_clock::time_point clock);
+        void setRightClock(std::chrono::_V2::system_clock::time_point clock);
+
         void setHP(int newHP);
         int getHP() const;
         void setDamage(int newDamage);

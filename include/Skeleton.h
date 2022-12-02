@@ -12,10 +12,6 @@ class Skeleton: public Monster
         virtual ~Skeleton();
         Skeleton(const Skeleton& other);
         Skeleton& operator=(const Skeleton& other);
-
-    protected:
-
-
 };
 
 #endif // SKELETON_H

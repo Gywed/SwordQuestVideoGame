@@ -72,7 +72,18 @@ bool SkeletonView::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHero
     //Movement
     if(this->skeleton->isAggroed() && !attackFlag)
     {
-        this->skeleton->setMovementClock(std::clock());
+        if (this->skeleton->getPosY() < mainHeroV->getMainHero()->getPosY())
+            this->skeleton->setUpClock(std::chrono::high_resolution_clock::now());
+
+        if (this->skeleton->getPosY() > mainHeroV->getMainHero()->getPosY())
+            this->skeleton->setDownClock(std::chrono::high_resolution_clock::now());
+
+        if (this->skeleton->getPosX() < mainHeroV->getMainHero()->getPosX())
+            this->skeleton->setLeftClock(std::chrono::high_resolution_clock::now());
+
+        if (this->skeleton->getPosX() > mainHeroV->getMainHero()->getPosX())
+            this->skeleton->setRightClock(std::chrono::high_resolution_clock::now());
+
         std::tie(this->movement.x, this->movement.y) = this->skeleton->moveToMainHero(*mainHeroV->getMainHero());
         idleFlag=false;
         updateSpriteMovementAnimation();
