@@ -22,24 +22,28 @@ class Entity: public sf::Sprite
         string idleTextureSource;
         int idleAnimationStep;
         int idleTextureRectMaxLeft;
+        float idleAnimationTimeBetweenEachFrame;
 
         //Movement animation
         sf::IntRect* movementTextureRect;
         string movementTextureSource;
         int movementAnimationStep;
         int movementTextureRectMaxLeft;
+        float movementAnimationTimeBetweenEachFrame;
 
         //Simple attack animation
         sf::IntRect* simpleAttackTextureRect;
         string simpleAttackTextureSource;
         int simpleAttackAnimationStep;
         int simpleAttackTextureRectMaxLeft;
+        float simpleAttackAnimationTimeBetweenEachFrame;
 
         //Death animation
         sf::IntRect* deathTextureRect;
         string deathTextureSource;
         int deathAnimationStep;
         int deathTextureRectMaxLeft;
+        float deathAnimationTimeBetweenEachFrame;
 
         sf::Clock animationTimer;
         sf::Clock simpleAttackCoolDownTimer;

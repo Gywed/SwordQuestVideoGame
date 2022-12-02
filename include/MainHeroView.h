@@ -32,7 +32,12 @@ class MainHeroView: public Entity
 
         sf::Clock heavyAttackCoolDownTimer;
 
+        //Heavy attack animation
         sf::IntRect* heavyAttackTextureRect;
+        string heavyAttackTextureSource;
+        int heavyAttackAnimationStep;
+        int heavyAttackTextureRectMaxLeft;
+        float heavyAttackAnimationTimeBetweenEachFrame;
 
         bool heavyAttackFlag= false, simpleAttackFlag = false;
 
