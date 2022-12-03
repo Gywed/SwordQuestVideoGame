@@ -67,6 +67,8 @@ float Monster::getAggroDistance()const { return aggroDistance; }
 void Monster::setAggroDistance(float aggroDistance) { this->aggroDistance = aggroDistance; }
 bool Monster::isAggroed()const { return aggroed; }
 void Monster::setAggroed(bool aggroed) { this->aggroed = aggroed; }
+int Monster::getScoreValue()const { return scoreValue;}
+void Monster::setScoreValue(int newScoreValue) { this->scoreValue = newScoreValue;}
 
 float Monster::distanceFromMainHero(MainHero &mainHero)
 {

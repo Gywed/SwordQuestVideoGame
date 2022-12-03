@@ -9,6 +9,7 @@ class Monster: public Character
     protected:
         float aggroDistance;
         bool dead=false, aggroed = false;
+        int scoreValue;
 
 //        int* id;
 //
@@ -25,6 +26,9 @@ class Monster: public Character
         void setAggroDistance(float aggroDistance);
         bool isAggroed()const;
         void setAggroed(bool aggroed);
+        int getScoreValue()const;
+        void setScoreValue(int newScoreValue);
+
 
         virtual void attack(MainHero* mainHero);
 
