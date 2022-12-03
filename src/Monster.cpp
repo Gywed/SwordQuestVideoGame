@@ -16,10 +16,13 @@ Monster::~Monster()
 //    delete id;
 }
 
-Monster::Monster(const Monster& other)
+Monster::Monster(const Monster& other):Character(other)
 {
     //copy ctor
-    this->setHP(other.getHP());
+    this->aggroDistance = other.aggroDistance;
+    this->dead = other.dead;
+    this->aggroed = other.aggroed;
+    this->scoreValue = other.scoreValue;
 //    id = new int(*(other.id));
 }
 
@@ -29,7 +32,11 @@ Monster& Monster::operator=(const Monster& rhs)
     //assignment operator
 
 //    delete id;
-    this->setHP(rhs.getHP());
+    Character::operator=(rhs);
+    this->aggroDistance = rhs.aggroDistance;
+    this->dead = rhs.dead;
+    this->aggroed = rhs.aggroed;
+    this->scoreValue = rhs.scoreValue;
 //    this->id = new int(*rhs.id);
     return *this;
 }

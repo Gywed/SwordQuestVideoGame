@@ -26,7 +26,7 @@ class MainHero: public Character
         bool isAttackable();
         void setAttackable(bool newAttackable);
 
-
+        void init();
 
 
     protected:

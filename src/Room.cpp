@@ -9,7 +9,7 @@ Room::Room()
 Room::~Room()
 {
     //dtor
-
+    delete id;
 }
 
 Room::Room(const Room& other)

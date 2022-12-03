@@ -6,6 +6,8 @@
 #include <chrono>
 #include <iostream>
 
+#define Attackable_file attackable
+
 using namespace std;
 using namespace std::chrono;
 

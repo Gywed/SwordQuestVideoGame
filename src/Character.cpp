@@ -13,15 +13,23 @@ Character::~Character()
     //dtor
 }
 
-Character::Character(const Character& other)
+Character::Character(const Character& other): posX(other.posX), posY(other.posY)
 {
     //copy ctor
+    this->HP = other.HP;
+    this->damage = other.damage;
+    this->speed = other.speed;
 }
 
 Character& Character::operator=(const Character& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->posX = rhs.posX;
+    this->posY = rhs.posY;
+    this->HP = rhs.HP;
+    this->damage = rhs.damage;
+    this->speed = rhs.speed;
     return *this;
 }
 
