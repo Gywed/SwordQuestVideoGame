@@ -30,6 +30,12 @@ void Character::setUpClock(std::chrono::_V2::system_clock::time_point clock) { t
 void Character::setDownClock(std::chrono::_V2::system_clock::time_point clock) { this->downClock = clock; }
 void Character::setRightClock(std::chrono::_V2::system_clock::time_point clock) { this->rightClock = clock; }
 void Character::setLeftClock(std::chrono::_V2::system_clock::time_point clock) { this->leftClock = clock; }
+void Character::setAllMovementClock(std::chrono::_V2::system_clock::time_point clock) {
+    this->upClock = clock;
+    this->downClock = clock;
+    this->rightClock = clock;
+    this->leftClock = clock;
+}
 
 float Character::getPosX()const { return posX; }
 void Character::setPosX(float posX) { this->posX = posX; }
@@ -98,3 +104,5 @@ float Character::moveRight() {
     return realSpeed;
 
 }
+
+

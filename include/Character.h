@@ -26,7 +26,6 @@ class Character
     protected:
         int HP, damage;
         float posX, posY, speed;
-
     public:
         Character(float posX = 0.0, float posY = 0.0);
         virtual ~Character();
@@ -38,6 +37,8 @@ class Character
         void setDownClock(std::chrono::_V2::system_clock::time_point clock);
         void setLeftClock(std::chrono::_V2::system_clock::time_point clock);
         void setRightClock(std::chrono::_V2::system_clock::time_point clock);
+
+        void setAllMovementClock(std::chrono::_V2::system_clock::time_point clock);
 
         void setHP(int newHP);
         int getHP() const;
