@@ -7,7 +7,7 @@ class Monster: public Character
 {
     protected:
         float aggroDistance;
-        bool dead, aggroed = false;
+        bool dead=false, aggroed = false;
 
 //        int* id;
 //
