@@ -37,6 +37,6 @@ void Observable::notify()
 {
     for (Observer* obs : observers)
     {
-        obs->update(*this);
+        obs->update(this);
     }
 }

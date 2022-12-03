@@ -1,6 +1,7 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 #include "MainHero.h"
+
 #include <tuple>
 
 class Monster: public Character

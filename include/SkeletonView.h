@@ -1,14 +1,13 @@
 #ifndef SKELETONVIEW_H
 #define SKELETONVIEW_H
-#include "Entity.h"
+#include "MonsterEntity.h"
 #include "Skeleton.h"
 #include "MainHeroView.h"
 
 
-class SkeletonView: public Entity
+class SkeletonView: public MonsterEntity
 {
     private:
-        Skeleton* skeleton;
 
     public:
         SkeletonView(Skeleton* skeleton);
@@ -16,11 +15,7 @@ class SkeletonView: public Entity
         SkeletonView(const SkeletonView& other);
         SkeletonView& operator=(const SkeletonView& other);
 
-        Skeleton* getSkeleton()const;
-        void setSkeleton(Skeleton* skeleton);
-
         //Method
-        bool spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV);
         void getDamaged(int dmg);
 
     protected:

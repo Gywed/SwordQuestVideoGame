@@ -13,7 +13,7 @@ class Observer
         Observer(const Observer& other);
         Observer& operator=(const Observer& other);
 
-        virtual void actualise(Observable o) = 0;
+        virtual void update(Observable* o) = 0;
 
     protected:
 
