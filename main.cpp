@@ -1,6 +1,6 @@
 #include <iostream>
-#include "MainHero.h"
-#include "GameManagerView.h"
+#include "model/MainHero.h"
+#include "view/GameManagerView.h"
 #include <unistd.h>
 
 using namespace std;
