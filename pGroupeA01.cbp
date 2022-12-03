@@ -52,6 +52,9 @@
 		<Unit filename="include/MainHeroView.h" />
 		<Unit filename="include/MenuStateView.h" />
 		<Unit filename="include/Monster.h" />
+		<Unit filename="include/MonsterEntity.h" />
+		<Unit filename="include/Observable.h" />
+		<Unit filename="include/Observer.h" />
 		<Unit filename="include/OptionStateView.h" />
 		<Unit filename="include/PauseView.h" />
 		<Unit filename="include/PlayStateView.h" />
@@ -73,6 +76,9 @@
 		<Unit filename="src/MainHeroView.cpp" />
 		<Unit filename="src/MenuStateView.cpp" />
 		<Unit filename="src/Monster.cpp" />
+		<Unit filename="src/MonsterEntity.cpp" />
+		<Unit filename="src/Observable.cpp" />
+		<Unit filename="src/Observer.cpp" />
 		<Unit filename="src/OptionStateView.cpp" />
 		<Unit filename="src/PauseView.cpp" />
 		<Unit filename="src/PlayStateView.cpp" />
