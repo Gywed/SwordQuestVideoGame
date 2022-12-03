@@ -22,3 +22,21 @@ Observable& Observable::operator=(const Observable& rhs)
     //assignment operator
     return *this;
 }
+
+void Observable::attach(Observer* obs)
+{
+    observers.push_back(obs);
+}
+
+void Observable::detach(Observer* obs)
+{
+    observers.remove(obs);
+}
+
+void Observable::notify()
+{
+    for (Observer* obs : observers)
+    {
+        obs->update(*this);
+    }
+}
