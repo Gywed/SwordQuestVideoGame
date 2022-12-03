@@ -1,12 +1,36 @@
 #include "MainHero.h"
 #include <iostream>
-#include <ctime>
-#include <sys/mman.h>
 #include <unistd.h>
 #include <signal.h>
 
 
 MainHero::MainHero(float posX, float posY): Character(posX, posY)
+{
+    init();
+}
+
+MainHero::~MainHero()
+{
+
+}
+
+MainHero::MainHero(const MainHero& other):Character(other),attackable(other.attackable), invTime(other.invTime)
+{
+    //copy ctor
+}
+
+MainHero& MainHero::operator=(const MainHero& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+
+    Character::operator=(rhs);
+    this->attackable = rhs.attackable;
+    this->invTime= rhs.invTime;
+
+    return *this;
+}
+
+void MainHero::init()
 {
     this->HP = 10;
     this->speed = 0.1;
@@ -18,27 +42,6 @@ MainHero::MainHero(float posX, float posY): Character(posX, posY)
     attackable_file.open("attackable",std::ios::in);
     attackable_file >> attackable;
     attackable_file.close();
-}
-
-MainHero::~MainHero()
-{
-
-}
-
-MainHero::MainHero(const MainHero& other)
-{
-    //copy ctor
-    this->HP = other.HP;
-
-}
-
-MainHero& MainHero::operator=(const MainHero& rhs)
-{
-    if (this == &rhs) return *this; // handle self assignment
-
-    this->setHP(rhs.getHP());
-
-    return *this;
 }
 
 void MainHero::getDamaged(int damage)

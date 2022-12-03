@@ -23,5 +23,8 @@ Skeleton& Skeleton::operator=(const Skeleton& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+
+    Monster::operator=(rhs);
+
     return *this;
 }
