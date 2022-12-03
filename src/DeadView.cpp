@@ -33,6 +33,12 @@ DeadView& DeadView::operator=(const DeadView& rhs)
     return *this;
 }
 
+void DeadView::updateScore(int newScore)
+{
+    this->score = newScore;
+    scoreText.setString("Score : "+std::to_string(score));
+}
+
 void DeadView::init(sf::RenderWindow* window)
 {
     // Background
@@ -85,7 +91,6 @@ void DeadView::init(sf::RenderWindow* window)
 
     // Score
     scoreText.setFont(globalFont);
-    scoreText.setString("Score : "+std::to_string(score));
     scoreText.setStyle(Text::Bold);
     scoreText.setCharacterSize(150);
     scoreText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.75);

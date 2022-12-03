@@ -71,7 +71,8 @@ void PlayStateView::run(sf::RenderWindow* window)
     // Thread for the dead menu
     if (mainHeroV->getDeadFlag())
     {
-
+        deadV->updateScore(score);
+        std::cout<<score<<endl;
         std::thread deadThread(doDead);
         int state = -1;
         while(state == -1)
@@ -116,6 +117,11 @@ void PlayStateView::run(sf::RenderWindow* window)
     {
         this->gm->getSound()->setPitch(1.20);
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+    {
+        std::cout<<"Dead\n";
+        this->skeletonV->setDeadFlag(true);
+    }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
@@ -143,6 +149,11 @@ void PlayStateView::run(sf::RenderWindow* window)
     {
         this->mainHeroV->spriteEvents(window);
         this->skeletonV->spriteEvents(window, this->mainHeroV);
+    }
+    if (this->skeletonV->getDeadFlag())
+    {
+        std::cout<<"Score\n";
+        this->score += this->skeletonV->getSkeleton()->getScoreValue();
     }
 }
 

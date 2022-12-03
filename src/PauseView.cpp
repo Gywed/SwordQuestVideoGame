@@ -61,7 +61,7 @@ void PauseView::init(sf::RenderWindow* window)
     btnTexture[3].setSmooth(true);
 
     // Button resume
-    pMenu[0].setPosition(window->getSize().x*0.15,window->getSize().y/2.1);
+    pMenu[0].setPosition(window->getSize().x*0.17,window->getSize().y/2.1);
     pMenu[0].setScale(.65, .65);
 
     // Button Main Menu

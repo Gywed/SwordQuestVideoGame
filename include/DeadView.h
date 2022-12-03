@@ -45,6 +45,8 @@ class DeadView
         DeadView(const DeadView& other);
         DeadView& operator=(const DeadView& other);
 
+        void updateScore(int newScore);
+
         void init(sf::RenderWindow* window);
 
         int run(sf::RenderWindow* window);

@@ -51,7 +51,7 @@ int Character::getDamage()const { return damage; }
 void Character::newClockavrg(int newClock)
 {
     nbClock++;
-    Character::clockAvrg = Character::clockAvrg+((newClock-Character::clockAvrg)/Character::nbClock);
+    clockAvrg = clockAvrg+((newClock-Character::clockAvrg)/nbClock);
 }
 
 //Moving methods
