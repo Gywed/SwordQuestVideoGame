@@ -54,6 +54,7 @@ MainHeroView::MainHeroView(MainHero *mainHero)
 
 MainHeroView::~MainHeroView()
 {
+    delete mainHero;
     delete heavyAttackTextureRect;
     delete lifebarV;
 }
@@ -344,14 +345,17 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 updateSpriteSimpleAttackAnimation();
             else
                 updateSpriteHeavyAttackAnimation();
+
             //Check if the animation is finished
             if(!attackFlag)
             {
+                //Check collision with monsters
+                this->notify();
                 //Put back the correct position to match the model
                 this->setPosition(this->mainHero->getPosX(), this->mainHero->getPosY());
                 //Adapt textureRect to the dimensions of Idle.png and Movement.png
                 this->idleTextureRect->left=0;
-		this->movementTextureRect->left=0;
+                this->movementTextureRect->left=0;
                 this->setTextureRect(*idleTextureRect);
                 //Enable idle state
                 idleFlag=true;

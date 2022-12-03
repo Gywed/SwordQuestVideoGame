@@ -22,9 +22,10 @@
 #include "MainHero.h"
 #include "Entity.h"
 #include "LifeBarView.h"
+#include "Observable.h"
 
 
-class MainHeroView: public Entity
+class MainHeroView: public Entity, public Observable
 {
     private:
         MainHero* mainHero;

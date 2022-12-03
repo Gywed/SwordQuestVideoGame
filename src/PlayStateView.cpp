@@ -18,11 +18,9 @@ PlayStateView::PlayStateView(GameManagerView* gm)
 PlayStateView::~PlayStateView()
 {
     delete mainHeroV;
-    delete mainHeroM;
     delete roomV;
     delete pauseV;
     delete deadV;
-    delete skeletonM;
     delete skeletonV;
 
     delete playStateMenuSound;
@@ -51,6 +49,8 @@ void PlayStateView::init(sf::RenderWindow* window)
     // Room
     this->skeletonM = new Skeleton(1400., 500.);
     this->skeletonV = new SkeletonView(skeletonM);
+
+    this->mainHeroV->attach(skeletonV);
 
     this->roomV = new BasicRoomView();
 

@@ -16,7 +16,7 @@ class SkeletonView: public MonsterEntity
         SkeletonView& operator=(const SkeletonView& other);
 
         //Method
-        void getDamaged(int dmg);
+        void getDamaged(int dmg) override;
 
     protected:
 
