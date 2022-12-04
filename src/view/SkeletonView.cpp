@@ -45,6 +45,7 @@ SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
 SkeletonView::~SkeletonView()
 {
     //dtor
+    delete colorOfSkeleton;
 }
 
 SkeletonView::SkeletonView(const SkeletonView& other): MonsterEntity(other)
@@ -64,7 +65,6 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 //###################################################################################################
 void SkeletonView::getDamaged(int dmg)
 {
-
     this->monster->getDamaged(dmg);
     int hp = this->monster->getHP();
     if(hp==0)
@@ -91,14 +91,10 @@ void SkeletonView::getDamaged(int dmg)
 }
 
  void SkeletonView::getKnockbacked(){
-    sf::Clock timer;
     this->setColor(sf::Color::Red);
-    if(timer.getElapsedTime()<sf::milliseconds(1000000)){
-
-        int knockbackValue = this->getScale().x > 0 ? -50 : 50;
-        this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
-        this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
-
-    }
-
+    this->gettingKnockbacked = true;
+    int knockbackValue = this->getScale().x > 0 ? -50 : 50;
+    this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
+    this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
+    this->knockbackTimer.restart();
  }

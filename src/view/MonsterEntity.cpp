@@ -25,6 +25,14 @@ MonsterEntity& MonsterEntity::operator=(const MonsterEntity& rhs)
 
 bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV)
 {
+    if(gettingKnockbacked)
+
+            if (knockbackTimer.getElapsedTime() >= sf::milliseconds(100)){
+                this->gettingKnockbacked = false;
+                knockbackTimer.restart();
+            }
+
+
     if(!deadFlag && !deathFlag)
     {
         this->monster->getPosX()<mainHeroV->getMainHero()->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);

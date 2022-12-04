@@ -28,6 +28,10 @@ class MonsterEntity: public Entity, public Observer
     protected:
         Monster* monster;
         sf::Color* colorOfEntity;
+        sf::Clock knockbackTimer;
+
+
+        bool gettingKnockbacked = false;
 
 
 };
