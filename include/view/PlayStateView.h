@@ -20,10 +20,12 @@ class PlayStateView: public StateView
         //Model
         MainHero* mainHeroM;
         Skeleton* skeletonM;
+        Skeleton* skeletonM2;
 
         //View
         MainHeroView* mainHeroV;
         SkeletonView* skeletonV;
+        SkeletonView* skeletonV2;
         BasicRoomView* roomV;
 
         PauseView* pauseV;

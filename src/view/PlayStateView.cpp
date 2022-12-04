@@ -22,6 +22,7 @@ PlayStateView::~PlayStateView()
     delete pauseV;
     delete deadV;
     delete skeletonV;
+    delete skeletonV2;
 
     delete playStateMenuSound;
     delete buffer;
@@ -50,7 +51,11 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->skeletonM = new Skeleton(1400., 500.);
     this->skeletonV = new SkeletonView(skeletonM);
 
+    this->skeletonM2 = new Skeleton(1400., 600.);
+    this->skeletonV2 = new SkeletonView(skeletonM2);
+
     this->mainHeroV->attach(skeletonV);
+    this->mainHeroV->attach(skeletonV2);
 
     this->roomV = new BasicRoomView();
 
@@ -152,7 +157,7 @@ void PlayStateView::run(sf::RenderWindow* window)
     }
     if (this->skeletonV->getDeadFlag())
     {
-        std::cout<<"Score\n";
+        //std::cout<<"Score\n";
         this->score += this->skeletonV->getMonster()->getScoreValue();
     }
 }
@@ -164,6 +169,7 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     window->draw(*this->skeletonV);
+    window->draw(*this->skeletonV2);
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();
