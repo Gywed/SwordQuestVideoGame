@@ -1,67 +1,13 @@
 #include "view/BasicRoomView.h"
 #include <iostream>
+#include "model/Skeleton.h"
+#include "view/SkeletonView.h"
 
 BasicRoomView::BasicRoomView()
 {
-    //Iniate tiles mapping
-    int tileNumber;
-    for(int i=0; i<30; i++)
-    {
-        for(int j=0; j<16; j++)
-        {
-            //Left wall
-            if(i==0)
-            {
-                if(j==0)
-                    tileNumber=75;
-                if(j>0 && j< 3)
-                    tileNumber=125;
-                if(j==3)
-                    tileNumber=150;
-                if(j>3 && j< 15)
-                    tileNumber=175;
-                if(j==15)
-                    tileNumber=56;
-            }
-            else if(i>0 && i<29)
-            {
-                //Top wall
-                if(j==0)
-                    tileNumber=77;
-                if(j>0 && j < 3)
-                    tileNumber=0;
-                if(j==3)
-                    tileNumber=34;
+    this->room = new Room();
 
-                //Rest of the floor
-                if(j>3 && j<15)
-                    tileNumber = 25;
-
-                //Bottom wall
-                if(j==15)
-                    tileNumber=52;
-
-            }
-            else if(i==29)
-            {
-                //RightWall
-                if(j==0)
-                    tileNumber=76;
-                if(j>0 && j< 3)
-                    tileNumber=126;
-                if(j==3)
-                    tileNumber=151;
-                if(j>3 && j< 15)
-                    tileNumber=176;
-                if(j==15)
-                    tileNumber=55;
-            }
-
-            tilesMapping[i+j*30]=tileNumber;
-        }
-    }
-
-    if (!this->tileMap.load("images/Tileset.png", sf::Vector2u(64, 64), this->tilesMapping, 30, 16))
+    if (!this->tileMap.load("images/Tileset.png", sf::Vector2u(64, 64), this->room->getTilesMapping(), 30, 16))
     {
         std::cerr << "Error while loading texture" << std::endl;
     }
@@ -69,7 +15,9 @@ BasicRoomView::BasicRoomView()
 
 BasicRoomView::~BasicRoomView()
 {
-    //dtor
+    for(MonsterEntity* monster : monsters)
+        delete monster;
+    delete this->room;
 }
 
 BasicRoomView::BasicRoomView(const BasicRoomView& other)
@@ -86,3 +34,22 @@ BasicRoomView& BasicRoomView::operator=(const BasicRoomView& rhs)
 
 //Setters getters
 TileMap BasicRoomView::getTileMap()const { return tileMap; }
+list<MonsterEntity*> BasicRoomView::getMonsters()const { return monsters; }
+
+void BasicRoomView::removeMonster(MonsterEntity* monsterV)
+{
+    monsters.remove(monsterV);
+    room->removeMonster(monsterV->getMonster());
+    delete monsterV;
+}
+
+MonsterEntity* BasicRoomView::generateMonsterView()
+{
+    Monster* newMonster = this->room->generateNewMonster();
+    MonsterEntity* newMonsterEntity;
+    if(instanceof<Skeleton>(newMonster))
+        newMonsterEntity = new SkeletonView((Skeleton*)newMonster);
+
+    monsters.push_back(newMonsterEntity);
+    return newMonsterEntity;
+}

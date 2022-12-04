@@ -8,7 +8,7 @@ MonsterEntity::MonsterEntity(Monster* monster):monster(monster)
 
 MonsterEntity::~MonsterEntity()
 {
-    delete monster;
+    //where is colorOfEntity deleted? i have segment fault if i delete it here
 }
 
 MonsterEntity::MonsterEntity(const MonsterEntity& other)
@@ -106,11 +106,6 @@ bool MonsterEntity::update(Observable* obs)
     if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
     {
         this->getDamaged(mainHeroV->getMainHero()->getDamage());
-        if(this->deathFlag && !this->scoreCounted)
-        {
-            mainHeroV->increaseScore(this->monster->getScoreValue());
-            this->scoreCounted = true;
-        }
 
         return !this->deadFlag;
 
