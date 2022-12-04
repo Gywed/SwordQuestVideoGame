@@ -93,6 +93,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
     }
     else
     {
+        this->upKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
+        this->downKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down);
+        this->leftKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
+        this->rightKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
@@ -105,7 +109,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 this->setScale(2., 2.);
 
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
-                this->movement.x += this->mainHero->moveRight();
+                if (!downKey && !upKey && !leftKey)
+                    this->movement.x += this->mainHero->moveRight(1.3);
+                else
+                    this->movement.x += this->mainHero->moveRight();
                 this->movement.y += 0.;
                 //Manage the boundaries collisions
                 if(this->mainHero->getPosX() > window->getSize().x - 64)
@@ -128,7 +135,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 idleFlag=false;
 
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
-                this->movement.y += this->mainHero->moveUp();
+                if (!downKey && !leftKey && !rightKey)
+                    this->movement.y += this->mainHero->moveUp(1.3);
+                else
+                    this->movement.y += this->mainHero->moveUp();
                 this->movement.x += 0.;
                 //Manage the boundaries collisions
                 if(this->mainHero->getPosY() < 192)
@@ -152,7 +162,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 //symmetry on X axis using setScale so the sprite face the right direction
                 this->setScale(-2., 2.);
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
-                this->movement.x += this->mainHero->moveLeft();
+                if (!downKey && !upKey && !rightKey)
+                    this->movement.x += this->mainHero->moveLeft(1.3);
+                else
+                    this->movement.x += this->mainHero->moveLeft();
                 this->movement.y += 0.;
                 //Manage the boundaries collisions
                 if(this->mainHero->getPosX() < 64.)
@@ -172,7 +185,10 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                 this->mainHero->setDownClock(std::chrono::high_resolution_clock::now());
                 idleFlag=false;
                 //Modify the position of the modele and return the value of the movement in the sf::Vector
-                this->movement.y += this->mainHero->moveDown();
+                if (!upKey && !rightKey && !leftKey)
+                    this->movement.y += this->mainHero->moveDown(1.3);
+                else
+                    this->movement.y += this->mainHero->moveDown();
                 this->movement.x += 0.;
                 //Manage the boundaries collisions
                 if(this->mainHero->getPosY() > window->getSize().y - 112)

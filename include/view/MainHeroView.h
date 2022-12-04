@@ -42,6 +42,8 @@ class MainHeroView: public Entity, public Observable
 
         bool heavyAttackFlag= false, simpleAttackFlag = false;
 
+        bool upKey, downKey, leftKey, rightKey;
+
         sf::Color* mainHeroColor;
 
     public:

@@ -63,7 +63,7 @@ void Character::newClockavrg(int newClock)
 }
 
 //Moving methods
-float Character::moveUp() {
+float Character::moveUp(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
@@ -71,11 +71,11 @@ float Character::moveUp() {
         newClockavrg(frameTime);
     }
 
-    float realSpeed = speed*(clockAvrg);
+    float realSpeed = speed*(clockAvrg)*singleKeyBoost;
     posY-=realSpeed;
     return -realSpeed;
 }
-float Character::moveLeft() {
+float Character::moveLeft(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
@@ -83,11 +83,11 @@ float Character::moveLeft() {
         newClockavrg(frameTime);
     }
 
-    float realSpeed = speed*(clockAvrg);
+    float realSpeed = speed*(clockAvrg)*singleKeyBoost;
     posX-=realSpeed;
     return -realSpeed;
 }
-float Character::moveDown() {
+float Character::moveDown(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
@@ -95,11 +95,11 @@ float Character::moveDown() {
         newClockavrg(frameTime);
     }
 
-    float realSpeed = speed*(clockAvrg);
+    float realSpeed = speed*(clockAvrg)*singleKeyBoost;
     posY+=realSpeed;
     return realSpeed;
 }
-float Character::moveRight() {
+float Character::moveRight(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
@@ -107,7 +107,7 @@ float Character::moveRight() {
         newClockavrg(frameTime);
     }
 
-    float realSpeed = speed*(clockAvrg);
+    float realSpeed = speed*(clockAvrg)*singleKeyBoost;
     posX+=realSpeed;
     return realSpeed;
 

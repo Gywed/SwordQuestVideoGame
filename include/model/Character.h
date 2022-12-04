@@ -51,11 +51,12 @@ class Character
         float getSpeed()const;
         void setSpeed(float speed);
 
-        //Return the speed
-        float moveUp();
-        float moveLeft();
-        float moveDown();
-        float moveRight();
+        // Return the speed
+        // Argument "singleKeyBoost" is used because the hero moved faster in diagonal then in strait line
+        float moveUp(float singleKeyBoost = 1.);
+        float moveLeft(float singleKeyBoost = 1.);
+        float moveDown(float singleKeyBoost = 1.);
+        float moveRight(float singleKeyBoost = 1.);
 
 };
 
