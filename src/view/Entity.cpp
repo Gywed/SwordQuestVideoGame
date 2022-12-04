@@ -9,11 +9,12 @@ Entity::Entity()
 Entity::~Entity()
 {
     //dtor
+    delete texture;
 }
 
 Entity::Entity(const Entity& other)
 {
-    delete texture;
+
 }
 
 Entity& Entity::operator=(const Entity& rhs)
