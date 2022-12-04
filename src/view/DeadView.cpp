@@ -80,20 +80,22 @@ void DeadView::init(sf::RenderWindow* window)
     dMenu[1].setScale(.65, .65);
 
     // Global Text
-    globalFont.loadFromFile("Fonts/Typography.otf");
+    globalFont.loadFromFile("Fonts/Berlin_Sans_FB_Demi_Bold.ttf");
 
     // Game over
     gameOverText.setFont(globalFont);
     gameOverText.setString("Game Over");
-    gameOverText.setStyle(Text::Bold);
+    gameOverText.setOutlineColor(sf::Color(sf::Color::Black));
+    gameOverText.setOutlineThickness(7.);
     gameOverText.setCharacterSize(150);
-    gameOverText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.15);
+    gameOverText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2-200.,window->getSize().y*0.10);
 
     // Score
     scoreText.setFont(globalFont);
-    scoreText.setStyle(Text::Bold);
-    scoreText.setCharacterSize(150);
-    scoreText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.75);
+    scoreText.setOutlineColor(sf::Color(sf::Color::Black));
+    scoreText.setOutlineThickness(7.);
+    scoreText.setCharacterSize(100);
+    scoreText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.70);
 }
 
 int DeadView::run(sf::RenderWindow* window)
