@@ -68,6 +68,11 @@ Room::~Room()
 {
     //dtor
     delete id;
+
+    for(Monster* m : monsters)
+    {
+        delete m;
+    }
 }
 
 Room::Room(const Room& other)
@@ -114,9 +119,10 @@ const int * Room::getTilesMapping() { return tilesMapping; }
 
 void Room::addMonster(Monster* monster)
 {
-
+    monsters.push_back(monster);
 }
+
 void Room::removeMonster(Monster* monster)
 {
-
+    monsters.remove(monster);
 }

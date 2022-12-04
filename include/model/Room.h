@@ -3,6 +3,7 @@
 #include <vector>
 #include <model/MainHero.h>
 #include <model/Monster.h>
+#include <list>
 
 using std::list;
 
