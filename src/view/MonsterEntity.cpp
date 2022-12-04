@@ -92,7 +92,7 @@ void MonsterEntity::setMonster(Monster* monster) { this->monster = monster;}
 void MonsterEntity::update(Observable* obs)
 {
     MainHeroView* mainHeroV = ((MainHeroView*)obs);
-    if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
+    if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
     {
         this->getDamaged(1);
         std::cout<<std::to_string(this->monster->getHP())<<std::endl;
