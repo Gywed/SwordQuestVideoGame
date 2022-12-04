@@ -31,7 +31,7 @@ SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
     this->deathTextureSource = "images/Animation/Skeleton/Death.png";
     this->deathAnimationStep = 38;
     this->deathTextureRectMaxLeft = 190;
-    this->deathAnimationTimeBetweenEachFrame = 0.3;
+    this->deathAnimationTimeBetweenEachFrame = 0.15;
 
     this->loadTexture(idleTextureSource);
     this->setTextureRect(*idleTextureRect);

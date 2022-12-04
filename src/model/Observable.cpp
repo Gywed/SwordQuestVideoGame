@@ -36,8 +36,15 @@ void Observable::detach(Observer* obs)
 
 void Observable::notify()
 {
-    std::cout<<"list size : " + std::to_string(observers.size())<<std::endl;
-    if(!observers.empty())
-        for (Observer* obs : observers)
-            obs->update(this);
+    std::list<Observer*>::iterator i = observers.begin();
+    while (i != observers.end())
+    {
+        bool isActive = (*i)->update(this);
+        if(!isActive)
+        {
+            observers.erase(i++);
+        }else
+            ++i;
+    }
+
 }

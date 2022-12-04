@@ -90,17 +90,18 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
 Monster* MonsterEntity::getMonster()const { return monster; }
 void MonsterEntity::setMonster(Monster* monster) { this->monster = monster;}
 
-void MonsterEntity::update(Observable* obs)
+bool MonsterEntity::update(Observable* obs)
 {
     MainHeroView* mainHeroV = ((MainHeroView*)obs);
     if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
     {
-        this->getDamaged(1);
-        std::cout<<std::to_string(this->monster->getHP())<<std::endl;
+	this->getDamaged(mainHeroV->getMainHero()->getDamage);
         if(this->deadFlag)
-        {
             mainHeroV->increaseScore(this->monster->getScoreValue());
-            mainHeroV->detach(this);
-        }
+        
+        return !this->deadFlag;
+
     }
+    return true;
+
 }
