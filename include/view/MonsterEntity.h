@@ -23,7 +23,7 @@ class MonsterEntity: public Entity, public Observer
 
         virtual void getDamaged(int dmg) = 0;
         //Redefinition of Observer method
-        void update(Observable* obs) override;
+        bool update(Observable* obs) override;
 
     protected:
         Monster* monster;

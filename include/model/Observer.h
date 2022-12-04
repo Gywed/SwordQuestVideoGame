@@ -13,7 +13,8 @@ class Observer
         Observer(const Observer& other);
         Observer& operator=(const Observer& other);
 
-        virtual void update(Observable* o) = 0;
+        //Return true if the observer is still active
+        virtual bool update(Observable* o) = 0;
 
     protected:
 

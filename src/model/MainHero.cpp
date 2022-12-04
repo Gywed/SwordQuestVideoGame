@@ -34,6 +34,7 @@ void MainHero::init()
 {
     this->HP = 10;
     this->speed = 0.075;
+    this->damage = 1;
 
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<true;
