@@ -3,7 +3,7 @@
 Skeleton::Skeleton(float posX, float posY): Monster(posX, posY)
 {
     this->HP = 2;
-    this->speed = 0.025;
+    this->speed = 0.04;
     this->aggroDistance = 300;
     this->damage = 2;
     this->scoreValue = 2;

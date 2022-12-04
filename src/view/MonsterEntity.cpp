@@ -84,6 +84,7 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
     if(deathFlag)
         updateSpriteDeathAnimation();
 
+    return false;
 }
 
 Monster* MonsterEntity::getMonster()const { return monster; }
