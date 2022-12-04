@@ -78,6 +78,11 @@ void SkeletonView::getDamaged(int dmg)
         spritePosModifier.y = 27;
         //Apply the position modifiers
         this->setPosition(this->monster->getPosX() - spritePosModifier.x, this->monster->getPosY() - spritePosModifier.y);
+    }else
+    {
+        int knockbackValue = this->getScale().x > 0 ? -200 : 200;
+        this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
+        this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
     }
 }
 

@@ -1,5 +1,6 @@
 #include "model/Observable.h"
 #include "model/Observer.h"
+#include <iostream>
 
 Observable::Observable()
 {
@@ -35,8 +36,8 @@ void Observable::detach(Observer* obs)
 
 void Observable::notify()
 {
-    for (Observer* obs : observers)
-    {
-        obs->update(this);
-    }
+    std::cout<<"list size : " + std::to_string(observers.size())<<std::endl;
+    if(!observers.empty())
+        for (Observer* obs : observers)
+            obs->update(this);
 }
