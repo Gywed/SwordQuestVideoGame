@@ -9,7 +9,6 @@ class BasicRoomView
     private:
         TileMap tileMap;
         Room* room;
-        int tilesMapping[480];
 
 
     public:

@@ -4,7 +4,7 @@
 #include <model/MainHero.h>
 #include <model/Monster.h>
 
-using std::vector;
+using std::list;
 
 class Room
 {
@@ -17,12 +17,16 @@ class Room
         static int getCompteur();
         int getId()const;
 
+        const int * getTilesMapping();
+        void addMonster(Monster* monster);
+        void removeMonster(Monster* monster);
+
     protected:
 
     private:
 
-        vector<Monster*> monsters;
-        Character* character;
+        list<Monster*> monsters;
+        int tilesMapping[480];
 
         int* id;
         inline static int compteur;
