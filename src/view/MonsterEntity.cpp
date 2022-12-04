@@ -8,7 +8,7 @@ MonsterEntity::MonsterEntity(Monster* monster):monster(monster)
 
 MonsterEntity::~MonsterEntity()
 {
-    delete monster;
+    //where is colorOfEntity deleted? i have segment fault if i delete it here
 }
 
 MonsterEntity::MonsterEntity(const MonsterEntity& other)

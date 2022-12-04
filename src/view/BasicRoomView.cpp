@@ -17,7 +17,7 @@ BasicRoomView::~BasicRoomView()
 {
     for(MonsterEntity* monster : monsters)
         delete monster;
-    //delete this->room;
+    delete this->room;
 }
 
 BasicRoomView::BasicRoomView(const BasicRoomView& other)
