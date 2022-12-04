@@ -126,6 +126,7 @@ void Room::addMonster(Monster* monster)
 void Room::removeMonster(Monster* monster)
 {
     monsters.remove(monster);
+    delete monster;
 }
 
 void Room::generateNewMonster()

@@ -30,3 +30,15 @@ BasicRoomView& BasicRoomView::operator=(const BasicRoomView& rhs)
 
 //Setters getters
 TileMap BasicRoomView::getTileMap()const { return tileMap; }
+
+void BasicRoomView::removeMonster(MonsterEntity* monsterV)
+{
+    monsters.remove(monster);
+    room->removeMonster(monsterV->getMonster());
+    delete monsterV;
+}
+
+void BasicRoomView::generateMonsterView()
+{
+
+}
