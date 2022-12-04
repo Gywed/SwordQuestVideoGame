@@ -152,7 +152,6 @@ void PlayStateView::run(sf::RenderWindow* window)
     }
     if (this->skeletonV->getDeadFlag())
     {
-        std::cout<<"Score\n";
         this->score += this->skeletonV->getMonster()->getScoreValue();
     }
 }

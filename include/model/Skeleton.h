@@ -8,7 +8,7 @@ class Skeleton: public Monster
     private:
 
     public:
-        Skeleton(float posX, float posY);
+        Skeleton(float posX = 0., float posY = 0.);
         virtual ~Skeleton();
         Skeleton(const Skeleton& other);
         Skeleton& operator=(const Skeleton& other);
