@@ -98,7 +98,9 @@ void MonsterEntity::update(Observable* obs)
         this->getDamaged(1);
         std::cout<<std::to_string(this->monster->getHP())<<std::endl;
         if(this->deadFlag)
+        {
+            mainHeroV->increaseScore(this->monster->getScoreValue());
             mainHeroV->detach(this);
+        }
     }
-
 }

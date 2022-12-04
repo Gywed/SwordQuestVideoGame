@@ -40,6 +40,9 @@ class MainHeroView: public Entity, public Observable
         int heavyAttackTextureRectMaxLeft;
         float heavyAttackAnimationTimeBetweenEachFrame;
 
+        // Score
+        int score = 0;
+
         bool heavyAttackFlag= false, simpleAttackFlag = false;
 
         bool upKey, downKey, leftKey, rightKey;
@@ -58,6 +61,8 @@ class MainHeroView: public Entity, public Observable
         sf::IntRect* getRectSourceSprite()const;
         void setRectSourceSprite(sf::IntRect* rectSourceSprite);
         LifeBarView* getLifeBarView()const;
+        void increaseScore(int increaseValue);
+        int getScore()const;
 
         //Method
         void spriteEvents(sf::RenderWindow* window);

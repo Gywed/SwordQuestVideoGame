@@ -71,8 +71,7 @@ void PlayStateView::run(sf::RenderWindow* window)
     // Thread for the dead menu
     if (mainHeroV->getDeadFlag())
     {
-        deadV->updateScore(score);
-        std::cout<<score<<endl;
+        deadV->updateScore(mainHeroV->getScore());
         std::thread deadThread(doDead);
         int state = -1;
         while(state == -1)
@@ -149,10 +148,6 @@ void PlayStateView::run(sf::RenderWindow* window)
     {
         this->mainHeroV->spriteEvents(window);
         this->skeletonV->spriteEvents(window, this->mainHeroV);
-    }
-    if (this->skeletonV->getDeadFlag())
-    {
-        this->score += this->skeletonV->getMonster()->getScoreValue();
     }
 }
 

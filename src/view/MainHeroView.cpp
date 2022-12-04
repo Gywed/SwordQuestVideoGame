@@ -75,6 +75,10 @@ MainHeroView& MainHeroView::operator=(const MainHeroView& rhs)
 MainHero* MainHeroView::getMainHero()const { return mainHero; }
 void MainHeroView::setMainHero(MainHero* mainHero) { this->mainHero = mainHero; }
 sf::IntRect* MainHeroView::getRectSourceSprite()const { return idleTextureRect; }
+void MainHeroView::increaseScore(int increaseValue) { this->score += increaseValue; }
+int MainHeroView::getScore()const { return this->score; }
+
+
 void MainHeroView::setRectSourceSprite(sf::IntRect* textureRect)
 {
     delete this->idleTextureRect;
