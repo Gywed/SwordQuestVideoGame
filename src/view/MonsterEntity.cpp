@@ -98,8 +98,11 @@ bool MonsterEntity::update(Observable* obs)
     if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
     {
         this->getDamaged(mainHeroV->getMainHero()->getDamage());
-        if(this->deadFlag)
+        if(this->deathFlag && !this->scoreCounted)
+        {
             mainHeroV->increaseScore(this->monster->getScoreValue());
+            this->scoreCounted = true;
+        }
 
         return !this->deadFlag;
 

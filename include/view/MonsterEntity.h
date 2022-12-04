@@ -8,7 +8,7 @@
 class MonsterEntity: public Entity, public Observer
 {
     private:
-
+        bool scoreCounted = false;
 
     public:
         MonsterEntity(Monster* monster);
