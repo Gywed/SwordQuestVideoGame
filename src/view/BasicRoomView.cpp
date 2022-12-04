@@ -1,5 +1,7 @@
 #include "view/BasicRoomView.h"
 #include <iostream>
+#include "model/Skeleton.h"
+#include "view/SkeletonView.h"
 
 BasicRoomView::BasicRoomView()
 {
@@ -33,12 +35,17 @@ TileMap BasicRoomView::getTileMap()const { return tileMap; }
 
 void BasicRoomView::removeMonster(MonsterEntity* monsterV)
 {
-    monsters.remove(monster);
+    monsters.remove(monsterV);
     room->removeMonster(monsterV->getMonster());
     delete monsterV;
 }
 
 void BasicRoomView::generateMonsterView()
 {
+    for(Monster* monster : room->getMonsters())
+    {
+        if(instanceof<Skeleton>(monster))
+            monsters.push_back(new SkeletonView((Skeleton*)monster));
+    }
 
 }

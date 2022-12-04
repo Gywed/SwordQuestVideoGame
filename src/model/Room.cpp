@@ -117,6 +117,7 @@ int Room::getId()const
 }
 
 const int * Room::getTilesMapping() { return tilesMapping; }
+list<Monster*> Room::getMonsters()const { return monsters; }
 
 void Room::addMonster(Monster* monster)
 {
