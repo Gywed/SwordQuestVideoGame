@@ -8,6 +8,7 @@
 class SkeletonView: public MonsterEntity
 {
     private:
+        sf::Color* colorOfSkeleton;
 
     public:
         SkeletonView(Skeleton* skeleton);
@@ -17,6 +18,7 @@ class SkeletonView: public MonsterEntity
 
         //Method
         void getDamaged(int dmg) override;
+        void getKnockbacked();
 
     protected:
 

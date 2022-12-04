@@ -27,6 +27,7 @@ class MonsterEntity: public Entity, public Observer
 
     protected:
         Monster* monster;
+        sf::Color* colorOfEntity;
 
 
 };

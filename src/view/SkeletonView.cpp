@@ -37,6 +37,9 @@ SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
+
+
+    this->colorOfSkeleton =new sf::Color(this->getColor());
 }
 
 SkeletonView::~SkeletonView()
@@ -61,10 +64,12 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 //###################################################################################################
 void SkeletonView::getDamaged(int dmg)
 {
+
     this->monster->getDamaged(dmg);
     int hp = this->monster->getHP();
     if(hp==0)
     {
+        this->setColor(*this->colorOfSkeleton);
         idleFlag=false;
         attackFlag=false;
         deathFlag=true;
@@ -78,12 +83,22 @@ void SkeletonView::getDamaged(int dmg)
         spritePosModifier.y = 27;
         //Apply the position modifiers
         this->setPosition(this->monster->getPosX() - spritePosModifier.x, this->monster->getPosY() - spritePosModifier.y);
+
     }else
     {
-        int knockbackValue = this->getScale().x > 0 ? -200 : 200;
-        this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
-        this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
+        this->getKnockbacked();
     }
 }
 
+ void SkeletonView::getKnockbacked(){
+    sf::Clock timer;
+    this->setColor(sf::Color::Red);
+    if(timer.getElapsedTime()<sf::milliseconds(1000000)){
 
+        int knockbackValue = this->getScale().x > 0 ? -50 : 50;
+        this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
+        this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
+
+    }
+
+ }
