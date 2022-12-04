@@ -21,8 +21,6 @@ PlayStateView::~PlayStateView()
     delete roomV;
     delete pauseV;
     delete deadV;
-//    delete skeletonV;
-//    delete skeletonV2;
 
     delete playStateMenuSound;
     delete buffer;
@@ -48,16 +46,8 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->mainHeroV = new MainHeroView(mainHeroM);
 
     // Room
-//    this->skeletonM = new Skeleton(1400., 500.);
-//    this->skeletonV = new SkeletonView(skeletonM);
-//
-//    this->skeletonM2 = new Skeleton(1400., 600.);
-//    this->skeletonV2 = new SkeletonView(skeletonM2);
-//
-//    this->mainHeroV->attach(skeletonV);
-//    this->mainHeroV->attach(skeletonV2);
-
     this->roomV = new BasicRoomView();
+    //Default monsters generated
     this->mainHeroV->attach(this->roomV->generateMonsterView());
 
     // Menu
@@ -152,9 +142,33 @@ void PlayStateView::run(sf::RenderWindow* window)
         }
     } else
     {
+        //New monster spawn
+        if(monsterSpawnTimer.getElapsedTime().asSeconds() > timeBeforeSpawn)
+        {
+            //Create a new monster and add it to the list of observers of mainHeroV
+            this->mainHeroV->attach(this->roomV->generateMonsterView());
+            timeBeforeSpawn*=0.9;
+            monsterSpawnTimer.restart();
+        }
+
+        //Main hero actions
         this->mainHeroV->spriteEvents(window);
+
+        //Loop in the monsters list
         for(MonsterEntity* monster : this->roomV->getMonsters())
-            monster->spriteEvents(window, mainHeroV);
+            //Monster is dead
+            if(monster->getDeadFlag())
+            {
+                //Score increased
+                mainHeroV->increaseScore(monster->getMonster()->getScoreValue());
+                //The monster is detach of the obervers list of MainHEroV
+                this->mainHeroV->detach(monster);
+                //Delete from monster list and free the memory
+                this->roomV->removeMonster(monster);
+            }
+            else
+                //Monster actions
+                monster->spriteEvents(window, mainHeroV);
     }
 }
 
@@ -164,8 +178,6 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->draw(this->roomV->getTileMap());
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
-//    window->draw(*this->skeletonV);
-//    window->draw(*this->skeletonV2);
     for(MonsterEntity* monster : this->roomV->getMonsters())
         window->draw(*monster);
     window->draw(*this->mainHeroV);
