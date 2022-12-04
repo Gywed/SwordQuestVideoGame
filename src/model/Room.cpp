@@ -130,14 +130,18 @@ void Room::removeMonster(Monster* monster)
     delete monster;
 }
 
-void Room::generateNewMonster()
+Monster* Room::generateNewMonster()
 {
     int randMonster = rand() % 3;
     float randPosX = rand() %  1856 + 64;
     float randPosY = rand() %  760 + 192;
 
+    Monster* monster;
     switch(randMonster)
     {
-        case 0 : this->addMonster(new Skeleton(randPosX, randPosY)); break;
+        case 0 : monster = new Skeleton(randPosX, randPosY); break;
     }
+
+    this->addMonster(monster);
+    return monster;
 }

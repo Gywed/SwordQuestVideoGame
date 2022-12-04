@@ -42,10 +42,7 @@ void BasicRoomView::removeMonster(MonsterEntity* monsterV)
 
 void BasicRoomView::generateMonsterView()
 {
-    for(Monster* monster : room->getMonsters())
-    {
-        if(instanceof<Skeleton>(monster))
-            monsters.push_back(new SkeletonView((Skeleton*)monster));
-    }
-
+    Monster* newMonster = this->room->generateNewMonster();
+    if(instanceof<Skeleton>(newMonster))
+        monsters.push_back(new SkeletonView((Skeleton*)newMonster));
 }
