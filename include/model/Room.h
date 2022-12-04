@@ -21,6 +21,7 @@ class Room
         const int * getTilesMapping();
         void addMonster(Monster* monster);
         void removeMonster(Monster* monster);
+        void generateNewMonster();
 
     protected:
 

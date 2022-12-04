@@ -1,4 +1,5 @@
 #include "model/Room.h"
+#include "model/Skeleton.h"
 
 Room::Room()
 {
@@ -125,4 +126,16 @@ void Room::addMonster(Monster* monster)
 void Room::removeMonster(Monster* monster)
 {
     monsters.remove(monster);
+}
+
+void Room::generateNewMonster()
+{
+    int randMonster = rand() % 3;
+    float randPosX = rand() %  1856 + 64;
+    float randPosY = rand() %  760 + 192;
+
+    switch(randMonster)
+    {
+        case 0 : this->addMonster(new Skeleton(randPosX, randPosY)); break;
+    }
 }
