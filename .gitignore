@@ -6,3 +6,4 @@ obj/Release
 bin/Release
 ValgrindOut.xml
 attackable
+lib

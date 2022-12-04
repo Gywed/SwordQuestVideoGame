@@ -3,6 +3,7 @@
 MonsterEntity::MonsterEntity(Monster* monster):monster(monster)
 {
     //ctor
+    colorOfEntity= new sf::Color(this->getColor());
 }
 
 MonsterEntity::~MonsterEntity()
@@ -34,6 +35,7 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
         //Movement
         if(this->monster->isAggroed() && !attackFlag)
         {
+            this->setColor(*this->colorOfEntity);
             this->monster->setAllMovementClock(std::chrono::high_resolution_clock::now());
 
             std::tie(this->movement.x, this->movement.y) = this->monster->moveToMainHero(*mainHeroV->getMainHero());
