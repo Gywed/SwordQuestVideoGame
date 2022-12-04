@@ -5,6 +5,8 @@
 #include <list>
 #include "view/MonsterEntity.h"
 
+using namespace std;
+
 template<typename Base, typename T>
 inline bool instanceof(const T *ptr)
 {
@@ -16,7 +18,7 @@ class BasicRoomView
     private:
         TileMap tileMap;
         Room* room;
-        std::list<MonsterEntity*> monsters;
+        list<MonsterEntity*> monsters;
 
 
     public:
@@ -27,9 +29,10 @@ class BasicRoomView
 
         //Setters getter
         TileMap getTileMap()const;
+        list<MonsterEntity*> getMonsters()const;
 
         void removeMonster(MonsterEntity* monsterV);
-        void generateMonsterView();
+        MonsterEntity* generateMonsterView();
 
 
 };

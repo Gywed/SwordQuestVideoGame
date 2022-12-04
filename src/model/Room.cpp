@@ -140,6 +140,8 @@ Monster* Room::generateNewMonster()
     switch(randMonster)
     {
         case 0 : monster = new Skeleton(randPosX, randPosY); break;
+        case 1 : monster = new Skeleton(randPosX, randPosY); break;
+        case 2 : monster = new Skeleton(randPosX, randPosY); break;
     }
 
     this->addMonster(monster);

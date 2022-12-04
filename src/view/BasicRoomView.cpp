@@ -15,7 +15,9 @@ BasicRoomView::BasicRoomView()
 
 BasicRoomView::~BasicRoomView()
 {
-    delete this->room;
+    for(MonsterEntity* monster : monsters)
+        delete monster;
+    //delete this->room;
 }
 
 BasicRoomView::BasicRoomView(const BasicRoomView& other)
@@ -32,6 +34,7 @@ BasicRoomView& BasicRoomView::operator=(const BasicRoomView& rhs)
 
 //Setters getters
 TileMap BasicRoomView::getTileMap()const { return tileMap; }
+list<MonsterEntity*> BasicRoomView::getMonsters()const { return monsters; }
 
 void BasicRoomView::removeMonster(MonsterEntity* monsterV)
 {
@@ -40,9 +43,13 @@ void BasicRoomView::removeMonster(MonsterEntity* monsterV)
     delete monsterV;
 }
 
-void BasicRoomView::generateMonsterView()
+MonsterEntity* BasicRoomView::generateMonsterView()
 {
     Monster* newMonster = this->room->generateNewMonster();
+    MonsterEntity* newMonsterEntity;
     if(instanceof<Skeleton>(newMonster))
-        monsters.push_back(new SkeletonView((Skeleton*)newMonster));
+        newMonsterEntity = new SkeletonView((Skeleton*)newMonster);
+
+    monsters.push_back(newMonsterEntity);
+    return newMonsterEntity;
 }
