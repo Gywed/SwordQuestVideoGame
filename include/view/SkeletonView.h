@@ -18,7 +18,6 @@ class SkeletonView: public MonsterEntity
 
         //Method
         void getDamaged(int dmg) override;
-        void getKnockbacked();
 
     protected:
 

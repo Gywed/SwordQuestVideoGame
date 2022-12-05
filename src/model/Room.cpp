@@ -1,5 +1,7 @@
 #include "model/Room.h"
 #include "model/Skeleton.h"
+#include "model/SlimeRound.h"
+#include "model/SlimeLong.h"
 
 Room::Room()
 {
@@ -140,8 +142,8 @@ Monster* Room::generateNewMonster()
     switch(randMonster)
     {
         case 0 : monster = new Skeleton(randPosX, randPosY); break;
-        case 1 : monster = new Skeleton(randPosX, randPosY); break;
-        case 2 : monster = new Skeleton(randPosX, randPosY); break;
+        case 1 : monster = new SlimeRound(randPosX, randPosY); break;
+        case 2 : monster = new SlimeLong(randPosX, randPosY); break;
     }
 
     this->addMonster(monster);

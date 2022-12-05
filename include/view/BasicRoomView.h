@@ -31,6 +31,7 @@ class BasicRoomView
         TileMap getTileMap()const;
         list<MonsterEntity*> getMonsters()const;
 
+        void addMonster(MonsterEntity* monsterV);
         void removeMonster(MonsterEntity* monsterV);
         MonsterEntity* generateMonsterView();
 

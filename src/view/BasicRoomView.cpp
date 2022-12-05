@@ -2,6 +2,8 @@
 #include <iostream>
 #include "model/Skeleton.h"
 #include "view/SkeletonView.h"
+#include "view/SlimeRoundView.h"
+#include "view/SlimeLongView.h"
 
 BasicRoomView::BasicRoomView()
 {
@@ -36,6 +38,12 @@ BasicRoomView& BasicRoomView::operator=(const BasicRoomView& rhs)
 TileMap BasicRoomView::getTileMap()const { return tileMap; }
 list<MonsterEntity*> BasicRoomView::getMonsters()const { return monsters; }
 
+void BasicRoomView::addMonster(MonsterEntity* monsterV)
+{
+    monsters.push_back(monsterV);
+    room->addMonster(monsterV->getMonster());
+}
+
 void BasicRoomView::removeMonster(MonsterEntity* monsterV)
 {
     monsters.remove(monsterV);
@@ -49,6 +57,10 @@ MonsterEntity* BasicRoomView::generateMonsterView()
     MonsterEntity* newMonsterEntity;
     if(instanceof<Skeleton>(newMonster))
         newMonsterEntity = new SkeletonView((Skeleton*)newMonster);
+    else if(instanceof<SlimeRound>(newMonster))
+        newMonsterEntity = new SlimeRoundView((SlimeRound*)newMonster);
+    else if(instanceof<SlimeLong>(newMonster))
+        newMonsterEntity = new SlimeLongView((SlimeLong*)newMonster);
 
     monsters.push_back(newMonsterEntity);
     return newMonsterEntity;
