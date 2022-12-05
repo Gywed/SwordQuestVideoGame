@@ -3,6 +3,7 @@
 #include "model/Skeleton.h"
 #include "view/SkeletonView.h"
 #include "view/SlimeRoundView.h"
+#include "view/SlimeLongView.h"
 
 BasicRoomView::BasicRoomView()
 {
@@ -52,6 +53,8 @@ MonsterEntity* BasicRoomView::generateMonsterView()
         newMonsterEntity = new SkeletonView((Skeleton*)newMonster);
     else if(instanceof<SlimeRound>(newMonster))
         newMonsterEntity = new SlimeRoundView((SlimeRound*)newMonster);
+    else if(instanceof<SlimeLong>(newMonster))
+        newMonsterEntity = new SlimeLongView((SlimeLong*)newMonster);
 
     monsters.push_back(newMonsterEntity);
     return newMonsterEntity;

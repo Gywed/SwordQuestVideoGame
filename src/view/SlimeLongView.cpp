@@ -1,59 +1,59 @@
-#include "view/SkeletonView.h"
+#include "view/SlimeLongView.h"
 #include <iostream>
 
-SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
+SlimeLongView::SlimeLongView(SlimeLong* slimeLong): MonsterEntity(slimeLong)
 {
-    this->setPosition(skeleton->getPosX(), skeleton->getPosY());
+    this->setPosition(slimeLong->getPosX(), slimeLong->getPosY());
 
     //Idle animation
-    this->idleTextureRect = new sf::IntRect(0, 0, 32, 40);
-    this->idleTextureSource = "images/Animation/Skeleton/Idle.png";
-    this->idleAnimationStep = 32;
-    this->idleTextureRectMaxLeft = 96;
+    this->idleTextureRect = new sf::IntRect(0, 0, 17, 25);
+    this->idleTextureSource = "images/Animation/SlimeLong/Idle.png";
+    this->idleAnimationStep = 17;
+    this->idleTextureRectMaxLeft = 51;
     this->idleAnimationTimeBetweenEachFrame = 0.35;
 
     //Movement animation
-    this->movementTextureRect = new sf::IntRect(0, 0, 28, 42);
-    this->movementTextureSource = "images/Animation/Skeleton/Movement.png";
-    this->movementAnimationStep = 28;
-    this->movementTextureRectMaxLeft = 112;
+    this->movementTextureRect = new sf::IntRect(0, 0, 17, 25);
+    this->movementTextureSource = "images/Animation/SlimeLong/Movement.png";
+    this->movementAnimationStep = 17;
+    this->movementTextureRectMaxLeft = 51;
     this->movementAnimationTimeBetweenEachFrame = 0.15;
 
     //Simple attack animation
-    this->simpleAttackTextureRect = new sf::IntRect(0, 0, 44, 41);
-    this->simpleAttackTextureSource = "images/Animation/Skeleton/Attack1.png";
-    this->simpleAttackAnimationStep = 44;
-    this->simpleAttackTextureRectMaxLeft = 220;
+    this->simpleAttackTextureRect = new sf::IntRect(0, 0, 34, 23);
+    this->simpleAttackTextureSource = "images/Animation/SlimeLong/Attack1.png";
+    this->simpleAttackAnimationStep = 34;
+    this->simpleAttackTextureRectMaxLeft = 204;
     this->simpleAttackAnimationTimeBetweenEachFrame = 0.13;
 
     //Death animation
-    this->deathTextureRect = new sf::IntRect(0, 0, 38, 56);
-    this->deathTextureSource = "images/Animation/Skeleton/Death.png";
-    this->deathAnimationStep = 38;
-    this->deathTextureRectMaxLeft = 190;
+    this->deathTextureRect = new sf::IntRect(0, 0, 34, 32);
+    this->deathTextureSource = "images/Animation/SlimeLong/Death.png";
+    this->deathAnimationStep = 34;
+    this->deathTextureRectMaxLeft = 136;
     this->deathAnimationTimeBetweenEachFrame = 0.15;
 
     this->loadTexture(idleTextureSource);
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
-    this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -15);
+    this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
 
 
     this->colorOfSkeleton =new sf::Color(this->getColor());
 }
 
-SkeletonView::~SkeletonView()
+SlimeLongView::~SlimeLongView()
 {
     //dtor
     delete colorOfSkeleton;
 }
 
-SkeletonView::SkeletonView(const SkeletonView& other): MonsterEntity(other)
+SlimeLongView::SlimeLongView(const SlimeLongView& other): MonsterEntity(other)
 {
     //copy ctor
 }
 
-SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
+SlimeLongView& SlimeLongView::operator=(const SlimeLongView& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
@@ -63,7 +63,7 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 
 //Method
 //###################################################################################################
-void SkeletonView::getDamaged(int dmg)
+void SlimeLongView::getDamaged(int dmg)
 {
     this->monster->getDamaged(dmg);
     int hp = this->monster->getHP();
