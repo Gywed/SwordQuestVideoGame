@@ -25,6 +25,8 @@ class MonsterEntity: public Entity, public Observer
         //Redefinition of Observer method
         bool update(Observable* obs) override;
 
+        void getKnockbacked();
+
     protected:
         Monster* monster;
         sf::Color* colorOfEntity;
@@ -32,6 +34,7 @@ class MonsterEntity: public Entity, public Observer
 
 
         bool gettingKnockbacked = false;
+
 
 
 };

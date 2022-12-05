@@ -90,11 +90,3 @@ void SkeletonView::getDamaged(int dmg)
     }
 }
 
- void SkeletonView::getKnockbacked(){
-    this->setColor(sf::Color::Red);
-    this->gettingKnockbacked = true;
-    int knockbackValue = this->getScale().x > 0 ? -50 : 50;
-    this->getMonster()->setPosX(this->getMonster()->getPosX() + knockbackValue);
-    this->setPosition(this->getMonster()->getPosX(), this->getMonster()->getPosY());
-    this->knockbackTimer.restart();
- }
