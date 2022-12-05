@@ -8,7 +8,7 @@ Room::Room()
     //ctor
     id = new int(compteur++);
 
-    //Iniate tiles mapping
+    //Iniate default tiles mapping
     int tileNumber;
     for(int i=0; i<30; i++)
     {
@@ -65,6 +65,87 @@ Room::Room()
             tilesMapping[i+j*30]=tileNumber;
         }
     }
+
+    //Carpet
+    for(int i = 4; i<26; i++)
+    {
+        for(int j = 5; j<14; j++)
+        {
+
+            tilesMapping[i+j*30]=293;
+        }
+    }
+
+    //Fire place
+
+    //Big door
+    tilesMapping[9+2*30]=127;
+    tilesMapping[10+2*30]=128;
+    tilesMapping[19+2*30]=127;
+    tilesMapping[20+2*30]=128;
+
+    //Big door top decoration
+    tilesMapping[9+1*30]=248;
+    tilesMapping[10+1*30]=273;
+    tilesMapping[19+1*30]=274;
+    tilesMapping[20+1*30]=249;
+
+
+    //Top banner
+    tilesMapping[8+1*30]=99;
+    tilesMapping[11+1*30]=99;
+    tilesMapping[18+1*30]=99;
+    tilesMapping[21+1*30]=99;
+
+    //Bottom banner
+    tilesMapping[8+2*30]=124;
+    tilesMapping[11+2*30]=124;
+    tilesMapping[18+2*30]=124;
+    tilesMapping[21+2*30]=124;
+
+    //Bookcase
+    tilesMapping[14+2*30]=221;
+    tilesMapping[14+3*30]=246;
+    tilesMapping[15+2*30]=222;
+    tilesMapping[15+3*30]=247;
+
+    //Bookcase top decoration
+    tilesMapping[14+1*30]=229;
+    tilesMapping[15+1*30]=229;
+
+    //Inner carpet
+    for(int i=5; i<25; i++)
+        for(int j=6; j<13; j++)
+        {
+            if(i==5)
+            {
+                if(j==6)
+                    tileNumber=264;
+                else if(j>6 && j<12)
+                    tileNumber=289;
+                else if(j==12)
+                    tileNumber=241;
+            }
+            else if(i>5 && i<24)
+            {
+                if(j==6)
+                    tileNumber=262;
+                else if(j==12)
+                    tileNumber=237;
+                else
+                    tileNumber=40;
+            }
+            else if(i==24)
+            {
+                if(j==6)
+                    tileNumber=263;
+                else if(j>6 && j<12)
+                    tileNumber=288;
+                else if(j==12)
+                    tileNumber=240;
+            }
+            tilesMapping[i+j*30]=tileNumber;
+        }
 }
 
 Room::~Room()
