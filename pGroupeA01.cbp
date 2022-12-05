@@ -47,6 +47,7 @@
 		<Unit filename="include/model/Observer.h" />
 		<Unit filename="include/model/Room.h" />
 		<Unit filename="include/model/Skeleton.h" />
+		<Unit filename="include/model/SlimeRound.h" />
 		<Unit filename="include/view/AboutStateView.h" />
 		<Unit filename="include/view/BasicRoomView.h" />
 		<Unit filename="include/view/DeadView.h" />
@@ -61,6 +62,7 @@
 		<Unit filename="include/view/PauseView.h" />
 		<Unit filename="include/view/PlayStateView.h" />
 		<Unit filename="include/view/SkeletonView.h" />
+		<Unit filename="include/view/SlimeRoundView.h" />
 		<Unit filename="include/view/StateView.h" />
 		<Unit filename="include/view/TileMap.h" />
 		<Unit filename="main.cpp" />
@@ -71,6 +73,7 @@
 		<Unit filename="src/model/Observer.cpp" />
 		<Unit filename="src/model/Room.cpp" />
 		<Unit filename="src/model/Skeleton.cpp" />
+		<Unit filename="src/model/SlimeRound.cpp" />
 		<Unit filename="src/view/AboutStateView.cpp" />
 		<Unit filename="src/view/BasicRoomView.cpp" />
 		<Unit filename="src/view/DeadView.cpp" />
@@ -85,6 +88,7 @@
 		<Unit filename="src/view/PauseView.cpp" />
 		<Unit filename="src/view/PlayStateView.cpp" />
 		<Unit filename="src/view/SkeletonView.cpp" />
+		<Unit filename="src/view/SlimeRoundView.cpp" />
 		<Unit filename="src/view/StateView.cpp" />
 		<Unit filename="src/view/TileMap.cpp" />
 		<Extensions />
