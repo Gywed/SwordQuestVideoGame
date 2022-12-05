@@ -362,15 +362,23 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         {
             //Animation
             if(simpleAttackFlag)
+            {
                 updateSpriteSimpleAttackAnimation();
+                //Check collision with monsters on the attack hit frame
+                if(simpleAttackTextureRect->left == 142)
+                    this->notify();
+            }
             else
+            {
                 updateSpriteHeavyAttackAnimation();
+                //Check collision with monsters on the attack hit frame
+                if(heavyAttackTextureRect->left == 408)
+                    this->notify();
+            }
 
             //Check if the animation is finished
             if(!attackFlag)
             {
-                //Check collision with monsters
-                this->notify();
                 //Put back the correct position to match the model
                 this->setPosition(this->mainHero->getPosX(), this->mainHero->getPosY());
                 //Adapt textureRect to the dimensions of Idle.png and Movement.png
