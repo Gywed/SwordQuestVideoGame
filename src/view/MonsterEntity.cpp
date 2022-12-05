@@ -26,7 +26,6 @@ MonsterEntity& MonsterEntity::operator=(const MonsterEntity& rhs)
 bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV)
 {
     if(gettingKnockbacked)
-
             if (knockbackTimer.getElapsedTime() >= sf::milliseconds(100)){
                 this->gettingKnockbacked = false;
                 knockbackTimer.restart();
@@ -54,12 +53,16 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
         //Attack
         if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
         {
-            idleFlag = false;
-            if(this->simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
+            if (!mainHeroV->getAttackFlag() || (this->getScale().x * mainHeroV->getScale().x >= 0))
             {
-                attackFlag=true;
-                mainHeroV->getDamaged(this->monster->getDamage());
-                simpleAttackCoolDownTimer.restart();
+                idleFlag = false;
+                if(this->simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
+                {
+                    attackFlag=true;
+                    mainHeroV->getDamaged(this->monster->getDamage());
+                    simpleAttackCoolDownTimer.restart();
+                }
+
             }
         }
 

@@ -46,20 +46,11 @@ void Entity::updatePosition()
     this->movement.y=0.;
 }
 
-bool Entity::getDeathFlag()const
-{
-    return this->deathFlag;
-}
-
-bool Entity::getDeadFlag()const
-{
-    return this->deadFlag;
-}
-
-void Entity::setDeadFlag(bool newDeadFlag)
-{
-    this->deadFlag = newDeadFlag;
-}
+// Getter/Setter
+bool Entity::getDeathFlag()const { return this->deathFlag; }
+bool Entity::getDeadFlag()const { return this->deadFlag; }
+void Entity::setDeadFlag(bool newDeadFlag) { this->deadFlag = newDeadFlag; }
+bool Entity::getAttackFlag() const { return this->attackFlag; }
 
 //Animation
 //###################################################################################################

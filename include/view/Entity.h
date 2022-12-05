@@ -62,6 +62,7 @@ class Entity: public sf::Sprite
         sf::Vector2f getMovement() const;
         sf::Texture* getTexture() const;
         void setMovement(const sf::Vector2f movement);
+        bool getAttackFlag() const;
 
         /* Method */
         void loadTexture(const string filename);
