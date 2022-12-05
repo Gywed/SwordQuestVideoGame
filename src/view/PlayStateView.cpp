@@ -1,6 +1,9 @@
 #include "view/PlayStateView.h"
 #include <iostream>
 #include <thread>
+#include "view/SlimeRoundView.h"
+#include "view/SlimeLongView.h"
+#include "model/SlimeLong.h"
 
 // For Pause Thread
 void doPause()
@@ -163,6 +166,20 @@ void PlayStateView::run(sf::RenderWindow* window)
                 mainHeroV->increaseScore(monster->getMonster()->getScoreValue());
                 //The monster is detach of the obervers list of MainHEroV
                 this->mainHeroV->detach(monster);
+                //Check if the monster is a round slime
+                if(instanceof<SlimeRoundView>(monster))
+                {
+                    //Create two SlimeLong (when a SlimeRound die, it make two SlimeLong spawn)
+                    SlimeLongView* slime1 = new SlimeLongView(new SlimeLong(monster->getMonster()->getPosX(), monster->getMonster()->getPosY() - 50));
+                    SlimeLongView* slime2 = new SlimeLongView(new SlimeLong(monster->getMonster()->getPosX(), monster->getMonster()->getPosY() + 50));
+                    //Add the new slimes to the room
+                    this->roomV->addMonster(slime1);
+                    this->roomV->addMonster(slime2);
+                    //Attach to the observers list
+                    this->mainHeroV->attach(slime1);
+                    this->mainHeroV->attach(slime2);
+
+                }
                 //Delete from monster list and free the memory
                 this->roomV->removeMonster(monster);
             }
