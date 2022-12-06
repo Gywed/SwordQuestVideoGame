@@ -52,33 +52,8 @@ void AboutStateView::init(sf::RenderWindow* window)
 
 void AboutStateView::run(sf::RenderWindow* window)
 {
-    sf::Event ev;
-//    bool Running = true;
-//    while(Running){
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) this->gm->setState(EnumState::MENUSTATE);
 
-
-    while (window->pollEvent(ev))
-    {
-        // Window closed
-        if (ev.type == sf::Event::Closed)
-        {
-            window->close();
-        }
-
-        //Key pressed
-        if (ev.type == sf::Event::KeyPressed)
-        {
-            switch (ev.key.code)
-            {
-            // If escape is pressed, close the application
-//               case  sf::Keyboard::Escape : App->close(); return (-1);break;
-                case  sf::Keyboard::Escape : window->close();break;
-//                case  sf::Keyboard::Escape : this->gm->setState(EnumState::MENUSTATE);break;
-                default : break;
-            }
-        }
-//    }
-    }
 }
 
 void AboutStateView::render(sf::RenderWindow* window)
