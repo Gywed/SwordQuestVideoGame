@@ -33,7 +33,7 @@ MainHero& MainHero::operator=(const MainHero& rhs)
 void MainHero::init()
 {
     this->HP = 10;
-    this->speed = 0.075;
+    this->speed = 0.175;
     this->damage = 1;
 
     attackable_file.open("attackable",std::ios::out);

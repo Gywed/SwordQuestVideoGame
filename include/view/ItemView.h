@@ -9,7 +9,7 @@ class ItemView
         sf::Sprite* spritePotion;
         sf::Texture* texture;
         sf::IntRect* intrect;
-
+        sf::Clock* timer;
 
     public:
         ItemView();

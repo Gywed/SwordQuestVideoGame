@@ -33,12 +33,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="lib/SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
 			<Add library="sfml-graphics" />
 			<Add library="sfml-system" />
 			<Add library="sfml-window" />
 			<Add library="sfml-audio" />
+			<Add directory="lib/SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="include/model/Character.h" />
 		<Unit filename="include/model/MainHero.h" />

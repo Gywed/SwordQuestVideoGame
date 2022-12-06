@@ -10,6 +10,7 @@ ItemView::ItemView()
     this->spritePotion->setTextureRect(*intrect);
     this->spritePotion->setTexture(*this->texture);
     this->spritePotion->setPosition(20.0,20.0);
+    this->timer = new sf::Clock();
 
 
 }
@@ -20,6 +21,7 @@ ItemView::~ItemView()
     delete spritePotion;
     delete texture;
     delete intrect;
+
 
 }
 
@@ -42,9 +44,15 @@ sf::Sprite* ItemView::getSprite()
 
 bool ItemView::takePotion(MainHeroView* mainHeroV)
 {
-    if(this->spritePotion->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
+    if(this->timer->getElapsedTime()>sf::milliseconds(1000))
     {
-        mainHeroV->getHealed(2);
+        if(this->spritePotion->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
+        {
+            mainHeroV->getHealed(2);
+            return true;
+        }
+
     }
-    return true;
+    return false;
+
 }
