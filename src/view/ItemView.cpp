@@ -1,4 +1,4 @@
-#include "ItemView.h"
+#include "view/ItemView.h"
 
 ItemView::ItemView()
 {
@@ -35,6 +35,16 @@ ItemView& ItemView::operator=(const ItemView& rhs)
     return *this;
 }
 
-sf::Sprite* ItemView::getSprite(){
+sf::Sprite* ItemView::getSprite()
+{
     return this->spritePotion;
+}
+
+bool ItemView::takePotion(MainHeroView* mainHeroV)
+{
+    if(this->spritePotion->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()))
+    {
+        mainHeroV->getHealed(2);
+    }
+    return true;
 }

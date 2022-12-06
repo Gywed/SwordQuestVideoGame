@@ -200,6 +200,19 @@ void PlayStateView::run(sf::RenderWindow* window)
             else
                 //Monster actions
                 monster->spriteEvents(window, mainHeroV);
+
+
+
+          for(ItemView* itemV : this->roomV->getItems())
+            {
+                bool takePotion = itemV->takePotion(mainHeroV);
+
+                if(takePotion)
+                {
+                    this->roomV->removeItem(itemV);
+                }
+            }
+
     }
 }
 

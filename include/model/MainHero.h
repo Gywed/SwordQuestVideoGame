@@ -26,6 +26,8 @@ class MainHero: public Character
         bool isAttackable();
         void setAttackable(bool newAttackable);
 
+        void getHealed(int heal);
+
         void init();
 
 
