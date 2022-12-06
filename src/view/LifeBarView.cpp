@@ -42,7 +42,15 @@ void LifeBarView::getDamaged(int hp){
     this->lifebarSprite->setTextureRect(*intrect);
 }
 
-void LifeBarView::getHealed(){
+void LifeBarView::getHealed(int hp){
+    int res = 10-hp;
+    this->intrect->top=0;
+    if(this->intrect->top<450)
+        this->intrect->top+=(50*res);
+    else{
+        this->intrect->top=450;
+    }
+    this->lifebarSprite->setTextureRect(*intrect);
 }
 
 

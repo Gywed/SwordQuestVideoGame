@@ -37,6 +37,7 @@ BasicRoomView& BasicRoomView::operator=(const BasicRoomView& rhs)
 //Setters getters
 TileMap BasicRoomView::getTileMap()const { return tileMap; }
 list<MonsterEntity*> BasicRoomView::getMonsters()const { return monsters; }
+list<ItemView*> BasicRoomView::getItems()const { return items; }
 
 void BasicRoomView::addMonster(MonsterEntity* monsterV)
 {
@@ -64,4 +65,18 @@ MonsterEntity* BasicRoomView::generateMonsterView()
 
     monsters.push_back(newMonsterEntity);
     return newMonsterEntity;
+}
+
+
+void BasicRoomView::addItem(ItemView* itemV)
+{
+    items.push_back(itemV);
+//    room->addItem(monsterV->getMonster());
+}
+
+void BasicRoomView::removeItem(ItemView* itemV)
+{
+    items.remove(itemV);
+//    room->addItem(monsterV->getMonster());
+    delete itemV;
 }

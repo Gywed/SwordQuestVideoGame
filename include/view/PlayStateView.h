@@ -10,6 +10,7 @@
 #include "view/LifeBarView.h"
 #include "model/Skeleton.h"
 #include "view/SkeletonView.h"
+#include "view/ItemView.h"
 
 class PlayStateView: public StateView
 {
@@ -27,6 +28,8 @@ class PlayStateView: public StateView
         SkeletonView* skeletonV;
         SkeletonView* skeletonV2;
         BasicRoomView* roomV;
+
+        ItemView* itemV;
 
         PauseView* pauseV;
         DeadView* deadV;

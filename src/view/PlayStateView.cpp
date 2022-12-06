@@ -4,6 +4,9 @@
 #include "view/SlimeRoundView.h"
 #include "view/SlimeLongView.h"
 #include "model/SlimeLong.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // For Pause Thread
 void doPause()
@@ -16,6 +19,7 @@ void doDead()
 PlayStateView::PlayStateView(GameManagerView* gm)
 {
     this->gm = gm;
+    srand (time(NULL));
 }
 
 PlayStateView::~PlayStateView()
@@ -180,12 +184,35 @@ void PlayStateView::run(sf::RenderWindow* window)
                     this->mainHeroV->attach(slime2);
 
                 }
+                srand (time(NULL));
+                int random = rand()%10+1;
+
+                if(random==3 || random==4 || random==5 || random==6)
+                {
+                    itemV = new ItemView();
+                    itemV->getSprite()->setPosition(monster->getMonster()->getPosX(), monster->getMonster()->getPosY());
+                    this->roomV->addItem(itemV);
+                }
+
                 //Delete from monster list and free the memory
                 this->roomV->removeMonster(monster);
             }
             else
                 //Monster actions
                 monster->spriteEvents(window, mainHeroV);
+
+
+
+          for(ItemView* itemV : this->roomV->getItems())
+            {
+                bool takePotion = itemV->takePotion(mainHeroV);
+
+                if(takePotion)
+                {
+                    this->roomV->removeItem(itemV);
+                }
+            }
+
     }
 }
 
@@ -197,6 +224,8 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     for(MonsterEntity* monster : this->roomV->getMonsters())
         window->draw(*monster);
+    for(ItemView* item: this->roomV->getItems())
+        window->draw(*item->getSprite());
     window->draw(*this->mainHeroV);
     if (this->pauseFlag)
         pauseV->render();

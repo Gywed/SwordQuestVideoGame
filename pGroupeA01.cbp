@@ -55,6 +55,7 @@
 		<Unit filename="include/view/Entity.h" />
 		<Unit filename="include/view/EnumState.h" />
 		<Unit filename="include/view/GameManagerView.h" />
+		<Unit filename="include/view/ItemView.h" />
 		<Unit filename="include/view/LifeBarView.h" />
 		<Unit filename="include/view/MainHeroView.h" />
 		<Unit filename="include/view/MenuStateView.h" />
@@ -83,6 +84,7 @@
 		<Unit filename="src/view/Entity.cpp" />
 		<Unit filename="src/view/EnumState.cpp" />
 		<Unit filename="src/view/GameManagerView.cpp" />
+		<Unit filename="src/view/ItemView.cpp" />
 		<Unit filename="src/view/LifeBarView.cpp" />
 		<Unit filename="src/view/MainHeroView.cpp" />
 		<Unit filename="src/view/MenuStateView.cpp" />

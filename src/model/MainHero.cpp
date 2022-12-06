@@ -33,7 +33,7 @@ MainHero& MainHero::operator=(const MainHero& rhs)
 void MainHero::init()
 {
     this->HP = 10;
-    this->speed = 0.075;
+    this->speed = 0.175;
     this->damage = 1;
 
     attackable_file.open("attackable",std::ios::out);
@@ -101,5 +101,13 @@ void MainHero::setAttackable(bool newAttackable)
     this->attackable = newAttackable;
 }
 
+void MainHero::getHealed(int heal)
+{
+    if(getHP()<10)
+    {
+        this->setHP(this->getHP()+heal);
+        if(getHP()>10)setHP(10);
+    }
 
+}
 

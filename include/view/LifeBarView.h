@@ -22,7 +22,7 @@ class LifeBarView
         LifeBarView& operator=(const LifeBarView& other);
 
         void getDamaged(int hp);
-        void getHealed();
+        void getHealed(int hp);
 
         sf::Sprite* getSprite()const;
 };
