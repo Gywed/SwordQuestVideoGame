@@ -54,6 +54,8 @@ void GameManagerView::setState(const EnumState st)
     {
         case EnumState::MENUSTATE:
             this->state = new MenuStateView(this);
+            // Small sleep to cancel instant input
+            sleep(sf::milliseconds(300));
             if (sound->getBuffer() != bufferMainMenu)
             {
                 sound->setBuffer(*bufferMainMenu);
