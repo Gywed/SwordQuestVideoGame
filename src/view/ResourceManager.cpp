@@ -123,6 +123,7 @@ sf::Texture* ResourceManager::searchMainHeroTexture(string fileName)
         if(texture.first==fileName)
             return texture.second;
     }
+    return NULL;
 }
 
 sf::Texture* ResourceManager::searchSkeletonTexture(string fileName)
@@ -132,6 +133,7 @@ sf::Texture* ResourceManager::searchSkeletonTexture(string fileName)
         if(texture.first==fileName)
             return texture.second;
     }
+    return NULL;
 }
 
 sf::Texture* ResourceManager::searchSlimeRoundTexture(string fileName)
@@ -141,6 +143,7 @@ sf::Texture* ResourceManager::searchSlimeRoundTexture(string fileName)
         if(texture.first==fileName)
             return texture.second;
     }
+    return NULL;
 }
 
 sf::Texture* ResourceManager::searchSlimeLongTexture(string fileName)
@@ -150,4 +153,5 @@ sf::Texture* ResourceManager::searchSlimeLongTexture(string fileName)
         if(texture.first==fileName)
             return texture.second;
     }
+    return NULL;
 }
