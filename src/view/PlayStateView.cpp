@@ -109,6 +109,7 @@ void PlayStateView::run(sf::RenderWindow* window)
             this->gm->getSound()->pause();
             this->gm->getSound()->setPitch(1.);
             this->playStateMenuSound->setBuffer(*buffer);
+            this->playStateMenuSound->setVolume(this->gm->getSound()->getVolume());
             this->playStateMenuSound->play();
         }
         this->mainHeroV->spriteEvents(window);

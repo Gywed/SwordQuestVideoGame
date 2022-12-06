@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="include/view" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="include/view" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -64,6 +66,7 @@
 		<Unit filename="include/view/PauseView.h" />
 		<Unit filename="include/view/PlayStateView.h" />
 		<Unit filename="include/view/SkeletonView.h" />
+		<Unit filename="include/view/SliderSFML.h" />
 		<Unit filename="include/view/SlimeLongView.h" />
 		<Unit filename="include/view/SlimeRoundView.h" />
 		<Unit filename="include/view/StateView.h" />
@@ -93,6 +96,7 @@
 		<Unit filename="src/view/PauseView.cpp" />
 		<Unit filename="src/view/PlayStateView.cpp" />
 		<Unit filename="src/view/SkeletonView.cpp" />
+		<Unit filename="src/view/SliderSFML.cpp" />
 		<Unit filename="src/view/SlimeLongView.cpp" />
 		<Unit filename="src/view/SlimeRoundView.cpp" />
 		<Unit filename="src/view/StateView.cpp" />

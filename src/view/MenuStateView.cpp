@@ -118,6 +118,7 @@ void MenuStateView::run(sf::RenderWindow* window)
         switch(MainMenuSelected)
         {
             case 0 : this->gm->setState(EnumState::PLAYSTATE);break;
+            case 1 : this->gm->setState(EnumState::OPTIONSTATE);break;
             case 2 : this->gm->setState(EnumState::ABOUTSTATE);break;
             case 3 : window->close();break;
         }
