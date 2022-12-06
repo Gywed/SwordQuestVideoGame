@@ -186,7 +186,7 @@ void PlayStateView::run(sf::RenderWindow* window)
                 }
                 srand (time(NULL));
                 int random = rand()%10+1;
-                std::cout<<std::to_string(random)<<std::endl;
+
                 if(random==3 || random==4 || random==5 || random==6)
                 {
                     itemV = new ItemView();

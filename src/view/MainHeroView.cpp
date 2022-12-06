@@ -467,9 +467,7 @@ void MainHeroView::getDamaged(int dmg)
 }
 void MainHeroView::getHealed(int heal)
 {
-
     this->mainHero->getHealed(heal);
-
     int hp = this->mainHero->getHP();
     this->lifebarV->getHealed(hp);
 }
