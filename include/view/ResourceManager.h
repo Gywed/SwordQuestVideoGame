@@ -9,10 +9,7 @@ using namespace std;
 class ResourceManager
 {
     private:
-        vector< pair<string, sf::Texture*> > mainHeroTextures;
-        vector< pair<string, sf::Texture*> > skeletonTextures;
-        vector< pair<string, sf::Texture*> > slimeRoundTextures;
-        vector< pair<string, sf::Texture*> > slimeLongTextures;
+        vector< pair<string, sf::Texture*> > texturesList;
 
     public:
         ResourceManager();
@@ -20,10 +17,8 @@ class ResourceManager
         ResourceManager(const ResourceManager& other);
         ResourceManager& operator=(const ResourceManager& other);
 
-        sf::Texture* searchMainHeroTexture(string fileName);
-        sf::Texture* searchSkeletonTexture(string fileName);
-        sf::Texture* searchSlimeRoundTexture(string fileName);
-        sf::Texture* searchSlimeLongTexture(string fileName);
+        sf::Texture* searchTexturesList(string fileName);
+
 
     protected:
 

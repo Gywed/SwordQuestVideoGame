@@ -1,15 +1,17 @@
 #include "view/Entity.h"
 #include <iostream>
 
+ResourceManager Entity::resourceManager = ResourceManager();
+
 Entity::Entity()
 {
-    this->texture = new sf::Texture();
+    //this->texture = new sf::Texture();
 }
 
 Entity::~Entity()
 {
     //dtor
-    delete texture;
+    //delete texture;
 }
 
 Entity::Entity(const Entity& other)
@@ -25,19 +27,19 @@ Entity& Entity::operator=(const Entity& rhs)
 }
 
 sf::Vector2f Entity::getMovement() const { return movement; }
-sf::Texture* Entity::getTexture() const { return texture; }
+//sf::Texture* Entity::getTexture() const { return texture; }
 void Entity::setMovement(const sf::Vector2f movement) { this->movement = movement; }
 
-/* Method */
-void Entity::loadTexture(const string filename)
-{
-    if (!texture->loadFromFile(filename))
-    {
-        std::cerr << "Error while loading texture" << std::endl;
-    }
-    texture->setSmooth(true);
-    this->setTexture(*this->texture);
-}
+///* Method */
+//void Entity::loadTexture(const string filename)
+//{
+//    if (!texture->loadFromFile(filename))
+//    {
+//        std::cerr << "Error while loading texture" << std::endl;
+//    }
+//    texture->setSmooth(true);
+//    this->setTexture(*this->texture);
+//}
 
 void Entity::updatePosition()
 {
@@ -56,7 +58,7 @@ bool Entity::getAttackFlag() const { return this->attackFlag; }
 //###################################################################################################
 void Entity::updateSpriteIdleAnimation()
 {
-    this->loadTexture(idleTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(idleTextureSource));
     //Shift textureRect every time given
     if (animationTimer.getElapsedTime().asSeconds() > idleAnimationTimeBetweenEachFrame){
 
@@ -72,7 +74,7 @@ void Entity::updateSpriteIdleAnimation()
 
 void Entity::updateSpriteMovementAnimation()
 {
-    this->loadTexture(movementTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(movementTextureSource));
     this->setTextureRect(*movementTextureRect);
     //Shift textureRect every time given
     if (animationTimer.getElapsedTime().asSeconds() > movementAnimationTimeBetweenEachFrame){
@@ -89,7 +91,7 @@ void Entity::updateSpriteMovementAnimation()
 
 void Entity::updateSpriteSimpleAttackAnimation()
 {
-    this->loadTexture(simpleAttackTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(simpleAttackTextureSource));
     this->setTextureRect(*simpleAttackTextureRect);
     if (animationTimer.getElapsedTime().asSeconds() > simpleAttackAnimationTimeBetweenEachFrame){
 
@@ -109,7 +111,7 @@ void Entity::updateSpriteSimpleAttackAnimation()
 
 void Entity::updateSpriteDeathAnimation()
 {
-    this->loadTexture(deathTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(deathTextureSource));
     this->setTextureRect(*deathTextureRect);
     if (animationTimer.getElapsedTime().asSeconds() > deathAnimationTimeBetweenEachFrame){
 

@@ -4,6 +4,7 @@
 #include <string>
 #include <ctime>
 #include <chrono>
+#include "view/ResourceManager.h"
 
 using std::string;
 
@@ -14,7 +15,7 @@ class Entity: public sf::Sprite
         sf::Vector2f movement;
 
         // Texture of the entity
-        sf::Texture* texture;
+
 
         //Idle animation
         sf::IntRect* idleTextureRect;
@@ -58,6 +59,7 @@ class Entity: public sf::Sprite
         Entity(const Entity& other);
         Entity& operator=(const Entity& other);
 
+        static ResourceManager resourceManager;
         /* Getters and setters */
         sf::Vector2f getMovement() const;
         sf::Texture* getTexture() const;
@@ -65,7 +67,7 @@ class Entity: public sf::Sprite
         bool getAttackFlag() const;
 
         /* Method */
-        void loadTexture(const string filename);
+        //void loadTexture(const string filename);
         void updatePosition();
         bool getDeathFlag()const;
         bool getDeadFlag()const;

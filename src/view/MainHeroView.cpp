@@ -43,7 +43,7 @@ MainHeroView::MainHeroView(MainHero *mainHero)
     this->deathTextureRectMaxLeft = 300;
     this->deathAnimationTimeBetweenEachFrame = 0.3;
 
-    this->loadTexture(idleTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(idleTextureSource));
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
@@ -400,7 +400,7 @@ void MainHeroView::attack()
 
 void MainHeroView::updateSpriteSimpleAttackAnimation()
 {
-    this->loadTexture("images/Animation/MainHero/Attack1.png");
+    this->setTexture(*Entity::resourceManager.searchTexturesList(heavyAttackTextureSource));
     this->setTextureRect(*simpleAttackTextureRect);
     if (animationTimer.getElapsedTime().asSeconds() > 0.13f){
 
@@ -421,7 +421,7 @@ void MainHeroView::updateSpriteSimpleAttackAnimation()
 
 void MainHeroView::updateSpriteHeavyAttackAnimation()
 {
-    this->loadTexture("images/Animation/MainHero/Attack2.png");
+    this->setTexture(*Entity::resourceManager.searchTexturesList(heavyAttackTextureSource));
     this->setTextureRect(*heavyAttackTextureRect);
     if (animationTimer.getElapsedTime().asSeconds() > 0.20f){
         if (heavyAttackTextureRect->left == 612)
