@@ -65,6 +65,7 @@
 		<Unit filename="include/view/OptionStateView.h" />
 		<Unit filename="include/view/PauseView.h" />
 		<Unit filename="include/view/PlayStateView.h" />
+		<Unit filename="include/view/ResourceManager.h" />
 		<Unit filename="include/view/SkeletonView.h" />
 		<Unit filename="include/view/SliderSFML.h" />
 		<Unit filename="include/view/SlimeLongView.h" />
@@ -95,6 +96,7 @@
 		<Unit filename="src/view/OptionStateView.cpp" />
 		<Unit filename="src/view/PauseView.cpp" />
 		<Unit filename="src/view/PlayStateView.cpp" />
+		<Unit filename="src/view/ResourceManager.cpp" />
 		<Unit filename="src/view/SkeletonView.cpp" />
 		<Unit filename="src/view/SliderSFML.cpp" />
 		<Unit filename="src/view/SlimeLongView.cpp" />
