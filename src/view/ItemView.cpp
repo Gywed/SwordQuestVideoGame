@@ -21,7 +21,7 @@ ItemView::~ItemView()
     delete spritePotion;
     delete texture;
     delete intrect;
-
+    delete timer;
 
 }
 
