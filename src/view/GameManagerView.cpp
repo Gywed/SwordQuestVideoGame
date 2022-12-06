@@ -12,7 +12,7 @@ GameManagerView::GameManagerView()
     bufferMainMenu->loadFromFile("Sound/LE_TITRE.wav");
 
     bufferPlaying = new sf::SoundBuffer();
-    bufferPlaying->loadFromFile("Sound/LE_DONJONNNNN.wav");
+    bufferPlaying->loadFromFile("Sound/LE_DONJONNNNN2.wav");
 
     sound = new sf::Sound();
     sound->setVolume(50.);
