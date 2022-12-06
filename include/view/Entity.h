@@ -14,8 +14,8 @@ class Entity: public sf::Sprite
         // Movement (offset) of the entity
         sf::Vector2f movement;
 
-        // Texture of the entity
-
+        // Texture manager of the entity
+        static inline ResourceManager resourceManager = ResourceManager();
 
         //Idle animation
         sf::IntRect* idleTextureRect;
@@ -59,7 +59,6 @@ class Entity: public sf::Sprite
         Entity(const Entity& other);
         Entity& operator=(const Entity& other);
 
-        static ResourceManager resourceManager;
         /* Getters and setters */
         sf::Vector2f getMovement() const;
         sf::Texture* getTexture() const;

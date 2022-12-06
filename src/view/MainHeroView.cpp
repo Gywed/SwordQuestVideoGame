@@ -400,7 +400,7 @@ void MainHeroView::attack()
 
 void MainHeroView::updateSpriteSimpleAttackAnimation()
 {
-    this->setTexture(*Entity::resourceManager.searchTexturesList(heavyAttackTextureSource));
+    this->setTexture(*Entity::resourceManager.searchTexturesList(simpleAttackTextureSource));
     this->setTextureRect(*simpleAttackTextureRect);
     if (animationTimer.getElapsedTime().asSeconds() > 0.13f){
 
