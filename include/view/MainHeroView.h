@@ -68,6 +68,7 @@ class MainHeroView: public Entity, public Observable
         void spriteEvents(sf::RenderWindow* window);
         void attack();
         void getDamaged(int dmg);
+        void getHealed(int heal);
 
         //Animation
         void updateSpriteSimpleAttackAnimation();
