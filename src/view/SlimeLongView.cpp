@@ -33,7 +33,7 @@ SlimeLongView::SlimeLongView(SlimeLong* slimeLong): MonsterEntity(slimeLong)
     this->deathTextureRectMaxLeft = 136;
     this->deathAnimationTimeBetweenEachFrame = 0.15;
 
-    this->loadTexture(idleTextureSource);
+    this->setTexture(*Entity::resourceManager.searchTexturesList(idleTextureSource));
     this->setTextureRect(*idleTextureRect);
     this->setScale(2., 2.);
     this->setOrigin(this->getLocalBounds().width/2., this->getGlobalBounds().height/2. -16);
