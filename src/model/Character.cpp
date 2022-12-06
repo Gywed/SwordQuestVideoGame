@@ -67,7 +67,7 @@ float Character::moveUp(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
-        int frameTime = (((newTime - upClock) / nanoseconds(1))/100)+1;
+        int frameTime = ((((newTime - upClock) / nanoseconds(1))/100)+1)*0.8;
         newClockavrg(frameTime);
     }
 
@@ -79,7 +79,7 @@ float Character::moveLeft(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
-        int frameTime = (((newTime - leftClock) / nanoseconds(1))/100)+1;
+        int frameTime = ((((newTime - leftClock) / nanoseconds(1))/100)+1)*0.8;
         newClockavrg(frameTime);
     }
 
@@ -91,7 +91,7 @@ float Character::moveDown(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
-        int frameTime = (((newTime - downClock) / nanoseconds(1))/100)+1;
+        int frameTime = ((((newTime - downClock) / nanoseconds(1))/100)+1)*0.8;
         newClockavrg(frameTime);
     }
 
@@ -103,7 +103,7 @@ float Character::moveRight(float singleKeyBoost) {
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();
-        int frameTime = (((newTime - rightClock) / nanoseconds(1))/100)+1;
+        int frameTime = ((((newTime - rightClock) / nanoseconds(1))/100)+1)*0.8;
         newClockavrg(frameTime);
     }
 
