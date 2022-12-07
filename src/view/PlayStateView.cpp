@@ -117,9 +117,11 @@ void PlayStateView::run(sf::RenderWindow* window)
     }
 
     if (mainHeroV->getMainHero()->getHP()<= 2)
-    {
         this->gm->getSound()->setPitch(1.20);
-    }
+
+
+    if (mainHeroV->getMainHero()->isHealed() && mainHeroV->getMainHero()->getHP()>2)
+            this->gm->getSound()->setPitch(1.);
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
@@ -140,6 +142,7 @@ void PlayStateView::run(sf::RenderWindow* window)
             this->mainHeroV->spriteEvents(window);
         if (state == 1)
         {
+            this->gm->getSound()->setPitch(1.);
             this->gm->setState(EnumState::MENUSTATE);
             return;
         }

@@ -101,12 +101,15 @@ void MainHero::setAttackable(bool newAttackable)
     this->attackable = newAttackable;
 }
 
+bool MainHero::isHealed() const{ return receiveHeal; }
+
 void MainHero::getHealed(int heal)
 {
     if(getHP()<10)
     {
         this->setHP(this->getHP()+heal);
         if(getHP()>10)setHP(10);
+        receiveHeal = true;
     }
 
 }

@@ -12,6 +12,8 @@ class MainHero: public Character
         float invTime = 1.0f;
         std::fstream attackable_file;
 
+        bool receiveHeal = false;
+
     public:
         MainHero(float posX = 0.0, float posY = 0.0);
         virtual ~MainHero();
@@ -21,10 +23,12 @@ class MainHero: public Character
         void receiveDamage(int damage);
         void stopInvulnaribilityFrame();
 
+        // Getter/Setter
         void setInvTime(float invTime);
         float getInvTime()const;
         bool isAttackable();
         void setAttackable(bool newAttackable);
+        bool isHealed() const;
 
         void getHealed(int heal);
 
