@@ -16,9 +16,8 @@ void doPause()
 void doDead()
 {}
 
-PlayStateView::PlayStateView(GameManagerView* gm)
+PlayStateView::PlayStateView(GameManagerView* gm):StateView(gm)
 {
-    this->gm = gm;
     srand (time(NULL));
 }
 
@@ -33,7 +32,7 @@ PlayStateView::~PlayStateView()
     delete buffer;
 }
 
-PlayStateView::PlayStateView(const PlayStateView& other)
+PlayStateView::PlayStateView(const PlayStateView& other):StateView(other)
 {
     //copy ctor
 }

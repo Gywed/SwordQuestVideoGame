@@ -5,12 +5,13 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include "view/GameManagerView.h"
 
 
 class StateView
 {
     public:
-        StateView();
+        StateView(GameManagerView* gm);
         virtual ~StateView();
         StateView(const StateView& other);
         StateView& operator=(const StateView& other);
@@ -26,6 +27,8 @@ class StateView
         virtual void destroy() = 0;
 
     protected:
+        // GameManager
+        GameManagerView* gm;
 
     private:
 };

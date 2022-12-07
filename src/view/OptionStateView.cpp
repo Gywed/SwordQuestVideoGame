@@ -1,6 +1,6 @@
 #include "view/OptionStateView.h"
 
-OptionStateView::OptionStateView(GameManagerView* gm)
+OptionStateView::OptionStateView(GameManagerView* gm):StateView(gm)
 {
     //ctor
     this->gm = gm;
@@ -13,7 +13,7 @@ OptionStateView::~OptionStateView()
     delete sliderVolume;
 }
 
-OptionStateView::OptionStateView(const OptionStateView& other)
+OptionStateView::OptionStateView(const OptionStateView& other):StateView(other)
 {
     //copy ctor
 }

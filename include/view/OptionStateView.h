@@ -9,7 +9,6 @@ using namespace sf;
 class OptionStateView: public StateView
 {
     private:
-        GameManagerView* gm;
 
         SliderSFML* sliderVolume;
 

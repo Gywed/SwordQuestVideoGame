@@ -14,8 +14,6 @@ using namespace sf;
 class MenuStateView: public StateView
 {
     private:
-        // GameManager
-        GameManagerView* gm;
 
         int MainMenuSelected=0;
         Font font;

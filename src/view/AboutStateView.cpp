@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
-AboutStateView::AboutStateView(GameManagerView* gm)
+AboutStateView::AboutStateView(GameManagerView* gm):StateView(gm)
 {
-    this->gm = gm;
+
 }
 
 AboutStateView::~AboutStateView()
@@ -12,7 +12,7 @@ AboutStateView::~AboutStateView()
     //dtor
 }
 
-AboutStateView::AboutStateView(const AboutStateView& other)
+AboutStateView::AboutStateView(const AboutStateView& other):StateView(other)
 {
     //copy ctor
 }

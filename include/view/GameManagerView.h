@@ -5,9 +5,10 @@
 
 using namespace std;
 
-#include "StateView.h"
+//#include "StateView.h"
 #include "EnumState.h"
 
+class StateView;
 
 class GameManagerView
 {

@@ -1,13 +1,13 @@
 #include "view/StateView.h"
 
-StateView::StateView()
+StateView::StateView(GameManagerView* gm):gm(gm)
 {
     //ctor
 }
 
 StateView::~StateView()
 {
-    //dtor
+
 }
 
 StateView::StateView(const StateView& other)

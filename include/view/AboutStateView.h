@@ -11,7 +11,6 @@ using namespace sf;
 class AboutStateView: public StateView
 {
     private:
-        GameManagerView* gm;
 
         RectangleShape background;
         Texture aboutTexture;

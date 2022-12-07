@@ -15,8 +15,7 @@
 class PlayStateView: public StateView
 {
     private:
-        // GameManager
-        GameManagerView* gm;
+
 
         //View
         MainHeroView* mainHeroV;

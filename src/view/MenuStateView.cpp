@@ -1,7 +1,7 @@
 #include "view/MenuStateView.h"
 #include <iostream>
 
-MenuStateView::MenuStateView(GameManagerView* gm)
+MenuStateView::MenuStateView(GameManagerView* gm):StateView(gm)
 {
     this->gm = gm;
 }
@@ -11,7 +11,7 @@ MenuStateView::~MenuStateView()
     //dtor
 }
 
-MenuStateView::MenuStateView(const MenuStateView& other)
+MenuStateView::MenuStateView(const MenuStateView& other):StateView(other)
 {
     //copy ctor
 }
