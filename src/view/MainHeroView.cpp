@@ -298,55 +298,16 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         }
 
 
-        //Verifying events
-        sf::Event ev;
-        while (window->pollEvent(ev))
+        //Return to Idle state if all the direction keys are not pressed
+        if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-
-            // If a key is released
-            if (ev.type == sf::Event::KeyReleased)
+            //Can't return to default state if it's attacking
+            if(!attackFlag)
             {
-                switch (ev.key.code)
-                {
-                    // Process the up, down, left and right keys
-                    case sf::Keyboard::Up :
-                        //Can't return to default state if it's attacking
-                        if(!attackFlag)
-                        {
-                            idleFlag=true;
-                            idleTextureRect->left=0;
-                            movementTextureRect->left=0;
-                            break;
-                        }
-                    case sf::Keyboard::Down:
-                        if(!attackFlag)
-                        {
-                            idleFlag=true;
-                            idleTextureRect->left=0;
-                            movementTextureRect->left=0;
-                            break;
-                        }
-                    case sf::Keyboard::Left:
-                        if(!attackFlag)
-                        {
-                            idleFlag=true;
-                            idleTextureRect->left=0;
-                            movementTextureRect->left=0;
-                            break;
-                        }
-                    case sf::Keyboard::Right:
-                        if(!attackFlag)
-                        {
-                            idleFlag=true;
-                            idleTextureRect->left=0;
-                            movementTextureRect->left=0;
-                            break;
-                        }
-
-                    default : break;
-                }
+                idleFlag=true;
+                idleTextureRect->left=0;
+                movementTextureRect->left=0;
                 this->setTextureRect(*idleTextureRect);
-
             }
         }
 
