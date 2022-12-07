@@ -1,6 +1,5 @@
 #include "SliderSFML.h"
 
-
 SliderSFML::SliderSFML(int x, int y)
 {
 	xCord = x;
@@ -49,24 +48,14 @@ void SliderSFML::logic(sf::RenderWindow &window)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        setSliderValue(sliderValue+5);
-        sleep(sf::milliseconds(100));
+        setSliderValue(sliderValue+1);
+        sleep(sf::milliseconds(25));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        setSliderValue(sliderValue-5);
-        sleep(sf::milliseconds(100));
+        setSliderValue(sliderValue-1);
+        sleep(sf::milliseconds(25));
     }
-
-//	if (slider.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)
-//		&& sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-//	{
-//		if (sf::Mouse::getPosition(window).x >= xCord && sf::Mouse::getPosition(window).x <= xCord + axisWidth)
-//		{
-//			slider.setPosition(sf::Mouse::getPosition(window).x, yCord);
-//			sliderValue = (minValue + ((slider.getPosition().x - xCord) / axisWidth * (maxValue - minValue)));
-//		}
-//	}
 }
 
 float SliderSFML::getSliderValue()
@@ -105,10 +94,10 @@ void SliderSFML::setSliderPercentValue(float newPercentValue)
 void SliderSFML::draw(sf::RenderWindow &window)
 {
 	logic(window);
-	window.draw(returnText(xCord - 10, yCord + 5, std::to_string(minValue), 20));
+	window.draw(returnText(xCord - 10, yCord + 5, std::to_string(minValue), 30));
 	window.draw(axis);
-	window.draw(returnText(xCord + axisWidth - 10, yCord + 5, std::to_string(maxValue), 20));
+	window.draw(returnText(xCord + axisWidth - 10, yCord + 5, std::to_string(maxValue), 30));
 	window.draw(slider);
-	window.draw(returnText(slider.getPosition().x - sliderWidth, slider.getPosition().y - (sliderHeight+5),
-		std::to_string((int)sliderValue), 15));
+	window.draw(returnText(slider.getPosition().x - sliderWidth, slider.getPosition().y - (sliderHeight+15),
+		std::to_string((int)sliderValue), 30));
 }

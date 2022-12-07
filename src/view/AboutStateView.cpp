@@ -35,19 +35,19 @@ void AboutStateView::init(sf::RenderWindow* window)
     credits[0].setOutlineColor(sf::Color::Black);
     credits[0].setOutlineThickness(7.);
     credits[0].setCharacterSize(60);
-    credits[0].setPosition(700,75);
+    credits[0].setPosition(window->getSize().x*0.29,75);
 
     credits[1].setString("Yohan Noel-Huls");
     credits[1].setOutlineColor(sf::Color::Black);
     credits[1].setOutlineThickness(7.);
     credits[1].setCharacterSize(60);
-    credits[1].setPosition(600,175);
+    credits[1].setPosition(window->getSize().x*0.29,175);
 
     credits[2].setString("Nathan Tytgat");
     credits[2].setOutlineColor(sf::Color::Black);
     credits[2].setOutlineThickness(7.);
     credits[2].setCharacterSize(60);
-    credits[2].setPosition(700,275);
+    credits[2].setPosition(window->getSize().x*0.29,275);
 
     // Background image
     this->background.setSize(Vector2f(window->getSize().x,window->getSize().y));
