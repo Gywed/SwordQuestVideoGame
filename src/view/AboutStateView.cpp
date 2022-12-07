@@ -115,7 +115,7 @@ void AboutStateView::init(sf::RenderWindow* window)
     credits[5].setCharacterSize(60);
     credits[5].setPosition(window->getSize().x*0.1 + animationText.getGlobalBounds().width + 20,750);
 
-    credits[6].setString("Anais Therry");
+    credits[6].setString(L"Anaïs Therry");
     credits[6].setOutlineColor(sf::Color::Black);
     credits[6].setOutlineThickness(7.);
     credits[6].setCharacterSize(60);
