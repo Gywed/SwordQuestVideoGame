@@ -11,6 +11,7 @@ int main()
     GameManagerView *gm = new GameManagerView();
     gm->setWindow(window);
     gm->setState(EnumState::MENUSTATE);
+    window->setMouseCursorVisible(false);
 
     while (window->isOpen())
     {
