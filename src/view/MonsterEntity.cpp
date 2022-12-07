@@ -111,7 +111,9 @@ bool MonsterEntity::update(Observable* obs)
     MainHeroView* mainHeroV = ((MainHeroView*)obs);
     if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
     {
-        this->getDamaged(mainHeroV->getMainHero()->getDamage());
+        int damage = mainHeroV->getMainHero()->getDamage();
+        damage *= mainHeroV->getHeavyAttackFlag() ? 2 : 1;
+        this->getDamaged(damage);
 
         return !this->deadFlag;
 

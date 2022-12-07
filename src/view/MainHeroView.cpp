@@ -77,6 +77,7 @@ void MainHeroView::setMainHero(MainHero* mainHero) { this->mainHero = mainHero; 
 sf::IntRect* MainHeroView::getRectSourceSprite()const { return idleTextureRect; }
 void MainHeroView::increaseScore(int increaseValue) { this->score += increaseValue; }
 int MainHeroView::getScore()const { return this->score; }
+bool MainHeroView::getHeavyAttackFlag()const {return heavyAttackFlag; };
 
 
 void MainHeroView::setRectSourceSprite(sf::IntRect* textureRect)

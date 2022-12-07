@@ -63,6 +63,7 @@ class MainHeroView: public Entity, public Observable
         LifeBarView* getLifeBarView()const;
         void increaseScore(int increaseValue);
         int getScore()const;
+        bool getHeavyAttackFlag()const;
 
         //Method
         void spriteEvents(sf::RenderWindow* window);
