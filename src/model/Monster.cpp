@@ -84,10 +84,10 @@ std::tuple<float, float> Monster::moveToMainHero(MainHero &mainHero)
         offsetX = 0;
     }else
     {
-        if(posX > mainHero.getPosX()+20)
+        if(posX > mainHero.getPosX()+40)
             offsetX = moveLeft();
 
-        if(posX < mainHero.getPosX()-20)
+        if(posX < mainHero.getPosX()-40)
             offsetX = moveRight();
 
     }
