@@ -67,6 +67,12 @@ void PauseView::init(sf::RenderWindow* window)
     // Button Main Menu
     pMenu[1].setPosition(window->getSize().x*0.45,window->getSize().y/2.1);
     pMenu[1].setScale(.65, .65);
+
+    // KeyBinding
+    keyBindingTexture.loadFromFile("images/keybinding.png");
+    keyBindingSprite.setTexture(keyBindingTexture);
+    keyBindingSprite.setScale(0.4,0.4);
+    keyBindingSprite.setPosition((window->getSize().x-keyBindingSprite.getGlobalBounds().width),(window->getSize().y-keyBindingSprite.getGlobalBounds().height));
 }
 
 int PauseView::run(sf::RenderWindow* window)
@@ -109,12 +115,14 @@ void PauseView::render()
 {
     this->gm->getWindow()->draw(spriteBackground);
     this->gm->getWindow()->draw(spritePauseMenu);
+    this->gm->getWindow()->draw(keyBindingSprite);
 
     pMenu[0].setTexture(btnTexture[0]);
     pMenu[1].setTexture(btnTexture[1]);
     pMenu[0].setOrigin(pMenu[0].getGlobalBounds().width/2., pMenu[0].getGlobalBounds().height/2.);
     pMenu[1].setOrigin(pMenu[1].getGlobalBounds().width/2., pMenu[1].getGlobalBounds().height/2.);
     pMenu[PauseMenuSelected].setTexture(btnTexture[PauseMenuSelected+2], true);
+
 
     for(int i=0;i<Nb_Btn;i++){
         this->gm->getWindow()->draw(pMenu[i]);

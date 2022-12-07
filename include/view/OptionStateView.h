@@ -24,6 +24,12 @@ class OptionStateView: public StateView
         // Volume text
         Text volumeText;
 
+        // Keybinding
+        Texture* keyBindingTexture;
+        Sprite* keyBindingSprite;
+
+
+
     public:
         OptionStateView(GameManagerView* gm = nullptr);
         virtual ~OptionStateView();

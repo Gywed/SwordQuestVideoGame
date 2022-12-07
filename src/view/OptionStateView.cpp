@@ -11,6 +11,8 @@ OptionStateView::~OptionStateView()
 {
     //dtor
     delete sliderVolume;
+    delete keyBindingTexture;
+    delete keyBindingSprite;
 }
 
 OptionStateView::OptionStateView(const OptionStateView& other):StateView(other)
@@ -49,12 +51,19 @@ void OptionStateView::init(sf::RenderWindow* window)
 	volumeText.setOutlineColor(sf::Color::Black);
     volumeText.setOutlineThickness(7.);
     volumeText.setCharacterSize(100);
-    volumeText.setPosition(window->getSize().x*0.1,(window->getSize().y-volumeText.getGlobalBounds().height)/2);
+    volumeText.setPosition(window->getSize().x*0.1,(window->getSize().y-volumeText.getGlobalBounds().height)*0.2);
 
     // Volume slider
-    sliderVolume = new SliderSFML(window->getSize().x*0.11+volumeText.getGlobalBounds().width,window->getSize().y/2+30);
+    sliderVolume = new SliderSFML(window->getSize().x*0.11+volumeText.getGlobalBounds().width,window->getSize().y*0.2+40);
     sliderVolume->create(0, 100);
     sliderVolume->setSliderValue(50.);
+
+    // KeyBinding
+    this->keyBindingTexture = new sf::Texture();
+    this->keyBindingTexture->loadFromFile("images/keybinding.png");
+    this->keyBindingSprite = new sf::Sprite(*keyBindingTexture);
+    this->keyBindingSprite->setScale(0.5,0.5);
+    keyBindingSprite->setPosition((window->getSize().x-keyBindingSprite->getGlobalBounds().width)/2-100,window->getSize().y*0.4);
 
 }
 void OptionStateView::run(sf::RenderWindow* window)
@@ -77,6 +86,7 @@ void OptionStateView::render(sf::RenderWindow* window)
     window->draw(greyRectangle);
     window->draw(volumeText);
     sliderVolume->draw(*window);
+    window->draw(*keyBindingSprite);
     window->display();
 }
 void OptionStateView::destroy() {}

@@ -22,6 +22,10 @@ class PauseView
         Sprite pMenu[Nb_Btn];
         Texture btnTexture[Nb_Btn*3];
 
+        // Keybinding
+        Texture keyBindingTexture;
+        Sprite keyBindingSprite;
+
         bool rightKey, leftKey, enterKey;
 
     public:
