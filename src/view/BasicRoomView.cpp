@@ -77,6 +77,7 @@ void BasicRoomView::addItem(ItemView* itemV)
 void BasicRoomView::removeItem(ItemView* itemV)
 {
     items.remove(itemV);
+
 //    room->addItem(monsterV->getMonster());
     delete itemV;
 }
