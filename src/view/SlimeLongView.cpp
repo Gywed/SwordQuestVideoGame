@@ -65,7 +65,7 @@ SlimeLongView& SlimeLongView::operator=(const SlimeLongView& rhs)
 //###################################################################################################
 void SlimeLongView::getDamaged(int dmg)
 {
-    this->monster->getDamaged(dmg);
+    this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
     if(hp==0)
     {

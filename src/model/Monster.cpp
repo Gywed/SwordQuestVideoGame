@@ -46,7 +46,7 @@ void Monster::attack(MainHero* mainHero)
 
 }
 
-void Monster::getDamaged(int damage)
+void Monster::receiveDamage(int damage)
 {
     int newHP = getHP() - damage;
 

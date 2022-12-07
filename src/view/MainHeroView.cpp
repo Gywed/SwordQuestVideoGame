@@ -290,7 +290,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         //Temporary event to test the getDamaged event
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            getDamaged(1);
+            receiveDamage(1);
         }
 
         if(this->mainHero->isAttackable())
@@ -401,9 +401,9 @@ void MainHeroView::updateSpriteHeavyAttackAnimation()
     }
 }
 
-void MainHeroView::getDamaged(int dmg)
+void MainHeroView::receiveDamage(int dmg)
 {
-    this->mainHero->getDamaged(dmg);
+    this->mainHero->receiveDamage(dmg);
     int hp = this->mainHero->getHP();
     this->setColor(sf::Color::Red);
     if(hp==0)

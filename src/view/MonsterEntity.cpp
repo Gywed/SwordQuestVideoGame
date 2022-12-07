@@ -59,7 +59,7 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
                 if(this->simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
                 {
                     attackFlag=true;
-                    mainHeroV->getDamaged(this->monster->getDamage());
+                    mainHeroV->receiveDamage(this->monster->getDamage());
                     simpleAttackCoolDownTimer.restart();
                 }
 

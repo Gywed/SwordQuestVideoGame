@@ -65,7 +65,7 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 //###################################################################################################
 void SkeletonView::getDamaged(int dmg)
 {
-    this->monster->getDamaged(dmg);
+    this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
     if(hp==0)
     {

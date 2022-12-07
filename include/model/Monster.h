@@ -32,7 +32,7 @@ class Monster: public Character
 
         virtual void attack(MainHero* mainHero);
 
-        void getDamaged(int damage);
+        void receiveDamage(int damage);
 
 //        static int getCompteur();
 //        int getId() const;

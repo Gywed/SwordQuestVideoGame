@@ -45,7 +45,7 @@ void MainHero::init()
     attackable_file.close();
 }
 
-void MainHero::getDamaged(int damage)
+void MainHero::receiveDamage(int damage)
 {
     if (!isAttackable())
         return;

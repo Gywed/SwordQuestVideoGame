@@ -65,7 +65,7 @@ SlimeRoundView& SlimeRoundView::operator=(const SlimeRoundView& rhs)
 //###################################################################################################
 void SlimeRoundView::getDamaged(int dmg)
 {
-    this->monster->getDamaged(dmg);
+    this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
     if(hp==0)
     {
