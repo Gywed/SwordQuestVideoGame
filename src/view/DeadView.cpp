@@ -43,7 +43,7 @@ void DeadView::init(sf::RenderWindow* window)
 {
     // Background
     spriteBackground.setTextureRect(IntRect(0,0,window->getSize().x,window->getSize().y));
-    backgroundTexture.loadFromFile("images/DeadMenu/WhiteBG.png");
+    backgroundTexture.loadFromFile("images/WhiteBG.png");
     spriteBackground.setTexture(backgroundTexture);
     spriteBackground.setColor(Color(128,128,128,128));
 

@@ -5,10 +5,10 @@ SliderSFML::SliderSFML(int x, int y)
 {
 	xCord = x;
 	yCord = y;
-	axisHeight = 10;
-	axisWidth = 200;
-	sliderWidth = 20;
-	sliderHeight = 30;
+	axisHeight = 20;
+	axisWidth = 1000;
+	sliderWidth = 30;
+	sliderHeight = 50;
 
 	if (!font.loadFromFile("Fonts/Berlin_Sans_FB_Demi_Bold.ttf"))
 		std::cout << "Error loading font\n";
@@ -27,7 +27,7 @@ SliderSFML::SliderSFML(int x, int y)
 	slider.setSize(sf::Vector2f(sliderWidth, sliderHeight));
 	slider.setFillColor(sf::Color::White);
     slider.setOutlineColor(sf::Color::Black);
-    slider.setOutlineThickness(2.);
+    slider.setOutlineThickness(4.);
 }
 
 sf::Text SliderSFML::returnText(int x, int y, std::string z, int fontSize)
@@ -50,12 +50,12 @@ void SliderSFML::logic(sf::RenderWindow &window)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         setSliderValue(sliderValue+5);
-        sleep(sf::milliseconds(150));
+        sleep(sf::milliseconds(100));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         setSliderValue(sliderValue-5);
-        sleep(sf::milliseconds(150));
+        sleep(sf::milliseconds(100));
     }
 
 //	if (slider.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)

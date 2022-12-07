@@ -22,7 +22,7 @@ class OptionStateView: public StateView
         // Font
         Font globalFont;
 
-        // Game over text
+        // Volume text
         Text volumeText;
 
     public:
