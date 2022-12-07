@@ -35,7 +35,7 @@ PauseView& PauseView::operator=(const PauseView& rhs)
 void PauseView::init(sf::RenderWindow* window)
 {
     spriteBackground.setTextureRect(IntRect(0,0,window->getSize().x,window->getSize().y));
-    backgroundTexture.loadFromFile("images/PauseMenu/WhiteBG.png");
+    backgroundTexture.loadFromFile("images/WhiteBG.png");
     spriteBackground.setTexture(backgroundTexture);
     spriteBackground.setColor(Color(128,128,128,128));
 

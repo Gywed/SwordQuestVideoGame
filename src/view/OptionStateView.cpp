@@ -34,7 +34,7 @@ void OptionStateView::init(sf::RenderWindow* window)
 
     // Grey background
     this->greyRectangle.setSize(Vector2f(window->getSize().x*0.9,window->getSize().y*0.9));
-    this->greyRectangleTexture.loadFromFile("images/OptionMenu/WhiteBG.png");
+    this->greyRectangleTexture.loadFromFile("images/WhiteBG.png");
     this->greyRectangle.setTexture(&greyRectangleTexture);
     this->greyRectangle.setFillColor(Color(128,128,128,128));
     this->greyRectangle.setPosition(window->getSize().x*0.05,window->getSize().y*0.05);

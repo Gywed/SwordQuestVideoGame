@@ -27,7 +27,7 @@ SliderSFML::SliderSFML(int x, int y)
 	slider.setSize(sf::Vector2f(sliderWidth, sliderHeight));
 	slider.setFillColor(sf::Color::White);
     slider.setOutlineColor(sf::Color::Black);
-    slider.setOutlineThickness(2.);
+    slider.setOutlineThickness(4.);
 }
 
 sf::Text SliderSFML::returnText(int x, int y, std::string z, int fontSize)
