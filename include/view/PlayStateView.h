@@ -40,7 +40,7 @@ class PlayStateView: public StateView
 
         //Monster spawn
         sf::Clock monsterSpawnTimer;
-        float timeBeforeSpawn = 10.;
+        float timeBeforeSpawn = 7.;
 
 
         bool pauseFlag = false;

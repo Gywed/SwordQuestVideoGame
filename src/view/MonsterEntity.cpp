@@ -36,11 +36,8 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
     {
         this->monster->getPosX()<mainHeroV->getMainHero()->getPosX()? this->setScale(2. , 2.) : this->setScale(-2, 2);
 
-        if(this->monster->distanceFromMainHero(*mainHeroV->getMainHero()) <= this->monster->getAggroDistance())
-            this->monster->setAggroed(true);
-
         //Movement
-        if(this->monster->isAggroed() && !attackFlag)
+        if(!attackFlag)
         {
             this->setColor(*this->colorOfEntity);
             this->monster->setAllMovementClock(std::chrono::high_resolution_clock::now());

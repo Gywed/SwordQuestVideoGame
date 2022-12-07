@@ -4,7 +4,6 @@ SlimeLong::SlimeLong(float posX, float posY): Monster(posX, posY)
 {
     this->HP = 1;
     this->speed = 0.02;
-    this->aggroDistance = 300;
     this->damage = 1;
     this->scoreValue = 1;
 }

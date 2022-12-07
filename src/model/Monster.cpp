@@ -19,9 +19,7 @@ Monster::~Monster()
 Monster::Monster(const Monster& other):Character(other)
 {
     //copy ctor
-    this->aggroDistance = other.aggroDistance;
     this->dead = other.dead;
-    this->aggroed = other.aggroed;
     this->scoreValue = other.scoreValue;
 //    id = new int(*(other.id));
 }
@@ -33,9 +31,7 @@ Monster& Monster::operator=(const Monster& rhs)
 
 //    delete id;
     Character::operator=(rhs);
-    this->aggroDistance = rhs.aggroDistance;
     this->dead = rhs.dead;
-    this->aggroed = rhs.aggroed;
     this->scoreValue = rhs.scoreValue;
 //    this->id = new int(*rhs.id);
     return *this;
@@ -70,10 +66,6 @@ void Monster::receiveDamage(int damage)
 //}
 
 //Getters/Setters
-float Monster::getAggroDistance()const { return aggroDistance; }
-void Monster::setAggroDistance(float aggroDistance) { this->aggroDistance = aggroDistance; }
-bool Monster::isAggroed()const { return aggroed; }
-void Monster::setAggroed(bool aggroed) { this->aggroed = aggroed; }
 int Monster::getScoreValue()const { return scoreValue;}
 void Monster::setScoreValue(int newScoreValue) { this->scoreValue = newScoreValue;}
 
