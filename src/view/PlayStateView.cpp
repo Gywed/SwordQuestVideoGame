@@ -120,11 +120,6 @@ void PlayStateView::run(sf::RenderWindow* window)
     {
         this->gm->getSound()->setPitch(1.20);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-    {
-        std::cout<<"Dead\n";
-        this->skeletonV->setDeadFlag(true);
-    }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
