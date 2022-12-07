@@ -293,6 +293,11 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
         if(idleFlag)
             updateSpriteIdleAnimation();
 
+        if(this->mainHero->isAttackable())
+        {
+            this->setColor(*this->mainHeroColor);
+        }
+
         //Actions if the sprite is attacking
         if(attackFlag)
         {
