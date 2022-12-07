@@ -113,6 +113,10 @@ Room::Room()
     tilesMapping[14+1*30]=229;
     tilesMapping[15+1*30]=229;
 
+    //Jason painting
+    tilesMapping[12+1*30]=226;
+    tilesMapping[13+1*30]=227;
+
     //Inner carpet
     for(int i=5; i<25; i++)
         for(int j=6; j<13; j++)
