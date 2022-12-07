@@ -63,7 +63,7 @@ SlimeLongView& SlimeLongView::operator=(const SlimeLongView& rhs)
 
 //Method
 //###################################################################################################
-void SlimeLongView::getDamaged(int dmg)
+void SlimeLongView::receiveDamage(int dmg)
 {
     this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
@@ -76,10 +76,8 @@ void SlimeLongView::getDamaged(int dmg)
 
         this->setTextureRect(*deathTextureRect);
         //determine the value of the position modifier for the attack because of the texture size differences
-        if(this->getScale().x < 0)
-            spritePosModifier.x = - abs(movementTextureRect->width - deathTextureRect->width);
-        else
-            spritePosModifier.x = abs(movementTextureRect->width - deathTextureRect->width);
+        spritePosModifier.x = abs(movementTextureRect->width - deathTextureRect->width);
+        spritePosModifier.x *= this->getScale().x < 0 ? -1. : 1.;
         spritePosModifier.y = abs(movementTextureRect->height - deathTextureRect->height);
         //Apply the position modifiers
         this->setPosition(this->monster->getPosX() - spritePosModifier.x, this->monster->getPosY() - spritePosModifier.y);

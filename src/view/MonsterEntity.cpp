@@ -113,7 +113,7 @@ bool MonsterEntity::update(Observable* obs)
     {
         int damage = mainHeroV->getMainHero()->getDamage();
         damage *= mainHeroV->getHeavyAttackFlag() ? 2 : 1;
-        this->getDamaged(damage);
+        this->receiveDamage(damage);
 
         return !this->deadFlag;
 

@@ -17,7 +17,7 @@ class SlimeLongView: public MonsterEntity
         SlimeLongView& operator=(const SlimeLongView& other);
 
         //Method
-        void getDamaged(int dmg) override;
+        void receiveDamage(int dmg) override;
 
     protected:
 

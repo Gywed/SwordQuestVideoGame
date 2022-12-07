@@ -63,7 +63,7 @@ SlimeRoundView& SlimeRoundView::operator=(const SlimeRoundView& rhs)
 
 //Method
 //###################################################################################################
-void SlimeRoundView::getDamaged(int dmg)
+void SlimeRoundView::receiveDamage(int dmg)
 {
     this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
@@ -76,11 +76,9 @@ void SlimeRoundView::getDamaged(int dmg)
 
         this->setTextureRect(*deathTextureRect);
         //determine the value of the position modifier for the attack because of the texture size differences
-        if(this->getScale().x < 0)
-            spritePosModifier.x = -30;
-        else
-            spritePosModifier.x = 30;
-        spritePosModifier.y = 27;
+        spritePosModifier.x = abs(movementTextureRect->width - deathTextureRect->width);
+        spritePosModifier.x *= this->getScale().x < 0 ? -1 : 1;
+        spritePosModifier.y = abs(movementTextureRect->height - deathTextureRect->height) + 10;
         //Apply the position modifiers
         this->setPosition(this->monster->getPosX() - spritePosModifier.x, this->monster->getPosY() - spritePosModifier.y);
 

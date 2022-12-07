@@ -17,7 +17,7 @@ class SlimeRoundView: public MonsterEntity
         SlimeRoundView& operator=(const SlimeRoundView& other);
 
         //Method
-        void getDamaged(int dmg) override;
+        void receiveDamage(int dmg) override;
 
     protected:
 

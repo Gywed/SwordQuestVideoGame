@@ -300,7 +300,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
 
 
         //Return to Idle state if all the direction keys are not pressed
-        if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if(!idleFlag && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             //Can't return to default state if it's attacking
             if(!attackFlag)

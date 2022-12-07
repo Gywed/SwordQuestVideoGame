@@ -10,7 +10,7 @@ SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
     this->idleTextureSource = "images/Animation/Skeleton/Idle.png";
     this->idleAnimationStep = 32;
     this->idleTextureRectMaxLeft = 96;
-    this->idleAnimationTimeBetweenEachFrame = 0.35;
+    this->idleAnimationTimeBetweenEachFrame = 0.3;
 
     //Movement animation
     this->movementTextureRect = new sf::IntRect(0, 0, 28, 42);
@@ -63,7 +63,7 @@ SkeletonView& SkeletonView::operator=(const SkeletonView& rhs)
 
 //Method
 //###################################################################################################
-void SkeletonView::getDamaged(int dmg)
+void SkeletonView::receiveDamage(int dmg)
 {
     this->monster->receiveDamage(dmg);
     int hp = this->monster->getHP();
@@ -76,11 +76,9 @@ void SkeletonView::getDamaged(int dmg)
 
         this->setTextureRect(*deathTextureRect);
         //determine the value of the position modifier for the attack because of the texture size differences
-        if(this->getScale().x < 0)
-            spritePosModifier.x = -30;
-        else
-            spritePosModifier.x = 30;
-        spritePosModifier.y = 27;
+        spritePosModifier.x = abs(movementTextureRect->width - deathTextureRect->width);
+        spritePosModifier.x *= this->getScale().x < 0 ? -1 : 1;
+        spritePosModifier.y = abs(movementTextureRect->height - deathTextureRect->height) + 15;
         //Apply the position modifiers
         this->setPosition(this->monster->getPosX() - spritePosModifier.x, this->monster->getPosY() - spritePosModifier.y);
 
