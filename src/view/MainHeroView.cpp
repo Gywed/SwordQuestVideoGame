@@ -3,9 +3,9 @@
 #include <thread>
 
 
-MainHeroView::MainHeroView(MainHero *mainHero)
+MainHeroView::MainHeroView(float posX, float posY)
 {
-    this->mainHero = mainHero;
+    this->mainHero = new MainHero(posX, posY);
     this->setPosition(mainHero->getPosX(), mainHero->getPosY());
 
     //Idle animation
