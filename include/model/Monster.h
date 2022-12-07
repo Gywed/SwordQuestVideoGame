@@ -10,9 +10,7 @@ class Monster: public Character
         bool dead=false;
         int scoreValue;
 
-//        int* id;
-//
-//        inline static int compteur;
+
 
     public:
         Monster(float posX, float posY);
@@ -33,8 +31,6 @@ class Monster: public Character
 
         void receiveDamage(int damage);
 
-//        static int getCompteur();
-//        int getId() const;
 
         float distanceFromMainHero(MainHero &mainHero);
         //return a tuple containing offsetX and offsetY for the monster's position

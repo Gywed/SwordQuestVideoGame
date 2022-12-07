@@ -6,14 +6,12 @@
 Monster::Monster(float posX, float posY): Character(posX, posY)
 {
     //ctor
-//    id = new int(++compteur);
-//    dead = false;
 }
 
 Monster::~Monster()
 {
     //dtor
-//    delete id;
+
 }
 
 Monster::Monster(const Monster& other):Character(other)
@@ -21,7 +19,7 @@ Monster::Monster(const Monster& other):Character(other)
     //copy ctor
     this->dead = other.dead;
     this->scoreValue = other.scoreValue;
-//    id = new int(*(other.id));
+
 }
 
 Monster& Monster::operator=(const Monster& rhs)
@@ -29,11 +27,10 @@ Monster& Monster::operator=(const Monster& rhs)
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
 
-//    delete id;
     Character::operator=(rhs);
     this->dead = rhs.dead;
     this->scoreValue = rhs.scoreValue;
-//    this->id = new int(*rhs.id);
+
     return *this;
 }
 
@@ -55,15 +52,7 @@ void Monster::receiveDamage(int damage)
         setHP(newHP);
 }
 
-//int Monster::getCompteur()
-//{
-//    return compteur;
-//}
-//
-//int Monster::getId()const
-//{
-//    return *id;
-//}
+
 
 //Getters/Setters
 int Monster::getScoreValue()const { return scoreValue;}

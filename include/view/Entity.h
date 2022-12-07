@@ -66,7 +66,7 @@ class Entity: public sf::Sprite
         bool getAttackFlag() const;
 
         /* Method */
-        //void loadTexture(const string filename);
+
         void updatePosition();
         bool getDeathFlag()const;
         bool getDeadFlag()const;

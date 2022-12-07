@@ -270,33 +270,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
             }
         }
 
-        //Temporary event to test the death event
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            idleFlag=false;
-            attackFlag=false;
-            deathFlag=true;
 
-            this->setTextureRect(*deathTextureRect);
-            //determine the value of the position modifier for the attack because of the texture size differences
-            if(this->getScale().x < 0)
-                spritePosModifier.x = -30;
-            else
-                spritePosModifier.x = 30;
-            spritePosModifier.y = 27;
-            //Apply the position modifiers
-            this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
-        }
-        //Temporary event to test the getDamaged event
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            receiveDamage(1);
-        }
-
-        if(this->mainHero->isAttackable())
-        {
-            this->setColor(*this->mainHeroColor);
-        }
 
 
         //Return to Idle state if all the direction keys are not pressed

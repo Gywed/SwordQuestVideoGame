@@ -76,7 +76,6 @@ void GameManagerView::setState(const EnumState st)
             }
             break;
 
-//        case EnumState::OPTIONSTATE: this->state = new OptionStateView(this);break;
         case EnumState::ABOUTSTATE:
             this->state = new AboutStateView(this);
             if (sound->getBuffer() != bufferMainMenu)

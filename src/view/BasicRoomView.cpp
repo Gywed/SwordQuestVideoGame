@@ -71,13 +71,12 @@ MonsterEntity* BasicRoomView::generateMonsterView()
 void BasicRoomView::addItem(ItemView* itemV)
 {
     items.push_back(itemV);
-//    room->addItem(monsterV->getMonster());
+
 }
 
 void BasicRoomView::removeItem(ItemView* itemV)
 {
     items.remove(itemV);
 
-//    room->addItem(monsterV->getMonster());
     delete itemV;
 }

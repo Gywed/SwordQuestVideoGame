@@ -91,14 +91,11 @@ void MenuStateView::run(sf::RenderWindow* window)
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up )&& !this->upKey) {
         mMenu[MainMenuSelected].setTexture(btnTexture[MainMenuSelected], true);
         if(MainMenuSelected-1>=0){
-//        mainMenu[MainMenuSelected].setFillColor(Color::Black);
             MainMenuSelected--;
         }
         else
             MainMenuSelected=3;
 
-
-//        mainMenu[MainMenuSelected].setFillColor(Color::Yellow);
         mMenu[MainMenuSelected].setTexture(btnTexture[4+MainMenuSelected], true);
 
     }

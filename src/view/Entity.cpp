@@ -3,13 +3,12 @@
 
 Entity::Entity()
 {
-    //this->texture = new sf::Texture();
+
 }
 
 Entity::~Entity()
 {
     //dtor
-    //delete texture;
 }
 
 Entity::Entity(const Entity& other)
@@ -25,7 +24,7 @@ Entity& Entity::operator=(const Entity& rhs)
 }
 
 sf::Vector2f Entity::getMovement() const { return movement; }
-//sf::Texture* Entity::getTexture() const { return texture; }
+
 void Entity::setMovement(const sf::Vector2f movement) { this->movement = movement; }
 
 /* Method */
