@@ -56,7 +56,6 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
                 if(this->simpleAttackCoolDownTimer.getElapsedTime().asSeconds() > 2.f)
                 {
                     attackFlag=true;
-                    mainHeroV->receiveDamage(this->monster->getDamage());
                     simpleAttackCoolDownTimer.restart();
                 }
 
@@ -78,6 +77,8 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
             this->setPosition(this->monster->getPosX(), this->monster->getPosY() + spritePosModifier.y);
             //Animation
             updateSpriteSimpleAttackAnimation();
+            if(simpleAttackTextureRect->left == attackConnectsFrame)
+                mainHeroV->receiveDamage(this->monster->getDamage());
 
             //Check if the animation is finished
             if(!attackFlag)

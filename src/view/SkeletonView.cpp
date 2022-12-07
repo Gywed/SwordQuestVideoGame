@@ -40,6 +40,7 @@ SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
 
 
     this->colorOfSkeleton =new sf::Color(this->getColor());
+    this->attackConnectsFrame = simpleAttackAnimationStep * 3;
 }
 
 SkeletonView::~SkeletonView()

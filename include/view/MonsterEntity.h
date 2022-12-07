@@ -31,6 +31,7 @@ class MonsterEntity: public Entity, public Observer
         Monster* monster;
         sf::Color* colorOfEntity;
         sf::Clock knockbackTimer;
+        int attackConnectsFrame;
 
 
         bool gettingKnockbacked = false;

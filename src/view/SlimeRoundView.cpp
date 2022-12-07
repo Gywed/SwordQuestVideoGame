@@ -40,6 +40,7 @@ SlimeRoundView::SlimeRoundView(SlimeRound* slimeRound): MonsterEntity(slimeRound
 
 
     this->colorOfSkeleton =new sf::Color(this->getColor());
+    this->attackConnectsFrame = simpleAttackAnimationStep * 4;
 }
 
 SlimeRoundView::~SlimeRoundView()

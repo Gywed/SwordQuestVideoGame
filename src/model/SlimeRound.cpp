@@ -2,10 +2,10 @@
 
 SlimeRound::SlimeRound(float posX, float posY): Monster(posX, posY)
 {
-    this->HP = 1;
+    this->HP = 2;
     this->speed = 0.02;
     this->damage = 1;
-    this->scoreValue = 1;
+    this->scoreValue = HP;
 }
 
 SlimeRound::~SlimeRound()

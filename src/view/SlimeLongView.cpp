@@ -40,6 +40,7 @@ SlimeLongView::SlimeLongView(SlimeLong* slimeLong): MonsterEntity(slimeLong)
 
 
     this->colorOfSkeleton =new sf::Color(this->getColor());
+    this->attackConnectsFrame = simpleAttackAnimationStep * 4;
 }
 
 SlimeLongView::~SlimeLongView()

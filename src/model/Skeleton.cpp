@@ -2,10 +2,10 @@
 
 Skeleton::Skeleton(float posX, float posY): Monster(posX, posY)
 {
-    this->HP = 2;
-    this->speed = 0.04;
+    this->HP = 3;
+    this->speed = 0.035;
     this->damage = 2;
-    this->scoreValue = 2;
+    this->scoreValue = HP;
 }
 
 Skeleton::~Skeleton()
