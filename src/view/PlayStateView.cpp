@@ -151,13 +151,23 @@ void PlayStateView::run(sf::RenderWindow* window)
     } else
     {
         //New monster spawn
-        if(monsterSpawnTimer.getElapsedTime().asSeconds() > timeBeforeSpawn)
+        if(this->roomV->getMonsters().size()<20)
         {
-            //Create a new monster and add it to the list of observers of mainHeroV
-            this->mainHeroV->attach(this->roomV->generateMonsterView());
-            timeBeforeSpawn*=0.9;
-            monsterSpawnTimer.restart();
+            if(monsterSpawnTimer.getElapsedTime().asSeconds() > timeBeforeSpawn)
+            {
+                //Create a new monster and add it to the list of observers of mainHeroV
+                this->mainHeroV->attach(this->roomV->generateMonsterView());
+                timeBeforeSpawn*=0.9;
+                monsterSpawnTimer.restart();
+            }
         }
+//        if(monsterSpawnTimer.getElapsedTime().asSeconds() > timeBeforeSpawn)
+//        {
+//            //Create a new monster and add it to the list of observers of mainHeroV
+//            this->mainHeroV->attach(this->roomV->generateMonsterView());
+//            timeBeforeSpawn*=0.9;
+//            monsterSpawnTimer.restart();
+//        }
 
         //Main hero actions
         this->mainHeroV->spriteEvents(window);
@@ -188,7 +198,7 @@ void PlayStateView::run(sf::RenderWindow* window)
                 srand (time(NULL));
                 int random = rand()%10+1;
 
-                if(random==3 || random==4 || random==5 || random==6)
+                if(random==3 || random==6)
                 {
                     itemV = new ItemView();
                     itemV->getSprite()->setPosition(monster->getMonster()->getPosX(), monster->getMonster()->getPosY());
