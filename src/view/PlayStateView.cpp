@@ -157,17 +157,11 @@ void PlayStateView::run(sf::RenderWindow* window)
             {
                 //Create a new monster and add it to the list of observers of mainHeroV
                 this->mainHeroV->attach(this->roomV->generateMonsterView());
-                timeBeforeSpawn*=0.9;
+                if(timeBeforeSpawn > 1)
+                    timeBeforeSpawn*=0.9;
                 monsterSpawnTimer.restart();
             }
         }
-//        if(monsterSpawnTimer.getElapsedTime().asSeconds() > timeBeforeSpawn)
-//        {
-//            //Create a new monster and add it to the list of observers of mainHeroV
-//            this->mainHeroV->attach(this->roomV->generateMonsterView());
-//            timeBeforeSpawn*=0.9;
-//            monsterSpawnTimer.restart();
-//        }
 
         //Main hero actions
         this->mainHeroV->spriteEvents(window);
