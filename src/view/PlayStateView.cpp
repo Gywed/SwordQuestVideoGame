@@ -65,6 +65,18 @@ void PlayStateView::init(sf::RenderWindow* window)
     this->playStateMenuSound->setLoop(true);
     this->buffer = new sf::SoundBuffer();
     this->buffer->loadFromFile("Sound/NoooOoodabedeedabeda.wav");
+
+
+    // Global Font
+    globalFont.loadFromFile("Fonts/Berlin_Sans_FB_Demi_Bold.ttf");
+
+    // Score
+    scoreText.setFont(globalFont);
+    scoreText.setString("Score : "+std::to_string(mainHeroV->getScore()));
+    scoreText.setOutlineColor(sf::Color::Black);
+    scoreText.setOutlineThickness(7.);
+    scoreText.setCharacterSize(50);
+    scoreText.setPosition((window->getSize().x-scoreText.getGlobalBounds().width)-50.,0);
 }
 
 void PlayStateView::run(sf::RenderWindow* window)
@@ -124,9 +136,11 @@ void PlayStateView::run(sf::RenderWindow* window)
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
 
+        // Enter pauseThread
         std::thread pauseThread(doPause);
         this->pauseFlag = true;
         int state = -1;
+        // Render pause menu in the thread
         while(state == -1)
         {
             state = pauseV->run(window);
@@ -134,6 +148,7 @@ void PlayStateView::run(sf::RenderWindow* window)
             window->display();
         }
 
+        // Leave thread
         pauseThread.join();
         this->pauseFlag = false;
         if (state == 0)
@@ -169,6 +184,8 @@ void PlayStateView::run(sf::RenderWindow* window)
             {
                 //Score increased
                 mainHeroV->increaseScore(monster->getMonster()->getScoreValue());
+                scoreText.setString("Score : "+std::to_string(mainHeroV->getScore()));
+
                 //The monster is detach of the obervers list of MainHEroV
                 this->mainHeroV->detach(monster);
                 //Check if the monster is a round slime
@@ -223,6 +240,7 @@ void PlayStateView::render(sf::RenderWindow* window)
     window->draw(this->roomV->getTileMap());
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
     window->draw(*this->mainHeroV->getLifeBarView()->getSprite());
+    window->draw(this->scoreText);
     for(MonsterEntity* monster : this->roomV->getMonsters())
         window->draw(*monster);
     for(ItemView* item: this->roomV->getItems())

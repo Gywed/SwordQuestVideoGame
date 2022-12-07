@@ -92,7 +92,7 @@ void DeadView::init(sf::RenderWindow* window)
 
     // Score
     scoreText.setFont(globalFont);
-    scoreText.setOutlineColor(sf::Color(sf::Color::Black));
+    scoreText.setOutlineColor(sf::Color::Black);
     scoreText.setOutlineThickness(7.);
     scoreText.setCharacterSize(100);
     scoreText.setPosition((window->getSize().x-gameOverText.getGlobalBounds().width)/2,window->getSize().y*0.70);

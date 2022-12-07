@@ -30,9 +30,13 @@ class PlayStateView: public StateView
         sf::SoundBuffer* buffer;
         sf::Sound* playStateMenuSound;
 
-        //Monster spawn
+        // Monster spawn
         sf::Clock monsterSpawnTimer;
         float timeBeforeSpawn = 7.;
+
+        // Score
+        sf::Text scoreText;
+        sf::Font globalFont;
 
 
         bool pauseFlag = false;
