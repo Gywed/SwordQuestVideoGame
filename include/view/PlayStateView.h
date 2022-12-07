@@ -18,9 +18,6 @@ class PlayStateView: public StateView
         // GameManager
         GameManagerView* gm;
 
-        //Model
-        MainHero* mainHeroM;
-
         //View
         MainHeroView* mainHeroV;
         BasicRoomView* roomV;

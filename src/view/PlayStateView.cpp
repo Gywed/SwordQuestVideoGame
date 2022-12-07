@@ -48,13 +48,12 @@ PlayStateView& PlayStateView::operator=(const PlayStateView& rhs)
 void PlayStateView::init(sf::RenderWindow* window)
 {
     // Main hero
-
-    this->mainHeroM = new MainHero(window->getSize().x/2., window->getSize().y/2.);
-    this->mainHeroV = new MainHeroView(mainHeroM);
+    this->mainHeroV = new MainHeroView(window->getSize().x/2., window->getSize().y/2.);
 
     // Room
     this->roomV = new BasicRoomView();
-    //Default monsters generated
+
+    //first monsters generated
     this->mainHeroV->attach(this->roomV->generateMonsterView());
 
     // Menu
