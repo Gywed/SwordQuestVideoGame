@@ -50,7 +50,7 @@ class MainHeroView: public Entity, public Observable
         sf::Color* mainHeroColor;
 
     public:
-        MainHeroView(MainHero *character);
+        MainHeroView(float posX, float posY);
         virtual ~MainHeroView();
         MainHeroView(const MainHeroView& other);
         MainHeroView& operator=(const MainHeroView& other);
