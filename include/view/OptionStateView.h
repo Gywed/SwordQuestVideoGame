@@ -4,12 +4,26 @@
 #include <view/SliderSFML.h>
 #include <view/GameManagerView.h>
 
+using namespace sf;
+
 class OptionStateView: public StateView
 {
     private:
         GameManagerView* gm;
 
         SliderSFML* sliderVolume;
+
+        RectangleShape background;
+        Texture optionTexture;
+
+        RectangleShape greyRectangle;
+        Texture greyRectangleTexture;
+
+        // Font
+        Font globalFont;
+
+        // Game over text
+        Text volumeText;
 
     public:
         OptionStateView(GameManagerView* gm = nullptr);

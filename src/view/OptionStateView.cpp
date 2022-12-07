@@ -30,6 +30,18 @@ void OptionStateView::init(sf::RenderWindow* window)
     sliderVolume = new SliderSFML(window->getSize().x/2-50,100);
     sliderVolume->create(0, 100);
     sliderVolume->setSliderValue(50.);
+
+    //
+    this->background.setSize(Vector2f(window->getSize().x,window->getSize().y));
+    this->optionTexture.loadFromFile("images/MainMenu/swordQuestMenuTitle.png");
+    this->background.setTexture(&optionTexture);
+
+    // Grey background
+    this->greyRectangle.setSize(Vector2f(window->getSize().x*0.9,window->getSize().y*0.9));
+    this->greyRectangleTexture.loadFromFile("images/OptionMenu/WhiteBG.png");
+    this->greyRectangle.setTexture(&greyRectangleTexture);
+    this->greyRectangle.setFillColor(Color(128,128,128,128));
+    this->greyRectangle.setPosition(window->getSize().x*0.05,window->getSize().y*0.05);
 }
 void OptionStateView::run(sf::RenderWindow* window)
 {
@@ -38,10 +50,17 @@ void OptionStateView::run(sf::RenderWindow* window)
         gm->getSound()->setVolume(sliderVolume->getSliderValue());
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        this->gm->setState(EnumState::MENUSTATE);
+    }
+
 }
 void OptionStateView::render(sf::RenderWindow* window)
 {
     window->clear();
+    window->draw(background);
+    window->draw(greyRectangle);
     sliderVolume->draw(*window);
     window->display();
 }

@@ -19,7 +19,6 @@ class MenuStateView: public StateView
 
         int MainMenuSelected=0;
         Font font;
-        Text mainMenu[Max_main_menu];
         Sprite mMenu[Max_main_menu];
         RectangleShape background;
         Texture mainTexture;

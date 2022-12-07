@@ -15,6 +15,8 @@ SliderSFML::SliderSFML(int x, int y)
 
 	text.setFont(font);
 	text.setFillColor(sf::Color::White);
+	text.setOutlineColor(sf::Color::Black);
+    text.setOutlineThickness(2.);
 
 	axis.setPosition(x, y);
 	axis.setOrigin(0, axisHeight / 2);
@@ -23,7 +25,9 @@ SliderSFML::SliderSFML(int x, int y)
 	slider.setPosition(x, y);
 	slider.setOrigin(sliderWidth / 2, sliderHeight / 2);
 	slider.setSize(sf::Vector2f(sliderWidth, sliderHeight));
-	slider.setFillColor(sf::Color(192,192,192));
+	slider.setFillColor(sf::Color::White);
+    slider.setOutlineColor(sf::Color::Black);
+    slider.setOutlineThickness(2.);
 }
 
 sf::Text SliderSFML::returnText(int x, int y, std::string z, int fontSize)
@@ -105,6 +109,6 @@ void SliderSFML::draw(sf::RenderWindow &window)
 	window.draw(axis);
 	window.draw(returnText(xCord + axisWidth - 10, yCord + 5, std::to_string(maxValue), 20));
 	window.draw(slider);
-	window.draw(returnText(slider.getPosition().x - sliderWidth, slider.getPosition().y - sliderHeight,
+	window.draw(returnText(slider.getPosition().x - sliderWidth, slider.getPosition().y - (sliderHeight+5),
 		std::to_string((int)sliderValue), 15));
 }
