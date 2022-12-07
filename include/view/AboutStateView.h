@@ -4,7 +4,7 @@
 #include "SFML/Graphics.hpp"
 #include "GameManagerView.h"
 
-#define Nb_Credit 6
+#define Nb_Credit 7
 
 using namespace sf;
 
@@ -24,7 +24,9 @@ class AboutStateView: public StateView
         sf::Text specialThanksText;
         sf::Text musicsText;
         sf::Text tileSetText;
-        sf::Text AnimationText;
+        sf::Text animationText;
+
+        sf::Text mainMenuText;
     public:
         AboutStateView(GameManagerView* gm);
         virtual ~AboutStateView();
