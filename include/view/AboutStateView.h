@@ -36,7 +36,6 @@ class AboutStateView: public StateView
         virtual void init(sf::RenderWindow* window);
         virtual void run(sf::RenderWindow* window);
         virtual void render(sf::RenderWindow* window);
-        virtual void destroy();
 
     protected:
 

@@ -5,6 +5,8 @@
 #include <model/Monster.h>
 #include <list>
 
+#define Nb_Tile 480
+
 using std::list;
 
 class Room
@@ -12,10 +14,7 @@ class Room
     private:
 
         list<Monster*> monsters;
-        int tilesMapping[480];
-
-        int* id;
-        inline static int compteur;
+        int tilesMapping[Nb_Tile];
 
     public:
         Room();
@@ -23,10 +22,8 @@ class Room
         Room(const Room& other);
         Room& operator=(const Room& other);
 
+        // Getter/Setter
         list<Monster*> getMonsters()const;
-        static int getCompteur();
-        int getId()const;
-
 
         const int * getTilesMapping();
         void addMonster(Monster* monster);

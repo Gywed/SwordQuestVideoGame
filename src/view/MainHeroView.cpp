@@ -1,7 +1,5 @@
 #include "view/MainHeroView.h"
-#include <iostream>
 #include <thread>
-
 
 MainHeroView::MainHeroView(float posX, float posY)
 {
@@ -230,8 +228,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                     //Apply the position modifiers
                     this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
 
-                    //Attack method
-                    attack();
+                    //Attack Timer
                     simpleAttackCoolDownTimer.restart();
                 }
 
@@ -262,8 +259,7 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
                     //Apply the position modifiers
                     this->setPosition(this->mainHero->getPosX() - spritePosModifier.x, this->mainHero->getPosY() - spritePosModifier.y);
 
-                    //Attack method
-                    attack();
+                    //Attack Timer
                     heavyAttackCoolDownTimer.restart();
                 }
 
@@ -331,12 +327,6 @@ void MainHeroView::spriteEvents(sf::RenderWindow* window)
             }
         }
     }
-}
-
-void MainHeroView::attack()
-{
-    //Attack from model will be called here
-    //Instruction for the view to manage collision with a monster
 }
 
 void MainHeroView::updateSpriteSimpleAttackAnimation()

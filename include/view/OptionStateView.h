@@ -25,8 +25,8 @@ class OptionStateView: public StateView
         Text volumeText;
 
         // Keybinding
-        Texture* keyBindingTexture;
-        Sprite* keyBindingSprite;
+        Texture keyBindingTexture;
+        Sprite keyBindingSprite;
 
 
 
@@ -39,7 +39,6 @@ class OptionStateView: public StateView
         virtual void init(sf::RenderWindow* window);
         virtual void run(sf::RenderWindow* window);
         virtual void render(sf::RenderWindow* window);
-        virtual void destroy();
 };
 
 #endif // OPTIONSTATEVIEW_H

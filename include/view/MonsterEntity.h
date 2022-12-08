@@ -22,8 +22,9 @@ class MonsterEntity: public Entity, public Observer
         bool spriteEvents(sf::RenderWindow* window, MainHeroView* mainHeroV);
 
         virtual void receiveDamage(int dmg) = 0;
+
         //Redefinition of Observer method
-        bool update(Observable* obs) override;
+        void update(Observable* obs) override;
 
         void getKnockbacked();
 

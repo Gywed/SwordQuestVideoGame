@@ -3,8 +3,6 @@
 #include "Character.h"
 #include <fstream>
 
-using std::string;
-
 class MainHero: public Character
 {
     private:
@@ -12,6 +10,7 @@ class MainHero: public Character
         float invTime = 1.0f;
         std::fstream attackable_file;
 
+        // Used to notify if the main hero got healed
         bool receiveHeal = false;
 
     public:

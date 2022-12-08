@@ -2,7 +2,6 @@
 #define OBSERVER_H
 #include "Observable.h"
 
-
 class Observer
 {
     private:
@@ -14,10 +13,7 @@ class Observer
         Observer& operator=(const Observer& other);
 
         //Return true if the observer is still active
-        virtual bool update(Observable* o) = 0;
-
-    protected:
-
+        virtual void update(Observable* o) = 0;
 
 };
 

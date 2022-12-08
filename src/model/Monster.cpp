@@ -1,7 +1,6 @@
 #include "model/Monster.h"
 #include <model/MainHero.h>
 #include <cmath>
-#include <iostream>
 
 Monster::Monster(float posX, float posY): Character(posX, posY)
 {
@@ -32,11 +31,6 @@ Monster& Monster::operator=(const Monster& rhs)
     this->scoreValue = rhs.scoreValue;
 
     return *this;
-}
-
-void Monster::attack(MainHero* mainHero)
-{
-
 }
 
 void Monster::receiveDamage(int damage)

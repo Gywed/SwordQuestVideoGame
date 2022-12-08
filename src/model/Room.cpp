@@ -5,9 +5,6 @@
 
 Room::Room()
 {
-    //ctor
-    id = new int(compteur++);
-
     //Iniate default tiles mapping
     int tileNumber;
     for(int i=0; i<30; i++)
@@ -155,8 +152,6 @@ Room::Room()
 Room::~Room()
 {
     //dtor
-    delete id;
-
     for(Monster* m : monsters)
     {
         delete m;
@@ -166,41 +161,29 @@ Room::~Room()
 Room::Room(const Room& other)
 {
     //copy ctor
-    delete id;
-    this->id = new int (*other.id);
+    for (int i = 0; i < Nb_Tile; i++)
+        this->tilesMapping[i] = other.tilesMapping[i];
 
     for (Monster* monster : other.monsters)
-    {
         this->monsters.push_back(new Monster(*monster));
-    }
+
 }
 
 Room& Room::operator=(const Room& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
-    delete id;
 
-    this->id = new int(*rhs.id);
+    for (int i = 0; i < Nb_Tile; i++)
+        this->tilesMapping[i] = rhs.tilesMapping[i];
 
     for (Monster* monster : monsters)
         delete monster;
+
     for (Monster* monster : rhs.monsters)
-    {
         this->monsters.push_back(new Monster(*monster));
-    }
 
     return *this;
-}
-
-int Room::getCompteur()
-{
-    return compteur;
-}
-
-int Room::getId()const
-{
-    return *id;
 }
 
 const int * Room::getTilesMapping() { return tilesMapping; }

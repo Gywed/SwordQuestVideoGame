@@ -26,9 +26,6 @@ class Monster: public Character
         int getScoreValue()const;
         void setScoreValue(int newScoreValue);
 
-
-        virtual void attack(MainHero* mainHero);
-
         void receiveDamage(int damage);
 
 

@@ -9,8 +9,6 @@ OptionStateView::~OptionStateView()
 {
     //dtor
     delete sliderVolume;
-    delete keyBindingTexture;
-    delete keyBindingSprite;
 }
 
 OptionStateView::OptionStateView(const OptionStateView& other):StateView(other)
@@ -57,13 +55,14 @@ void OptionStateView::init(sf::RenderWindow* window)
     sliderVolume->setSliderValue(50.);
 
     // KeyBinding
-    this->keyBindingTexture = new sf::Texture();
-    this->keyBindingTexture->loadFromFile("images/keybinding.png");
-    this->keyBindingSprite = new sf::Sprite(*keyBindingTexture);
-    this->keyBindingSprite->setScale(0.5,0.5);
-    keyBindingSprite->setPosition((window->getSize().x-keyBindingSprite->getGlobalBounds().width)/2-100,window->getSize().y*0.4);
+    keyBindingTexture.loadFromFile("images/keybinding.png");
+    keyBindingSprite.setTexture(keyBindingTexture);
+    keyBindingSprite.setScale(0.5,0.5);
+    keyBindingSprite.setPosition((window->getSize().x-keyBindingSprite.getGlobalBounds().width)/2-100,window->getSize().y*0.4);
 
 }
+
+
 void OptionStateView::run(sf::RenderWindow* window)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -84,7 +83,6 @@ void OptionStateView::render(sf::RenderWindow* window)
     window->draw(greyRectangle);
     window->draw(volumeText);
     sliderVolume->draw(*window);
-    window->draw(*keyBindingSprite);
+    window->draw(keyBindingSprite);
     window->display();
 }
-void OptionStateView::destroy() {}

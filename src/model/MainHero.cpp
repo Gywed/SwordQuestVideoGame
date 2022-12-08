@@ -1,5 +1,4 @@
 #include "model/MainHero.h"
-#include <iostream>
 #include <unistd.h>
 #include <signal.h>
 
@@ -36,6 +35,7 @@ void MainHero::init()
     this->speed = 0.1;
     this->damage = 1;
 
+    // Use an extern file due to multi process
     attackable_file.open("attackable",std::ios::out);
     attackable_file<<true;
     attackable_file.close();
@@ -50,12 +50,17 @@ void MainHero::receiveDamage(int damage)
     if (!isAttackable())
         return;
     setAttackable(false);
+    // Create a child process
     pid_t pid = fork();
+    // Only the child process enter this if
     if (pid == 0)
     {
+        // Wait for the invTime and set attacble to true
         stopInvulnaribilityFrame();
+        // Kill the child process
         kill(getpid(),SIGTERM);
 
+    // Parent process (base process) continue with normal code
     } else if (pid > 0) {
         int newHP = getHP() - damage;
 
@@ -69,6 +74,7 @@ void MainHero::receiveDamage(int damage)
     }
 }
 
+// Wait the time of invTime and setAttackable to true
 void MainHero::stopInvulnaribilityFrame()
 {
     usleep(this->invTime*1000000);

@@ -1,5 +1,4 @@
 #include "view/MenuStateView.h"
-#include <iostream>
 
 MenuStateView::MenuStateView(GameManagerView* gm):StateView(gm)
 {
@@ -155,9 +154,5 @@ void MenuStateView::render(sf::RenderWindow* window)
     for(int i=0;i<Max_main_menu;i++){
         window->draw(mMenu[i]);
     }
-
-}
-void MenuStateView::destroy()
-{
 
 }

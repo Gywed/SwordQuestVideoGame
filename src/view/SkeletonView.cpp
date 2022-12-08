@@ -1,5 +1,4 @@
 #include "view/SkeletonView.h"
-#include <iostream>
 
 SkeletonView::SkeletonView(Skeleton* skeleton): MonsterEntity(skeleton)
 {

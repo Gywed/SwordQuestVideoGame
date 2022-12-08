@@ -23,14 +23,10 @@ class StateView
         virtual void run(sf::RenderWindow* window) = 0;
         /* Method to draw component in the game window */
         virtual void render(sf::RenderWindow* window) = 0;
-        /* Method for destroy component in the window game */
-        virtual void destroy() = 0;
 
     protected:
         // GameManager
         GameManagerView* gm;
-
-    private:
 };
 
 #endif // STATEVIEW_H

@@ -16,7 +16,6 @@ class PlayStateView: public StateView
 {
     private:
 
-
         //View
         MainHeroView* mainHeroV;
         BasicRoomView* roomV;
@@ -53,9 +52,6 @@ class PlayStateView: public StateView
         virtual void init(sf::RenderWindow* window);
         virtual void run(sf::RenderWindow* window);
         virtual void render(sf::RenderWindow* window);
-        virtual void destroy();
-
-
 };
 
 #endif // PLAYSTATEVIEW_H

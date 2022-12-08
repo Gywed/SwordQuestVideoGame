@@ -1,5 +1,4 @@
 #include "view/PlayStateView.h"
-#include <iostream>
 #include <thread>
 #include "view/SlimeRoundView.h"
 #include "view/SlimeLongView.h"
@@ -250,8 +249,4 @@ void PlayStateView::render(sf::RenderWindow* window)
         pauseV->render();
     if (mainHeroV->getDeadFlag())
         deadV->render();
-}
-void PlayStateView::destroy()
-{
-
 }

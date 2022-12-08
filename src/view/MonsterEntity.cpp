@@ -104,7 +104,8 @@ bool MonsterEntity::spriteEvents(sf::RenderWindow* window, MainHeroView* mainHer
 Monster* MonsterEntity::getMonster()const { return monster; }
 void MonsterEntity::setMonster(Monster* monster) { this->monster = monster;}
 
-bool MonsterEntity::update(Observable* obs)
+// Check if the observable is a MainHero then take damage if their hitbox touches
+void MonsterEntity::update(Observable* obs)
 {
     MainHeroView* mainHeroV = ((MainHeroView*)obs);
     if(this->getGlobalBounds().intersects(mainHeroV->getGlobalBounds()) && this->getScale().x * mainHeroV->getScale().x < 0)
@@ -112,11 +113,7 @@ bool MonsterEntity::update(Observable* obs)
         int damage = mainHeroV->getMainHero()->getDamage();
         damage *= mainHeroV->getHeavyAttackFlag() ? 2 : 1;
         this->receiveDamage(damage);
-
-        return !this->deadFlag;
-
     }
-    return true;
 
 }
 

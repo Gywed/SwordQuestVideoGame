@@ -49,12 +49,11 @@ void SliderSFML::logic(sf::RenderWindow &window)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         setSliderValue(sliderValue+1);
-        sleep(sf::milliseconds(25));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        sleep(sf::milliseconds(35));
+    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         setSliderValue(sliderValue-1);
-        sleep(sf::milliseconds(25));
+        sleep(sf::milliseconds(35));
     }
 }
 

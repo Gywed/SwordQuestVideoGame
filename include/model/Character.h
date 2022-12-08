@@ -1,10 +1,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
-#include <sstream>
 #include <chrono>
-#include <iostream>
-
-#define Attackable_file attackable
 
 using namespace std;
 using namespace std::chrono;
@@ -33,11 +29,15 @@ class Character
         Character& operator=(const Character& other);
 
         // Get/Set
+
+        // Clock for smooth movement (hero)
         void setUpClock(std::chrono::_V2::system_clock::time_point clock);
         void setDownClock(std::chrono::_V2::system_clock::time_point clock);
         void setLeftClock(std::chrono::_V2::system_clock::time_point clock);
         void setRightClock(std::chrono::_V2::system_clock::time_point clock);
 
+
+        // Clock for smooth movement (monster)
         void setAllMovementClock(std::chrono::_V2::system_clock::time_point clock);
 
         void setHP(int newHP);

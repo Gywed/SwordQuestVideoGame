@@ -56,6 +56,7 @@ void Character::setSpeed(float speed) { this->speed = speed; }
 void Character::setDamage(int newDamage) { this->damage = newDamage; }
 int Character::getDamage()const { return damage; }
 
+// Calculate a new average with the last clock
 void Character::newClockavrg(int newClock)
 {
     nbClock++;
@@ -64,6 +65,7 @@ void Character::newClockavrg(int newClock)
 
 //Moving methods
 float Character::moveUp(float singleKeyBoost) {
+    // Calculate the average time for the 10000 first movement
     if (nbClock < 10000)
     {
         std::chrono::_V2::system_clock::time_point newTime = high_resolution_clock::now();

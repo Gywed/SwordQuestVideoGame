@@ -149,7 +149,3 @@ void AboutStateView::render(sf::RenderWindow* window)
         window->draw(credits[i]);
     }
 }
-void AboutStateView::destroy()
-{
-
-}

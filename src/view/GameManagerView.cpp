@@ -87,16 +87,20 @@ void GameManagerView::setState(const EnumState st)
         default:break;
     }
 
+    // Call the init from the state
     if(this->state!=NULL)
         this->state->init(this->window);
 }
 /*  Method  */
+// Call the run from the state
 void GameManagerView::run()
 {
     if(this->state != NULL) {
         this->state->run(this->window);
       }
 }
+
+// Call the rendre from the state
 void GameManagerView::render()
 {
     if(this->state != NULL) {
