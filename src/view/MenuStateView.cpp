@@ -3,7 +3,7 @@
 
 MenuStateView::MenuStateView(GameManagerView* gm):StateView(gm)
 {
-    this->gm = gm;
+
 }
 
 MenuStateView::~MenuStateView()

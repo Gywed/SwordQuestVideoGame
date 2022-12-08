@@ -3,8 +3,6 @@
 OptionStateView::OptionStateView(GameManagerView* gm):StateView(gm)
 {
     //ctor
-    this->gm = gm;
-    init(gm->getWindow());
 }
 
 OptionStateView::~OptionStateView()
